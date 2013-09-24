@@ -65,12 +65,28 @@
     {
       word:'apple',
       is:['delicious','healthy','crunchy'],
+      extends:['fruit'],
       associated:['pear','fruit'],
     },
     {
       word:'potato',
       is:['healthy','starchy'],
       associated:[],
+    },
+    {
+      word:'candy',
+      is:['delicious','unhealthy'],
+      associated:[
+        {
+          word:'teeth',
+          how:['cavity']
+        }
+      ]
+    },
+    {
+      word:'fork',
+      is:['pointy'],
+      extends:['tool']
     }
    ],
   attributes:[ 
@@ -82,7 +98,6 @@
    expressions:[{
      for:'tasty',
      said:'{{tmp}} hits the spot.'
-
    }
 
    ]
@@ -133,12 +148,13 @@
 
   function Brain(host) {
 
+    var brain = this;
     this.host = host;
     this.lexicon = Lexicon;
     this.host.thinks('I have a lexicon!');
     this.host.thinks(this.lexicon);
 
-    this.process = function(words) {
+    brain.process = function(words) {
 
       this.host.thinks('Hmm, someone said ' + words + '.');
       var $analysis = this.analyze(words);
@@ -147,7 +163,7 @@
 
     }
 
-    this.analyze = function(words) {
+    brain.analyze = function(words) {
 
       var analysis = {};
       var singleWords = words.split(' ');
@@ -162,11 +178,12 @@
 
     }
 
-    this.ponder = function(ideas) {
+    brain.ponder = function(ideas) {
 
      // console.log(this.lexicon.things);
       var seed = _.sample(this.lexicon.things);
-      var response = "I'm thinking about " + seed.word + ".";
+      var response = '';
+      //response += "I'm thinking about " + seed.word + ".";
       response += " " + seed.word + " is " + _.sample(seed.is);
       return response;
 
