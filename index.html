@@ -21,6 +21,7 @@
 <div class='container' style='padding:60px;'>
   <div class="row">
     <div class='span3'>
+      <h3>Lisa</h3>
       <p id='dialogue'>Hey baby.</p>
       <form id='conversation-form'>
         <input class='disabled' id='conversation-input' type='text'>
@@ -66,11 +67,28 @@
       word:'apple',
       is:['delicious','healthy','crunchy'],
       extends:['fruit'],
+      plural:'apples',
       associated:['pear','fruit'],
+    },
+    {
+      word:'apple',
+      is:['delicious','healthy','crunchy'],
+      extends:['fruit'],
+      plural:'apples',
+      associated:['pear','fruit'],
+    },
+    {
+      word:'puppy',
+      is:['cute','adorable'],
+      extends:['dog'],
+      plural:'puppies',
+      associated:['kitten'],
     },
     {
       word:'potato',
       is:['healthy','starchy'],
+      extends:['vegetable'],
+      plural:'potatoes',
       associated:[],
     },
     {
@@ -85,6 +103,7 @@
     },
     {
       word:'fork',
+      plural:'forks',
       is:['pointy'],
       extends:['tool']
     }
@@ -97,7 +116,7 @@
     ],
    expressions:[{
      for:'tasty',
-     said:'{{tmp}} hits the spot.'
+     said:'hits the spot.'
    }
 
    ]
@@ -150,7 +169,7 @@
 
     var brain = this;
     this.host = host;
-    this.lexicon = Lexicon;
+    this.lexicon = localStorage.getItem('lexicon') || Lexicon;
     this.host.thinks('I have a lexicon!');
     this.host.thinks(this.lexicon);
 
@@ -180,17 +199,30 @@
 
     brain.ponder = function(ideas) {
 
-     // console.log(this.lexicon.things);
       var seed = _.sample(this.lexicon.things);
       var response = '';
-      //response += "I'm thinking about " + seed.word + ".";
-      response += " " + seed.word + " is " + _.sample(seed.is);
+      response += " " + (seed.plural || seed.word) + " " + (seed.plural ? 'are' : 'is') + " " + _.sample(seed.is);
+      response = brain.prettify(response);
       return response;
 
     }
+
+    brain.prettify = function(phrase) {
+      phrase += ('.');
+      phrase = _.capitalize(phrase);
+      return phrase;
+    }
+
   }
 
   var $Lisa = new Lisa();
+
+  _.mixin({
+     capitalize: function(string) {
+      return string.charAt(1).toUpperCase() + string.substring(2).toLowerCase();
+   //return 'blah';
+  }
+});
 
 
 
