@@ -3,84 +3,153 @@
 
 <html ng-app=''> 
 <head>
-	<title>Legend Game</title>
-	<meta name="viewport" content="width=device-width; initial-scale=1.0;">
-	
-	<script type="text/javascript" src="//use.typekit.net/lhm5okc.js"></script>
-	<script src="lib/jquery/jquery-1.10.1.min.js"></script>	
-	<script src="lib/angular/angular.js"></script>
-	<script src="lib/less/less-1.3.3.min.js"></script>
-	<script src="lib/bootstrap/js/bootstrap.js"></script>
-	<script src="lib/underscore/underscore.js"></script>
+  <title>Legend Game</title>
+  <meta name="viewport" content="width=device-width; initial-scale=1.0;">
+  
+  <script type="text/javascript" src="//use.typekit.net/lhm5okc.js"></script>
+  <script src="lib/jquery/jquery-1.10.1.min.js"></script> 
+  <script src="lib/angular/angular.js"></script>
+  <script src="lib/less/less-1.3.3.min.js"></script>
+  <script src="lib/bootstrap/js/bootstrap.js"></script>
+  <script src="lib/underscore/underscore.js"></script>
 
-	<link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap-responsive.css">
+  <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap-responsive.css">
     <!-- 
-	-->
+  -->
 </head>
-<div class='container'>
-	<div class="row">
-		<p id='dialogue'>Hello.</p>
-		<form id='conversation-form'>
-			<input id='conversation-input' type='text'>
-		</form>
-	</div>
+<div class='container' style='padding:60px;'>
+  <div class="row">
+    <p id='dialogue'>Hello.</p>
+    <form id='conversation-form'>
+      <input class='disabled' id='conversation-input' type='text'>
+    </form>
+    <button class='btn' id='saySomethingRandom'>Say Something Random</button>
+  </div>
 </div>
 
 <script>
 
   $('#conversation-form').submit(function(e){
 
-  	var $input = $('#conversation-input');
-  	var inputText = $input.val();
-  	$input.val('');
+    var $input = $('#conversation-input');
+    var inputText = $input.val();
+    $input.val('');
 
-  	$Lisa.isTalkingTo($responder);
-  	$Lisa.hears(inputText);
+    $Lisa.isTalkingTo($responder);
+    $Lisa.hears(inputText);
 
-  	function $responder(words) {
-  		$('#dialogue').html(words);	
-  	}
+    function $responder(words) {
+      $('#dialogue').html(words); 
+    }
 
-
-
-  	e.preventDefault();
-  	return false;
+    e.preventDefault();
+    return false;
   })
+
+  $('#saySomethingRandom').click(function(){
+
+       $('#dialogue').html($Lisa.saySomethingRandom()); 
+
+
+  });
+
+  var Lexicon = [
+    {
+      word:'apple',
+      associated:'delicious',
+      origin:'arch',
+    },
+    {
+      word:'delicious',
+      associated:['apple','yummy'],
+      origin:'arch'
+    }
+   ];
 
 
   function Lisa() {
 
-  	var Lisa = this;
-  	var inTheConversation = [];
+    var Lisa = this;
+    var inTheConversation = [];
 
-  	Lisa.thinks = function(thought) {
+    Lisa.name = 'Lisa';
 
-  		console.log('LISA:' , thought);
-  	}
+    Lisa.thinks = function(thought) {
 
-  	Lisa.hears = function(words) {
+      console.log('LISA:' , thought);
+    }
 
-  		Lisa.thinks(words);
-  		Lisa.says(words);
+    Lisa.hears = function(words) {
+
+      var reply = Lisa.brain.process(words);
+      Lisa.says(reply);
 
 
-  	}
+    }
 
-  	Lisa.isTalkingTo = function(thing) {
+    Lisa.isTalkingTo = function(thing) {
 
-  		inTheConversation.push(thing);
+      inTheConversation.push(thing);
 
-  	}
+    }
 
-  	Lisa.says = function(words) {
+    Lisa.saySomethingRandom = function() {
 
-  		_.each(inTheConversation, function(_responder){_responder(words)})
-  		return words;
+      return Lisa.brain.ponder();
 
-  	}
+    }
+
+    Lisa.says = function(words) {
+
+      _.each(inTheConversation, function(_responder){_responder(words)})
+      return words;
+
+    }
+
+    Lisa.brain = new Brain(Lisa);
+  }
+
+  function Brain(host) {
+
+    this.host = host;
+    this.lexicon = Lexicon;
+    this.host.thinks('I have a lexicon!');
+    this.host.thinks(this.lexicon);
+
+    this.process = function(words) {
+
+      this.host.thinks('Hmm, someone said ' + words + '.');
+      var $analysis = this.analyze(words);
+      this.host.thinks($analysis);
+      return 'Sorry, but I have no idea what that, or anything else, means right now.';
+
+    }
+
+    this.analyze = function(words) {
+
+      var analysis = {};
+      var singleWords = words.split(' ');
+      analysis['wordCount'] = singleWords.length;
+      analysis['isQuestion'] = words.indexOf('?') != -1;
+      analysis['refersToHost'] = words.indexOf(this.host.name) != -1;
+      analysis['wordsRecognized'] = _.map(singleWords, function(word) { 
+
+       // To do... are there any words in Lisa's lexicon that she can use to respond?
+       })
+      return analysis;
+
+    }
+
+    this.ponder = function(ideas) {
+
+      return 'Nothing comes to mind...'
+
+    }
   }
 
   var $Lisa = new Lisa();
+
+
 
 </script>
