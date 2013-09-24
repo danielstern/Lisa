@@ -20,12 +20,18 @@
 </head>
 <div class='container' style='padding:60px;'>
   <div class="row">
-    <p id='dialogue'>Hello.</p>
-    <form id='conversation-form'>
-      <input class='disabled' id='conversation-input' type='text'>
-    </form>
-    <button class='btn' id='saySomethingRandom'>Say Something Random</button>
+    <div class='span3'>
+      <p id='dialogue'>Hey baby.</p>
+      <form id='conversation-form'>
+        <input class='disabled' id='conversation-input' type='text'>
+      </form>
+      <button class='btn' id='saySomethingRandom'>Say Something Random</button>
+    </div>
+    <div class='span3'>
+      <img src='../misc/lisa.jpg' width='200px' height='auto'>
+    </div>
   </div>
+
 </div>
 
 <script>
@@ -54,18 +60,33 @@
 
   });
 
-  var Lexicon = [
+  var Lexicon = {
+    things:[
     {
       word:'apple',
-      associated:'delicious',
-      origin:'arch',
+      is:['delicious','healthy','crunchy'],
+      associated:['pear','fruit'],
     },
     {
-      word:'delicious',
-      associated:['apple','yummy'],
-      origin:'arch'
+      word:'potato',
+      is:['healthy','starchy'],
+      associated:[],
     }
-   ];
+   ],
+  attributes:[ 
+    {
+      word:'delicious',
+      associated:['tasty','yummy','scrumptious'],
+    }
+    ],
+   expressions:[{
+     for:'tasty',
+     said:'{{tmp}} hits the spot.'
+
+   }
+
+   ]
+  };
 
 
   function Lisa() {
@@ -143,7 +164,11 @@
 
     this.ponder = function(ideas) {
 
-      return 'Nothing comes to mind...'
+     // console.log(this.lexicon.things);
+      var seed = _.sample(this.lexicon.things);
+      var response = "I'm thinking about " + seed.word + ".";
+      response += " " + seed.word + " is " + _.sample(seed.is);
+      return response;
 
     }
   }
