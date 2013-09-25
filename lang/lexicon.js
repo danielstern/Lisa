@@ -53,6 +53,13 @@ var Lexicon = {
       associated:['kitten'],
     },
     {
+      word:'sword',
+      is:['sharp','dangerous','deadly','cool'],
+      extends:['weapon'],
+      plural:'swords',
+      associated:['shield','magic'],
+    },
+    {
       word:'dog',
       is:['reliable','domestic','loyal'],
       extends:['animal'],
@@ -97,7 +104,7 @@ var Lexicon = {
       word:'vegetable',
       is:['healthy','starchy'],
       extends:['food'],
-      plural:'vegetable',
+      plural:'vegetables',
       associated:['vitamin'],
     },
     {

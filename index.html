@@ -204,12 +204,15 @@
       {
          if (!seed.extends) return response;
 
-         response += (seed.plural || seed.word) + " " + (seed.plural ? 'are' : 'is') + " a kind of " + seed.extends;   
+         response += brain.speech.express.inheritance(seed, seed.extends);
+
+         brain.host.thinks("I'm scoping up. " + response)
+
+       //  response += (seed.plural || seed.word) + " " + (seed.plural ? 'are' : 'is') + " a kind of " + seed.extends;   
            response += "//";
 
          var scopeUpIdea = _.where(things,{word:seed.extends[0]});
          if (scopeUpIdea[0]) brain.seed = scopeUpIdea[0];
-         brain.host.thinks(brain.seed);
          return response; 
       }
 
@@ -338,6 +341,29 @@
         response += (seed.plural || seed.word) + " " + (seed.plural ? 'are' : 'is') + " " + quality;
         return response;
     }
+
+      express.inheritance = function(seed, idea) {
+
+        var response = '';
+
+        switch (Math.ceil(Math.random()*5))
+        {
+          case 1:
+          case 3:
+          case 4:
+            response = (seed.plural || seed.word) + " " + (seed.plural ? 'are' : 'is') + " a kind of " + idea; 
+            break;
+          case 2:
+            response = (seed.plural || seed.word) + " " + (seed.plural ? 'are' : 'is') + " a type of " + idea; 
+            break;
+          case 5:
+            response = (seed.plural || seed.word) + " " + (seed.plural ? 'are' : 'is') + " a variety of " + idea; 
+          default:
+            break;
+         }
+        return response;
+
+      }
   }
 
 
