@@ -35,6 +35,13 @@ var Lexicon = {
       associated:['happiness','sadness',"Valentine's Day"],
     },
     {
+      word:'joy',
+      is:['desirable','special'],
+      extends:['emotion'],
+      pronoun:'concept',
+      associated:['happiness','sadness',"love"],
+    },
+    {
       word:'orange',
       is:['sweet','healthy','orange'],
       extends:['fruit'],
@@ -204,6 +211,18 @@ var Lexicon = {
      said:'hey',
      for:'greeting',
     },
+    {
+     said:'bye',
+     for:'parting',
+    },
+      {
+     said:'see ya',
+     for:'parting',
+    },
+      {
+     said:'see you',
+     for:'parting',
+    },
    {
      said:"what's up?",
      for:'greeting',
@@ -218,6 +237,14 @@ var Lexicon = {
     },
     {
      said:"fuck you",
+     for:'insult',
+    },
+    {
+     said:"screw you",
+     for:'insult',
+    },
+    {
+     said:"you suck",
      for:'insult',
     },
 

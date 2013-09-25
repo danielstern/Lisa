@@ -119,7 +119,30 @@ function Speech(host) {
           break;
       }
       return response;
-    }     
+    }  
+
+    express.parting = function() 
+    {
+      var response = '';
+    
+      switch (Math.ceil(Math.random()*5))
+      {
+        case 1:
+        case 3:
+        case 4:
+            response = "don't go";
+            break;
+        case 2:
+            response = "bye for now";
+             break;
+        case 5:
+             response = "won't you stay for a quick game of chess?";
+          break;
+        default:
+          break;
+      }
+      return response;
+    }        
 
     express.offense = function()
     {
@@ -169,8 +192,14 @@ function Speech(host) {
     var preposit = function(word) 
     {
       var preposition = '';
+      var pronoun = '';
+      if (!speech.host.brain.whatIs(word)) {
 
-      switch (speech.host.brain.whatIs(word)['pronoun'])
+        pronoun = '?';
+
+      }
+
+      switch (pronoun || speech.host.brain.whatIs(word)['pronoun'] )
       {
          case 'unique':
            preposition = 'the';

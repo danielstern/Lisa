@@ -10,6 +10,7 @@
     brain.speech = new Speech(brain.host);
     brain.patterns = Patterns;
     var things = brain.lexicon.things;
+    brain.psychic = new Psychic();
 
     brain.process = function(words) {
 
@@ -21,7 +22,7 @@
         response += brain.ponder(idea);
       }
 
-      return brain.speech.prettify(response) || "I don't know what that means.";
+      return brain.speech.prettify(response) || "Hmmm...";
 
     }
 
@@ -38,13 +39,19 @@
       idea = _.find(brain.lexicon.expressions, function(idea){return idea.said.toLowerCase() == word.toLowerCase()});
         if(idea) return idea;
 
+        brain.psychic.syphon(word, function(result){
+
+          console.log('brain got wave...',result);
+          $('#dialogue').html(brain.speech.prettify(brain.ponder(result)));
+        });
+
     }
 
 
 
     brain.ponder = function(idea) {
 
-      brain.host.thinks('ponder...');
+      brain.host.thinks(idea);
       brain.seed = idea || _.sample(this.lexicon.things);
       var response = '';
       var seed = brain.seed;
@@ -83,7 +90,6 @@
             break;
         }
       })
-
 
       response = brain.speech.prettify(response);
       return response;

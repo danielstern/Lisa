@@ -101,6 +101,9 @@ function Logic(brain) {
       	 	  brain.host.thinks('How dare you!');
       	 	  return brain.speech.express.offense();
       	 	  break;
+      	 	case 'parting':
+      	 	  return brain.speech.express.parting();
+      	 	  break;
       	 }
       }
 
