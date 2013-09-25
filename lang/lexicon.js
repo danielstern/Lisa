@@ -57,7 +57,28 @@ var Lexicon = {
       is:['sharp','dangerous','deadly','cool'],
       extends:['weapon'],
       plural:'swords',
-      associated:['shield','magic'],
+      associated:['shield','magic','Sword of Light'],
+    },
+    {
+      word:'Sword of Light',
+      is:['very powerful','legendary','secret','hidden in a certain location','buried next to the well'],
+      pronoun:'unique',
+      extends:['weapon'],
+      associated:['Algoron']
+    },
+    {
+      word:'Algoron',
+      is:['mighty','a wizard','from a distant land','a fearsome sorceror'],
+      pronoun:'proper',
+      extends:['person'],
+      associated:['Sword of Light']
+    },
+    {
+      word:'axe',
+      is:['sharp','dangerous','deadly','cool','mighty','easy to use'],
+      extends:['weapon'],
+      plural:'axes',
+      associated:['sword','tree','magic'],
     },
     {
       word:'dog',
@@ -71,6 +92,20 @@ var Lexicon = {
       is:['alive','living','active'],
       plural:'animals',
       associated:['plant','cat'],
+    },
+    {
+      word:'monkey',
+      is:['alive','living','cute','intelligent','a close relative to us humans'],
+      plural:'monkeys',
+      extends:'animal',
+      associated:['business','lion','The Jungle Book'],
+    },
+    {
+      word:'lion',
+      is:['alive','dangerous','cunning','king of the jungle'],
+      plural:'lions',
+      extends:'animal',
+      associated:['cat','monkey','jungle','The Jungle Book']
     },
     {
       word:'cat',
@@ -110,6 +145,7 @@ var Lexicon = {
     {
       word:'candy',
       is:['delicious','unhealthy'],
+      plural:'candy',
       extends:['food'],
     },
     {
@@ -125,16 +161,33 @@ var Lexicon = {
       
     }
    ],
-  attributes:[ 
+    attributes:[ 
     {
       word:'delicious',
       associated:['tasty','yummy','scrumptious'],
     }
     ],
-   expressions:[{
+   expressions:[
+   {
+     said:'hits the spot.',
      for:'tasty',
-     said:'hits the spot.'
-   }
+   },
+   {
+     said:'hello',
+     for:'greeting',
+    },
+  {
+     said:'hi',
+     for:'greeting',
+    },
+    {
+     said:'howdy',
+     for:'greeting',
+    },
+   {
+     said:"what's up?",
+     for:'greeting',
+    },
 
    ]
   };
