@@ -60,6 +60,12 @@ var Lexicon = {
       associated:['fetch','cat'],
     },
     {
+      word:'animal',
+      is:['alive','living','active'],
+      plural:'animals',
+      associated:['plant','cat'],
+    },
+    {
       word:'cat',
       is:['vain','graceful','sneaky'],
       extends:['animal'],

@@ -162,23 +162,25 @@
 
 
       for (var i = 0; i < brain.mood.chatty; i++) {
-
-           switch (Math.ceil(Math.random()*6))
+           switch (Math.ceil(Math.random()*10))
            {
              case 1:
                response = scopeDown(brain.seed, response);
-               response += "//";
+               break;
+              
              case 2:
-              response = exploreAssociations(brain.seed, response);
-               response += "//";
+              //response = exploreAssociations(brain.seed, response);
                break;
              case 3:
+             case 6:
+             case 7:
+             case 8:
                response = demystify(brain.seed, response);
-               response += "//";
                break;
+             case 4:
+               response = scopeSideways(brain.seed, response);
              case 5:
                response = scopeUp(brain.seed, response);
-               response += "//";
                break;
               default:
                break;
@@ -191,7 +193,10 @@
 
       function demystify(seed, response)
       {
-         response += (seed.plural || seed.word) + " " + (seed.plural ? 'are' : 'is') + " " + (seed.is ? _.sample(seed.is) : '');
+         if (!seed.is) return response;
+         response += brain.speech.express.quality(seed, _.sample(seed.is));
+        response += "//";
+         
          return response;
       }
 
@@ -200,6 +205,7 @@
          if (!seed.extends) return response;
 
          response += (seed.plural || seed.word) + " " + (seed.plural ? 'are' : 'is') + " a kind of " + seed.extends;   
+           response += "//";
 
          var scopeUpIdea = _.where(things,{word:seed.extends[0]});
          if (scopeUpIdea[0]) brain.seed = scopeUpIdea[0];
@@ -209,20 +215,24 @@
 
       function scopeDown(seed, response) 
       {
-          var scopeDownIdea = _.find(things,function(thing){
+          var scopeDownIdea = _.filter(things,function(thing){
             if (!thing.extends) return false;
+            if (thing.word == seed.word) return false;
             if (thing.extends[0] == seed.word) return true;
             return false;
           })
           if (!scopeDownIdea) return response;
+
+          brain.host.thinks("I am scoping down.");  
             
-
-
-         if (scopeDownIdea[0]) brain.seed = scopeDownIdea[0];
+         if (scopeDownIdea[0]) {
+          var idea = _.sample(scopeDownIdea);
+          brain.seed = idea;
+          response += "One kind of " + seed.word + " " + (idea.plural ? 'are' : 'is') + " " + (idea.plural || idea.word);
+          response += "//";
+         }
          return response;
       }
-
-      /* scope down */
 
       /*explore associations*/
       function exploreAssociations(seed, response)
@@ -230,6 +240,7 @@
          if (!seed.associated) return response;
          var associatedThing = _.sample(seed.associated);
          response += (seed.plural || seed.word) + " " + (seed.plural ? 'reminds' : 'remind') + " me of " + associatedThing;
+           response += "//";
          return response;
       }
 
@@ -238,14 +249,31 @@
       /* contrast */
 
       /*  scope sideways */
-      /*
+      
       function scopeSideways(seed, response)
       {
-        var relatedThings = _.find(brain.lexicon.things, function(thing){return thing.extends == seed.extends});
-        console.log(relatedThings); 
-        response += relatedThings.plural + " is also a " + seed.extends;
+        if (!seed.extends) return response;
+        var relatedThings = _.filter(brain.lexicon.things, function(thing){
+          if (!thing.extends) return false;
+          if (thing.word == seed.word) return false;
+          return thing.extends[0] == seed.extends[0]
+        });
+        if (!relatedThings) return response;
+         brain.host.thinks('I am considering related things...');
+        brain.host.thinks(relatedThings);
+        var sidewaysIdea = _.sample(relatedThings);
+        brain.host.thinks('I have a new sideways idea...');
+        brain.host.thinks(sidewaysIdea);
+        if (!sidewaysIdea) return response;
+            response += (seed.plural || seed.word) + " " + (seed.plural ? 'reminds' : 'remind') + " me of " + sidewaysIdea.word;
+                 response += "//";
+        response += sidewaysIdea.word + " is also a " + seed.extends;
+           response += "//";
+        brain.seed = sidewaysIdea;
 
-      }*/
+        return response;
+
+      }
 
 
       response = brain.prettify(response);
@@ -259,12 +287,14 @@
       return phrase;
     }
 
+    brain.speech = new Speech();
+
   }
 
   var personality = {
 
     cheerful:5,
-    chatty:10,
+    chatty:4,
     friendly:5,
 
   }
@@ -274,12 +304,44 @@
   _.mixin({
      capitalize: function(string) {
       var strings = string.split('//');
-      strings = _.map(strings, function(string){string = string.charAt(0).toUpperCase() + string.substring(1).toLowerCase();  string += ('. '); return string;})
+      strings = _.without(strings, '');
+
+      strings = _.map(strings, function(string){
+        string = string.charAt(0).toUpperCase() + string.substring(1).toLowerCase();  
+        string += ('. ');
+        if (Math.random() > 0.3) string += "</p><p>"; 
+        return string;
+      })
       var returnString = strings.join('');
       return returnString;
    //return 'blah';
   }
 });
+
+  function Speech() {
+
+    var speech = this;
+    speech.express = new Express;
+
+    function Express() {
+      express = this;
+
+      express.nonsense = function() {
+
+        return "I need scissors! 67!";
+
+      }
+
+      express.quality = function(seed, quality) {
+
+        var response = '';
+        response += (seed.plural || seed.word) + " " + (seed.plural ? 'are' : 'is') + " " + quality;
+        return response;
+    }
+  }
+
+
+  }
 
 
 
