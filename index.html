@@ -15,6 +15,8 @@
 
   <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap-responsive.css">
+
+  <script src="lang/lexicon.js"></script>
     <!-- 
   -->
 </head>
@@ -60,67 +62,6 @@
 
 
   });
-
-  var Lexicon = {
-    things:[
-    {
-      word:'apple',
-      is:['delicious','healthy','crunchy'],
-      extends:['fruit'],
-      plural:'apples',
-      associated:['pear','fruit'],
-    },
-    {
-      word:'apple',
-      is:['delicious','healthy','crunchy'],
-      extends:['fruit'],
-      plural:'apples',
-      associated:['pear','fruit'],
-    },
-    {
-      word:'puppy',
-      is:['cute','adorable'],
-      extends:['dog'],
-      plural:'puppies',
-      associated:['kitten'],
-    },
-    {
-      word:'potato',
-      is:['healthy','starchy'],
-      extends:['vegetable'],
-      plural:'potatoes',
-      associated:[],
-    },
-    {
-      word:'candy',
-      is:['delicious','unhealthy'],
-      associated:[
-        {
-          word:'teeth',
-          how:['cavity']
-        }
-      ]
-    },
-    {
-      word:'fork',
-      plural:'forks',
-      is:['pointy'],
-      extends:['tool']
-    }
-   ],
-  attributes:[ 
-    {
-      word:'delicious',
-      associated:['tasty','yummy','scrumptious'],
-    }
-    ],
-   expressions:[{
-     for:'tasty',
-     said:'hits the spot.'
-   }
-
-   ]
-  };
 
 
   function Lisa() {
@@ -169,16 +110,30 @@
 
     var brain = this;
     this.host = host;
-    this.lexicon = localStorage.getItem('lexicon') || Lexicon;
+   //this.lexicon = localStorage.getItem('lexicon') || Lexicon;
+   //console.log('lexicon?' , JSON.parse(localStorage.getItem('lexicon')) )
+   //localStorage.getItem('lexicon').toString();
+   this.lexicon = Lexicon;
     this.host.thinks('I have a lexicon!');
     this.host.thinks(this.lexicon);
+    this.personality = personality;
+    this.mood = this.personality;
 
     brain.process = function(words) {
 
       this.host.thinks('Hmm, someone said ' + words + '.');
       var $analysis = this.analyze(words);
+      var response;
       this.host.thinks($analysis);
-      return 'Sorry, but I have no idea what that, or anything else, means right now.';
+
+     // localStorage.setItem('lexicon', JSON.stringify(brain.lexicon));
+      if ($analysis.wordCount == '1') 
+      {
+        response = 'What is ' + words + "?";
+        console.log(brain.lexicon);
+        brain.lexicon.things.push({word:words});
+      }
+      return response || 'Sorry, but I have no idea what that, or anything else, means right now.';
 
     }
 
@@ -199,19 +154,108 @@
 
     brain.ponder = function(ideas) {
 
-      var seed = _.sample(this.lexicon.things);
+      //console.log(this.lexicon);
+      brain.seed = _.sample(this.lexicon.things);
       var response = '';
-      response += " " + (seed.plural || seed.word) + " " + (seed.plural ? 'are' : 'is') + " " + _.sample(seed.is);
+      var seed = brain.seed;
+
+      //while (Math.random()*10 < brain.mood.chatty) {
+
+
+      //}
+
+      for (var i = 0; i < brain.mood.chatty; i++) {
+
+           switch (Math.ceil(Math.random()*5))
+           {
+             case 1:
+             case 2:
+              response = exploreAssociations(brain.seed, response);
+               response += "//";
+               break;
+             case 3:
+               response = demystify(brain.seed, response);
+               response += "//";
+               break;
+             case 5:
+               response = scopeUp(brain.seed, response);
+               response += "//";
+               break;
+              default:
+               break;
+             }
+           }
+
+
+         response = scopeUp(seed, response);
+  
+
+      function demystify(seed, response)
+      {
+         response += (seed.plural || seed.word) + " " + (seed.plural ? 'are' : 'is') + " " + (seed.is ? _.sample(seed.is) : '');
+         return response;
+      }
+
+      function scopeUp(seed, response) 
+      {
+         if (!seed.extends) return response;
+
+         response += (seed.plural || seed.word) + " " + (seed.plural ? 'are' : 'is') + " a kind of " + seed.extends;
+
+         brain.host.thinks("I'm thinking about a " + seed.word + " and that's a kind of " + seed.extends + "...");
+
+         var things = brain.lexicon.things;
+
+         var scopeUpIdea = _.where(things,{word:seed.extends[0]});
+         if (scopeUpIdea[0]) brain.seed = scopeUpIdea[0];
+         brain.host.thinks(brain.seed);
+         return response; 
+      }
+
+      /* scope down */
+
+      /*explore associations*/
+      function exploreAssociations(seed, response)
+      {
+         if (!seed.associated) return response;
+         var associatedThing = _.sample(seed.associated);
+         response += (seed.plural || seed.word) + " " + (seed.plural ? 'reminds' : 'remind') + " me of " + associatedThing;
+         return response;
+      }
+
+      /* compare */
+
+      /* contrast */
+
+      /*  scope sideways */
+      /*
+      function scopeSideways(seed, response)
+      {
+        var relatedThings = _.find(brain.lexicon.things, function(thing){return thing.extends == seed.extends});
+        console.log(relatedThings); 
+        response += relatedThings.plural + " is also a " + seed.extends;
+
+      }*/
+
+
       response = brain.prettify(response);
       return response;
 
     }
 
     brain.prettify = function(phrase) {
-      phrase += ('.');
+     
       phrase = _.capitalize(phrase);
       return phrase;
     }
+
+  }
+
+  var personality = {
+
+    cheerful:5,
+    chatty:10,
+    friendly:5,
 
   }
 
@@ -219,7 +263,10 @@
 
   _.mixin({
      capitalize: function(string) {
-      return string.charAt(1).toUpperCase() + string.substring(2).toLowerCase();
+      var strings = string.split('//');
+      strings = _.map(strings, function(string){string = string.charAt(0).toUpperCase() + string.substring(1).toLowerCase();  string += ('. '); return string;})
+      var returnString = strings.join('');
+      return returnString;
    //return 'blah';
   }
 });
