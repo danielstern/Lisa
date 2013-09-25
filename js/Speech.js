@@ -74,19 +74,43 @@ function Speech(host) {
       return response;
     }
 
-
+    express.sharedQuality = function(subject, object, trait) 
+    {
+      var response = '';
     
+      switch (Math.ceil(Math.random()*5))
+      {
+        case 1:
+        case 3:
+        case 4:
+            response += (subject.plural || preposit(subject.word)) + " and " + (object.plural || preposit(object.word)) + " are both " + trait;
+          break;
+        case 2:
+            response += "Both " + (subject.plural || preposit(subject.word)) + " and " + (object.plural || preposit(object.word)) + " are " + trait;
+          break;
+        case 5:
+           response += (subject.plural || preposit(subject.word)) + " and " + (object.plural || preposit(object.word)) + " are similar because they are both " + trait;
+          break;
+        default:
+          break;
+      }
+      return response;
+    }    
 
 
     var preposit = function(word) 
     {
       var preposition = '';
-      if (speech.host.brain.whatIs(word)['title'] == true) 
-      { 
-        preposition = 'the' 
-      }
-      else 
+
+      switch (speech.host.brain.whatIs(word)['pronoun'])
       {
+         case 'unique':
+           preposition = 'the';
+           break;
+         case 'proper':
+           preposition = '';
+           break;
+         default:
          switch(word.toLowerCase().charAt(0))
          {
            case 'a':
@@ -99,13 +123,14 @@ function Speech(host) {
           default:
             preposition = 'a';
          }
+         break;
       }
 
       return preposition + " " + word;
     }
   }
 
-  
+
   speech.prettify = function(phrase) {
      
     phrase = _.capitalize(phrase);

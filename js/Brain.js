@@ -73,6 +73,7 @@
               
              case 2:
              case 3:
+               response = compare(brain.seed, response);
              case 6:
              case 8:
                response = demystify(brain.seed, response);
@@ -138,12 +139,33 @@
          return response;
       }
 
-      /* compare */
+      /* compare 
+         find something that shares a trait with the idea's seed
+      */
+
+      function compare (seed,response)
+      {
+        for (var i = 0; i < brain.mood.inquisitive; i++)
+        {
+           var trait = _.sample(seed.is);
+           var thing = _.sample(things);
+
+           if(_.contains(thing.is, trait) && thing.word != seed.word) 
+           {
+             response += brain.speech.express.sharedQuality(seed, thing, trait);
+             response += "//";
+             return response;
+           }
+        }
+        return response;
+      }
 
       /* contrast */
 
       /*  scope sideways */
-      
+      /*
+         find something that is like the seed and start pondering that
+      */
       function scopeSideways(seed, response)
       {
         if (!seed.extends) return response;
@@ -152,14 +174,12 @@
           if (thing.word == seed.word) return false;
           return thing.extends[0] == seed.extends[0]
         });
+
         if (!relatedThings) return response;
         var sidewaysIdea = _.sample(relatedThings);
         if (!sidewaysIdea) return response;
-     //   response += brain.speech.express.association(seed, sidewaysIdea);
         response += brain.speech.express.association(sidewaysIdea, seed);
         response += "//";
-        //  response += brain.speech.express.inheritance(sidewaysIdea, seed.extends);
-        // response += "//";
         brain.seed = sidewaysIdea;
 
         return response;

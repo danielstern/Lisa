@@ -41,6 +41,13 @@ var Lexicon = {
       associated:['pear','vegetables'],
     },
     {
+      word:'bird',
+      is:['flying','graceful','airborne'],
+      extends:['animal'],
+      plural:'birds',
+      associated:['hawk','fish'],
+    },
+    {
       word:'food',
       is:['necessary'],
       associated:['water'],
