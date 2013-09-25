@@ -1,0 +1,30 @@
+var Patterns =  
+{
+	exposition:[
+		{
+			sequence:['demystify','demystify','compare']
+		},
+		{
+			sequence:['demystify','compare','demystify']
+		},
+		{
+			sequence:['demystify','compare','compare']
+		},
+		{
+			sequence:['demystify','compare','scopeUp','demystify']
+		},
+		{
+			sequence:['demystify','compare']
+		},
+		{
+			sequence:['demystify','demystify']
+		},
+		{
+			sequence:['demystify','scopeSideways','demystify','scopeUp']
+		},
+		{
+			sequence:['demystify','scopeDown','demystify']
+		},
+
+	]
+}

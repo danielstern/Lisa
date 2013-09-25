@@ -3,14 +3,12 @@
 
     var brain = this;
     this.host = host;
-   //this.lexicon = localStorage.getItem('lexicon') || Lexicon;
-   //console.log('lexicon?' , JSON.parse(localStorage.getItem('lexicon')) )
-   //localStorage.getItem('lexicon').toString();
     this.lexicon = Lexicon;
     this.personality = this.host.personality;
     this.mood = this.personality;
     brain.logic = new Logic(brain);
     brain.speech = new Speech(brain.host);
+    brain.patterns = Patterns;
     var things = brain.lexicon.things;
 
     brain.process = function(words) {
@@ -59,34 +57,33 @@
          return response;
       }
 
+      var pattern = _.sample(brain.patterns.exposition);
+      brain.host.thinks('Pattern...?' + pattern);
+      brain.host.thinks(pattern);
 
+      var sequence = pattern.sequence;
+      _.each(sequence, function(command){
+        console.log('processing command...' , command);
+        switch (command)
+        {
+          case 'demystify':
+            response = logic.demystify(brain.seed, response);
+            break;
+          case 'compare':
+           response = logic.compare(brain.seed, response);
+            break;
+          case 'scopeUp':
+            response = logic.scopeUp(brain.seed, response);
+            break;
+          case 'scopeSideways':
+            response = logic.scopeSideways(brain.seed, response);
+            break;
+          case 'scopeDown':
+            response = logic.scopeDown(brain.seed, response);
+            break;
+        }
+      })
 
-      for (var i = 0; i < brain.mood.chatty; i++) {
-           switch (Math.ceil(Math.random()*10))
-           {
-             case 1:
-               response = logic.scopeDown(brain.seed, response);
-               break;
-              
-             case 2:
-             case 3:
-               response = logic.compare(brain.seed, response);
-               break;
-             case 6:
-             case 8:
-               response = logic.demystify(brain.seed, response);
-               break;
-             case 4:
-              case 7:
-               response = logic.scopeSideways(brain.seed, response);
-               break;
-             case 5:
-               response = logic.scopeUp(brain.seed, response);
-               break;
-              default:
-               break;
-             }
-           }
 
       response = brain.speech.prettify(response);
       return response;
