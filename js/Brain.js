@@ -92,7 +92,14 @@
       })
 
       response = brain.speech.prettify(response);
-      return response;
+
+      var _callback;
+      return {
+        then:function(callback){
+          _callback = callback;
+          setTimeout(function(){_callback(response)},500);
+        }
+      }
 
     }
   }

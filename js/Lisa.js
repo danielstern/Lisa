@@ -27,9 +27,21 @@
 
     Lisa.saySomethingRandom = function() {
 
-      return Lisa.brain.ponder();
+      var _callback;
 
-    }
+     Lisa.brain.ponder().then(
+      function(response)
+      {
+        _callback(response)
+      });
+
+      return {
+        then:function(callback){
+          _callback = callback; 
+        }
+      }
+    };
+
 
     Lisa.says = function(words) {
 

@@ -65,7 +65,11 @@
 
   $('#saySomethingRandom').click(function(){
 
-       $('#dialogue').html($Lisa.saySomethingRandom()); 
+    $Lisa.saySomethingRandom().then(function(response){
+       $('#dialogue').html(response); 
+     }
+    );
+      
 
 
   });
