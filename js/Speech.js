@@ -95,7 +95,75 @@ function Speech(host) {
           break;
       }
       return response;
-    }    
+    }   
+
+    /* Returns a string representing a friendly greeting. */
+    express.greeting = function() 
+    {
+      var response = '';
+    
+      switch (Math.ceil(Math.random()*5))
+      {
+        case 1:
+        case 3:
+        case 4:
+            response = "hello";
+            break;
+        case 2:
+            response = "hey there, sugar";
+             break;
+        case 5:
+             response = "hi";
+          break;
+        default:
+          break;
+      }
+      return response;
+    }     
+
+    express.offense = function()
+    {
+       var response = '';
+    
+      switch (Math.ceil(Math.random()*5))
+      {
+        case 1:
+        case 3:
+        case 4:
+            return "right back at you";
+        case 2:
+            return "your mother";
+        case 5:
+            return "i bet you're lonely, too";
+        default:
+          break;
+      }
+      return response;
+
+    }
+
+    express.perceiveSilence = function() {
+
+      var response = '';
+    
+      switch (Math.ceil(Math.random()*5))
+      {
+        case 1:
+        case 3:
+        case 4:
+            response = "Yes?";
+            break;
+        case 2:
+            response = "Why don't you say something?";
+             break;
+        case 5:
+             response = "...";
+          break;
+        default:
+          break;
+      }
+      return response;
+    }
 
 
     var preposit = function(word) 
@@ -108,6 +176,7 @@ function Speech(host) {
            preposition = 'the';
            break;
          case 'proper':
+         case 'concept':
            preposition = '';
            break;
          default:
@@ -126,7 +195,8 @@ function Speech(host) {
          break;
       }
 
-      return preposition + " " + word;
+      if (preposition) preposition += " ";
+      return preposition + word;
     }
   }
 

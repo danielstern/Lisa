@@ -17,6 +17,7 @@ var Lexicon = {
     {
       word:'royalty',
       is:['powerful','mighty','wealthy','feared','refined','ruin'],
+      pronoun:'concept',
       associated:['queen','throne','king']
     },
     {
@@ -25,6 +26,13 @@ var Lexicon = {
       extends:['fruit'],
       plural:'pears',
       associated:['apple'],
+    },
+    {
+      word:'love',
+      is:['tingly','special'],
+      extends:['emotion'],
+      pronoun:'concept',
+      associated:['happiness','sadness',"Valentine's Day"],
     },
     {
       word:'orange',
@@ -50,6 +58,7 @@ var Lexicon = {
     {
       word:'food',
       is:['necessary'],
+      pronoun:'concept',
       associated:['water'],
     },
     {
@@ -191,10 +200,27 @@ var Lexicon = {
      said:'howdy',
      for:'greeting',
     },
+    {
+     said:'hey',
+     for:'greeting',
+    },
    {
      said:"what's up?",
      for:'greeting',
     },
+   {
+     said:"",
+     for:'silence',
+    },
+  {
+     said:"...",
+     for:'silence',
+    },
+    {
+     said:"fuck you",
+     for:'insult',
+    },
+
 
    ]
   };
