@@ -154,21 +154,20 @@
 
     brain.ponder = function(ideas) {
 
-      //console.log(this.lexicon);
       brain.seed = _.sample(this.lexicon.things);
       var response = '';
       var seed = brain.seed;
+      var things = brain.lexicon.things;
 
-      //while (Math.random()*10 < brain.mood.chatty) {
 
-
-      //}
 
       for (var i = 0; i < brain.mood.chatty; i++) {
 
-           switch (Math.ceil(Math.random()*5))
+           switch (Math.ceil(Math.random()*6))
            {
              case 1:
+               response = scopeDown(brain.seed, response);
+               response += "//";
              case 2:
               response = exploreAssociations(brain.seed, response);
                response += "//";
@@ -200,16 +199,27 @@
       {
          if (!seed.extends) return response;
 
-         response += (seed.plural || seed.word) + " " + (seed.plural ? 'are' : 'is') + " a kind of " + seed.extends;
-
-         brain.host.thinks("I'm thinking about a " + seed.word + " and that's a kind of " + seed.extends + "...");
-
-         var things = brain.lexicon.things;
+         response += (seed.plural || seed.word) + " " + (seed.plural ? 'are' : 'is') + " a kind of " + seed.extends;   
 
          var scopeUpIdea = _.where(things,{word:seed.extends[0]});
          if (scopeUpIdea[0]) brain.seed = scopeUpIdea[0];
          brain.host.thinks(brain.seed);
          return response; 
+      }
+
+      function scopeDown(seed, response) 
+      {
+          var scopeDownIdea = _.find(things,function(thing){
+            if (!thing.extends) return false;
+            if (thing.extends[0] == seed.word) return true;
+            return false;
+          })
+          if (!scopeDownIdea) return response;
+            
+
+
+         if (scopeDownIdea[0]) brain.seed = scopeDownIdea[0];
+         return response;
       }
 
       /* scope down */

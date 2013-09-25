@@ -16,7 +16,7 @@ var Lexicon = {
     },
     {
       word:'royalty',
-      is:['powerful','mighty','wealthy','feared','refined'],
+      is:['powerful','mighty','wealthy','feared','refined','ruin'],
       associated:['queen','throne','king']
     },
     {
@@ -41,6 +41,11 @@ var Lexicon = {
       associated:['pear','vegetables'],
     },
     {
+      word:'food',
+      is:['necessary'],
+      associated:['water'],
+    },
+    {
       word:'puppy',
       is:['cute','adorable'],
       extends:['dog'],
@@ -49,17 +54,45 @@ var Lexicon = {
     },
     {
       word:'dog',
-      is:['reliable','domestic'],
+      is:['reliable','domestic','loyal'],
       extends:['animal'],
       plural:'dogs',
-      associated:['fetch','loyal'],
+      associated:['fetch','cat'],
+    },
+    {
+      word:'cat',
+      is:['vain','graceful','sneaky'],
+      extends:['animal'],
+      plural:'cats',
+      associated:['dog','mouse'],
+    },
+    {
+      word:'mouse',
+      is:['small','quiet','sneaky'],
+      extends:['animal'],
+      plural:'mice',
+      associated:['cat','cheese'],
+    },
+    {
+      word:'cheese',
+      is:['tasty','salty'],
+      extends:['food'],
+      plural:'cheeses',
+      associated:['mouse','fruit'],
     },
     {
       word:'potato',
       is:['healthy','starchy'],
       extends:['vegetable'],
       plural:'potatoes',
-      associated:[],
+      associated:['dirt'],
+    },
+    {
+      word:'vegetable',
+      is:['healthy','starchy'],
+      extends:['food'],
+      plural:'vegetable',
+      associated:['vitamin'],
     },
     {
       word:'candy',
