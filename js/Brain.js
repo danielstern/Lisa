@@ -94,25 +94,34 @@
             thought = logic.demystify(brain.seed);
             break;
           case 'compare':
-           thought = logic.compare(brain.seed, response);
+           thought = logic.compare(brain.seed);
             break;
           case 'scopeUp':
-           thought = logic.scopeUp(brain.seed, response);
+           thought = logic.scopeUp(brain.seed);
             break;
           case 'scopeSideways':
-          thought = logic.scopeSideways(brain.seed, response);
+          thought = logic.scopeSideways(brain.seed);
            break;
           case 'scopeDown':
-           thought = logic.scopeDown(brain.seed, response);
+           thought = logic.scopeDown(brain.seed);
             break;
         }
 
 
         var shortTerm = brain.memory.short;
-        if (shortTerm.recall(response)) brain.host.thinks('Oh, I just said that, didn\'t I...!');
-        shortTerm.remember(thought);
+        var alreadySaidIt = false;
+        if (shortTerm.recall(thought)) {
+          brain.host.thinks('Oh, I just said that, didn\'t I...!');
+          alreadySaidIt = true;
+        };
+        if (!alreadySaidIt) {
+          response += thought;
+          shortTerm.remember(thought);
+        } else {
 
-        response += thought;
+          response += "hmmm..//"
+        }
+         
       })
 
       response = brain.speech.prettify(response);
@@ -145,7 +154,9 @@ function ShortTermMemory(memory) {
   }
 
   short.recall = function(memory) {
-    var contains = _.contains(short.recentThings, memory);
+    var justNow = _.last(short.recentThings,short.capacity)
+    var contains = _.contains(justNow, memory);
+    console.log('contains?',contains);
     return contains;
   }
 
