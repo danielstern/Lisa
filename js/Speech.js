@@ -17,7 +17,7 @@ function Speech(host) {
     express.quality = function(seed, quality) 
     {
       var response = '';
-      response += (seed.plural || preposit(seed.word)) + " " + (seed.plural ? 'are' : 'is') + " " + quality;
+      response += lexicate(seed) + " " + conjugate(seed, 'is') + " " + quality;
       return response;
     }
 
@@ -30,13 +30,13 @@ function Speech(host) {
         case 1:
         case 3:
         case 4:
-          response = (seed.plural || preposit(seed.word)) + " " + (seed.plural ? 'are' : 'is') + " a kind of " + idea; 
+          response = lexicate(seed) + " " + conjugate(seed, 'is') + " a kind of " + idea; 
           break;
         case 2:
-          response = (seed.plural || preposit(seed.word)) + " " + (seed.plural ? 'are' : 'is') + " a type of " + idea; 
+          response = lexicate(seed) + " " + conjugate(seed, 'is')+ " a type of " + idea; 
           break;
         case 5:
-          response = (seed.plural || preposit(seed.word)) + " " + (seed.plural ? 'are' : 'is') + " a variety of " + idea; 
+          response = lexicate(seed) + " " + conjugate(seed, 'is') + " a variety of " + idea; 
         default:
           break;
       }
@@ -52,13 +52,13 @@ function Speech(host) {
         case 1:
         case 3:
         case 4:
-          response += "One kind of " + seed.word + " " + (idea.plural ? 'are' : 'is') + " " + (idea.plural || idea.word);
+          response += "One kind of " + seed.word + " " + conjugate(idea, 'is') + " " + lexicate(idea);
           break;
         case 2:
-          response += "A kind of " + seed.word + " " + (idea.plural ? 'are' : 'is') + " " + (idea.plural || idea.word);
+          response += "A kind of " + seed.word + " " + conjugate(idea, 'is') + " " + lexicate(idea);
           break;
         case 5:
-          response += "I consider " + (idea.plural || preposit(idea.word)) + " to be a kind of " + seed.word;
+          response += "I consider " + lexicate(idea) + " to be a kind of " + seed.word;
           break;
         default:
           break;
@@ -70,7 +70,7 @@ function Speech(host) {
     express.association = function(seed, idea) 
     {
       var response = '';
-      response += (seed.plural || preposit(seed.word)) + " " + (seed.plural ? 'remind' : 'reminds') + " me of " + (idea.plural || preposit(idea.word));
+      response += lexicate(seed) + " " + (seed.plural ? 'remind' : 'reminds') + " me of " + lexicate(idea);
       return response;
     }
 
@@ -83,13 +83,13 @@ function Speech(host) {
         case 1:
         case 3:
         case 4:
-            response += (subject.plural || preposit(subject.word)) + " and " + (object.plural || preposit(object.word)) + " are both " + trait;
+            response += lexicate(subject) + " and " + lexicate(object) + " are both " + trait;
           break;
         case 2:
-            response += "Both " + (subject.plural || preposit(subject.word)) + " and " + (object.plural || preposit(object.word)) + " are " + trait;
+            response += "Both " + lexicate(subject) + " and " + lexicate(object) + " are " + trait;
           break;
         case 5:
-           response += (subject.plural || preposit(subject.word)) + " and " + (object.plural || preposit(object.word)) + " are similar because they are both " + trait;
+           response += lexicate(subject) + " and " + lexicate(object)  + " are similar because they are both " + trait;
           break;
         default:
           break;
@@ -137,7 +137,7 @@ function Speech(host) {
              break;
         case 5:
              response = "won't you stay for a quick game of chess?";
-          break;
+            break;
         default:
           break;
       }
@@ -186,6 +186,33 @@ function Speech(host) {
           break;
       }
       return response;
+    }
+
+    var lexicate = function(seed) {
+
+       var response = '';
+       response += (seed.pronoun == 'unique' ? preposit(seed.word) : (seed.plural || preposit(seed.word)));
+
+       return response;
+    }
+
+    var conjugate = function(seed, verb) {
+
+       var response = '';
+       if (seed.pronoun == 'unique');
+       response += (seed.pronoun == 'unique' ? preposit(seed.word) : (seed.plural || preposit(seed.word)));
+
+      switch (verb) {
+        case 'is':
+          if (seed.pronoun == 'unique') return 'is';
+          if (!seed.plural) return 'is';
+            return 'are';
+          break;
+        default:
+          return '?'
+      }
+
+       return response;
     }
 
 

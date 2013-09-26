@@ -91,7 +91,7 @@ function Logic(brain) {
 
       logic.colloquilize = function(seed) 
       {
-      	  console.log('colloquilize');
+      	 console.log('colloquilize');
       	 switch (seed.for) {
       	 	case 'greeting':
       	 	  return brain.speech.express.greeting();

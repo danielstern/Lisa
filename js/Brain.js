@@ -62,19 +62,20 @@
 
     brain.ponder = function(idea) {
 
-      brain.host.thinks(idea);
       brain.seed = idea || _.sample(this.lexicon.things);
       var response = '';
       var seed = brain.seed;
+      var promise = new Promise();
       
       var logic = brain.logic;
 
-      var _callback = {};
-      var promise = new Promise(_callback);
 
       if (seed.said !== undefined) 
       {
          response = brain.logic.colloquilize(seed);
+         response = brain.speech.prettify(response);
+         setTimeout(function(){promise.resolve(response)},150);
+         return promise;
       }
 
       var pattern = _.sample(brain.patterns.exposition);
@@ -105,7 +106,8 @@
 
       response = brain.speech.prettify(response);
 
-      setTimeout(function(){promise.resolve(response)},100);
+      
+      setTimeout(function(){promise.resolve(response)},150);
       return promise;
     }
   }

@@ -2,17 +2,53 @@ var Lexicon = {
     things:[
     {
       word:'apple',
-      is:['delicious','healthy','crunchy'],
+      is:['delicious','healthy','crunchy','refreshing'],
       extends:['fruit'],
       plural:'apples',
-      associated:['pear'],
+      associated:['pear','pie'],
     },
     {
-      word:'king',
+      word:'pie',
+      is:['delicious','sweet'],
+      extends:['dessert'],
+      plural:'pies',
+      associated:['apple','pecan','oven'],
+    },
+    {
+      word:'dessert',
+      is:['delicious','sweet','rich','extravagant','usually after a meal'],
+      extends:['food'],
+      plural:'desserts',
+      associated:['candy','pie'],
+    },
+    {
+      word:'King',
       is:['powerful','mighty','respected','feared','brave'],
       extends:['royalty'],
+      pronoun:'unique',
       plural:'kings',
-      associated:['queen','throne']
+      associated:['queen','throne','sword','kingdom']
+    },
+    {
+      word:'Queen',
+      is:['powerful','sneaky','ambitious','feared','well-connected'],
+      extends:['royalty'],
+      pronoun:'unique',
+      plural:'queens',
+      associated:['king','throne','court','kingdom']
+    },
+    {
+      word:'kingdom',
+      is:['vast','proud','great','populous','at war'],
+      extends:['place'],
+      pronoun:'unique',
+      plural:'kingdoms',
+      associated:['king','queen','court']
+    },
+    {
+      word:'place',
+      is:['a venue'],
+      plural:'places',
     },
     {
       word:'royalty',
@@ -236,7 +272,7 @@ var Lexicon = {
      for:'silence',
     },
     {
-     said:"fuck you",
+     said:"fuck you",   /* sorry if anyone is offended by this code, but I thought it was important that Lisa can recognize when she's being insulted and insult the person right back! Lisa's got pride */
      for:'insult',
     },
     {
