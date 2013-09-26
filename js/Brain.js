@@ -124,15 +124,8 @@
       }
 
       var pattern = [];
-      console.log('mode?' , brain.personality.mode);
-      pattern = [];
-      if (brain.personality.mode == 'PERSONALITY_SERVICE') {
-        console.log('patterns?',brain.personality.patterns);
-        pattern = _.sample(brain.personality.patterns.service) 
-      } else
-      {
-        pattern = _.sample(brain.personality.patterns.exposition)
-      };
+      
+      pattern = brain.personality.getPattern();
 
       var sequence = pattern.sequence;
         console.log('sequence?',sequence);

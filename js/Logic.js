@@ -117,6 +117,10 @@ function Logic(brain) {
 		 consider a seed(A) scopeUp (to B), demystify, and then conclude that A must also have that property because A is B.
       */
 
+      /*contrast
+        note how two thigns share a trait do not share a like trait
+      */
+
       /*
         Colliquilize: use cultural knowledge to reply appropriately.
       */
