@@ -38,7 +38,7 @@ lisa.brain.ponder('dogs').then{function(thought)
 ```javascript
 Lisa.thinks(Lisa.brain.speech.express.greeting());
 // 'Hey there, sugar.'
-``
+```
 
 <h4>Logic</h4>
 <p>
