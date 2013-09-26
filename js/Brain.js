@@ -23,6 +23,10 @@
 
       brain.whatIs(words).then(
         function(idea){
+          if (!idea) {
+            promise.resolve(brain.speech.express.incomprehension());
+            return;
+          }
            brain.ponder(idea).then(
         function(response){
           promise.resolve(response);

@@ -21,6 +21,42 @@ function Speech(host) {
       return response;
     }
 
+    express.incomprehension = function() 
+    {
+      var response = '';
+    
+      switch (Math.ceil(Math.random()*9))
+      {
+        case 1:
+          response = "I don't know";
+          break;
+        case 2:
+          response = "I have no idea"
+          break;
+        case 3:
+          response = "I haven't any idea"
+          break;
+        case 4:
+          response = "I don't understand";
+          break;
+        case 5:
+          response = "Umm... ";
+          break;
+        case 7:
+          response = "... ";
+          break;
+        case 8:
+          response = "I'm sorry, but... ";
+          break;
+        case 9:
+          response = "Oh... ";
+          break;
+        default:
+          break;
+      }
+      return response;
+    }  
+
     express.inheritance = function(seed, idea) 
     {
       var response = '';

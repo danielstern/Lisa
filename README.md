@@ -49,10 +49,21 @@
       	<h4>Memory</h4>
       	<ul>
       		<li>
-      			Short Term Memory: Prevents Lisa from saying the same thing twice, rambling, etc.
+      			<h4>Short Term Memory</h4>
+            <p>Prevents Lisa from saying the same thing twice, rambling, etc.</p>
+            <ul>
+              <li>When Lisa says something, she stores the thought in her short term memory.</li>
+              <li>Before Lisa says something, she can see in her short term memory if she's said something.</li>
+              <li>Lisa can link threads to previous ideas with her short term memory..</li>
+            </ul>
       		</li>
       		<li>
-      			Long Term Memory: Lets Lisa collect new ideas, remember interactions for a long time, and associate ideas with new ideas and emotions.
+      			<h4>Long Term Memory:</h4>
+            <p>Lisa's long term memories and personality that persist past the current session. Can use a database or local storage.</p>
+            <ul>
+              <li>Lisa can add new ideas and connections to her lexicon with her long term memory.</li>
+              <li>Lisa can remember things you were talking about in the past and reminisce about them.</li>
+            </ul>
       		</li>
       	</ul>
       </li>
