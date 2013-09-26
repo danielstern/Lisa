@@ -21,6 +21,36 @@ function Logic(brain) {
 
 //         seed = brain.whatIs('self');
 
+        var quality ;
+        var relationship;
+
+        switch (Math.ceil(Math.random()*2))
+       {
+        case 1:
+         quality = _.sample(brain.personality.ego.qualities);
+         response += brain.speech.express.personalTrait(quality);
+          break;
+        case 2:
+          relationship = _.sample(brain.personality.ego.relationship);
+          response += brain.speech.express.relationship(relationship);
+          break;
+        }
+
+         response += "//";
+
+         return response;
+
+      }
+
+
+      logic.shareEgo = function (being)
+      {
+
+         var response = '';
+         being = being || 'self';
+
+//         seed = brain.whatIs('self');
+
         var traits = _.pairs(brain.personality.ego.identity);
         var trait = _.sample(traits);
         console.log('trait?',trait)
@@ -31,6 +61,7 @@ function Logic(brain) {
          return response;
 
       }
+
 
       logic.scopeUp = function(seed) 
       {

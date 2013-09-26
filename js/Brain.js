@@ -12,6 +12,8 @@
     brain.memory = new Memory(brain);
     brain.personality = new Personality(brain);
 
+    window.brain = this; // creepy
+
     console.log('personality?' , brain.personality)
 
     brain.patterns = personality.patterns;
@@ -68,8 +70,9 @@
       brain.host.thinks('What is... ' + word);
       var idea;
 
+
       // try to look the idea up in her Lexicon
-      idea = _.find(brain.lexicon.things, function(idea){return idea.word.toLowerCase() == word.toLowerCase()});      
+      idea = _.find(brain.lexicon.things, function(idea){if (!idea.word) return; return idea.word.toLowerCase() == word.toLowerCase()});      
       idea = idea || _.find(brain.lexicon.things, function(idea){if (!idea.plural) return false; return idea.plural.toLowerCase() == word.toLowerCase()});
       idea = idea || _.find(brain.lexicon.expressions, function(idea){return idea.said.toLowerCase() == word.toLowerCase()});
 
@@ -124,7 +127,7 @@
       }
 
       var pattern = [];
-      
+
       pattern = brain.personality.getPattern();
 
       var sequence = pattern.sequence;
@@ -155,6 +158,9 @@
             break;
           case 'demystify-self':
            thought = logic.demystifyPersonality('self');
+            break;
+          case 'share-ego':
+           thought = logic.shareEgo('self');
             break;
 
         }

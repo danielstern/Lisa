@@ -9,11 +9,14 @@ _.mixin({
 
      return string;
   },
-  capitalize: function(string) {
+  capitalize: function(string, filter) {
       var strings = string.split('//');
       strings = _.without(strings, '');
 
       strings = _.map(strings, function(string){
+        if (filter) {
+          string = filter(string);
+        }
         string = string.charAt(0).toUpperCase() + string.substring(1);  
         string += ('. ');
      //   if (Math.random() > 0.1) string += "</p><p>"; 

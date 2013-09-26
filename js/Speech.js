@@ -3,6 +3,8 @@ function Speech(host) {
   var speech = this;
   speech.host = host;
   speech.express = new Express;
+  speech.brain = host.brain;
+  console.log('host?',host)
 
 
   function Express() 
@@ -27,6 +29,14 @@ function Speech(host) {
       response += "My " + key + " is " + value;
       return response;
     }
+
+    express.personalTrait = function(trait) 
+    {
+      var response = '';
+      response += "I'm " + trait;
+      return response;
+    }
+
 
 
     express.incomprehension = function() 
@@ -138,6 +148,15 @@ function Speech(host) {
         default:
           break;
       }
+      return response;
+    }   
+
+    express.relationship = function(relationship) 
+    {
+      var response = '';
+      console.log('express relationship got rel.',relationship);
+      response += lexicate(relationship.subject) + " " + relationship.action + " " + lexicate(relationship.object);
+    
       return response;
     }   
 
@@ -294,6 +313,7 @@ function Speech(host) {
     var lexicate = function(seed) {
 
        var response = '';
+       if (typeof seed == 'string') seed = {word:seed};
        response += (seed.pronoun == 'unique' ? preposit(seed.word) : (seed.plural || preposit(seed.word)));
 
        return response;
@@ -329,20 +349,33 @@ function Speech(host) {
       var preposition = '';
       var pronoun = '';
 
-      /* no longer works with async pattern */
-      if (!speech.host.brain.whatIs(word,true)) {
+      console.log('prepositing...',word);
 
-        pronoun = '?';
+      word = word || '';
+
+      var idea = speech.host.brain.whatIs(word,true);
+
+      /* no longer works with async pattern */
+      if (!idea) {
+
+         idea = {pronoun:''}
 
       }
 
+
+      if (word == idea.plural) idea.pronoun = 'pluralize';
+
+      console.log('idea?',idea);
+
       var returnWord = true;
-      switch (pronoun || speech.host.brain.whatIs(word,true)['pronoun'] )
+      switch (idea['pronoun'] )
       {
          case 'unique':
            preposition = 'the';
            break;
          case 'proper':
+         case 'none':
+         case 'pluralize':
          case 'concept':
            preposition = '';
            break;
@@ -374,7 +407,8 @@ function Speech(host) {
 
   speech.prettify = function(phrase) {
      
-    phrase = _.capitalize(phrase);
+  //  console.log('personality?',speech.brain.personality)
+    phrase = _.capitalize(phrase,speech.host.brain.personality.filter);
     return phrase;
   }
 }

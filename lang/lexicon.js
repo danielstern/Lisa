@@ -6,6 +6,11 @@ var Lexicon = {
       hidden:'true',
     },
     {
+      word:'you',
+      pronoun:'none',
+      hidden:'true',
+    },
+    {
       word:'apple',
       is:['delicious','healthy','crunchy','refreshing'],
       extends:['fruit'],
@@ -20,6 +25,13 @@ var Lexicon = {
       associated:['apple','pecan','oven'],
     },
     {
+      word:'zombie',
+      is:['undead,','dangerous'],
+      extends:['monster'],
+      plural:'zombies',
+      associated:[''],
+    },
+    {
       word:'dessert',
       is:['delicious','sweet','rich','extravagant','usually after a meal'],
       extends:['food'],
@@ -31,6 +43,10 @@ var Lexicon = {
       is:['powerful','mighty','respected','feared','brave'],
       extends:['royalty'],
       pronoun:'unique',
+      relationship:{
+        object:'kingdom',
+        relationship:'rule'
+      },
       plural:'kings',
       associated:['queen','throne','sword','kingdom']
     },
@@ -52,7 +68,7 @@ var Lexicon = {
     },
     {
       word:'place',
-      is:['a venue'],
+      hidden:'true',
       plural:'places',
     },
     {
