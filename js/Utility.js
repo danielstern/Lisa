@@ -1,9 +1,4 @@
 _.mixin({
-     
-});
-
-
-_.mixin({
      stringWithout: function(string, characters) {
 
      if (typeof characters == 'string') characters = [characters];

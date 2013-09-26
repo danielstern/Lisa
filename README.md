@@ -1,6 +1,23 @@
 <h1>Lisa</h1>
+
+```javascript
+var lisa = new Lisa();
+lisa.thinks('You know nothing, Jon Snow.');
+// LISA: You know nothing, Jon Snow.
+}
+```
+
 <h2>Neuro-Computational Matrix</h2>
 <p>Lisa is designed to be the basis of an intelligent conversation simulator that will ultimately allow NPCs in games to say different things, every time - and mean it!</p>
+
+```javascript
+lisa.hears('sword').then(function(reply){
+  $('body').html(reply);
+});
+// Swords are deadly.
+}
+```
+
 <p>Lisa has many other uses including teaching people to speak new languages, and simulating staff at kiosks.</p>
 <p>Lisa is designed with extensibility in mind. The human mind is a complex thing, and it's always growing. Lisa's codebase has a conversational design...</p>
 

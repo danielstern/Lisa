@@ -2,7 +2,12 @@
 
     var Lisa = this;
     var inTheConversation = [];
-    Lisa.personality = personality;
+    Lisa.personality = personality || {
+      cheerful:5,
+      chatty:8,
+      friendly:5,
+      inquisitive:20
+  };
 
     Lisa.name = name || 'Lisa';
 
@@ -17,7 +22,7 @@
         console.info('LISA:' , thought)
         return
       };
-      
+
       console.log('LISA:' , thought);
     }
 
