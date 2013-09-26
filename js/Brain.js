@@ -107,6 +107,7 @@
     brain.ponder = function(idea) {
 
       brain.seed = idea || _.sample(this.lexicon.things);
+      if (brain.seed.hidden == 'true') _.sample(this.lexicon.things); // this function prevents Lisa from finding out she is really a robot
       var response = '';
       var seed = brain.seed;
       var promise = new Promise();
@@ -174,6 +175,7 @@
         };
         if (!alreadySaidIt) {
           response += thought;
+          response += "//";
           shortTerm.remember(thought);
         } else {
 

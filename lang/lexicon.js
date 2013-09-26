@@ -1,6 +1,11 @@
 var Lexicon = {
     things:[
     {
+      word:'self',
+      pronoun:'self',
+      hidden:'true',
+    },
+    {
       word:'apple',
       is:['delicious','healthy','crunchy','refreshing'],
       extends:['fruit'],

@@ -21,6 +21,14 @@ function Speech(host) {
       return response;
     }
 
+    express.possessive = function(key, value) 
+    {
+      var response = '';
+      response += "My " + key + " is " + value;
+      return response;
+    }
+
+
     express.incomprehension = function() 
     {
       var response = '';

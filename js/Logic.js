@@ -21,7 +21,11 @@ function Logic(brain) {
 
 //         seed = brain.whatIs('self');
 
-         response += brain.speech.express.quality(brain.personality.self, _.sample(brain.personality.ego.identity));
+        var traits = _.pairs(brain.personality.ego.identity);
+        var trait = _.sample(traits);
+        console.log('trait?',trait)
+
+         response += brain.speech.express.possessive(trait[0], trait[1]);
          response += "//";
 
          return response;
@@ -69,6 +73,8 @@ function Logic(brain) {
       logic.compare = function(seed)
       {
         var response = '';
+
+        if (!seed.is) return response;
 
         for (var i = 0; i < brain.mood.inquisitive; i++)
         {

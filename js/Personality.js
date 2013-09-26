@@ -1,7 +1,7 @@
 function Personality() {  
 	var personality = this;
 	personality.mode = 'PERSONALITY_SERVICE';
-	//personality.mode = 'PERSONALITY_CLASSIC';
+	personality.mode = 'PERSONALITY_CLASSIC';
 
 	personality.patterns = {
 		exposition:
