@@ -5,7 +5,7 @@
 <p>Lisa is designed with extensibility in mind. The human mind is a complex thing, and it's always growing. Lisa's codebase has a conversational design...</p>
 
 ```
-  lisa.brain.ponder().then{function(thought)
+    lisa.brain.ponder().then{function(thought)
     lisa.thinks(thought);
     // 'Apples are crunchy.'
 }
