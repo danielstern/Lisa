@@ -9,6 +9,20 @@
   	<ul>
       <li>Speech</li>
       <li>Logic</li>
+      <li>
+        <h4>Psychic</h4>
+        <p>
+        	Sometimes, Lisa will be running on a web page where she can tap into the unlimited power of the internet. Lisa can use <i>psychic</i> to:
+        	<ul>
+        		<li>
+        			Look up words she doesn't understand and associate them with words in her lexicon
+        		</li>
+        		<li>
+        			Answer any question for you and even interact with web API's to become a personal assistant
+        		</li>
+        	</ul>
+        </p>
+      <li>
     </ul>
   </li>  
 </ul>

@@ -181,6 +181,13 @@ var Lexicon = {
       associated:['cat','cheese'],
     },
     {
+      word:'snake',
+      is:['quiet','sneaky','deadly'],
+      extends:['animal'],
+      plural:'snakes',
+      associated:['poison','mice'],
+    },
+    {
       word:'cheese',
       is:['tasty','salty'],
       extends:['food'],
@@ -236,6 +243,10 @@ var Lexicon = {
      for:'greeting',
     },
   {
+    said:'greetings',
+    for:'greeting',
+   },
+  {
      said:'hi',
      for:'greeting',
     },
@@ -251,8 +262,12 @@ var Lexicon = {
      said:'bye',
      for:'parting',
     },
+    {
+     said:'bye bye',
+     for:'parting',
+    },
       {
-     said:'see ya',
+     said:'seeya',
      for:'parting',
     },
       {
@@ -277,6 +292,10 @@ var Lexicon = {
     },
     {
      said:"screw you",
+     for:'insult',
+    },
+    {
+     said:"damn you",
      for:'insult',
     },
     {

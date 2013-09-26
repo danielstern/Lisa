@@ -70,7 +70,7 @@ function Speech(host) {
     express.association = function(seed, idea) 
     {
       var response = '';
-      response += lexicate(seed) + " " + (seed.plural ? 'remind' : 'reminds') + " me of " + lexicate(idea);
+      response += lexicate(seed) + " " + conjugate(seed, 'reminds') + " me of " + lexicate(idea);
       return response;
     }
 
@@ -208,6 +208,11 @@ function Speech(host) {
           if (!seed.plural) return 'is';
             return 'are';
           break;
+        case 'reminds':
+          if (seed.pronoun == 'unique') return 'reminds';
+          if (!seed.plural) return 'reminds';
+            return 'remind';
+        break;
         default:
           return '?'
       }
