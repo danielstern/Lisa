@@ -119,7 +119,7 @@
           shortTerm.remember(thought);
         } else {
 
-          response += "hmmm..//"
+          response += brain.speech.express.pause();
         }
          
       })

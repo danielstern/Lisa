@@ -121,6 +121,42 @@ function Speech(host) {
       return response;
     }  
 
+    express.pause = function() 
+    {
+      var response = '';
+    
+      switch (Math.ceil(Math.random()*9))
+      {
+        case 1:
+          response = "Hmmm... ";
+          break;
+        case 2:
+          response = "Ah... "
+          break;
+        case 3:
+          response = "Hmm... "
+          break;
+        case 4:
+          response = "Hmmm... ";
+          break;
+        case 5:
+          response = "Uh... ";
+          break;
+        case 7:
+          response = "... ";
+          break;
+        case 8:
+          response = "And... ";
+          break;
+        case 9:
+          response = "Oh... ";
+          break;
+        default:
+          break;
+      }
+      return response;
+    }  
+
     express.parting = function() 
     {
       var response = '';
