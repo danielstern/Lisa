@@ -29,10 +29,17 @@ lisa.brain.ponder('dogs').then{function(thought)
 <p>Lisa is built with underscore.js!</p>
 <h2>How It Works</h2>
 <h3>Brain</h3>
+<p>Lisa's modular command center, the brain is the glue which holds Lisa's logic, memories and speech together.</p>
 <h4>Speech</h4>
 <p>
-  Lisa's speech module
+  Lisa's speech module allows Lisa to translate her ideas into something human beings can understand through `express()`.
 </p>
+
+```javascript
+Lisa.thinks(Lisa.brain.speech.express.greeting());
+// 'Hey there, sugar.'
+``
+
 <h4>Logic</h4>
 <p>
   Logic is the controller to speech's view and lexicon's model.  
@@ -81,6 +88,7 @@ if (brain.memory.short.recall(thought)) {
       Answer any question for you and even interact with web API's to become a personal assistant
     </li>
   </ul>
+</p>
 
 ```javascript
 brain.psychic.syphon('veritas').then(function(idea){
@@ -92,4 +100,3 @@ brain.psychic.syphon('veritas').then(function(idea){
 });
 ```
 
-</p>

@@ -96,6 +96,9 @@ function Logic(brain) {
 		 consider a seed(A) scopeUp (to B), demystify, and then conclude that A must also have that property because A is B.
       */
 
+      /*
+        Colliquilize: use cultural knowledge to reply appropriately.
+      */
       logic.colloquilize = function(seed) 
       {
       	 console.log('colloquilize');

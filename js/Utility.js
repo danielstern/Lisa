@@ -1,5 +1,20 @@
 _.mixin({
-     capitalize: function(string) {
+     
+});
+
+
+_.mixin({
+     stringWithout: function(string, characters) {
+
+     if (typeof characters == 'string') characters = [characters];
+
+     _.each(characters,function(character){
+       string = string.replace(character, '');
+     })
+
+     return string;
+  },
+  capitalize: function(string) {
       var strings = string.split('//');
       strings = _.without(strings, '');
 
@@ -11,19 +26,15 @@ _.mixin({
       })
       var returnString = strings.join('');
       return returnString;
-  }
-});
+  },
+  extractIdeas: function(statement) {
 
-_.mixin({
-     endsWith: function(string, character) {
+    ideas = statement.split(/[\s,;:!?'"']+/);
+    ideas = _.without(ideas, 'are','is','and','of','with','without','not','who','as','an','but','it','would','on','a','an','then','the','to','by','be','need','so','you','through','that','more','that’s','his','her','there','their','was','in');
+    return ideas;
 
-      var lastCharOfString = string.toString().charAt(string.length - 1);
-      return lastCharOfString == character;
-  }
-});
-
-_.mixin({
-     stringContains: function(string, characters) {
+  },
+  stringContains: function(string, characters) {
 
      if (typeof characters == 'string') characters = [characters];
 
@@ -34,6 +45,11 @@ _.mixin({
      })
 
      return inString;
+  },
+    endsWith: function(string, character) {
+
+      var lastCharOfString = string.toString().charAt(string.length - 1);
+      return lastCharOfString == character;
   }
 });
 

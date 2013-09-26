@@ -12,6 +12,12 @@
         console.warn('LISA:' , thought)
         return
       };
+
+      if (_.endsWith(thought,'?')) {
+        console.info('LISA:' , thought)
+        return
+      };
+      
       console.log('LISA:' , thought);
     }
 

@@ -43,10 +43,18 @@
       var context = {};
       if (!statement) return context;
 
+      context.question = 0;
+      context.request = 0;
 
-      if (_.stringContains(statement,'?')) context.question = true;
+      if (_.stringContains(statement,'?')) context.question = +1;
       if (_.stringContains(statement,' ')) context.multiword = true;
-      if (_.stringContains(statement,['would you','could you','can you','will you'])) context.request = true;
+      if (_.stringContains(statement,['would you','could you','can you','will you'])) { context.request += 1; context.question += 1 ;}
+      if (_.stringContains(statement,['who','what','which','why','when'])) context.request = +1;
+
+      var ideas = _.extractIdeas(statement);
+      console.log('ideas?',ideas);
+
+      return;
 
       return context;
 
@@ -96,7 +104,7 @@
       var logic = brain.logic;
 
 
-      if (seed.said !== undefined) 
+      if (seed.said !== undefined) // see if seed is an expression
       {
          response = brain.logic.colloquilize(seed);
          response = brain.speech.prettify(response);
@@ -134,7 +142,7 @@
         var shortTerm = brain.memory.short;
         var alreadySaidIt = false;
         if (shortTerm.recall(thought)) {
-          brain.host.thinks('Oh, I just said that, didn\'t I...!');
+          brain.host.thinks('Oh, I just said that, didn\'t I...');
           alreadySaidIt = true;
         };
         if (!alreadySaidIt) {
