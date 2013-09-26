@@ -193,13 +193,15 @@ function Speech(host) {
     {
       var preposition = '';
       var pronoun = '';
-      if (!speech.host.brain.whatIs(word)) {
+
+      /* no longer works with async pattern */
+      if (!speech.host.brain.whatIs(word,true)) {
 
         pronoun = '?';
 
       }
 
-      switch (pronoun || speech.host.brain.whatIs(word)['pronoun'] )
+      switch (pronoun || speech.host.brain.whatIs(word,true)['pronoun'] )
       {
          case 'unique':
            preposition = 'the';

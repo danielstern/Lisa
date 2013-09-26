@@ -31,7 +31,7 @@
 
     }
 
-    brain.whatIs = function(word) {
+    brain.whatIs = function(word, noAsync) {
 
       brain.host.thinks('What is... ' + word)
       var idea;
@@ -49,6 +49,8 @@
         });
 
       }
+
+      if (noAsync) return idea;
 
       return {
       then:function(callback){
