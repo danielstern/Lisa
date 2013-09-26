@@ -27,35 +27,48 @@ lisa.brain.ponder('dogs').then{function(thought)
 }
 ```
 <p>Lisa is built with underscore.js!</p>
-<h3>How It Works</h3>
+<h2>How It Works</h2>
+<h3>Brain</h3>
+<h4>Speech</h4>
+<p>
+  Lisa's speech module
+</p>
+<h4>Logic</h4>
+        <p>
+          Logic is the controller to speech's view and lexicon's model.  
+        </p>
+<h4>Emotion</h4>
+<h4>Personality</h4>    
+<h4>Memory</h4>    
+<h5>Short Term Memory</h5>
+  <p>Prevents Lisa from saying the same thing twice, rambling, etc.</p>
+  <p>When Lisa says something, she stores the thought in her short term memory.</p>
+
+  ```javascript
+   thought = logic.demystify(brain.seed);
+   brain.memory.short.remember(thought);
+  ```
+  
+  <ul>
+     <li>Before Lisa says something, she can see in her short term memory if she's said something.</li>
+    <li>Lisa can link threads to previous ideas with her short term memory..</li>
+  </ul>
 <ul>
-  <li>Brain
+  <li>
   	<ul>
       <li>
-      	<h4>Speech</h4>
-      	<p>
-      		Lisa's speech module
-      	</p>
+      	<h4></h4>
+
       </li>
       <li>
-      	<h4>Logic</h4>
-      	<p>
-      		Logic is the controller to speech's view and lexicon's model.  
-      	</p>
+      	
       </li>
-      <li>Emotion</li>
-      <li>Personality</li>
+      
       <li>
-      	<h4>Memory</h4>
+      	
       	<ul>
       		<li>
-      			<h4>Short Term Memory</h4>
-            <p>Prevents Lisa from saying the same thing twice, rambling, etc.</p>
-            <ul>
-              <li>When Lisa says something, she stores the thought in her short term memory.</li>
-              <li>Before Lisa says something, she can see in her short term memory if she's said something.</li>
-              <li>Lisa can link threads to previous ideas with her short term memory..</li>
-            </ul>
+      			
       		</li>
       		<li>
       			<h4>Long Term Memory:</h4>
