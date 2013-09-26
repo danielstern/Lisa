@@ -10,19 +10,24 @@
     brain.speech = new Speech(brain.host);
     brain.patterns = Patterns;
     var things = brain.lexicon.things;
-    brain.psychic = new Psychic();
+   // brain.psychic = new Psychic();
 
     brain.process = function(words) {
 
       var response = '';
-      var idea = brain.whatIs(words);
+      var _callback = {};
+      var promise = new Promise(_callback);
 
-      if (idea)  
-      {
-        response += brain.ponder(idea);
-      }
+      brain.whatIs(words).then(
+        function(idea){
+           brain.ponder(idea).then(
+        function(response){
+          promise.word.callback(response);
+        });
+      })
 
-      return brain.speech.prettify(response) || "Hmmm...";
+      return promise;
+
 
     }
 
@@ -31,20 +36,26 @@
       brain.host.thinks('What is... ' + word)
       var idea;
       idea = _.find(brain.lexicon.things, function(idea){return idea.word.toLowerCase() == word.toLowerCase()});
-        if(idea) return idea;
       
-      idea = _.find(brain.lexicon.things, function(idea){if (!idea.plural) return false; return idea.plural.toLowerCase() == word.toLowerCase()});
-       if(idea) return idea;
+      idea = idea || _.find(brain.lexicon.things, function(idea){if (!idea.plural) return false; return idea.plural.toLowerCase() == word.toLowerCase()});
+      idea = idea || _.find(brain.lexicon.expressions, function(idea){return idea.said.toLowerCase() == word.toLowerCase()});
 
-      idea = _.find(brain.lexicon.expressions, function(idea){return idea.said.toLowerCase() == word.toLowerCase()});
-        if(idea) return idea;
+      if (brain.psychic && !idea) {
 
         brain.psychic.syphon(word, function(result){
 
           console.log('brain got wave...',result);
-          $('#dialogue').html(brain.speech.prettify(brain.ponder(result)));
+
         });
 
+      }
+
+      return {
+      then:function(callback){
+          _callback = callback;
+          setTimeout(function(){_callback(idea)},200);
+        }
+      }
     }
 
 
@@ -58,19 +69,19 @@
       
       var logic = brain.logic;
 
+      var _callback = {};
+
       if (seed.said !== undefined) 
       {
          response = brain.logic.colloquilize(seed);
-         return response;
       }
 
       var pattern = _.sample(brain.patterns.exposition);
-      brain.host.thinks('Pattern...?' + pattern);
       brain.host.thinks(pattern);
 
       var sequence = pattern.sequence;
       _.each(sequence, function(command){
-        console.log('processing command...' , command);
+
         switch (command)
         {
           case 'demystify':
@@ -93,11 +104,11 @@
 
       response = brain.speech.prettify(response);
 
-      var _callback;
+      setTimeout(function(){_callback(response)},100);
+
       return {
         then:function(callback){
           _callback = callback;
-          setTimeout(function(){_callback(response)},500);
         }
       }
 

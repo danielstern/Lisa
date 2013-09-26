@@ -14,3 +14,19 @@ _.mixin({
       return returnString;
   }
 });
+
+function Promise(hereIsAMethod) {
+ var promise = this;
+ promise.callback = hereIsAMethod;
+ console.log('PROMISE: ' + 'Initializing,' , hereIsAMethod);
+
+  return {
+      then:function(callThisMethodWhenDone){
+        promise.callback = callThisMethodWhenDone; 
+        hereIsAMethod = callThisMethodWhenDone; 
+     
+      },
+      word:this
+    }
+
+}

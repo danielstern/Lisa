@@ -13,8 +13,9 @@
 
     Lisa.hears = function(words) {
 
-      var reply = Lisa.brain.process(words);
-      Lisa.says(reply);
+      Lisa.brain.process(words).then(function(reply){
+        Lisa.says(reply);
+      });
 
 
     }
@@ -28,18 +29,14 @@
     Lisa.saySomethingRandom = function() {
 
       var _callback;
+      var promise = new Promise(_callback);
 
-     Lisa.brain.ponder().then(
-      function(response)
-      {
-        _callback(response)
-      });
+     Lisa.brain.ponder().then(function(response) {
+        promise.word.callback(response)
+     });
 
-      return {
-        then:function(callback){
-          _callback = callback; 
-        }
-      }
+      return promise;
+    
     };
 
 
