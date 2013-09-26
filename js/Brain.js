@@ -54,7 +54,7 @@
       var ideas = _.extractIdeas(statement);
       console.log('ideas?',ideas);
 
-      return;
+      context.ideas = ideas;
 
       return context;
 
@@ -73,13 +73,19 @@
       var context = brain.analyze(word);
       console.log('context?' , word , context);
 
-
+      if (!idea)
+      {
+        _.each(context.ideas,function(thoughtFragment){
+           idea = idea || _.find(brain.lexicon.things, function(idea){return idea.word.toLowerCase() == thoughtFragment.toLowerCase()});      
+           idea = idea || _.find(brain.lexicon.things, function(idea){if (!idea.plural) return false; return idea.plural.toLowerCase() == thoughtFragment.toLowerCase()});
+           idea = idea || _.find(brain.lexicon.expressions, function(idea){return idea.said.toLowerCase() == thoughtFragment.toLowerCase()});
+        });
+      }
 
       if (brain.psychic && !idea) {
 
         brain.psychic.syphon(word, function(result){
-
-          console.log('brain got wave...',result);
+        console.log('brain got wave...',result);
 
         });
 
