@@ -44,61 +44,36 @@ lisa.brain.ponder('dogs').then{function(thought)
   <p>Prevents Lisa from saying the same thing twice, rambling, etc.</p>
   <p>When Lisa says something, she stores the thought in her short term memory.</p>
 
-  ```javascript
-   thought = logic.demystify(brain.seed);
-   brain.memory.short.remember(thought);
-  ```
-  
+```javascript
+var thought = logic.demystify(brain.seed);
+brain.memory.short.remember(thought);
+```
+
   <ul>
      <li>Before Lisa says something, she can see in her short term memory if she's said something.</li>
     <li>Lisa can link threads to previous ideas with her short term memory..</li>
   </ul>
-<ul>
-  <li>
-  	<ul>
-      <li>
-      	<h4></h4>
 
-      </li>
-      <li>
-      	
-      </li>
-      
-      <li>
-      	
-      	<ul>
-      		<li>
-      			
-      		</li>
-      		<li>
-      			<h4>Long Term Memory:</h4>
-            <p>Lisa's long term memories and personality that persist past the current session. Can use a database or local storage.</p>
-            <ul>
-              <li>Lisa can add new ideas and connections to her lexicon with her long term memory.</li>
-              <li>Lisa can remember things you were talking about in the past and reminisce about them.</li>
-            </ul>
-      		</li>
-      	</ul>
-      </li>
-      <li>
-      	<h4>Lexicon</h4>
-      	<p>
-      		The Lexicon is an interchangeable module containing interrelating words and ideas. 
-      	</p></li>
-      <li>
-        <h4>Psychic</h4>
-        <p>
-        	Sometimes, Lisa will be running on a web page where she can tap into the unlimited power of the internet. Lisa can use <i>psychic</i> to:
-        	<ul>
-        		<li>
-        			Look up words she doesn't understand and associate them with words in her lexicon
-        		</li>
-        		<li>
-        			Answer any question for you and even interact with web API's to become a personal assistant
-        		</li>
-        	</ul>
-        </p>
-      <li>
-    </ul>
-  </li>  
+<h5>Long Term Memory:</h5>
+<p>Lisa's long term memories and personality that persist past the current session. Can use a database or local storage.</p>
+<ul>
+  <li>Lisa can add new ideas and connections to her lexicon with her long term memory.</li>
+  <li>Lisa can remember things you were talking about in the past and reminisce about them.</li>
 </ul>
+<h4>Lexicon</h4>
+        <p>
+          The Lexicon is an interchangeable module containing interrelating words and ideas. 
+        </p>
+
+                <h4>Psychic</h4>
+        <p>
+          Sometimes, Lisa will be running on a web page where she can tap into the unlimited power of the internet. Lisa can use <i>psychic</i> to:
+          <ul>
+            <li>
+              Look up words she doesn't understand and associate them with words in her lexicon
+            </li>
+            <li>
+              Answer any question for you and even interact with web API's to become a personal assistant
+            </li>
+          </ul>
+        </p>
