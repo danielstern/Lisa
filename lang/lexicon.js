@@ -211,7 +211,8 @@ var Lexicon = {
     {
       word:'candy',
       is:['delicious','unhealthy'],
-      plural:'candy',
+      pronoun:'concept',
+      plural:'candies',
       extends:['food'],
     },
     {

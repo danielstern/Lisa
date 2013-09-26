@@ -157,6 +157,29 @@ function Speech(host) {
       return response;
     }  
 
+    express.formalGreeting = function() 
+    {
+      var response = '';
+    
+      switch (Math.ceil(Math.random()*4))
+      {
+        case 1:
+          response = "Hello and welcome";
+          break;
+        case 2:
+          response = "Thank you for visiting us today";
+          break;
+        case 3:
+            response = "Welcome";
+            break;
+        case 4:
+            response = "Thank you for coming, as always.";
+             break;
+          break;
+      }
+      return response;
+    }  
+
     express.pause = function() 
     {
       var response = '';
@@ -305,6 +328,7 @@ function Speech(host) {
 
       }
 
+      var returnWord = true;
       switch (pronoun || speech.host.brain.whatIs(word,true)['pronoun'] )
       {
          case 'unique':
@@ -313,6 +337,10 @@ function Speech(host) {
          case 'proper':
          case 'concept':
            preposition = '';
+           break;
+         case 'self':
+           preposition = 'I';
+           returnWord = false;
            break;
          default:
          switch(word.toLowerCase().charAt(0))
@@ -331,7 +359,7 @@ function Speech(host) {
       }
 
       if (preposition) preposition += " ";
-      return preposition + word;
+      return preposition + (returnWord ? word : '');
     }
   }
 

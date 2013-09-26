@@ -10,8 +10,11 @@
     brain.logic = new Logic(brain);
     brain.speech = new Speech(brain.host);
     brain.memory = new Memory(brain);
+    brain.personality = new Personality(brain);
 
-    brain.patterns = Patterns;
+    console.log('personality?' , brain.personality)
+
+    brain.patterns = personality.patterns;
     var things = brain.lexicon.things;
    // brain.psychic = new Psychic();
 
@@ -71,7 +74,6 @@
       idea = idea || _.find(brain.lexicon.expressions, function(idea){return idea.said.toLowerCase() == word.toLowerCase()});
 
       var context = brain.analyze(word);
-      console.log('context?' , word , context);
 
       if (!idea)
       {
@@ -82,13 +84,15 @@
         });
       }
 
+      /*
+        As a last resort, use psychic faculty to consult the internet to demystify the statement
+      */
       if (brain.psychic && !idea) {
 
         brain.psychic.syphon(word, function(result){
         console.log('brain got wave...',result);
 
         });
-
       }
 
       if (noAsync) return idea;
@@ -118,11 +122,21 @@
          return promise;
       }
 
-      var pattern = _.sample(brain.patterns.exposition);
-      brain.host.thinks(pattern);
+      var pattern = [];
+      console.log('mode?' , brain.personality.mode);
+      pattern = [];
+      if (brain.personality.mode == 'PERSONALITY_SERVICE') {
+        console.log('patterns?',brain.personality.patterns);
+        pattern = _.sample(brain.personality.patterns.service) 
+      } else
+      {
+        pattern = _.sample(brain.personality.patterns.exposition)
+      };
 
       var sequence = pattern.sequence;
+        console.log('sequence?',sequence);
       _.each(sequence, function(command){
+
 
         var thought;
         switch (command)
@@ -142,6 +156,13 @@
           case 'scopeDown':
            thought = logic.scopeDown(brain.seed);
             break;
+          case 'greet':
+           thought = brain.speech.express.formalGreeting();
+            break;
+          case 'demystify-self':
+           thought = logic.demystifyPersonality('self');
+            break;
+
         }
 
 

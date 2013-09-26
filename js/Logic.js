@@ -13,6 +13,21 @@ function Logic(brain) {
          return response;
       }
 
+      logic.demystifyPersonality = function (being)
+      {
+
+         var response = '';
+         being = being || 'self';
+
+//         seed = brain.whatIs('self');
+
+         response += brain.speech.express.quality(brain.personality.self, _.sample(brain.personality.ego.identity));
+         response += "//";
+
+         return response;
+
+      }
+
       logic.scopeUp = function(seed) 
       {
          var response = '';

@@ -21,7 +21,7 @@
   <script src="js/Lisa.js"></script>
   <script src="js/Utility.js"></script>
   <script src="js/Logic.js"></script>
-  <script src="js/Patterns.js"></script>
+  <script src="js/Personality.js"></script>
   <script src="js/Psychic.js"></script>
 </head>
 <body>
@@ -50,6 +50,16 @@
     var $input = $('#conversation-input');
     var inputText = $input.val();
     $input.val('');
+
+    if (!inputText) {
+
+        $Lisa.saySomethingRandom().then(function(response){
+         $('#dialogue').html(response); 
+       })
+
+        return;
+
+    }
 
     $Lisa.isTalkingTo($responder);
     $Lisa.hears(inputText);

@@ -16,7 +16,7 @@ _.mixin({
       strings = _.map(strings, function(string){
         string = string.charAt(0).toUpperCase() + string.substring(1);  
         string += ('. ');
-        if (Math.random() > 0.1) string += "</p><p>"; 
+     //   if (Math.random() > 0.1) string += "</p><p>"; 
         return string;
       })
       var returnString = strings.join('');
