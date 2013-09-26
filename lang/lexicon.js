@@ -287,7 +287,7 @@ var Lexicon = {
      for:'silence',
     },
     {
-     said:"fuck you",   /* sorry if anyone is offended by this code, but I thought it was important that Lisa can recognize when she's being insulted and insult the person right back! Lisa's got pride */
+     said:"fuck you",  
      for:'insult',
     },
     {

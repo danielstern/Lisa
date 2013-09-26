@@ -45,7 +45,7 @@ lisa.brain.ponder('dogs').then{function(thought)
 <p>When Lisa says something, she stores the thought in her short term memory.</p>
 
 ```javascript
-var thought = logic.demystify(brain.seed);
+var thought = logic.demystify('cheese');
 brain.memory.short.remember(thought);
 ```
 
@@ -54,7 +54,7 @@ brain.memory.short.remember(thought);
 
 ```javascript
 if (brain.memory.short.recall(thought)) {
-  brain.host.thinks('Oh, I just said that, didn't I... drat...');
+  brain.host.thinks("Oh, I just said that, didn't I... ");
   return;
 };
 ```
@@ -70,7 +70,7 @@ if (brain.memory.short.recall(thought)) {
   The Lexicon is an interchangeable module containing interrelating words and ideas. 
 </p>
 
-        <h4>Psychic</h4>
+<h4>Psychic</h4>
 <p>
   Sometimes, Lisa will be running on a web page where she can tap into the unlimited power of the internet. Lisa can use <i>psychic</i> to:
   <ul>
@@ -81,4 +81,15 @@ if (brain.memory.short.recall(thought)) {
       Answer any question for you and even interact with web API's to become a personal assistant
     </li>
   </ul>
+
+```javascript
+brain.psychic.syphon('veritas').then(function(idea){
+  brain.ponder(idea).then(function(thought)) {
+    brain.host.thinks(thought);
+    // LISA: Veritas is truth.
+  }
+}
+});
+```
+
 </p>

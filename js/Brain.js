@@ -38,15 +38,34 @@
 
     }
 
+    brain.analyze = function(statement, noAsync) {
+
+      var context = {};
+      if (!statement) return context;
+
+
+      if (_.stringContains(statement,'?')) context.question = true;
+      if (_.stringContains(statement,' ')) context.multiword = true;
+      if (_.stringContains(statement,['would you','could you','can you','will you'])) context.request = true;
+
+      return context;
+
+    }
+
     brain.whatIs = function(word, noAsync) {
 
-      brain.host.thinks('What is... ' + word)
+      brain.host.thinks('What is... ' + word);
       var idea;
-      idea = _.find(brain.lexicon.things, function(idea){return idea.word.toLowerCase() == word.toLowerCase()});
 
-      
+      // try to look the idea up in her Lexicon
+      idea = _.find(brain.lexicon.things, function(idea){return idea.word.toLowerCase() == word.toLowerCase()});      
       idea = idea || _.find(brain.lexicon.things, function(idea){if (!idea.plural) return false; return idea.plural.toLowerCase() == word.toLowerCase()});
       idea = idea || _.find(brain.lexicon.expressions, function(idea){return idea.said.toLowerCase() == word.toLowerCase()});
+
+      var context = brain.analyze(word);
+      console.log('context?' , word , context);
+
+
 
       if (brain.psychic && !idea) {
 

@@ -22,6 +22,21 @@ _.mixin({
   }
 });
 
+_.mixin({
+     stringContains: function(string, characters) {
+
+     if (typeof characters == 'string') characters = [characters];
+
+     var inString = _.find(characters,function(character){
+      if (string.toString().indexOf(character) != -1) {
+        return character;
+      }
+     })
+
+     return inString;
+  }
+});
+
 function Promise(params) {
 
  var promise = this;
