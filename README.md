@@ -4,7 +4,7 @@
 <p>Lisa has many other uses including teaching people to speak new languages, and simulating staff at kiosks.</p>
 <p>Lisa is designed with extensibility in mind. The human mind is a complex thing, and it's always growing. Lisa's codebase has a conversational design...</p>
 
-```
+```javascript
     lisa.brain.ponder().then{function(thought)
     lisa.thinks(thought);
     // 'Apples are crunchy.'
