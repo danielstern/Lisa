@@ -48,7 +48,6 @@ function Logic(brain) {
       /* compare 
          find something that shares a trait with the idea's seed
       */
-
       logic.compare = function(seed,response)
       {
         for (var i = 0; i < brain.mood.inquisitive; i++)
@@ -83,8 +82,12 @@ function Logic(brain) {
         brain.seed = sidewaysIdea;
 
         return response;
-
       }
+
+      /*
+		 Induct
+		 consider a seed(A) scopeUp (to B), demystify, and then conclude that A must also have that property because A is B.
+      */
 
       logic.colloquilize = function(seed) 
       {

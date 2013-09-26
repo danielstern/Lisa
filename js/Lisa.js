@@ -32,7 +32,7 @@
       var promise = new Promise(_callback);
 
      Lisa.brain.ponder().then(function(response) {
-        promise.word.callback(response)
+        promise.resolve(response)
      });
 
       return promise;

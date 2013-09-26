@@ -14,18 +14,15 @@ _.mixin({
   }
 });
 
-function Promise(hereIsAMethod) {
- var promise = this;
- promise.callback = hereIsAMethod;
- console.log('PROMISE: ' + 'Initializing,' , hereIsAMethod);
+function Promise(params) {
 
-  return {
-      then:function(callThisMethodWhenDone){
-        promise.callback = callThisMethodWhenDone; 
-        hereIsAMethod = callThisMethodWhenDone; 
-     
-      },
-      word:this
-    }
+ var promise = this;
+ this.then = function(callback){
+   promise.resolve = callback;      
+  }
+
+  this.word = this;
+  this.resolve = this.callback;
+
 
 }
