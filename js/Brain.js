@@ -2,12 +2,15 @@
   function Brain(host) {
 
     var brain = this;
-    this.host = host;
-    this.lexicon = Lexicon;
-    this.personality = this.host.personality;
-    this.mood = this.personality;
+    brain.host = host;
+    brain.lexicon = Lexicon;
+    brain.personality = brain.host.personality;
+    brain.mood = brain.personality;
+    
     brain.logic = new Logic(brain);
     brain.speech = new Speech(brain.host);
+    brain.memory = new Memory(brain);
+
     brain.patterns = Patterns;
     var things = brain.lexicon.things;
    // brain.psychic = new Psychic();
@@ -105,11 +108,31 @@
       })
 
       response = brain.speech.prettify(response);
-
+      brain.memory.short.remember(response);
       
       setTimeout(function(){promise.resolve(response)},150);
       return promise;
     }
   }
 
-  
+
+function Memory(brain) {
+
+  var memory = this;
+  memory.brain = brain;
+  memory.short = new ShortTermMemory(memory);
+
+}
+
+function ShortTermMemory(memory) {
+
+  var short = this;
+  short.memory = memory;
+  short.capacity = 25;
+
+  short.recentThings = [];
+
+  this.remember = function(memory) {
+    console.log('got memory...',memory);
+  }
+}
