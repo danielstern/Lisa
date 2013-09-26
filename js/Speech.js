@@ -52,7 +52,7 @@ function Speech(host) {
         case 1:
         case 3:
         case 4:
-          response += "One kind of " + seed.word + " " + conjugate(idea, 'is') + " " + lexicate(idea);
+          response += "One kind of " + seed.word + " " + conjugate(seed, 'is') + " " + lexicate(idea);
           break;
         case 2:
           response += "A kind of " + seed.word + " " + conjugate(idea, 'is') + " " + lexicate(idea);
