@@ -87,28 +87,35 @@
       var sequence = pattern.sequence;
       _.each(sequence, function(command){
 
+        var thought;
         switch (command)
         {
           case 'demystify':
-            response = logic.demystify(brain.seed, response);
+            thought = logic.demystify(brain.seed);
             break;
           case 'compare':
-           response = logic.compare(brain.seed, response);
+           thought = logic.compare(brain.seed, response);
             break;
           case 'scopeUp':
-            response = logic.scopeUp(brain.seed, response);
+           thought = logic.scopeUp(brain.seed, response);
             break;
           case 'scopeSideways':
-            response = logic.scopeSideways(brain.seed, response);
-            break;
+          thought = logic.scopeSideways(brain.seed, response);
+           break;
           case 'scopeDown':
-            response = logic.scopeDown(brain.seed, response);
+           thought = logic.scopeDown(brain.seed, response);
             break;
         }
+
+
+        var shortTerm = brain.memory.short;
+        if (shortTerm.recall(response)) brain.host.thinks('Oh, I just said that, didn\'t I...!');
+        shortTerm.remember(thought);
+
+        response += thought;
       })
 
       response = brain.speech.prettify(response);
-      brain.memory.short.remember(response);
       
       setTimeout(function(){promise.resolve(response)},150);
       return promise;
@@ -132,7 +139,15 @@ function ShortTermMemory(memory) {
 
   short.recentThings = [];
 
-  this.remember = function(memory) {
+  short.remember = function(memory) {
     console.log('got memory...',memory);
+    short.recentThings.push(memory);
   }
+
+  short.recall = function(memory) {
+    var contains = _.contains(short.recentThings, memory);
+    return contains;
+  }
+
+  window.mem = this;
 }

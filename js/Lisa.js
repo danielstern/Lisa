@@ -8,6 +8,10 @@
 
     Lisa.thinks = function(thought) {
 
+      if (_.endsWith(thought,'!')) {
+        console.warn('LISA:' , thought)
+        return
+      };
       console.log('LISA:' , thought);
     }
 

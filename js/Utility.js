@@ -14,6 +14,14 @@ _.mixin({
   }
 });
 
+_.mixin({
+     endsWith: function(string, character) {
+
+      var lastCharOfString = string.toString().charAt(string.length - 1);
+      return lastCharOfString == character;
+  }
+});
+
 function Promise(params) {
 
  var promise = this;

@@ -3,8 +3,9 @@ function Logic(brain) {
 	var logic = this;
 	   var things = brain.lexicon.things;
 
-	  logic.demystify = function (seed, response)
+	  logic.demystify = function (seed)
       {
+         var response = '';
          if (!seed.is) return response;
          response += brain.speech.express.quality(seed, _.sample(seed.is));
          response += "//";
@@ -12,8 +13,9 @@ function Logic(brain) {
          return response;
       }
 
-      logic.scopeUp = function(seed, response) 
+      logic.scopeUp = function(seed) 
       {
+         var response = '';
          if (!seed.extends) return response;
 
          response += brain.speech.express.inheritance(seed, seed.extends);
@@ -24,8 +26,9 @@ function Logic(brain) {
          return response; 
       }
 
-      logic.scopeDown = function(seed, response) 
+      logic.scopeDown = function(seed) 
       {
+          var response = '';
           var scopeDownIdea = _.filter(things,function(thing){
             if (!thing.extends) return false;
             if (thing.word == seed.word) return false;
@@ -48,8 +51,10 @@ function Logic(brain) {
       /* compare 
          find something that shares a trait with the idea's seed
       */
-      logic.compare = function(seed,response)
+      logic.compare = function(seed)
       {
+        var response = '';
+
         for (var i = 0; i < brain.mood.inquisitive; i++)
         {
            var trait = _.sample(seed.is);
@@ -65,8 +70,10 @@ function Logic(brain) {
         return response;
       }
 
-      logic.scopeSideways = function (seed, response)
+      logic.scopeSideways = function (seed)
       {
+        var response = '';
+
         if (!seed.extends) return response;
         var relatedThings = _.filter(brain.lexicon.things, function(thing){
           if (!thing.extends) return false;
