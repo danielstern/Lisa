@@ -20,7 +20,7 @@
 	</ul>
 </p>
 
-```
+```javascript
 lisa.brain.ponder('dogs').then{function(thought)
   lisa.thinks(thought);
   // 'Dogs are domestic. Dogs are reliable.'
@@ -34,25 +34,30 @@ lisa.brain.ponder('dogs').then{function(thought)
   Lisa's speech module
 </p>
 <h4>Logic</h4>
-        <p>
-          Logic is the controller to speech's view and lexicon's model.  
-        </p>
+<p>
+  Logic is the controller to speech's view and lexicon's model.  
+</p>
 <h4>Emotion</h4>
 <h4>Personality</h4>    
 <h4>Memory</h4>    
 <h5>Short Term Memory</h5>
-  <p>Prevents Lisa from saying the same thing twice, rambling, etc.</p>
-  <p>When Lisa says something, she stores the thought in her short term memory.</p>
+<p>Prevents Lisa from saying the same thing twice, rambling, etc.</p>
+<p>When Lisa says something, she stores the thought in her short term memory.</p>
 
 ```javascript
 var thought = logic.demystify(brain.seed);
 brain.memory.short.remember(thought);
 ```
 
-  <ul>
-     <li>Before Lisa says something, she can see in her short term memory if she's said something.</li>
-    <li>Lisa can link threads to previous ideas with her short term memory..</li>
-  </ul>
+<p>Before Lisa says something, she can see in her short term memory if she's said something.</p>
+
+
+```javascript
+if (brain.memory.short.recall(thought)) {
+  brain.host.thinks('Oh, I just said that, didn't I... drat...');
+  return;
+};
+```
 
 <h5>Long Term Memory:</h5>
 <p>Lisa's long term memories and personality that persist past the current session. Can use a database or local storage.</p>
@@ -61,19 +66,19 @@ brain.memory.short.remember(thought);
   <li>Lisa can remember things you were talking about in the past and reminisce about them.</li>
 </ul>
 <h4>Lexicon</h4>
-        <p>
-          The Lexicon is an interchangeable module containing interrelating words and ideas. 
-        </p>
+<p>
+  The Lexicon is an interchangeable module containing interrelating words and ideas. 
+</p>
 
-                <h4>Psychic</h4>
-        <p>
-          Sometimes, Lisa will be running on a web page where she can tap into the unlimited power of the internet. Lisa can use <i>psychic</i> to:
-          <ul>
-            <li>
-              Look up words she doesn't understand and associate them with words in her lexicon
-            </li>
-            <li>
-              Answer any question for you and even interact with web API's to become a personal assistant
-            </li>
-          </ul>
-        </p>
+        <h4>Psychic</h4>
+<p>
+  Sometimes, Lisa will be running on a web page where she can tap into the unlimited power of the internet. Lisa can use <i>psychic</i> to:
+  <ul>
+    <li>
+      Look up words she doesn't understand and associate them with words in her lexicon
+    </li>
+    <li>
+      Answer any question for you and even interact with web API's to become a personal assistant
+    </li>
+  </ul>
+</p>
