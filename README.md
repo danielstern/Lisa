@@ -2,26 +2,27 @@
 <h2>Neuro-Computational Matrix</h2>
 <p>Lisa is designed to be the basis of an intelligent conversation simulator that will ultimately allow NPCs in games to say different things, every time - and mean it!<p>
 <p>Lisa has many other uses including teaching people to speak new languages, and simulating staff at kiosks.</p>
-<p>Lisa is designed with extensibility in mind. The human mind is a complex thing, and it's always growing. Lisa's codebase has a conversational design...
+<p>Lisa is designed with extensibility in mind. The human mind is a complex thing, and it's always growing. Lisa's codebase has a conversational design...</p>
+
 ```
   lisa.brain.ponder().then{function(thought)
     lisa.thinks(thought);
     // 'Apples are crunchy.'
 }
 ```
-</p>
+
 <p>
 	Lisa has several functions that naturally complement eachother. She can
 	<ul>
 		<li>Just Think of Something Random and Talk About It</li>
 		<li>She can riff on something you say to her.
 
-					```
-		  lisa.brain.ponder('dogs').then{function(thought)
-		    lisa.thinks(thought);
-		    // 'Dogs are domestic. Dogs are reliable.'
-			}
-			```
+```
+lisa.brain.ponder('dogs').then{function(thought)
+  lisa.thinks(thought);
+  // 'Dogs are domestic. Dogs are reliable.'
+}
+```
 
 		</li>
 	</ul>
