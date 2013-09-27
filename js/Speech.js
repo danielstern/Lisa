@@ -101,8 +101,8 @@ function Speech(host) {
       {
         case 1:
         case 3:
-          response += lexicate(idea) + " " + conjugate(idea, 'is') +" " + lexicate(seed);
-          break;
+         // response += lexicate(idea) + " " + conjugate(idea, 'is') +" " + lexicate(seed);
+         // break;
         case 4:
           response += "One kind of " + seed.word + " " + 'is' + " " + lexicate(idea);
           break;
@@ -125,6 +125,15 @@ function Speech(host) {
       response += lexicate(seed) + " " + conjugate(seed, 'reminds') + " me of " + lexicate(idea);
       return response;
     }
+
+    express.relationship = function(seed, relationship) 
+    {
+      var response = '';
+      console.log('Express relationship:',seed,relationship);
+      response += lexicate(seed) + " " + conjugate(seed, 'is')  + " " +verbalize(relationship) + " " + relationship.object;
+      return response;
+    }
+
 
     express.sharedQuality = function(subject, object, trait) 
     {
@@ -149,15 +158,6 @@ function Speech(host) {
       return response;
     }   
 
-    /* expresses a relationship between two things expressed by a verb */
-    express.relationship = function(relationship) 
-    {
-      var response = '';
-
-      response += lexicate(relationship.subject) + " " + relationship.action + " " + lexicate(relationship.object);
-
-      return response;
-    }   
 
     /* Returns a string representing a friendly greeting. */
     express.greeting = function() 
@@ -350,6 +350,21 @@ function Speech(host) {
 
        return response;
     }
+
+    var verbalize = function(relationship) {
+
+      var response = '';
+      console.log('verbalize...' , relationship)
+       
+
+      switch (relationship.action) {
+        case 'weakness':
+          response = 'weak against'
+      }
+
+       return response;
+    }
+
 
 
     var preposit = function(word) 

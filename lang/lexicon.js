@@ -292,10 +292,17 @@ var Lexicon = {
     },
     {
       word:'magic',
-      is:['dangerous'],
+      is:[],
       extends:['force'],
       pronoun:'concept',
-      associated:['magic'],
+      associated:[],
+    },
+    {
+      word:'fire',
+      is:[],
+      extends:['force'],
+      pronoun:'concept',
+      associated:[],
     },
     {
       word:'Algoron',
@@ -342,6 +349,10 @@ var Lexicon = {
       word:'zombie',
       is:['undead','dangerous'],
       extends:['monster'],
+      relationship:[{
+        object:'fire',
+        action:'weakness'
+      }],
       plural:'zombies',
       associated:[''],
     },

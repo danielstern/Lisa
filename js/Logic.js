@@ -42,6 +42,10 @@ function Logic(brain) {
           thought = logic.compare(seed);
           break;
 
+        case 'express-relationship':
+          thought = logic.expressRelationship(seed);
+          break;
+
         case 'scopeUp':
           brainwave = logic.scopeUp(seed);
 
@@ -115,6 +119,27 @@ function Logic(brain) {
 
     response += brain.speech.softPause();
     return response;
+  }
+
+  logic.expressRelationship = function(seed) {
+
+    var response = '';
+
+
+    if (!seed.relationship || !seed.relationship[0]) 
+    {
+      console.log('no relationships...');
+      return response;
+    }
+
+    var relationship = _.sample(seed.relationship);
+    console.log('express relationship?',seed, relationship)
+
+    response += brain.speech.express.relationship(seed, relationship);
+    response += brain.speech.softPause();
+     
+    return response;
+
   }
 
   logic.shareEgo = function (being) {
@@ -220,18 +245,13 @@ function Logic(brain) {
 
     if (!relatedThings || !relatedThings[0]) return [response,seed];
 
-    console.log('there are related things.',relatedThings)
     var sidewaysIdea = _.sample(relatedThings);
 
     if (!sidewaysIdea) return [response,seed];
 
-    think('there is a sideways idea.')
-
-    response += brain.speech.express.association(seed,sidewaysIdea);
-    response += brain.speech.softPause();
+   // response += brain.speech.express.association(seed,sidewaysIdea);
+   // response += brain.speech.softPause();
     seed = sidewaysIdea;
-    
-    think('returning',response,seed);
 
     return [response,seed];
   }

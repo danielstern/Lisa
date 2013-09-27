@@ -1,6 +1,9 @@
 Lisa
 ----
 
+>> The Sword of Light is hidden in a certain location. Oh... hee-hee ha ha...
+>> - Lisa
+
 ```javascript
 var lisa = new Lisa();
 lisa.thinks('You know nothing, Jon Snow.');
