@@ -88,6 +88,6 @@ function Promise(params) {
     promise.resolve = callback;      
   }
 
-  this.resolve = this.callback;
+  this.resolve = this.callback || function(){};
 
 }

@@ -67,9 +67,6 @@ function Brain(host) {
 
     var idea;
 
-
-    // try to look the idea up in her Lexicon
-   
     idea = extractIdea(word);
 
     function extractIdea(word) {

@@ -120,6 +120,7 @@ function Speech(host) {
     express.moment = function(moment, context) 
     {
       console.log('expressing moment...',moment,context);
+      response = lexicate(moment.subject) + " " + conjugate(moment.subject, moment.action, context.time) + " " + lexicate(moment.object);
       return response;
     }
 
@@ -315,31 +316,24 @@ function Speech(host) {
        return response;
     }
 
-    var conjugate = function(seed, verb) {
+    var conjugate = function(seed, verb, tense) {
 
-       var response = '';
-       if (seed.pronoun == 'unique');
-       response += (seed.pronoun == 'unique' ? preposit(seed.word) : (seed.plural || preposit(seed.word)));
+       if (typeof seed == 'string') seed = brain.whatIs(seed);
 
-      switch (verb) {
-        case 'is':
-          if (seed.pronoun == 'unique') return 'is';
-          if (!seed.plural) return 'is';
-            return 'are';
-          break;
-        case 'use':
-          if (seed.pronoun == 'unique') return 'uses';
-          if (!seed.plural) return 'uses';
-            return 'use';
-          break;
-        case 'reminds':
-          if (seed.pronoun == 'unique') return 'reminds';
-          if (!seed.plural) return 'reminds';
-            return 'remind';
-        break;
-        default:
-          return '?'
-      }
+       tense = tense || 'present';
+       //if (seed.pronoun == 'unique');
+       //response += (seed.pronoun == 'unique' ? preposit(seed.word) : (seed.plural || preposit(seed.word)));
+
+       var tl = speech.transliterate;
+       var context = 'plural';
+       if (seed.pronoun == 'unique') context = 'singular';
+       if (!seed.plural) context = 'singular';
+
+       console.log('transliterating...',verb,context, tl)
+       var verb = tl[verb][tense][context];
+       console.log('verb?',verb);
+       response = verb;
+
 
        return response;
     }
@@ -366,6 +360,8 @@ function Speech(host) {
 
        return response;
     }
+
+    speech.transliterate = transliterate;
 
 
 

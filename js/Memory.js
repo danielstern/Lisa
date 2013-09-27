@@ -23,8 +23,11 @@ function ShortTermMemory(memory) {
 
   short.recall = function(memory) {
     
-    var justNow = _.last(short.recentThings,short.capacity)
-    var contains = _.contains(justNow, memory);
+    var justNow = _.last(short.recentThings,short.capacity);
+
+    var contains = _.contains(justNow, memory) || _.find(justNow,function(thought){
+      return _.isEqual(thought,memory)
+    });
     return contains;
   }
 
@@ -68,7 +71,7 @@ function LongTermMemory(memory) {
 
 var _story = {
   sequence:[
-    {subject:'Algoron',action:'travel',object:'Emeraldia'},
+    {subject:'Algoron',action:'go',object:'Emeraldia'},
     {subject:'Algoron',action:'kill',object:'Amnon'},
     {subject:'Omnoth',action:'rule',object:'Emeraldia'}
   ]

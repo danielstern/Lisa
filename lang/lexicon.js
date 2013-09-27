@@ -369,8 +369,20 @@ var Lexicon = {
       associated:[]
     },
     {
+      word:'King Amnon',
+      is:['noble','good','kind'],
+      extends:['king'],
+      pronoun:'proper',
+    },
+    {
+      word:'Amnon',
+      see:'King Amnon',
+       pronoun:'proper',
+    },
+    {
       word:'Omnoth',
-      see:'King Omnoth'
+      see:'King Omnoth',
+       pronoun:'proper',
     },
     {
       word:'Emeraldia',
@@ -541,3 +553,61 @@ var Lexicon = {
 
    ]
   };
+
+  var transliterate = {
+    is:{
+      past:{
+        singular:'was',
+        plural:'were'
+      },
+      present:{
+        singular:'is',
+        plural:'are'
+      }
+    },
+
+    go:{
+      past:{
+        singular:'went to',
+        plural:'went to'
+      },
+      present:{
+        singular:'go to',
+        plural:'goes to'
+      }
+    },
+
+    kill:{
+      past:{
+        singular:'killed',
+        plural:'killed'
+      },
+      present:{
+        singular:'kills',
+        plural:'kill'
+      }
+    },
+
+    use:{
+      past:{
+        singular:'used',
+        plural:'used'
+      },
+      present:{
+        singular:'uses',
+        plural:'use'
+      }
+    },
+
+     rule:{
+      past:{
+        singular:'ruled',
+        plural:'ruled'
+      },
+      present:{
+        singular:'rules',
+        plural:'rule'
+      }
+    },
+
+ }

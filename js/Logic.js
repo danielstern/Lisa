@@ -94,6 +94,7 @@ function Logic(brain) {
       } 
       else {
         response += brain.speech.express.pause();
+        response += brain.speech.softPause();
       }
      
     })
@@ -177,7 +178,7 @@ function Logic(brain) {
      var scopeUpIdea = _.where(things,{word:seed.extends[0]});
      if (!scopeUpIdea[0]) think('I cant scope up to ' + seed.extends[0]);
      if (scopeUpIdea[0]) seed = scopeUpIdea[0];
-     console.log('scopeup returnng...',response,seed)
+
      return [response,seed];
   }
 
@@ -202,6 +203,8 @@ function Logic(brain) {
       response += brain.speech.softPause();
       seed = idea;
     }
+
+
 
     return [response,seed];
   }
@@ -230,6 +233,8 @@ function Logic(brain) {
        }
     }
 
+     response += brain.speech.softPause();
+
     return response;
   }
 
@@ -255,6 +260,7 @@ function Logic(brain) {
    // response += brain.speech.express.association(seed,sidewaysIdea);
    // response += brain.speech.softPause();
     seed = sidewaysIdea;
+         response += brain.speech.softPause();
 
     return [response,seed];
   }
@@ -273,12 +279,18 @@ function Logic(brain) {
     response += tellStoryMoment(story);
 
     function tellStoryMoment(story) {
-       console.log('tellstorymoment...' , story);
-       var moment = _.find(story.sequence, function(_moment) {return !brain.memory.short.recall(moment)});
-       console.log('moment?',moment)
 
-       var expression = brain.speech.express.moment(moment,{time:'past'});
-       return expression;
+       var moment = _.find(story.sequence, function(_moment) {
+        return !brain.memory.short.recall(_moment)}
+       );
+
+       if (!moment) return response;
+
+       response = brain.speech.express.moment(moment,{time:'past'});
+
+       brain.memory.short.remember(moment);
+
+       return response;
     }
 
   
