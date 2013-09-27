@@ -67,6 +67,16 @@ _.mixin({
     
     return _.levenshtein(string1,string2) < variance;
 
+  },
+
+  extractStory: function (story) {
+
+    var ideas = [];
+    _.each(story.sequence, function(moment) {
+
+      ideas = ideas.concat(_.values(moment));
+    });
+    return ideas;
   }
 
 });

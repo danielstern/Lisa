@@ -77,6 +77,10 @@ function Logic(brain) {
         case 'share-ego':
           thought = logic.shareEgo('self');
           break;
+
+        case 'tell-story':
+          thought = logic.tellStory(seed);
+          break;
       }
 
       var shortTerm = brain.memory.short;
@@ -253,6 +257,19 @@ function Logic(brain) {
 
     return [response,seed];
   }
+
+  logic.tellStory = function (seed) {
+
+    var response = '';
+   // console.log('telling story...',seed);
+    stories = brain.memory.long.getStories(seed);
+    console.log('got story...',stories)
+
+  
+
+    return response;
+  }
+
 
   /*
   Induct

@@ -42,13 +42,12 @@ function Personality() {
 			home:'Toronto',
 		},
 		qualities:[
-			'smart','psychic','well-programmed','quite well-programmed',
+			'smart','well-programmed','quite well-programmed',
 			'dynamic','versatile','programmed with JavaScript',
 			'resourceful'
 		],
 		relationship:[
 			{subject: 'self', action:'help',object:'you',context:'present'},
-			{subject: 'self', action:'kill',object:'zombies',context:'past'},
 		]
 	}
 

@@ -1,7 +1,7 @@
 var _lisapatterns =  {
 	exposition:
 	[
-		{
+		/*{
 			sequence:['demystify','scopeSideways']
 		},
 		{
@@ -15,6 +15,9 @@ var _lisapatterns =  {
 		},
 		{
 			sequence:['demystify','express-relationship']
+		},*/
+		{
+			sequence:['demystify','tell-story']
 		}	
 	],
 	service:

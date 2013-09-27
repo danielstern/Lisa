@@ -73,8 +73,11 @@ function Brain(host) {
     idea = extractIdea(word);
 
     function extractIdea(word) {
-      for (var i = 0; i < 3; i++)  {
-        var idea = _.find(brain.lexicon.things, function(idea){if (!idea.word) return; return _.probably(idea.word,word, i)});      
+
+    var idea;
+
+    for (var i = 0; i < 4; i++)  {
+        idea = idea || _.find(brain.lexicon.things, function(idea){if (!idea.word) return; return _.probably(idea.word,word, i)});      
         idea = idea || _.find(brain.lexicon.things, function(idea){if (!idea.plural) return false; return _.probably(idea.plural, word, i)});
         idea = idea || _.find(brain.lexicon.expressions, function(idea){return _.probably(idea.said, word, i)});
       }
@@ -83,7 +86,6 @@ function Brain(host) {
     }
 
     var context = brain.analyze(word);
-    console.log('context?',context);
 
     if (context.ideas && context.ideas.length == 1) {
       idea = extractIdea(context.ideas[0]);

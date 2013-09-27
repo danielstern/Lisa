@@ -3,6 +3,7 @@ function Memory(brain) {
   var memory = this;
   memory.brain = brain;
   memory.short = new ShortTermMemory(memory);
+  memory.long = new LongTermMemory(memory);
 
 }
 
@@ -35,4 +36,40 @@ function ShortTermMemory(memory) {
     return memoryFilter.length > 0;
 
   }
+}
+
+function LongTermMemory(memory) {
+  var stories = [];
+  var longTerm = this;
+  var stories = [_story];
+
+  longTerm.getStories = function(seed) {
+
+    if (!seed) return {};
+
+    var word = seed.word;
+    var matchingStories = [];
+
+    _.each(stories, function(story){
+
+      var ideas = _.extractStory(story);
+      if (_.contains(ideas,word))   {
+
+        matchingStories.push(story);
+        console.log('found match',ideas,word)
+      } 
+      
+    })
+
+    return matchingStories;
+
+  }
+}
+
+var _story = {
+  sequence:[
+    {subject:'Algoron',action:'travel',object:'Emeraldia'},
+    {subject:'Algoron',action:'kill',object:'Amnon'},
+    {subject:'Omnoth',action:'rule',object:'Emeraldia'}
+  ]
 }
