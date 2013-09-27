@@ -263,6 +263,17 @@ var Lexicon = {
       associated:['sword'],
     },
     {
+      word:'knight',
+      is:['noble','tough','strong'],
+      extends:['warrior'],
+      relationship:[{
+        object:'sword',
+        action:'use'
+      }],
+      plural:'knights',
+      associated:['sword'],
+    },
+    {
       word:'nobleman',
       is:['wealthy','learned','pompous'],
       extends:['noble'],
@@ -298,6 +309,20 @@ var Lexicon = {
       associated:[],
     },
     {
+      word:'dark magic',
+      is:['deadly'],
+      extends:['magic'],
+      pronoun:'concept',
+      associated:[],
+    },
+    {
+      word:'holy magic',
+      is:['powerful'],
+      extends:['magic'],
+      pronoun:'concept',
+      associated:[],
+    },
+    {
       word:'fire',
       is:[],
       extends:['force'],
@@ -308,6 +333,15 @@ var Lexicon = {
       word:'Algoron',
       is:['mighty','a wizard','from a distant land','a fearsome sorceror'],
       pronoun:'proper',
+      relationship:[{
+        object:'magic',
+        action:'use'
+      },
+      {
+        object:'dark magic',
+        action:'use'
+      }
+      ],
       extends:['wizard'],
       associated:['Sword of Light']
     },
@@ -316,10 +350,10 @@ var Lexicon = {
       is:['powerful','mighty','respected','feared','brave'],
       extends:['royalty'],
       pronoun:'',
-      relationship:{
+      relationship:[{
         object:'kingdom',
-        relationship:'rule'
-      },
+        action:'rule'
+      }],
       plural:'kings',
       associated:['queen','throne','sword','kingdom']
     },
@@ -328,21 +362,31 @@ var Lexicon = {
       is:['king of Emeraldia','intelligent','brave','much feared'],
       extends:['king'],
       pronoun:'proper',
-      relationship:{
+      relationship:[{
         object:'Emeraldia',
-        relationship:'rule'
-      },
+        action:'rule'
+      }],
       associated:[]
+    },
+    {
+      word:'Omnoth',
+      see:'King Omnoth'
+    },
+    {
+      word:'Emeraldia',
+      is:['vast','troubled'],
+      extends:['place'],
+      pronoun:'proper',
     },
     {
       word:'Queen Amandia',
       is:['queen of Emeraldia','beautiful','brave','smart','enchanting'],
       extends:['queen'],
       pronoun:'proper',
-      relationship:{
+      relationship:[{
         object:'Emeraldia',
-        relationship:'rule'
-      },
+        action:'rule'
+      }],
       associated:[]
     },
     {
@@ -352,7 +396,12 @@ var Lexicon = {
       relationship:[{
         object:'fire',
         action:'weakness'
-      }],
+      },
+      {
+        object:'holy magic',
+        action:'weakness'
+      }
+      ],
       plural:'zombies',
       associated:[''],
     },
@@ -367,6 +416,11 @@ var Lexicon = {
       word:'goblin',
       is:['dangerous'],
       extends:['monster'],
+        relationship:[{
+          object:'magic',
+          action:'weakness'
+        },
+      ],
       plural:'goblins',
       associated:[''],
     },

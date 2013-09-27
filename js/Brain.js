@@ -117,6 +117,9 @@ function Brain(host) {
     idea = idea || brain.seed || _.sample(brain.lexicon.things);
     if (idea.hidden == 'true') _.sample(brain.lexicon.things); // this function prevents Lisa from finding out she is really a robot
 
+    if (idea.see) idea = brain.whatIs(idea.see,true);
+
+
     var ponder = brain.logic.ponder(idea)
     response = ponder[0];
     brain.seed = ponder[1];

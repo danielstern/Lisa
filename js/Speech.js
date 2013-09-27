@@ -130,7 +130,8 @@ function Speech(host) {
     {
       var response = '';
       console.log('Express relationship:',seed,relationship);
-      response += lexicate(seed) + " " + conjugate(seed, 'is')  + " " +verbalize(relationship) + " " + relationship.object;
+      if (!relationship) return response;
+      response += lexicate(seed)  + " " + verbalize(seed,relationship) + " " + preposit(relationship.object);
       return response;
     }
 
@@ -339,6 +340,11 @@ function Speech(host) {
           if (!seed.plural) return 'is';
             return 'are';
           break;
+        case 'use':
+          if (seed.pronoun == 'unique') return 'uses';
+          if (!seed.plural) return 'uses';
+            return 'use';
+          break;
         case 'reminds':
           if (seed.pronoun == 'unique') return 'reminds';
           if (!seed.plural) return 'reminds';
@@ -351,16 +357,25 @@ function Speech(host) {
        return response;
     }
 
-    var verbalize = function(relationship) {
+    var verbalize = function(seed,relationship) {
 
       var response = '';
-      console.log('verbalize...' , relationship)
+      console.log('verbalize...' , seed, relationship)
        
 
       switch (relationship.action) {
         case 'weakness':
-          response = 'weak against'
+          response = conjugate(seed, 'is') + ' weak against'
+          break;
+        case 'rule':
+          response = conjugate(seed, 'is') + ' ruler of';
+          break;
+        case 'use':
+        response = conjugate(seed,'use');
+          break;
       }
+
+      console.log('response?',response)
 
        return response;
     }
