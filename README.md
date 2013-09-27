@@ -25,7 +25,7 @@ lisa.hears('sword').then(function(reply){
 <p>Lisa is designed with extensibility in mind. The human mind is a complex thing, and it's always growing. Lisa's codebase has a conversational design...</p>
 
 ```javascript
-    lisa.brain.ponder().then{function(thought)
+lisa.brain.ponder().then{function(thought)
     lisa.thinks(thought);
     // 'Apples are crunchy.'
 }
@@ -33,8 +33,9 @@ lisa.hears('sword').then(function(reply){
 
 
 Lisa has several functions that naturally complement eachother. She can
-+ Just Think of Something Random and Talk About It
-+ She can riff on something you say to her.
++ Talk about something random
++ Riff on something you say to her
++ Stick to a set pattern of behaviors (i.e., politely greeting visitors and answering questions)
 
 
 ```javascript
@@ -43,12 +44,12 @@ lisa.brain.ponder('dogs').then{function(thought)
   // 'Dogs are domestic. Dogs are reliable.'
 }
 ```
-<p>Lisa is built with underscore.js!</p>
-<h2>How It Works</h2>
-<h3>Brain</h3>
-<p>Lisa's modular command center, the brain is the glue which holds Lisa's logic, memories and speech together.</p>
-#### Speech
+How It Works
+------------
+### Brain
+Lisa's modular command center, the brain is the glue which holds Lisa's logic, memories and speech together.
 
+#### Speech
 Lisa's speech module allows Lisa to translate her ideas into something human beings can understand through `express()`.
 
 ```javascript
@@ -57,9 +58,9 @@ Lisa.thinks(Lisa.brain.speech.express.greeting());
 ```
 
 #### Logic
-<p>
-  Logic is the controller to speech's view and lexicon's model.  
-</p>
+Logic is the controller to speech's view and lexicon's model.  
+
+
 <h4>Emotion</h4>
 #### Personality    
 
@@ -84,7 +85,7 @@ if (brain.memory.short.recall(thought)) {
 ```
 
 ##### Short Term Memory Functions
-`memory.short.recall(thought)` 
+###### `memory.short.recall(thought)` 
 Returns true if Lisa remembers saying the thought.
 
     brain.ponder('merlin');
@@ -92,7 +93,7 @@ Returns true if Lisa remembers saying the thought.
     brain.memory.short.recall('Merlin is a wizard.')
     // true;
 
-`memory.short.scan(word)` 
+###### `memory.short.scan(word)` 
 Returns true if Lisa remember having said that word at all within her short term memory.
 
     brain.memory.short.scan('profession');
@@ -105,11 +106,11 @@ Returns true if Lisa remember having said that word at all within her short term
 
 
 ##### Long Term Memory:
-<p>Lisa's long term memories and personality that persist past the current session. Can use a database or local storage.</p>
-<ul>
-  <li>Lisa can add new ideas and connections to her lexicon with her long term memory.</li>
-  <li>Lisa can remember things you were talking about in the past and reminisce about them.</li>
-</ul>
+Lisa's long term memories and personality that persist past the current session. Can use a database or local storage.
+
++ Lisa can add new ideas and connections to her lexicon with her long term memory
++ Lisa can remember things you were talking about in the past and reminisce about them
+
 #### Lexicon
 The Lexicon is an interchangeable module containing interrelating words and ideas. 
 
@@ -125,20 +126,16 @@ var Lexicon = {
     },
   ]
 }
+```
 
 
-<h4>Psychic</h4>
-<p>
-  Sometimes, Lisa will be running on a web page where she can tap into the unlimited power of the internet. Lisa can use <i>psychic</i> to:
-  <ul>
-    <li>
-      Look up words she doesn't understand and associate them with words in her lexicon
-    </li>
-    <li>
-      Answer any question for you and even interact with web API's to become a personal assistant
-    </li>
-  </ul>
-</p>
+#### Psychic
+
+Sometimes, Lisa will be running on a web page where she can tap into the unlimited power of the internet. Lisa can use *psychic* to:
+
++ Look up words she doesn't understand and associate them with words in her lexicon
++ Answer any question for you and even interact with web API's to become a personal assistant
+
 
 ```javascript
 brain.psychic.syphon('veritas').then(function(idea){
