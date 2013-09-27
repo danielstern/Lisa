@@ -106,79 +106,19 @@
 
     brain.ponder = function(idea) {
 
-      brain.seed = idea || _.sample(brain.lexicon.things);
-      if (brain.seed.hidden == 'true') _.sample(brain.lexicon.things); // this function prevents Lisa from finding out she is really a robot
+      idea = idea || _.sample(brain.lexicon.things);
+
+      if (idea.hidden == 'true') _.sample(brain.lexicon.things); // this function prevents Lisa from finding out she is really a robot
+
       var response = '';
-      var seed = brain.seed;
       var promise = new Promise();
-      
-      var logic = brain.logic;
+    
+ 
+      response = brain.logic.ponder(idea);
 
+  
 
-      if (seed.said !== undefined) // see if seed is an expression
-      {
-         response = brain.logic.colloquilize(seed);
-         response = brain.speech.prettify(response);
-         setTimeout(function(){promise.resolve(response)},150);
-         return promise;
-      }
-
-      var pattern = [];
-
-      pattern = brain.personality.getPattern();
-
-      var sequence = pattern.sequence;
-        console.log('sequence?',sequence);
-      _.each(sequence, function(command){
-
-
-      var thought;
-      switch (command)
-      {
-        case 'demystify':
-          thought = logic.demystify(brain.seed);
-          break;
-        case 'compare':
-         thought = logic.compare(brain.seed);
-          break;
-        case 'scopeUp':
-         thought = logic.scopeUp(brain.seed);
-          break;
-        case 'scopeSideways':
-        thought = logic.scopeSideways(brain.seed);
-         break;
-        case 'scopeDown':
-         thought = logic.scopeDown(brain.seed);
-          break;
-        case 'greet':
-         thought = brain.speech.express.formalGreeting();
-          break;
-        case 'demystify-self':
-         thought = logic.demystifyPersonality('self');
-          break;
-        case 'share-ego':
-         thought = logic.shareEgo('self');
-          break;
-
-      }
-
-
-        var shortTerm = brain.memory.short;
-      var alreadySaidIt = false;
-      if (shortTerm.recall(thought)) {
-        brain.host.thinks('Oh, I just said that, didn\'t I...');
-        alreadySaidIt = true;
-      };
-      if (!alreadySaidIt) {
-        response += thought;
-        response += "//";
-        shortTerm.remember(thought);
-      } else {
-
-        response += brain.speech.express.pause();
-      }
-       
-    })
+    
 
     response = brain.speech.prettify(response);
     

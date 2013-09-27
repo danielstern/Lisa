@@ -4,10 +4,11 @@
 var lisa = new Lisa();
 lisa.thinks('You know nothing, Jon Snow.');
 // LISA: You know nothing, Jon Snow.
-}
 ```
 
 <h2>Neuro-Computational Matrix</h2>
+<p>A neuro-computational matrix is a computer program that attempts to simulate the complex workings of the mind.</p>
+
 <p>Lisa is designed to be the basis of an intelligent conversation simulator that will ultimately allow NPCs in games to say different things, every time - and mean it!</p>
 
 ```javascript

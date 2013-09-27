@@ -13,6 +13,76 @@ function Logic(brain) {
          return response;
       }
 
+      logic.ponder = function (seed)
+      {
+        var response = '';   
+
+        if (seed.said !== undefined) // see if seed is an expression
+        {
+           response = brain.logic.colloquilize(seed);
+           response = brain.speech.prettify(response);
+           setTimeout(function(){promise.resolve(response)},150);
+           return promise;
+        }
+
+
+
+        var pattern = brain.personality.getPattern();
+        var sequence = pattern.sequence;
+
+        _.each(sequence, function(command) {
+       
+        var thought;
+
+        switch (command)
+        {
+          case 'demystify':
+            thought = logic.demystify(seed);
+            break;
+          case 'compare':
+           thought = logic.compare(seed);
+            break;
+          case 'scopeUp':
+           thought = logic.scopeUp(seed);
+            break;
+          case 'scopeSideways':
+          thought = logic.scopeSideways(seed);
+           break;
+          case 'scopeDown':
+           thought = logic.scopeDown(seed);
+            break;
+          case 'greet':
+           thought = brain.speech.express.formalGreeting();
+            break;
+          case 'demystify-self':
+           thought = logic.demystifyPersonality('self');
+            break;
+          case 'share-ego':
+           thought = logic.shareEgo('self');
+            break;
+
+        }
+
+
+        var shortTerm = brain.memory.short;
+        var alreadySaidIt = false;
+        if (shortTerm.recall(thought)) {
+          brain.host.thinks('Oh, I just said that, didn\'t I...');
+          alreadySaidIt = true;
+        };
+
+        if (!alreadySaidIt) {
+          response += thought;
+          response += "//";
+          shortTerm.remember(thought);
+        } else {
+          response += brain.speech.express.pause();
+        }
+      })
+         
+         return response;
+      }
+
       logic.demystifyPersonality = function (being)
       {
 
