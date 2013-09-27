@@ -1,6 +1,7 @@
 var Lexicon = {
     things:[
-    {
+    // special things
+   /* {
       word:'self',
       pronoun:'self',
       hidden:'true',
@@ -10,6 +11,13 @@ var Lexicon = {
       pronoun:'none',
       hidden:'true',
     },
+    {
+      word:'place',
+      hidden:'true',
+      plural:'places',
+    },
+
+    // general things
     {
       word:'apple',
       is:['delicious','healthy','crunchy','refreshing'],
@@ -25,52 +33,13 @@ var Lexicon = {
       associated:['apple','pecan','oven'],
     },
     {
-      word:'zombie',
-      is:['undead,','dangerous'],
-      extends:['monster'],
-      plural:'zombies',
-      associated:[''],
-    },
-    {
       word:'dessert',
       is:['delicious','sweet','rich','extravagant','usually after a meal'],
       extends:['food'],
       plural:'desserts',
       associated:['candy','pie'],
     },
-    {
-      word:'King',
-      is:['powerful','mighty','respected','feared','brave'],
-      extends:['royalty'],
-      pronoun:'unique',
-      relationship:{
-        object:'kingdom',
-        relationship:'rule'
-      },
-      plural:'kings',
-      associated:['queen','throne','sword','kingdom']
-    },
-    {
-      word:'Queen',
-      is:['powerful','sneaky','ambitious','feared','well-connected'],
-      extends:['royalty'],
-      pronoun:'unique',
-      plural:'queens',
-      associated:['king','throne','court','kingdom']
-    },
-    {
-      word:'kingdom',
-      is:['vast','proud','great','populous','at war'],
-      extends:['place'],
-      pronoun:'unique',
-      plural:'kingdoms',
-      associated:['king','queen','court']
-    },
-    {
-      word:'place',
-      hidden:'true',
-      plural:'places',
-    },
+
     {
       word:'royalty',
       is:['powerful','mighty','wealthy','feared','refined','ruin'],
@@ -131,34 +100,6 @@ var Lexicon = {
       extends:['dog'],
       plural:'puppies',
       associated:['kitten'],
-    },
-    {
-      word:'sword',
-      is:['sharp','dangerous','deadly','cool'],
-      extends:['weapon'],
-      plural:'swords',
-      associated:['shield','magic','Sword of Light'],
-    },
-    {
-      word:'Sword of Light',
-      is:['very powerful','legendary','secret','hidden in a certain location','buried next to the well'],
-      pronoun:'unique',
-      extends:['weapon'],
-      associated:['Algoron']
-    },
-    {
-      word:'Algoron',
-      is:['mighty','a wizard','from a distant land','a fearsome sorceror'],
-      pronoun:'proper',
-      extends:['person'],
-      associated:['Sword of Light']
-    },
-    {
-      word:'axe',
-      is:['sharp','dangerous','deadly','cool','mighty','easy to use'],
-      extends:['weapon'],
-      plural:'axes',
-      associated:['sword','tree','magic'],
     },
     {
       word:'dog',
@@ -241,13 +182,98 @@ var Lexicon = {
       plural:'forks',
       is:['pointy'],
       extends:['tool']
-    },
+    },*/
     {
       word:'tool',
       plural:'tools',
-      is:['useful','handy','helpful'],
-      
-    }
+      is:['useful','handy','helpful'],  
+    },
+    // role-playing things
+    {
+      word:'sword',
+      is:['sharp','dangerous','deadly','cool'],
+      extends:['weapon'],
+      plural:'swords',
+      associated:['shield','magic','Sword of Light'],
+    },
+    {
+      word:'Sword of Light',
+      is:['very powerful','legendary','secret','hidden in a certain location','buried next to the well'],
+      pronoun:'unique',
+      extends:['weapon'],
+      associated:['Algoron']
+    },
+    {
+      word:'Algoron',
+      is:['mighty','a wizard','from a distant land','a fearsome sorceror'],
+      pronoun:'proper',
+      extends:['person'],
+      associated:['Sword of Light']
+    },
+    {
+      word:'axe',
+      is:['sharp','dangerous','deadly','cool','mighty','easy to use'],
+      extends:['weapon'],
+      plural:'axes',
+      associated:['sword','tree','magic'],
+    },
+    {
+      word:'king',
+      is:['powerful','mighty','respected','feared','brave'],
+      extends:['royalty'],
+      pronoun:'',
+      relationship:{
+        object:'kingdom',
+        relationship:'rule'
+      },
+      plural:'kings',
+      associated:['queen','throne','sword','kingdom']
+    },
+    {
+      word:'King Omnoth',
+      is:['king of Emeraldia','intelligent','brave','much feared'],
+      extends:['king'],
+      pronoun:'proper',
+      relationship:{
+        object:'Emeraldia',
+        relationship:'rule'
+      },
+      associated:[]
+    },
+    {
+      word:'Queen Amandia',
+      is:['queen of Emeraldia','beautiful','brave','smart','enchanting'],
+      extends:['queen'],
+      pronoun:'proper',
+      relationship:{
+        object:'Emeraldia',
+        relationship:'rule'
+      },
+      associated:[]
+    },
+    {
+      word:'zombie',
+      is:['undead,','dangerous'],
+      extends:['monster'],
+      plural:'zombies',
+      associated:[''],
+    },
+    {
+      word:'Queen',
+      is:['powerful','sneaky','ambitious','feared','well-connected'],
+      extends:['royalty'],
+      pronoun:'unique',
+      plural:'queens',
+      associated:['king','throne','court','kingdom']
+    },
+    {
+      word:'kingdom',
+      is:['vast','proud','great','populous','at war'],
+      extends:['place'],
+      pronoun:'unique',
+      plural:'kingdoms',
+      associated:['king','queen','court']
+    },
    ],
     attributes:[ 
     {
