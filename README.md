@@ -59,13 +59,39 @@ Lisa.thinks(Lisa.brain.speech.express.greeting());
 #### Logic
 Logic is the controller to speech's view and lexicon's model.  
 
-##### `demystify()`
+##### `demystify(idea)`
 Produces a thought about that idea.
 
 ```
 var idea = _.sample(brain.things);
 brain.logic.demystify(idea);
 // Pears are healthy.
+
+```
+
+##### `scopeUp(idea)`
+
+If the idea extends another idea, Lisa thinks about that instead.
+
+```
+// Lisa is thinking about wizards.
+// LISA: Wizards are generally pretty old.
+brain.logic.scopeUp(idea);
+// LISA: Wizards are a kind of person.
+// Lisa is now thinking about people.
+
+```
+
+##### `scopeDown(idea)`
+
+If an idea extends this idea, Lisa thinks about that instead.
+
+```
+// Lisa is thinking about warriors.
+// LISA: Warriors are mighty. I don't like warriors.
+brain.logic.scopeDown(idea);
+// LISA: Knights are a kind of warrior.
+// Lisa is now thinking about knights.
 
 ```
 
