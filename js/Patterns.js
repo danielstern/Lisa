@@ -1,7 +1,7 @@
 var _lisapatterns =  {
 	exposition:
 	[
-		/*{
+		{
 			sequence:['demystify','scopeSideways']
 		},
 		{
@@ -12,7 +12,7 @@ var _lisapatterns =  {
 		},	
 		{
 			sequence:['demystify','demystify','scopeUp']
-		},*/
+		},
 		{
 			sequence:['demystify','express-relationship']
 		}	

@@ -31,7 +31,7 @@ var Lexicon = {
       hidden:'true',
       plural:'people',
     },
-/* 
+
     // general things
     {
       word:'apple',
@@ -192,7 +192,7 @@ var Lexicon = {
       plural:'forks',
       is:['pointy'],
       extends:['tool']
-    },*/
+    },
     {
       word:'tool',
       plural:'tools',
