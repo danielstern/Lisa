@@ -263,7 +263,21 @@ function Logic(brain) {
     var response = '';
    // console.log('telling story...',seed);
     stories = brain.memory.long.getStories(seed);
-    console.log('got story...',stories)
+    console.log('got story...',stories);
+
+    var story = _.sample(stories);
+
+    if (!story) return response;
+
+    response += tellStoryMoment(story);
+
+    function tellStoryMoment(story) {
+       console.log('tellstorymoment...' , story);
+       var moment = _.find(story.sequence, function(_moment) {return !brain.memory.short.recall(moment)});
+       console.log('moment?',moment)
+
+       var expression = brain.speech.express.moment(moment,{time:'past'});
+    }
 
   
 

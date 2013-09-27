@@ -126,6 +126,20 @@ function Speech(host) {
       return response;
     }
 
+    express.moment = function(moment, context) 
+    {
+      var response = '';
+      console.log('expressing moment...',moment,context);
+      return response;
+    }
+
+    express.association = function(seed, idea) 
+    {
+      var response = '';
+      response += lexicate(seed) + " " + conjugate(seed, 'reminds') + " me of " + lexicate(idea);
+      return response;
+    }
+
     express.relationship = function(seed, relationship) 
     {
       var response = '';
