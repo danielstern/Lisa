@@ -56,7 +56,6 @@ function Brain(host) {
     if (_.stringContains(statement,['who','what','which','why','when'])) context.request = +1;
 
     var ideas = _.extractIdeas(statement);
-    console.log('ideas?',ideas);
 
     context.ideas = ideas;
 
@@ -76,6 +75,8 @@ function Brain(host) {
 
     var context = brain.analyze(word);
 
+    /*
+      glitchy idea matching matches "King of Swedes" to "king" or "Sword of the Morning" to 'sword'
     if (!idea)
     {
       _.each(context.ideas,function(thoughtFragment){
@@ -84,6 +85,7 @@ function Brain(host) {
          idea = idea || _.find(brain.lexicon.expressions, function(idea){return idea.said.toLowerCase() == thoughtFragment.toLowerCase()});
       });
     }
+    */
 
     /*
       As a last resort, use psychic faculty to consult the internet to demystify the statement
@@ -111,8 +113,6 @@ function Brain(host) {
     var promise = new Promise();
 
     if (brain.seed && brain.seed.hidden) brain.seed = '';
- 
-    console.log('ponder: brain seed? ' , brain.seed);
     
     idea = idea || brain.seed || _.sample(brain.lexicon.things);
     if (idea.hidden == 'true') _.sample(brain.lexicon.things); // this function prevents Lisa from finding out she is really a robot

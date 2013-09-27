@@ -6,7 +6,7 @@ function Logic(brain) {
 
   logic.demystify = function (seed, numberOfQualities) {
      var response = '';
-     if (!seed.is) return response;
+     if (!seed.is || !seed.is[0]) return response;
 
      response += brain.speech.express.quality(seed, _.sample(seed.is));
      response += brain.speech.softPause();
@@ -43,18 +43,24 @@ function Logic(brain) {
           break;
 
         case 'scopeUp':
-          thought = logic.scopeUp(seed);
+          brainwave = logic.scopeUp(seed);
+
+           thought = brainwave[0];
+          seed = brainwave[1];
           break;
 
         case 'scopeSideways':
           brainwave = logic.scopeSideways(seed);
-          console.log('got scopesideways brainwave',brainwave)
+        
           thought = brainwave[0];
           seed = brainwave[1];
           break;
 
         case 'scopeDown':
-          thought = logic.scopeDown(seed);
+          brainwave = logic.scopeDown(seed);
+            console.log('got scopedown brainwave',brainwave,brainwave[1])
+          thought = brainwave[0];
+          seed = brainwave[1];
           break;
 
 
@@ -134,15 +140,17 @@ function Logic(brain) {
 
   logic.scopeUp = function(seed) {
      var response = '';
-     if (!seed.extends) return response;
+     if (!seed.extends) return [response,seed];
 
+     console.log('scoping up...', seed);
      response += brain.speech.express.inheritance(seed, seed.extends);
      response += brain.speech.softPause();
 
      var scopeUpIdea = _.where(things,{word:seed.extends[0]});
      if (!scopeUpIdea[0]) think('I cant scope up to ' + seed.extends[0]);
      if (scopeUpIdea[0]) seed = scopeUpIdea[0];
-     return response; 
+     console.log('scopeup returnng...',response,seed)
+     return [response,seed];
   }
 
   logic.scopeDown = function(seed) {
@@ -155,16 +163,19 @@ function Logic(brain) {
       return false;
     })
 
-    if (!scopeDownIdea) return response;
+    if (!scopeDownIdea) {
+      think('I cant scope down from ' + seed.word);
+      return [response,seed];
+    }
       
     if (scopeDownIdea[0]) {
       var idea = _.sample(scopeDownIdea);
-      seed = idea;
       response += brain.speech.express.induction(seed, idea);
       response += brain.speech.softPause();
+      seed = idea;
     }
 
-    return response;
+    return [response,seed];
   }
 
 
@@ -207,9 +218,9 @@ function Logic(brain) {
       return thing.extends[0] == seed.extends[0]
     });
 
-    if (!relatedThings) return [response,seed];
+    if (!relatedThings || !relatedThings[0]) return [response,seed];
 
-    think('there are related things.')
+    console.log('there are related things.',relatedThings)
     var sidewaysIdea = _.sample(relatedThings);
 
     if (!sidewaysIdea) return [response,seed];

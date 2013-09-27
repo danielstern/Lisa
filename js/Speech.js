@@ -368,8 +368,7 @@ function Speech(host) {
 
       if (word == idea.plural) idea.pronoun = 'pluralize';
 
-      console.log('idea?',idea);
-
+     
       var returnWord = true;
       switch (idea['pronoun'] )
       {

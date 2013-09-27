@@ -1,0 +1,585 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"dem",
+				"demystify"
+			],
+			[
+				"sco",
+				"scopeSideways"
+			],
+			[
+				"scope",
+				"scopeUpIdea"
+			],
+			[
+				"demi",
+				"demystify-self"
+			],
+			[
+				"pa",
+				"patternsReturned"
+			],
+			[
+				"re",
+				"relationship"
+			],
+			[
+				"rel",
+				"relationship"
+			],
+			[
+				"retur",
+				"returnWord"
+			],
+			[
+				"pe",
+				"PERSONALITY_SERVICE"
+			],
+			[
+				"input",
+				"inputText"
+			],
+			[
+				"chara",
+				"characters"
+			],
+			[
+				"short",
+				"ShortTermMemory"
+			],
+			[
+				"scoe",
+				"scopeUp"
+			],
+			[
+				"pro",
+				"pronoun"
+			],
+			[
+				"to",
+				"toLowerCase"
+			],
+			[
+				"sidew",
+				"sidewaysIdea"
+			],
+			[
+				"side",
+				"sidewaysIdea"
+			],
+			[
+				"asso",
+				"associatedThing"
+			],
+			[
+				"explore",
+				"exploreAssociations"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "js/Speech.js",
+			"settings":
+			{
+				"buffer_size": 9462,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/Memory.js",
+			"settings":
+			{
+				"buffer_size": 758,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/Logic.js",
+			"settings":
+			{
+				"buffer_size": 6535,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/Brain.js",
+			"settings":
+			{
+				"buffer_size": 3769,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/patterns.js",
+			"settings":
+			{
+				"buffer_size": 744,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "lang/lexicon.js",
+			"settings":
+			{
+				"buffer_size": 8424,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 2621,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/Lisa.js",
+			"settings":
+			{
+				"buffer_size": 1523,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "lib/underscore/underscore.string.js",
+			"settings":
+			{
+				"buffer_size": 18785,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/wamp/www/lisa/js/Personality.js",
+		"/C/wamp/www/lisa/js/filter.js",
+		"/C/wamp/www/lisa/js/patterns.js",
+		"/C/wamp/www/lisa/lang/lexicon.js",
+		"/C/wamp/www/lisa/js/Brain.js",
+		"/C/wamp/www/lisa/js/Utility.js",
+		"/C/wamp/www/lisa/js/Lisa.js",
+		"/C/Users/New Owner/Documents/portfoliolinks",
+		"/C/wamp/www/lisa/README.md",
+		"/C/wamp/www/lisa/js/Speech.js",
+		"/C/wamp/www/lisa/index.html",
+		"/C/wamp/www/lisa/js/Logic.js",
+		"/C/wamp/www/lisa/js/Memory.js",
+		"/C/wamp/www/lisa/js/Psychic.js",
+		"/C/wamp/www/lisa/js/Patterns.js",
+		"/C/wamp/www/lisa/lang/lexicon-fruits.js",
+		"/C/wamp/www/lisa/lang/dictionary.js",
+		"/C/wamp/www/lisa/writeLex.php",
+		"/C/wamp/www/assassin/php/head.php",
+		"/C/wamp/www/legend_game/index.html"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"log",
+			"scopeDown",
+			"host?",
+			"think",
+			"scopeUp",
+			"brain.seed",
+			"seed",
+			"things",
+			"hon",
+			"lexicate",
+			".greeting",
+			"brain.pattern",
+			"food",
+			"candy",
+			"callback",
+			"preposit",
+			"quality",
+			"		{",
+			"whatis",
+			"things",
+			"food",
+			"associat",
+			"remind",
+			"inheri",
+			"a kind of",
+			"royalty",
+			"remind",
+			"whatis",
+			"fruit",
+			"inherit",
+			"chatty",
+			"express.as",
+			"remind"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 5,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "js/Speech.js",
+					"settings":
+					{
+						"buffer_size": 9462,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8447,
+								8447
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 5171.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "js/Memory.js",
+					"settings":
+					{
+						"buffer_size": 758,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								509,
+								509
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "js/Logic.js",
+					"settings":
+					{
+						"buffer_size": 6535,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3341,
+								3341
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1526.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "js/Brain.js",
+					"settings":
+					{
+						"buffer_size": 3769,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2960,
+								2960
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1001.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "js/patterns.js",
+					"settings":
+					{
+						"buffer_size": 744,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								251,
+								251
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "lang/lexicon.js",
+					"settings":
+					{
+						"buffer_size": 8424,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								109,
+								110
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "index.html",
+					"settings":
+					{
+						"buffer_size": 2621,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								618,
+								618
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "js/Lisa.js",
+					"settings":
+					{
+						"buffer_size": 1523,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								552,
+								552
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "lib/underscore/underscore.string.js",
+					"settings":
+					{
+						"buffer_size": 18785,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8079,
+								8079
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3334.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true
+}

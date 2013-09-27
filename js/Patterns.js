@@ -2,17 +2,17 @@ var _lisapatterns =  {
 	exposition:
 	[
 		{
-			sequence:['demystify','compare','scopeSideways']
+			sequence:['demystify','scopeSideways']
 		},
+		{
+			sequence:['demystify','demystify','scopeSideways']
+		},
+		{
+			sequence:['demystify','demystify','scopeDown']
+		},	
 		{
 			sequence:['demystify','demystify','scopeUp']
-		},
-		{
-			sequence:['demystify','scopeDown']
-		},
-		{
-			sequence:['demystify']
-		},		
+		},	
 	],
 	service:
 	[

@@ -26,6 +26,11 @@ var Lexicon = {
       hidden:'true',
       plural:'creatures',
     },
+    {
+      word:'person',
+      hidden:'true',
+      plural:'people',
+    },
 /* 
     // general things
     {
@@ -204,7 +209,7 @@ var Lexicon = {
     {
       word:'weapon',
       is:['dangerous'],
-      extends:['tools'],
+      extends:['tool'],
       plural:'weapons',
       associated:[],
     },
@@ -225,9 +230,44 @@ var Lexicon = {
     {
       word:'wizard',
       is:['wise','magical','powerful','feared'],
-      extends:['person'],
+      extends:['warrior'],
       plural:'wizards',
       associated:['magic'],
+    },
+    {
+      word:'barbarian',
+      is:['brutish','tough','strong'],
+      extends:['warrior'],
+      plural:'barbarians',
+      associated:['sword'],
+    },
+    {
+      word:'nobleman',
+      is:['wealthy','learned','pompous'],
+      extends:['noble'],
+      plural:'noblemen',
+      associated:['gold'],
+    },
+    {
+      word:'noble',
+      is:['wealthy','distinguished'],
+      extends:['person'],
+      plural:'nobles',
+      associated:['gold'],
+    },
+    {
+      word:'noblewoman',
+      is:['gossipy','wealthy','flitty','airy'],
+      extends:['noble'],
+      plural:'noblewomen',
+      associated:['gold'],
+    },
+    {
+      word:'warrior',
+      is:[],
+      extends:['person'],
+      plural:'warriors',
+      associated:[],
     },
     {
       word:'magic',
