@@ -20,9 +20,7 @@ function Logic(brain) {
 
     if (seed.said !== undefined) {
       response = brain.logic.colloquilize(seed);
-      response = brain.speech.prettify(response);
-      setTimeout(function(){promise.resolve(response)},150);
-      return promise;
+      return [response,seed]
     }
 
     var pattern = brain.personality.getPattern();

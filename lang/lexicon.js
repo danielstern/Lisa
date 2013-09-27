@@ -390,6 +390,10 @@ var Lexicon = {
       associated:[]
     },
     {
+      word:'Amandia',
+      see:'Queen Amandia'
+    },
+    {
       word:'zombie',
       is:['undead','dangerous'],
       extends:['monster'],
