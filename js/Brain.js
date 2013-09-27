@@ -66,7 +66,6 @@ function Brain(host) {
 
   brain.whatIs = function(word, noAsync) {
 
-    brain.host.thinks('What is... ' + word);
     var idea;
 
 
@@ -111,7 +110,9 @@ function Brain(host) {
     var response = '';
     var promise = new Promise();
 
-    console.log('brain seed? ' , brain.seed)
+    if (brain.seed && brain.seed.hidden) brain.seed = '';
+ 
+    console.log('ponder: brain seed? ' , brain.seed);
     
     idea = idea || brain.seed || _.sample(brain.lexicon.things);
     if (idea.hidden == 'true') _.sample(brain.lexicon.things); // this function prevents Lisa from finding out she is really a robot

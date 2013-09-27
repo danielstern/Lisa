@@ -21,6 +21,7 @@ function ShortTermMemory(memory) {
   }
 
   short.recall = function(memory) {
+    
     var justNow = _.last(short.recentThings,short.capacity)
     var contains = _.contains(justNow, memory);
     return contains;
@@ -30,7 +31,7 @@ function ShortTermMemory(memory) {
 
     var justNow = _.last(short.recentThings,short.capacity);
     var memoryFilter = _.filter(justNow, function(memory){return memory.toString().indexOf(word) != -1});
-    console.log('scan',memoryFilter);
+
     return memoryFilter.length > 0;
 
   }
