@@ -18,7 +18,6 @@ lisa.hears('sword').then(function(reply){
   $('body').html(reply);
 });
 // Swords are deadly.
-}
 ```
 
 <p>Lisa has many other uses including teaching people to speak new languages, and simulating staff at kiosks.</p>
@@ -60,6 +59,15 @@ Lisa.thinks(Lisa.brain.speech.express.greeting());
 #### Logic
 Logic is the controller to speech's view and lexicon's model.  
 
+##### `demystify()`
+Produces a thought about that idea.
+
+```
+var idea = _.sample(brain.things);
+brain.logic.demystify(idea);
+// Pears are healthy.
+
+```
 
 <h4>Emotion</h4>
 #### Personality    

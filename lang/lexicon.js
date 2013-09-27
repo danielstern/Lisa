@@ -114,7 +114,7 @@ var Lexicon = {
     },
     {
       word:'bird',
-      is:['flying','graceful','airborne'],
+      is:['graceful','airborne'],
       extends:['animal'],
       plural:'birds',
       associated:['hawk','fish'],
