@@ -2,6 +2,8 @@
   function Brain(host) {
 
     var brain = this;
+    window.brain = brain; // for testing;
+
     brain.host = host;
     brain.lexicon = Lexicon;
     brain.personality = brain.host.personality;
@@ -12,13 +14,8 @@
     brain.memory = new Memory(brain);
     brain.personality = new Personality(brain);
 
-    window.brain = this; // creepy
-
-    console.log('personality?' , brain.personality)
-
-    brain.patterns = personality.patterns;
-    var things = brain.lexicon.things;
-   // brain.psychic = new Psychic();
+    brain.patterns = brain.personality.patterns;
+    brain.things = brain.lexicon.things;
 
     brain.process = function(words) {
 
@@ -109,8 +106,8 @@
 
     brain.ponder = function(idea) {
 
-      brain.seed = idea || _.sample(this.lexicon.things);
-      if (brain.seed.hidden == 'true') _.sample(this.lexicon.things); // this function prevents Lisa from finding out she is really a robot
+      brain.seed = idea || _.sample(brain.lexicon.things);
+      if (brain.seed.hidden == 'true') _.sample(brain.lexicon.things); // this function prevents Lisa from finding out she is really a robot
       var response = '';
       var seed = brain.seed;
       var promise = new Promise();
@@ -135,97 +132,58 @@
       _.each(sequence, function(command){
 
 
-        var thought;
-        switch (command)
-        {
-          case 'demystify':
-            thought = logic.demystify(brain.seed);
-            break;
-          case 'compare':
-           thought = logic.compare(brain.seed);
-            break;
-          case 'scopeUp':
-           thought = logic.scopeUp(brain.seed);
-            break;
-          case 'scopeSideways':
-          thought = logic.scopeSideways(brain.seed);
-           break;
-          case 'scopeDown':
-           thought = logic.scopeDown(brain.seed);
-            break;
-          case 'greet':
-           thought = brain.speech.express.formalGreeting();
-            break;
-          case 'demystify-self':
-           thought = logic.demystifyPersonality('self');
-            break;
-          case 'share-ego':
-           thought = logic.shareEgo('self');
-            break;
+      var thought;
+      switch (command)
+      {
+        case 'demystify':
+          thought = logic.demystify(brain.seed);
+          break;
+        case 'compare':
+         thought = logic.compare(brain.seed);
+          break;
+        case 'scopeUp':
+         thought = logic.scopeUp(brain.seed);
+          break;
+        case 'scopeSideways':
+        thought = logic.scopeSideways(brain.seed);
+         break;
+        case 'scopeDown':
+         thought = logic.scopeDown(brain.seed);
+          break;
+        case 'greet':
+         thought = brain.speech.express.formalGreeting();
+          break;
+        case 'demystify-self':
+         thought = logic.demystifyPersonality('self');
+          break;
+        case 'share-ego':
+         thought = logic.shareEgo('self');
+          break;
 
-        }
+      }
 
 
         var shortTerm = brain.memory.short;
-        var alreadySaidIt = false;
-        if (shortTerm.recall(thought)) {
-          brain.host.thinks('Oh, I just said that, didn\'t I...');
-          alreadySaidIt = true;
-        };
-        if (!alreadySaidIt) {
-          response += thought;
-          response += "//";
-          shortTerm.remember(thought);
-        } else {
+      var alreadySaidIt = false;
+      if (shortTerm.recall(thought)) {
+        brain.host.thinks('Oh, I just said that, didn\'t I...');
+        alreadySaidIt = true;
+      };
+      if (!alreadySaidIt) {
+        response += thought;
+        response += "//";
+        shortTerm.remember(thought);
+      } else {
 
-          response += brain.speech.express.pause();
-        }
-         
-      })
+        response += brain.speech.express.pause();
+      }
+       
+    })
 
-      response = brain.speech.prettify(response);
-      
-      setTimeout(function(){promise.resolve(response)},150);
-      return promise;
-    }
+    response = brain.speech.prettify(response);
+    
+    setTimeout(function(){promise.resolve(response)},50);
+    return promise;
   }
-
-
-function Memory(brain) {
-
-  var memory = this;
-  memory.brain = brain;
-  memory.short = new ShortTermMemory(memory);
-
 }
 
-function ShortTermMemory(memory) {
-
-  var short = this;
-  short.memory = memory;
-  short.capacity = 25;
-
-  short.recentThings = [];
-
-  short.remember = function(memory) {
-    console.log('got memory...',memory);
-    short.recentThings.push(memory);
-  }
-
-  short.recall = function(memory) {
-    var justNow = _.last(short.recentThings,short.capacity)
-    var contains = _.contains(justNow, memory);
-    console.log('contains?',contains);
-    return contains;
-  }
-
-  short.scan = function(word) {
-    var justNow = _.last(short.recentThings,short.capacity);
-   // console.log()
-    var memoryFilter = _.filter(justNow, function(memory){return memory.toString().indexOf(word) != -1});
-    console.log('scan',memoryFilter);
-    return memoryFilter.length > 0;
-  }
-
-  window.mem = this;
-}

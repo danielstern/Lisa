@@ -1,6 +1,6 @@
-var Patterns =  
-{
-	exposition:[
+var _lisapatterns =  {
+	exposition:
+	[
 		{
 			sequence:['demystify','demystify','compare']
 		},
@@ -8,7 +8,7 @@ var Patterns =
 			sequence:['demystify','compare','demystify']
 		},
 		{
-			sequence:['demystify','compare','compare']
+			sequence:['demystify','compare','scopeSideways']
 		},
 		{
 			sequence:['demystify','compare','scopeUp','demystify']
@@ -23,8 +23,69 @@ var Patterns =
 			sequence:['demystify','scopeSideways','demystify','scopeUp']
 		},
 		{
+			sequence:['demystify','scopeSideways','demystify']
+		},
+		{
 			sequence:['demystify','scopeDown','demystify']
 		},
+		
+	],
+	classic:
+	[
+		{
+			sequence:['demystify','demystify','compare','scopeSideways']
+		},
+		{
+			sequence:['demystify','compare','demystify']
+		},
+		{
+			sequence:['demystify','scopeSideways','compare']
+		},
+		{
+			sequence:['demystify','compare','scopeUp','demystify']
+		},
+		{
+			sequence:['demystify','compare']
+		},
+		{
+			sequence:['demystify-self','share-ego']
+		},
+		{
+			sequence:['demystify-self','demystify-self']
+		},
+		{
+			sequence:['demystify-self','share-ego','demystify-self']
+		},
+		{
+			sequence:['demystify-self']
+		},
 
+		
+	],
+
+	service:
+	[
+		{
+			sequence:['greet']
+		},
+		{
+			sequence:['greet','demystify-self']
+		},
+		{
+			sequence:['demystify-self','share-ego']
+		},
+		{
+			sequence:['demystify-self','share-ego','demystify-self']
+		},
+		{
+			sequence:['demystify-self']
+		},
+	],
+
+	greeting:
+	[
+		{
+			sequence:['greet','share-ego']
+		},
 	]
-}
+	}

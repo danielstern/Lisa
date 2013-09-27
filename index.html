@@ -23,6 +23,11 @@
   <script src="js/Logic.js"></script>
   <script src="js/Personality.js"></script>
   <script src="js/Psychic.js"></script>
+  <script src="js/Memory.js"></script>
+
+  <script src="js/patterns.js"></script>
+  <script src="js/filter.js"></script>
+
 </head>
 <body>
   <div class='container' style='padding:60px;'>
@@ -84,23 +89,11 @@
   });
 
 
- 
-
-  var personality = {
-
-    cheerful:5,
-    chatty:8,
-    friendly:5,
-    inquisitive:20
-
-  }
-
   var $Lisa = new Lisa();
 
   $Lisa.saySomethingRandom().then(function(response){
-         $('#dialogue').html(response); 
-       })
-
+    $('#dialogue').html(response); 
+  })
 
 
 </script>

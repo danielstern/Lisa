@@ -37,8 +37,6 @@ function Speech(host) {
       return response;
     }
 
-
-
     express.incomprehension = function() 
     {
       var response = '';
@@ -151,12 +149,13 @@ function Speech(host) {
       return response;
     }   
 
+    /* expresses a relationship between two things expressed by a verb */
     express.relationship = function(relationship) 
     {
       var response = '';
-      //console.log('express relationship got rel.',relationship);
+
       response += lexicate(relationship.subject) + " " + relationship.action + " " + lexicate(relationship.object);
-    
+
       return response;
     }   
 
@@ -184,6 +183,7 @@ function Speech(host) {
       return response;
     }  
 
+     /* Returns the sort of greeting you might expect from the service industry. */
     express.formalGreeting = function() 
     {
       var response = '';
@@ -207,6 +207,8 @@ function Speech(host) {
       return response;
     }  
 
+
+     /* Returns a string representing a human utterance for 'Just give me a sec...'. */
     express.pause = function() 
     {
       var response = '';
@@ -243,6 +245,9 @@ function Speech(host) {
       return response;
     }  
 
+    /*
+      Expresses a good-bye.
+    */
     express.parting = function() 
     {
       var response = '';
@@ -266,6 +271,9 @@ function Speech(host) {
       return response;
     }        
 
+    /*
+      Expresses a sentiment intended to offend the listener.
+    */
     express.offense = function()
     {
        var response = '';
@@ -349,13 +357,10 @@ function Speech(host) {
       var preposition = '';
       var pronoun = '';
 
-      console.log('prepositing...',word);
-
       word = word || '';
 
       var idea = speech.host.brain.whatIs(word,true);
 
-      /* no longer works with async pattern */
       if (!idea) {
 
          idea = {pronoun:''}
@@ -407,8 +412,7 @@ function Speech(host) {
 
   speech.prettify = function(phrase) {
      
-  //  console.log('personality?',speech.brain.personality)
-    phrase = _.capitalize(phrase,speech.host.brain.personality.filter);
+    phrase = _.lisaFormat(phrase,speech.host.brain.personality.filter);
     return phrase;
   }
 }
