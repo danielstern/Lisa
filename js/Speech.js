@@ -4,6 +4,7 @@ function Speech(host) {
   speech.host = host;
   speech.express = new Express;
   speech.brain = host.brain;
+  var response = '';
 
   function Express() 
   {
@@ -16,29 +17,24 @@ function Speech(host) {
 
     express.quality = function(seed, quality) 
     {
-      var response = '';
-      response += lexicate(seed) + " " + conjugate(seed, 'is') + " " + quality;
+      response = lexicate(seed) + " " + conjugate(seed, 'is') + " " + quality;
       return response;
     }
 
     express.possessive = function(key, value) 
     {
-      var response = '';
-      response += "My " + key + " is " + value;
+      response = "My " + key + " is " + value;
       return response;
     }
 
     express.personalTrait = function(trait) 
     {
-      var response = '';
-      response += "I'm " + trait;
+      response = "I'm " + trait;
       return response;
     }
 
     express.incomprehension = function() 
-    {
-      var response = '';
-    
+    {    
       switch (Math.ceil(Math.random()*9))
       {
         case 1:
@@ -73,8 +69,6 @@ function Speech(host) {
 
     express.inheritance = function(seed, idea) 
     {
-      var response = '';
-
       switch (Math.ceil(Math.random()*5))
       {
         case 1:
@@ -95,8 +89,6 @@ function Speech(host) {
 
     express.induction = function(seed, idea) 
     {
-      var response = '';
-
       switch (Math.ceil(Math.random()*4))
       {
         case 1:
@@ -104,10 +96,10 @@ function Speech(host) {
          // response += lexicate(idea) + " " + conjugate(idea, 'is') +" " + lexicate(seed);
          // break;
         case 4:
-          response += "One kind of " + seed.word + " " + 'is' + " " + lexicate(idea);
+          response = "One kind of " + seed.word + " " + 'is' + " " + lexicate(idea);
           break;
         case 2:
-          response += "A kind of " + seed.word + " " + 'is' + " " + lexicate(idea);
+          response = "A kind of " + seed.word + " " + 'is' + " " + lexicate(idea);
           break;
         /*case 5:
           response += "I consider " + lexicate(idea) + " to be a kind of " + seed.word;
@@ -121,48 +113,41 @@ function Speech(host) {
 
     express.association = function(seed, idea) 
     {
-      var response = '';
-      response += lexicate(seed) + " " + conjugate(seed, 'reminds') + " me of " + lexicate(idea);
+      response = lexicate(seed) + " " + conjugate(seed, 'reminds') + " me of " + lexicate(idea);
       return response;
     }
 
     express.moment = function(moment, context) 
     {
-      var response = '';
       console.log('expressing moment...',moment,context);
       return response;
     }
 
     express.association = function(seed, idea) 
     {
-      var response = '';
-      response += lexicate(seed) + " " + conjugate(seed, 'reminds') + " me of " + lexicate(idea);
+      response = lexicate(seed) + " " + conjugate(seed, 'reminds') + " me of " + lexicate(idea);
       return response;
     }
 
     express.relationship = function(seed, relationship) 
     {
-      var response = '';
-      console.log('Express relationship:',seed,relationship);
       if (!relationship) return response;
-      response += lexicate(seed)  + " " + verbalize(seed,relationship) + " " + preposit(relationship.object);
+      response = lexicate(seed)  + " " + verbalize(seed,relationship) + " " + preposit(relationship.object);
       return response;
     }
 
 
     express.sharedQuality = function(subject, object, trait) 
     {
-      var response = '';
-    
       switch (Math.ceil(Math.random()*4))
       {
         case 1:
         case 3:
         case 4:
-            response += lexicate(subject) + " and " + lexicate(object) + " are both " + trait;
+            response = lexicate(subject) + " and " + lexicate(object) + " are both " + trait;
           break;
         case 2:
-            response += "Both " + lexicate(subject) + " and " + lexicate(object) + " are " + trait;
+            response = "Both " + lexicate(subject) + " and " + lexicate(object) + " are " + trait;
           break;
         /*case 5:
            response += lexicate(subject) + " and " + lexicate(object)  + " are similar because they are both " + trait;
@@ -177,8 +162,6 @@ function Speech(host) {
     /* Returns a string representing a friendly greeting. */
     express.greeting = function() 
     {
-      var response = '';
-    
       switch (Math.ceil(Math.random()*5))
       {
         case 1:
@@ -201,8 +184,6 @@ function Speech(host) {
      /* Returns the sort of greeting you might expect from the service industry. */
     express.formalGreeting = function() 
     {
-      var response = '';
-    
       switch (Math.ceil(Math.random()*4))
       {
         case 1:
@@ -226,8 +207,6 @@ function Speech(host) {
      /* Returns a string representing a human utterance for 'Just give me a sec...'. */
     express.pause = function() 
     {
-      var response = '';
-    
       switch (Math.ceil(Math.random()*9))
       {
         case 1:
@@ -265,8 +244,6 @@ function Speech(host) {
     */
     express.parting = function() 
     {
-      var response = '';
-    
       switch (Math.ceil(Math.random()*5))
       {
         case 1:
@@ -291,8 +268,6 @@ function Speech(host) {
     */
     express.offense = function()
     {
-       var response = '';
-    
       switch (Math.ceil(Math.random()*5))
       {
         case 1:
@@ -312,8 +287,6 @@ function Speech(host) {
 
     express.perceiveSilence = function() {
 
-      var response = '';
-    
       switch (Math.ceil(Math.random()*5))
       {
         case 1:
@@ -331,13 +304,13 @@ function Speech(host) {
           break;
       }
       return response;
+
     }
 
     var lexicate = function(seed) {
 
-       var response = '';
        if (typeof seed == 'string') seed = {word:seed};
-       response += (seed.pronoun == 'unique' ? preposit(seed.word) : (seed.plural || preposit(seed.word)));
+       response = (seed.pronoun == 'unique' ? preposit(seed.word) : (seed.plural || preposit(seed.word)));
 
        return response;
     }

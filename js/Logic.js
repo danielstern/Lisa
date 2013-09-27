@@ -3,6 +3,7 @@ function Logic(brain) {
 	var logic = this;
   var things = brain.lexicon.things;
   var think = brain.host.thinks;
+  var response = '';
 
   logic.demystify = function (seed, numberOfQualities) {
      var response = '';
@@ -277,6 +278,7 @@ function Logic(brain) {
        console.log('moment?',moment)
 
        var expression = brain.speech.express.moment(moment,{time:'past'});
+       return expression;
     }
 
   
