@@ -42,10 +42,9 @@ function ShortTermMemory(memory) {
 }
 
 function LongTermMemory(memory) {
-  var stories = [];
+  var stories = _stories;
   var longTerm = this;
-  var stories = [_story];
-
+  
   longTerm.getStories = function(seed) {
 
     if (!seed) return {};
@@ -69,10 +68,22 @@ function LongTermMemory(memory) {
   }
 }
 
-var _story = {
-  sequence:[
-    {subject:'Algoron',action:'go',object:'Emeraldia'},
-    {subject:'Algoron',action:'kill',object:'Amnon'},
-    {subject:'Omnoth',action:'rule',object:'Emeraldia'}
-  ]
-}
+var _stories = [
+  {
+    sequence:
+    [
+      {subject:'Algoron',action:'go',object:'Emeraldia'},
+      {subject:'Algoron',action:'kill',object:'Amnon'},
+      {subject:'Omnoth',action:'rule',object:'Emeraldia'}
+    ]
+  },
+  {
+    sequence:
+    [
+      {subject:'Algoron',action:'go',object:'Emeraldia'},
+      {subject:'Algoron',action:'kill',object:'warrior'},
+      {subject:'Algoron',action:'use',object:'dark magic'}
+    ]
+  }
+
+]

@@ -18,7 +18,10 @@ var _lisapatterns =  {
 		},*/
 		{
 			sequence:['demystify','tell-story']
-		}	
+		},
+		{
+			sequence:['demystify','tell-story','tell-story']
+		}
 	],
 	service:
 	[
