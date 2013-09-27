@@ -409,6 +409,10 @@ function Speech(host) {
     }
   }
 
+  speech.softPause = function() {
+    return "//";
+  }
+
 
   speech.prettify = function(phrase) {
      

@@ -1,4 +1,5 @@
-<h1>Lisa</h1>
+Lisa
+----
 
 ```javascript
 var lisa = new Lisa();
@@ -6,7 +7,8 @@ lisa.thinks('You know nothing, Jon Snow.');
 // LISA: You know nothing, Jon Snow.
 ```
 
-<h2>Neuro-Computational Matrix</h2>
+Neuro-Computational Matrix
+==========================
 <p>A neuro-computational matrix is a computer program that attempts to simulate the complex workings of the mind.</p>
 
 <p>Lisa is designed to be the basis of an intelligent conversation simulator that will ultimately allow NPCs in games to say different things, every time - and mean it!</p>
@@ -29,14 +31,11 @@ lisa.hears('sword').then(function(reply){
 }
 ```
 
-<p>
-	Lisa has several functions that naturally complement eachother. She can
-	<ul>
-		<li>Just Think of Something Random and Talk About It</li>
-		<li>She can riff on something you say to her.
-		</li>
-	</ul>
-</p>
+
+Lisa has several functions that naturally complement eachother. She can
++ Just Think of Something Random and Talk About It
++ She can riff on something you say to her.
+
 
 ```javascript
 lisa.brain.ponder('dogs').then{function(thought)
@@ -48,24 +47,24 @@ lisa.brain.ponder('dogs').then{function(thought)
 <h2>How It Works</h2>
 <h3>Brain</h3>
 <p>Lisa's modular command center, the brain is the glue which holds Lisa's logic, memories and speech together.</p>
-<h4>Speech</h4>
-<p>
-  Lisa's speech module allows Lisa to translate her ideas into something human beings can understand through `express()`.
-</p>
+#### Speech
+
+Lisa's speech module allows Lisa to translate her ideas into something human beings can understand through `express()`.
 
 ```javascript
 Lisa.thinks(Lisa.brain.speech.express.greeting());
 // 'Hey there, sugar.'
 ```
 
-<h4>Logic</h4>
+#### Logic
 <p>
   Logic is the controller to speech's view and lexicon's model.  
 </p>
 <h4>Emotion</h4>
-<h4>Personality</h4>    
-<h4>Memory</h4>    
-<h5>Short Term Memory</h5>
+#### Personality    
+
+#### Memory    
+##### Short Term Memory
 <p>Prevents Lisa from saying the same thing twice, rambling, etc.</p>
 <p>When Lisa says something, she stores the thought in her short term memory.</p>
 
@@ -84,16 +83,49 @@ if (brain.memory.short.recall(thought)) {
 };
 ```
 
-<h5>Long Term Memory:</h5>
+##### Short Term Memory Functions
+`memory.short.recall(thought)` 
+Returns true if Lisa remembers saying the thought.
+
+    brain.ponder('merlin');
+    // LISA: Merlin is a wizard.
+    brain.memory.short.recall('Merlin is a wizard.')
+    // true;
+
+`memory.short.scan(word)` 
+Returns true if Lisa remember having said that word at all within her short term memory.
+
+    brain.memory.short.scan('profession');
+    // false;
+    brain.ponder();
+    // LISA: My profession is spokesmatrix, honey.
+    brain.memory.short.recall('profession');
+    // true;
+
+
+
+##### Long Term Memory:
 <p>Lisa's long term memories and personality that persist past the current session. Can use a database or local storage.</p>
 <ul>
   <li>Lisa can add new ideas and connections to her lexicon with her long term memory.</li>
   <li>Lisa can remember things you were talking about in the past and reminisce about them.</li>
 </ul>
-<h4>Lexicon</h4>
-<p>
-  The Lexicon is an interchangeable module containing interrelating words and ideas. 
-</p>
+#### Lexicon
+The Lexicon is an interchangeable module containing interrelating words and ideas. 
+
+```javascript
+var Lexicon = {
+  things:[
+    {
+      word:'orange',
+      is:['sweet','healthy','orange'],
+      extends:['fruit'],
+      plural:'oranges',
+      associated:['apple'],
+    },
+  ]
+}
+
 
 <h4>Psychic</h4>
 <p>
