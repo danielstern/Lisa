@@ -69,23 +69,25 @@ function Brain(host) {
 
 
     // try to look the idea up in her Lexicon
-    idea = _.find(brain.lexicon.things, function(idea){if (!idea.word) return; return idea.word.toLowerCase() == word.toLowerCase()});      
-    idea = idea || _.find(brain.lexicon.things, function(idea){if (!idea.plural) return false; return idea.plural.toLowerCase() == word.toLowerCase()});
-    idea = idea || _.find(brain.lexicon.expressions, function(idea){return idea.said.toLowerCase() == word.toLowerCase()});
+   
+    idea = extractIdea(word);
+
+    function extractIdea(word) {
+      for (var i = 0; i < 3; i++)  {
+        var idea = _.find(brain.lexicon.things, function(idea){if (!idea.word) return; return _.probably(idea.word,word, i)});      
+        idea = idea || _.find(brain.lexicon.things, function(idea){if (!idea.plural) return false; return _.probably(idea.plural, word, i)});
+        idea = idea || _.find(brain.lexicon.expressions, function(idea){return _.probably(idea.said, word, i)});
+      }
+
+      return idea;
+    }
 
     var context = brain.analyze(word);
+    console.log('context?',context);
 
-    /*
-      glitchy idea matching matches "King of Swedes" to "king" or "Sword of the Morning" to 'sword'
-    if (!idea)
-    {
-      _.each(context.ideas,function(thoughtFragment){
-         idea = idea || _.find(brain.lexicon.things, function(idea){return idea.word.toLowerCase() == thoughtFragment.toLowerCase()});      
-         idea = idea || _.find(brain.lexicon.things, function(idea){if (!idea.plural) return false; return idea.plural.toLowerCase() == thoughtFragment.toLowerCase()});
-         idea = idea || _.find(brain.lexicon.expressions, function(idea){return idea.said.toLowerCase() == thoughtFragment.toLowerCase()});
-      });
+    if (context.ideas && context.ideas.length == 1) {
+      idea = extractIdea(context.ideas[0]);
     }
-    */
 
     /*
       As a last resort, use psychic faculty to consult the internet to demystify the statement

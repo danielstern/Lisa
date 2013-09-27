@@ -30,7 +30,7 @@ _.mixin({
   extractIdeas: function(statement) {
 
     ideas = statement.split(/[\s,;:!?'"']+/);
-    ideas = _.without(ideas, 'are','is','and','of','with','without','not','who','as','an','but','it','would','on','a','an','then','the','to','by','be','need','so','you','through','that','more','that’s','his','her','there','their','was','in');
+    ideas = _.without(ideas, 'are','is','and','of','with','what','without','not','who','as','an','but','it','would','on','a','an','then','the','to','by','be','need','so','you','through','that','more','that’s','his','her','there','their','was','in');
     return ideas;
 
   },
@@ -60,7 +60,15 @@ _.mixin({
     var lastCharOfString = string.toString().charAt(string.length - 1);
     return lastCharOfString;
 
+  },
+  probably: function(string1, string2, variance) {
+
+    variance = variance || 2;
+    
+    return _.levenshtein(string1,string2) < variance;
+
   }
+
 });
 
 function Promise(params) {
