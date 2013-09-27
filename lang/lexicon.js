@@ -1,7 +1,7 @@
 var Lexicon = {
     things:[
     // special things
-   /* {
+   {
       word:'self',
       pronoun:'self',
       hidden:'true',
@@ -16,7 +16,17 @@ var Lexicon = {
       hidden:'true',
       plural:'places',
     },
-
+    {
+      word:'force',
+      hidden:'true',
+      plural:'forces',
+    },
+    {
+      word:'creature',
+      hidden:'true',
+      plural:'creatures',
+    },
+/* 
     // general things
     {
       word:'apple',
@@ -40,12 +50,7 @@ var Lexicon = {
       associated:['candy','pie'],
     },
 
-    {
-      word:'royalty',
-      is:['powerful','mighty','wealthy','feared','refined','ruin'],
-      pronoun:'concept',
-      associated:['queen','throne','king']
-    },
+
     {
       word:'pear',
       is:['delicious','healthy'],
@@ -194,21 +199,21 @@ var Lexicon = {
       is:['sharp','dangerous','deadly','cool'],
       extends:['weapon'],
       plural:'swords',
-      associated:['shield','magic','Sword of Light'],
+      associated:['shield','magic'],
+    },
+    {
+      word:'weapon',
+      is:['dangerous'],
+      extends:['tools'],
+      plural:'weapons',
+      associated:[],
     },
     {
       word:'Sword of Light',
       is:['very powerful','legendary','secret','hidden in a certain location','buried next to the well'],
       pronoun:'unique',
       extends:['weapon'],
-      associated:['Algoron']
-    },
-    {
-      word:'Algoron',
-      is:['mighty','a wizard','from a distant land','a fearsome sorceror'],
-      pronoun:'proper',
-      extends:['person'],
-      associated:['Sword of Light']
+      associated:[]
     },
     {
       word:'axe',
@@ -216,6 +221,27 @@ var Lexicon = {
       extends:['weapon'],
       plural:'axes',
       associated:['sword','tree','magic'],
+    },
+    {
+      word:'wizard',
+      is:['wise','magical','powerful','feared'],
+      extends:['person'],
+      plural:'wizards',
+      associated:['magic'],
+    },
+    {
+      word:'magic',
+      is:['dangerous'],
+      extends:['force'],
+      pronoun:'concept',
+      associated:['magic'],
+    },
+    {
+      word:'Algoron',
+      is:['mighty','a wizard','from a distant land','a fearsome sorceror'],
+      pronoun:'proper',
+      extends:['wizard'],
+      associated:['Sword of Light']
     },
     {
       word:'king',
@@ -253,10 +279,41 @@ var Lexicon = {
     },
     {
       word:'zombie',
-      is:['undead,','dangerous'],
+      is:['undead','dangerous'],
       extends:['monster'],
       plural:'zombies',
       associated:[''],
+    },
+    {
+      word:'monster',
+      is:['dangerous'],
+      extends:['creature'],
+      plural:'monsters',
+      associated:[''],
+    },
+    {
+      word:'goblin',
+      is:['dangerous'],
+      extends:['monster'],
+      plural:'goblins',
+      associated:[''],
+    },
+    {
+      word:'grimgoblin',
+      is:['dangerous'],
+      extends:['goblin'],
+      plural:'grimgoblins',
+      relationship:{
+        object:'magic',
+        relationship:'use'
+      },
+      associated:[''],
+    },
+    {
+      word:'royalty',
+      is:['powerful','mighty','wealthy','refined'],
+      pronoun:'unique',
+      associated:['queen','throne','king']
     },
     {
       word:'Queen',

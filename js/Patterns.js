@@ -2,67 +2,18 @@ var _lisapatterns =  {
 	exposition:
 	[
 		{
-			sequence:['demystify','demystify','compare']
-		},
-		{
-			sequence:['demystify','compare','demystify']
-		},
-		{
 			sequence:['demystify','compare','scopeSideways']
 		},
 		{
-			sequence:['demystify','compare','scopeUp','demystify']
+			sequence:['demystify','demystify','scopeUp']
 		},
 		{
-			sequence:['demystify','compare']
+			sequence:['demystify','scopeDown']
 		},
 		{
-			sequence:['demystify','demystify']
-		},
-		{
-			sequence:['demystify','scopeSideways','demystify','scopeUp']
-		},
-		{
-			sequence:['demystify','scopeSideways','demystify']
-		},
-		{
-			sequence:['demystify','scopeDown','demystify']
-		},
-		
+			sequence:['demystify']
+		},		
 	],
-	classic:
-	[
-		{
-			sequence:['demystify','demystify','compare','scopeSideways']
-		},
-		{
-			sequence:['demystify','compare','demystify']
-		},
-		{
-			sequence:['demystify','scopeSideways','compare']
-		},
-		{
-			sequence:['demystify','compare','scopeUp','demystify']
-		},
-		{
-			sequence:['demystify','compare']
-		},
-		{
-			sequence:['demystify-self','share-ego']
-		},
-		{
-			sequence:['demystify-self','demystify-self']
-		},
-		{
-			sequence:['demystify-self','share-ego','demystify-self']
-		},
-		{
-			sequence:['demystify-self']
-		},
-
-		
-	],
-
 	service:
 	[
 		{
@@ -86,6 +37,12 @@ var _lisapatterns =  {
 	[
 		{
 			sequence:['greet','share-ego']
+		},
+		{
+			sequence:['greet','share-ego','share-ego']
+		},
+		{
+			sequence:['greet','share-ego','demystify-self']
 		},
 	]
 	}

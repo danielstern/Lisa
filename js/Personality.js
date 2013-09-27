@@ -16,7 +16,7 @@ function Personality() {
 			switch (personality.mode)
 			{
 				case 'PERSONALITY_CLASSIC':
-				pattern = _.sample(personality.patterns.classic);
+				pattern = _.sample(personality.patterns.exposition);
 				break;
 				case 'PERSONALITY_SERVICE':
 				pattern =  _.sample(personality.patterns.service);
@@ -57,5 +57,6 @@ function Personality() {
 		pronoun:'self',
 	}
 
-	personality.filter = _lisaFilter;
+	//personality.filter = _filterSouthernGal;
+	personality.filter = _filterMadCommoner;
 }

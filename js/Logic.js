@@ -2,12 +2,14 @@ function Logic(brain) {
 
 	var logic = this;
   var things = brain.lexicon.things;
+  var think = brain.host.thinks;
 
-  logic.demystify = function (seed) {
+  logic.demystify = function (seed, numberOfQualities) {
      var response = '';
      if (!seed.is) return response;
+
      response += brain.speech.express.quality(seed, _.sample(seed.is));
-     response += "//";
+     response += brain.speech.softPause();
      
      return response;
   }
@@ -134,6 +136,7 @@ function Logic(brain) {
      response += brain.speech.softPause();
 
      var scopeUpIdea = _.where(things,{word:seed.extends[0]});
+     if (!scopeUpIdea[0]) think('I cant scope up to ' + seed.extends[0]);
      if (scopeUpIdea[0]) seed = scopeUpIdea[0];
      return response; 
   }

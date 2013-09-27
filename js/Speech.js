@@ -107,7 +107,7 @@ function Speech(host) {
           response += "One kind of " + seed.word + " " + conjugate(seed, 'is') + " " + lexicate(idea);
           break;
         case 2:
-          response += "A kind of " + seed.word + " " + conjugate(idea, 'is') + " " + lexicate(idea);
+          response += "A kind of " + seed.word + " " + conjugate(seed, 'is') + " " + lexicate(idea);
           break;
         case 5:
           response += "I consider " + lexicate(idea) + " to be a kind of " + seed.word;
@@ -130,7 +130,7 @@ function Speech(host) {
     {
       var response = '';
     
-      switch (Math.ceil(Math.random()*5))
+      switch (Math.ceil(Math.random()*4))
       {
         case 1:
         case 3:
@@ -140,9 +140,9 @@ function Speech(host) {
         case 2:
             response += "Both " + lexicate(subject) + " and " + lexicate(object) + " are " + trait;
           break;
-        case 5:
+        /*case 5:
            response += lexicate(subject) + " and " + lexicate(object)  + " are similar because they are both " + trait;
-          break;
+          break;*/
         default:
           break;
       }
