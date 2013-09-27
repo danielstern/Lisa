@@ -47,7 +47,8 @@ function Logic(brain) {
           break;
 
         case 'scopeSideways':
-          brainwave = logic.scopeSideways(seed)[0];
+          brainwave = logic.scopeSideways(seed);
+          console.log('got scopesideways brainwave',brainwave)
           thought = brainwave[0];
           seed = brainwave[1];
           break;
@@ -84,7 +85,7 @@ function Logic(brain) {
      
     })
          
-    return response;
+    return [response,seed];
   }
 
   logic.demystifyPersonality = function (being) {
@@ -214,7 +215,7 @@ function Logic(brain) {
     if (!sidewaysIdea) return [response,seed];
 
     think('there is a sideways idea.')
-    
+
     response += brain.speech.express.association(seed,sidewaysIdea);
     response += brain.speech.softPause();
     seed = sidewaysIdea;

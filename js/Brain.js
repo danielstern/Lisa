@@ -111,14 +111,14 @@ function Brain(host) {
     var response = '';
     var promise = new Promise();
 
-    brain.think('Brain seed?');
-    brain.think(brain.seed || 'nothing');
+    console.log('brain seed? ' , brain.seed)
     
     idea = idea || brain.seed || _.sample(brain.lexicon.things);
     if (idea.hidden == 'true') _.sample(brain.lexicon.things); // this function prevents Lisa from finding out she is really a robot
 
-    response = brain.logic.ponder(idea);
-    brain.seed = idea;
+    var ponder = brain.logic.ponder(idea)
+    response = ponder[0];
+    brain.seed = ponder[1];
 
     response = brain.speech.prettify(response);
     
