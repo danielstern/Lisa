@@ -3,16 +3,31 @@ function Personality() {
 	//personality.mode = 'PERSONALITY_SERVICE';
 	personality.mode = 'PERSONALITY_CLASSIC';
 
-	personality.getPattern = function() {
-		switch (personality.mode)
-		{
-			case 'PERSONALITY_CLASSIC':
-			return _.sample(personality.patterns.classic);
-			break;
-			case 'PERSONALITY_SERVICE':
-			return  _.sample(personality.patterns.service);
+	var patternsReturned = [];
 
+	personality.getPattern = function() {
+
+		var pattern;
+		if (patternsReturned.length == 0) {
+			pattern = _.sample(personality.patterns.greeting);
+		} 
+			else 
+		{
+			switch (personality.mode)
+			{
+				case 'PERSONALITY_CLASSIC':
+				pattern = _.sample(personality.patterns.classic);
+				break;
+				case 'PERSONALITY_SERVICE':
+				pattern =  _.sample(personality.patterns.service);
+				default:
+				break;
+
+			}
 		}
+
+		patternsReturned.push(pattern);
+		return pattern;
 
 	}
 
@@ -26,7 +41,7 @@ function Personality() {
 				sequence:['demystify','compare','demystify']
 			},
 			{
-				sequence:['demystify','compare','compare']
+				sequence:['demystify','compare','scopeSideways']
 			},
 			{
 				sequence:['demystify','compare','scopeUp','demystify']
@@ -41,7 +56,7 @@ function Personality() {
 				sequence:['demystify','scopeSideways','demystify','scopeUp']
 			},
 			{
-				sequence:['demystify','scopeDown','demystify']
+				sequence:['demystify','scopeSideways','demystify']
 			},
 			{
 				sequence:['demystify','scopeDown','demystify']
@@ -51,13 +66,13 @@ function Personality() {
 		classic:
 		[
 			{
-				sequence:['demystify','demystify','compare']
+				sequence:['demystify','demystify','compare','scopeSideways']
 			},
 			{
 				sequence:['demystify','compare','demystify']
 			},
 			{
-				sequence:['demystify','compare','compare']
+				sequence:['demystify','scopeSideways','compare']
 			},
 			{
 				sequence:['demystify','compare','scopeUp','demystify']
@@ -98,6 +113,13 @@ function Personality() {
 			{
 				sequence:['demystify-self']
 			},
+		],
+
+		greeting:
+		[
+			{
+				sequence:['greet','share-ego']
+			},
 		]
 	}
 
@@ -137,7 +159,7 @@ function Personality() {
           response += ", sugar"
           break;
         case 3:
-          response += ", hon'"
+          response += ", hun'"
           break;
         case 4:
           response += ", honey";

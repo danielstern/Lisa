@@ -154,7 +154,7 @@ function Speech(host) {
     express.relationship = function(relationship) 
     {
       var response = '';
-      console.log('express relationship got rel.',relationship);
+      //console.log('express relationship got rel.',relationship);
       response += lexicate(relationship.subject) + " " + relationship.action + " " + lexicate(relationship.object);
     
       return response;

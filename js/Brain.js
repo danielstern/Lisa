@@ -219,5 +219,13 @@ function ShortTermMemory(memory) {
     return contains;
   }
 
+  short.scan = function(word) {
+    var justNow = _.last(short.recentThings,short.capacity);
+   // console.log()
+    var memoryFilter = _.filter(justNow, function(memory){return memory.toString().indexOf(word) != -1});
+    console.log('scan',memoryFilter);
+    return memoryFilter.length > 0;
+  }
+
   window.mem = this;
 }

@@ -52,9 +52,14 @@ function Logic(brain) {
 //         seed = brain.whatIs('self');
 
         var traits = _.pairs(brain.personality.ego.identity);
-        var trait = _.sample(traits);
-        console.log('trait?',trait)
-
+        var trait;
+        if (!brain.memory.short.scan(brain.personality.ego.identity.name)) {
+           brain.host.thinks('I havent even told you my name yet.');
+           trait = _.find(traits,function(trait){return trait[0] == 'name'});
+        }
+      
+         trait = trait || _.sample(traits);
+      
          response += brain.speech.express.possessive(trait[0], trait[1]);
          response += "//";
 
