@@ -101,11 +101,13 @@ function Speech(host) {
       {
         case 1:
         case 3:
+          response += lexicate(idea) + " " + conjugate(idea, 'is') +" " + lexicate(seed);
+          break;
         case 4:
-          response += "One kind of " + seed.word + " " + conjugate(seed, 'is') + " " + lexicate(idea);
+          response += "One kind of " + seed.word + " " + 'is' + " " + lexicate(idea);
           break;
         case 2:
-          response += "A kind of " + seed.word + " " + conjugate(seed, 'is') + " " + lexicate(idea);
+          response += "A kind of " + seed.word + " " + 'is' + " " + lexicate(idea);
           break;
         /*case 5:
           response += "I consider " + lexicate(idea) + " to be a kind of " + seed.word;

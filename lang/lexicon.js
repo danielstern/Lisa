@@ -228,6 +228,27 @@ var Lexicon = {
       associated:['sword','tree','magic'],
     },
     {
+      word:'crossbow',
+      is:['dangerous','easy to use'],
+      extends:['weapon'],
+      plural:'crossbows',
+      associated:[],
+    },
+    {
+      word:'bow',
+      is:['versatile'],
+      extends:['weapon'],
+      plural:'bows',
+      associated:[],
+    },
+    {
+      word:'spear',
+      is:['versatile'],
+      extends:['weapon'],
+      plural:'spears',
+      associated:[],
+    },
+    {
       word:'wizard',
       is:['wise','magical','powerful','feared'],
       extends:['warrior'],
