@@ -17,6 +17,7 @@ function Logic(brain) {
   logic.ponder = function (seed) {
     var response = '';   
 
+
     if (seed.said !== undefined) {
       response = brain.logic.colloquilize(seed);
       response = brain.speech.prettify(response);
@@ -46,7 +47,9 @@ function Logic(brain) {
           break;
 
         case 'scopeSideways':
-          thought = logic.scopeSideways(seed);
+          brainwave = logic.scopeSideways(seed)[0];
+          thought = brainwave[0];
+          seed = brainwave[1];
           break;
 
         case 'scopeDown':
@@ -116,7 +119,7 @@ function Logic(brain) {
     var trait;
 
     if (!brain.memory.short.scan(brain.personality.ego.identity.name)) {
-       brain.host.thinks('I havent even told you my name yet.');
+       think('I havent even told you my name yet.');
        trait = _.find(traits,function(trait){return trait[0] == 'name'});
     }
   
@@ -194,21 +197,31 @@ function Logic(brain) {
 
     var response = '';
 
-    if (!seed.extends) return response;
+    think("I'm trying to scope sideways!",seed);
+
+    if (!seed.extends) return [response,seed];
     var relatedThings = _.filter(brain.lexicon.things, function(thing){
       if (!thing.extends) return false;
       if (thing.word == seed.word) return false;
       return thing.extends[0] == seed.extends[0]
     });
 
-    if (!relatedThings) return response;
+    if (!relatedThings) return [response,seed];
+
+    think('there are related things.')
     var sidewaysIdea = _.sample(relatedThings);
-    if (!sidewaysIdea) return response;
+
+    if (!sidewaysIdea) return [response,seed];
+
+    think('there is a sideways idea.')
+    
     response += brain.speech.express.association(seed,sidewaysIdea);
     response += brain.speech.softPause();
     seed = sidewaysIdea;
+    
+    think('returning',response,seed);
 
-    return response;
+    return [response,seed];
   }
 
   /*

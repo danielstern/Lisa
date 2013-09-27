@@ -53,6 +53,13 @@ _.mixin({
     var lastCharOfString = string.toString().charAt(string.length - 1);
     return lastCharOfString == character;
 
+  },
+
+  stringLastChar: function(string) {
+
+    var lastCharOfString = string.toString().charAt(string.length - 1);
+    return lastCharOfString;
+
   }
 });
 

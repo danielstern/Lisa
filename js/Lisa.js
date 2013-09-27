@@ -11,19 +11,27 @@
 
     Lisa.name = name || 'Lisa';
 
-    Lisa.thinks = function(thought) {
+    Lisa.thinks = function(thought, anotherThought, thirdThought) {
 
-      if (_.endsWith(thought,'!')) {
-        console.warn('LISA:' , thought)
-        return
-      };
+      var action 
+      switch(_.stringLastChar(thought))
+      {
+        case('!'):
+        action = 'warn';
+        break;
+        case('?'):
+        action = 'info';
+        break;
+        default:
+        action = 'log';
+        break;
+      }
 
-      if (_.endsWith(thought,'?')) {
-        console.info('LISA:' , thought)
-        return
-      };
+      thought = _(thought).capitalize();
 
-      console.log('LISA:' , thought);
+      if (thought && anotherThought && thirdThought) return console[action]('LISA:' , thought, anotherThought, thirdThought);
+      if (thought && anotherThought) return console[action]('LISA:' , thought, anotherThought);
+      if (thought) return console[action]('LISA:' , thought);
     }
 
     Lisa.hears = function(words) {
