@@ -11,21 +11,32 @@ _.mixin({
   },
 
   lisaFormat: function(string, filter) {
-    string = string.replace('||','</p><p>')
-    var strings = string.split('//');
-    strings = _.without(strings, '');
 
-    strings = _.map(strings, function(string){
-      if (filter) {
-        string = filter(string);
-      }
-      string = string.charAt(0).toUpperCase() + string.substring(1);  
-      string += ('. ');
+    string = string.replace('##hp','##sp##hp##sp')
 
-      return string;
-    })
-    var returnString = strings.join('');
-    return returnString;
+      var strings = string.split('##sp');
+      strings = _.chain(strings)
+        .without('')
+        .map(function(string){
+          string = _.trim(string);
+          string = _.capitalize(string);
+          if (string == '##hp') {
+            string = '</p><p>';
+            return string;
+          }
+          if (!_.endsWith(string, '.')) string = string + '.';
+          if (string) string += " ";
+
+          return string;
+       })
+       .value();
+
+    console.log('string array?',strings);
+    string = strings.join('');
+    string = '<p>'+string+'</p>';
+
+    return string;
+
   },
 
   extractIdeas: function(statement) {

@@ -101,7 +101,7 @@ var standardExpressions1 = {
       response = lexicate(subject) + " and " + lexicate(object) + " are both " + trait;
       break;
     case 2:
-      response = "Both " + lexicate(subject) + " and " + lexicate(object) + " are " + trait;
+      response = "both " + lexicate(subject) + " and " + lexicate(object) + " are " + trait;
       break;
       /*case 5:
          response += lexicate(subject) + " and " + lexicate(object)  + " are similar because they are both " + trait;
@@ -113,7 +113,7 @@ var standardExpressions1 = {
   },
 
   possessive: function (key, value) {
-    response = "My " + key + " is " + value;
+    response = "my " + key + " is " + value;
     return response;
   },
 
@@ -124,10 +124,10 @@ var standardExpressions1 = {
       // response += lexicate(idea) + " " + conjugate(idea, 'is') +" " + lexicate(seed);
       // break;
     case 4:
-      response = "One kind of " + seed.word + " " + 'is' + " " + lexicate(idea);
+      response = "one kind of " + seed.word + " " + 'is' + " " + lexicate(idea);
       break;
     case 2:
-      response = "A kind of " + seed.word + " " + 'is' + " " + lexicate(idea);
+      response = "a kind of " + seed.word + " " + 'is' + " " + lexicate(idea);
       break;
       /*case 5:
         response += "I consider " + lexicate(idea) + " to be a kind of " + seed.word;

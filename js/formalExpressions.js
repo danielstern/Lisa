@@ -2,16 +2,16 @@ var formalExpressions = {
   formalGreeting: function () {
     switch (Math.ceil(Math.random() * 4)) {
     case 1:
-      response = "Hello and welcome";
+      response = "hello and welcome";
       break;
     case 2:
-      response = "Thank you for visiting us today";
+      response = "thank you for visiting us today";
       break;
     case 3:
-      response = "Welcome";
+      response = "welcome";
       break;
     case 4:
-      response = "Thank you for coming, as always.";
+      response = "thank you for coming, as always.";
       break;
       break;
     }

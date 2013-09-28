@@ -32,6 +32,7 @@ var Lexicon = {
       plural:'people',
     },
 
+
     // general things
    /* {
       word:'apple',
@@ -310,6 +311,23 @@ var Lexicon = {
       extends:['noble'],
       plural:'noblemen',
       associated:['gold'],
+    },
+    {
+      word:'Vix the Vile',
+      is:['mighty','a rogue','from a distant land','a fearsome blackguard'],
+      pronoun:'proper',
+      relationship: [
+      {
+          object:'fire',
+          action:'use'
+      }],
+      extends:['wizard'],
+      associated:['Sword of Light']
+    },
+    {
+      word:'Vix',
+      see:'Vix the Vile',
+      pronoun:'proper',
     },
     {
       word:'noble',

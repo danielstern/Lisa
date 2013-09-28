@@ -6,11 +6,11 @@ function Speech(brain) {
   var response = '';
 
   speech.softPause = function () {
-    return "//";
+    return "##sp";
   }
 
   speech.hardPause = function () {
-    return "||";
+    return "##hp";
   }
 
 

@@ -82,15 +82,18 @@ var Expresso = function (brain) {
     if (word.split('|').length > 1) {
       var directive = word.split('|')[0];
       word = word.split('|')[1];
+      console.log('directive?',word,directive);
 
       switch (directive) {
         case 'referenced':
+        case 'main':
           referenced = true;
+        break;
       }
     }
 
     var idea = express.brain.whatIs(word, true);
-    if (referenced || idea.pronoun != 'proper' && idea.pronoun != 'force') idea.pronoun = 'referenced';
+    if (referenced && idea.pronoun != 'proper' && idea.pronoun != 'force') idea.pronoun = 'referenced';
 
     if (!idea) {
 

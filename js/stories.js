@@ -11,15 +11,15 @@ var _stories = [
     name:'the one where algoron battles a warrior',
     sequence:
     [
-      {subject:'warrior',action:'attack',object:'Algoron'},
+      {subject:'main|warrior',action:'attack',object:'Algoron'},
       {subject:'Algoron',action:'use',object:'dark magic'},
-      {subject:'Algoron',action:'kill',object:'referenced|warrior'},
+      {rel: 'so', subject:'Algoron',action:'kill',object:'referenced|warrior'},
     ]
   },
   {
     sequence:
     [
-      {subject:'knight',action:'attack',object:'goblin',with:'sword'},
+      {subject:'main|knight',action:'attack',object:'goblin',with:'sword'},
       {rel: 'so', subject:'referenced|goblin',action:'die'}
     ]
   },
@@ -28,6 +28,13 @@ var _stories = [
     [
       {subject:'Omnoth',action:'rule',object:'Emeraldia'},
       {rel: 'but', subject:'Omnoth',action:'die'}
+    ],
+  },
+  {
+    sequence:
+    [
+      {subject:'Algoron',action:'kill',object:'Vix the Vile',when:
+        {subject:'Algoron',action:'use',object:'dark magic'}}
     ],
   },
   {
@@ -42,7 +49,7 @@ var _stories = [
   {
     sequence:
     [
-      {subject:'Axos Braveheart',action:'kill',object:'zombie',with:'sword'},
+      {subject:'Axos Braveheart',action:'kill',object:'main|zombie',with:'sword'},
     ],
   },
    {
