@@ -48,90 +48,67 @@ var Lexicon = {
         action:'effective'
       }],
       plural:'clubs',
-      associated:[],
     },
     {
       word:'weapon',
-      is:['dangerous'],
       extends:['tool'],
       plural:'weapons',
-      associated:[],
     },
     {
       word:'Axos Braveheart',
-      is:['famous'],
       extends:['knight'],
       gender:'male',
       pronoun:'proper',
-      associated:[],
     },
     {
       word:'Axos',
       see:'Axos Braveheart',
       pronoun:'proper',
-      associated:[],
     },
     {
       word:'Sword of Light',
-      is:['very powerful','legendary','secret','hidden in a certain location','buried next to the well'],
       pronoun:'unique',
       extends:['weapon'],
-      associated:[]
     },
     {
       word:'axe',
-      is:['sharp','dangerous','deadly','cool','mighty','easy to use'],
       extends:['weapon'],
       plural:'axes',
-      associated:['sword','tree','magic'],
     },
     {
       word:'crossbow',
-      is:['dangerous','easy to use'],
       extends:['weapon'],
       plural:'crossbows',
-      associated:[],
     },
     {
       word:'bow',
-      is:['versatile'],
       extends:['weapon'],
       plural:'bows',
-      associated:[],
     },
     {
       word:'spear',
-      is:['versatile'],
       extends:['weapon'],
       plural:'spears',
-      associated:[],
     },
     {
       word:'wizard',
-      is:['wise','magical','powerful','feared'],
       gender:'male',
       extends:['warrior'],
       plural:'wizards',
-      associated:['magic'],
     },
     {
       word:'Mount Aur',
-      is:['enchanted','big'],
       extends:['place'],
       pronoun:'proper',
-      associated:[],
     },
     {
       word:'barbarian',
-      is:['brutish','tough','strong'],
       extends:['warrior'],
       gender:'male',
       plural:'barbarians',
-      associated:['sword'],
     },
     {
       word:'knight',
-      is:['noble','tough','strong'],
       gender:'male',
       extends:['warrior'],
       relationship:[{
@@ -139,11 +116,9 @@ var Lexicon = {
         action:'use'
       }],
       plural:'knights',
-      associated:['sword'],
     },
     {
       word:'nobleman',
-      is:['wealthy','learned','pompous'],
       gender:'male',
       extends:['noble'],
       plural:'noblemen',
@@ -151,7 +126,6 @@ var Lexicon = {
     },
     {
       word:'Vix the Vile',
-      is:['mighty','a rogue','from a distant land','a fearsome blackguard'],
       gender:'female',
       pronoun:'proper',
       relationship: [
@@ -159,8 +133,7 @@ var Lexicon = {
           object:'fire',
           action:'use'
       }],
-      extends:['wizard'],
-      associated:['Sword of Light']
+      extends:['rogue'],
     },
     {
       word:'Vix',
@@ -168,28 +141,27 @@ var Lexicon = {
       pronoun:'proper',
     },
     {
+      word:'rogue',
+      extends:'person',
+      plural:'rogues'
+    },
+    {
       word:'noble',
-      is:['wealthy','distinguished'],
       extends:['person'],
       gender:'mixed',
       plural:'nobles',
-      associated:['gold'],
     },
     {
       word:'noblewoman',
-      is:['gossipy','wealthy','flitty','airy'],
       extends:['noble'],
       gender:'female',
       plural:'noblewomen',
-      associated:['gold'],
     },
     {
       word:'warrior',
-      is:[],
       extends:['person'],
       gender:'male',
       plural:'warriors',
-      associated:[],
     },
     {
       word:'Theoch',
@@ -200,7 +172,6 @@ var Lexicon = {
     },
     {
       word:'dragon',
-      is:['fearsome'],
       extends:['creature'],
       plural:'dragons'
     },
@@ -208,19 +179,16 @@ var Lexicon = {
       word:'magic',
       extends:['force'],
       pronoun:'force',
-      associated:[],
     },
     {
       word:'dark magic',
       extends:['magic'],
       pronoun:'force',
-      associated:[],
     },
     {
       word:'holy magic',
       extends:['magic'],
       pronoun:'force',
-      associated:[],
     },
     {
       word:'ice',
@@ -237,14 +205,11 @@ var Lexicon = {
     },
     {
       word:'fire',
-      is:[],
       extends:['force'],
       pronoun:'force',
-      associated:[],
     },
     {
       word:'Algoron',
-      is:['mighty','a wizard','from a distant land','a fearsome sorceror'],
       pronoun:'proper',
       relationship:[{
         object:'magic',
@@ -256,7 +221,6 @@ var Lexicon = {
       }
       ],
       extends:['wizard'],
-      associated:['Sword of Light']
     },
     {
       word:'king',
@@ -290,7 +254,7 @@ var Lexicon = {
     {
       word:'Omnoth',
       see:'King Omnoth',
-       pronoun:'proper',
+      pronoun:'proper',
     },
     {
       word:'Emeraldia',
@@ -328,7 +292,6 @@ var Lexicon = {
       word:'monster',
       extends:['creature'],
       plural:'monsters',
-      associated:[''],
     },
     {
       word:'Willas',
