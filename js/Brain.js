@@ -76,6 +76,12 @@ function Brain(host) {
         idea = idea || _.find(brain.lexicon.expressions, function(idea){return _.probably(idea.said, word, i)});
       }
 
+      for (var i = 0; i < 2; i++)  {
+        idea = idea || _.find(brain.lexicon.attributes, function(idea){if (!idea.word) return; return _.probably(idea.word,word, i)});      
+        idea = idea || _.find(brain.lexicon.attributes, function(idea){if (!idea.plural) return false; return _.probably(idea.plural, word, i)});
+        idea = idea || _.find(brain.lexicon.expressions, function(idea){return _.probably(idea.said, word, i)});
+      }
+
       return idea;
     }
 

@@ -71,6 +71,17 @@ var Expresso = function (brain) {
     return response;
   }
 
+  express.synonomize = function (word) {
+
+    console.log('synonomizing...',word);
+    var idea = brain.whatIs(word,true);
+    console.log('synonomize',idea);
+
+    var synonym = _.sample(idea.synonyms) || idea.word;
+
+    return synonym;
+  }
+
   express.preposit = function (word) {
 
     var preposition = '';
@@ -156,4 +167,5 @@ var Expresso = function (brain) {
   window.lexicate = express.lexicate;
   window.verbalize = express.verbalize;
   window.conjugate = express.conjugate;
+  window.synonomize = express.synonomize;
 }

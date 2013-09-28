@@ -530,7 +530,8 @@ var Lexicon = {
     {
       word:'evil',
       when:[{action:'use',object:'dark magic'}],
-      applies:'subject'
+      applies:'subject',
+      synonyms:['foul','wicked']
     },
     {
       word:'brave',

@@ -5,7 +5,7 @@ var standardExpressions1 = {
   },
   
   quality: function (seed, quality) {
-    response = lexicate(seed) + " " + conjugate(seed, 'is') + " " + quality;
+    response = lexicate(seed) + " " + conjugate(seed, 'is') + " " + synonomize(quality);
     return response;
   },
 
@@ -49,7 +49,7 @@ var standardExpressions1 = {
         }
         break;
       case 'so':
-        switch (Math.ceil(Math.random() * 3)) {
+        switch (Math.ceil(Math.random() * 1)) {
           case 1:
           response += 'so'
           break;
