@@ -33,7 +33,7 @@ var Lexicon = {
     },
 
     // general things
-    {
+   /* {
       word:'apple',
       is:['delicious','healthy','crunchy','refreshing'],
       extends:['fruit'],
@@ -192,7 +192,7 @@ var Lexicon = {
       plural:'forks',
       is:['pointy'],
       extends:['tool']
-    },
+    },*/
     {
       word:'tool',
       plural:'tools',

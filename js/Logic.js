@@ -153,7 +153,6 @@ function Logic(brain) {
     var trait;
 
     if (!brain.memory.short.scan(brain.personality.ego.identity.name)) {
-       think('I havent even told you my name yet.');
        trait = _.find(traits,function(trait){return trait[0] == 'name'});
     }
   
@@ -181,7 +180,6 @@ function Logic(brain) {
   }
 
   logic.scopeDown = function(seed) {
-    var response = '';
 
     var scopeDownIdea = _.filter(things,function(thing) {
       if (!thing.extends) return false;
@@ -208,13 +206,8 @@ function Logic(brain) {
   }
 
 
-  /* compare 
-     find something that shares a trait with the idea's seed
-  */
 
   logic.compare = function(seed) {
-
-    var response = '';
 
     if (!seed.is) return response;
 
@@ -280,13 +273,10 @@ function Logic(brain) {
         return !brain.memory.short.recall(_moment)}
        );
 
-       if (!moment) return response;
-
-       response = brain.speech.express.moment(moment,{time:'past'});
-
-       brain.memory.short.remember(moment);
-
-       return response;
+         if (!moment) return response;
+         response = brain.speech.express.moment(moment,{time:'past'});
+         brain.memory.short.remember(moment);
+         return response;
     }
 
   

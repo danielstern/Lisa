@@ -32,6 +32,17 @@ var transliterate = {
     }
   },
 
+  die:{
+    past:{
+      singular:'died',
+      plural:'all died'
+    },
+    present:{
+      singular:'dies',
+      plural:'die',
+    }
+  },
+
   kill:{
     past:{
       singular:'killed',
