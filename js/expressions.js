@@ -69,6 +69,10 @@ var standardExpressions1 = {
       response += " with " + preposit(moment.with);
     } 
 
+    if (moment.against) {
+      response += " against " + preposit(moment.against);
+    }
+
     if (moment.to) {
       response += " to " + preposit(moment.to);
     } 

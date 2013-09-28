@@ -83,10 +83,11 @@ var Expresso = function (brain) {
   }
 
   express.preposit = function (word, context) {
-    
+
     var preposition = '';
     var assumed = false;
     var referenced = false;
+    context = context || {};
 
     word = word || '';
 
@@ -105,12 +106,13 @@ var Expresso = function (brain) {
       }
     }
 
-    var idea = express.brain.whatIs(word, true);
+    var idea = express.brain.whatIs(word, true) || {};
+    console.log('preopositing...',word,idea,context)
     if (referenced && idea.pronoun != 'proper' && idea.pronoun != 'force') idea.pronoun = 'referenced';
 
     if (word == idea.plural) idea.pronoun = 'pluralize';
     if (context.pronoun) idea.pronoun = context.pronoun;
-    if (idea.pronoun = 'plural') word = idea.plural;
+    if (idea.pronoun == 'plural' && idea.plural) word = idea.plural;
 
     var returnWord = true;
     
@@ -154,6 +156,8 @@ var Expresso = function (brain) {
       }
       return 'it';
     }
+
+    console.log('returning?',word)
     if (preposition) preposition += " ";
     return preposition + (returnWord ? word : '');
 

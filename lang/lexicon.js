@@ -202,27 +202,38 @@ var Lexicon = {
       word:'dragon',
       is:['fearsome'],
       extends:['creature'],
+      plural:'dragons'
     },
     {
       word:'magic',
-      is:[],
       extends:['force'],
-      pronoun:'concept',
+      pronoun:'force',
       associated:[],
     },
     {
       word:'dark magic',
-      is:['deadly'],
       extends:['magic'],
       pronoun:'force',
       associated:[],
     },
     {
       word:'holy magic',
-      is:['powerful'],
       extends:['magic'],
-      pronoun:'concept',
+      pronoun:'force',
       associated:[],
+    },
+    {
+      word:'ice',
+      see:'ice magic'
+    },
+    {
+      word:'ice magic',
+      extends:['magic'],
+      relationship:[{
+        object:'dragon',
+        action:'effective'
+      }],
+      pronoun:'force',
     },
     {
       word:'fire',

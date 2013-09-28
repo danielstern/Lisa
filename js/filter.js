@@ -52,7 +52,6 @@ var _filterMadCommoner = function(string) {
       response += "##lpser"
       break;
     case 4:
-      response += "##lphee-hee ha ha.";
       break;
     case 5:
       response += "... *giggle*";
@@ -62,7 +61,7 @@ var _filterMadCommoner = function(string) {
     case 8:
       break;
     case 9:
-      response += "... ah hah hah hah hah!";
+      response += "##lpheh";
       break;
     case 10:
       break;

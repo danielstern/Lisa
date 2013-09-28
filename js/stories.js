@@ -13,14 +13,21 @@ var _stories = [
     [
       {subject:'main|warrior',action:'attack',object:'Algoron'},
       {subject:'Algoron',action:'use',object:'dark magic'},
-      {rel: 'so', subject:'Algoron',action:'kill',object:'referenced|warrior'},
+      {subject:'Algoron',action:'kill',object:'referenced|warrior'},
     ]
   },
   {
     sequence:
     [
       {subject:'main|knight',action:'attack',object:'goblin',with:'sword'},
-      {rel: 'so', subject:'referenced|goblin',action:'die'}
+      {subject:'referenced|goblin',action:'die'}
+    ]
+  },
+  {
+    sequence:
+    [
+      {subject:'main|Willas',action:'use',object:'holy magic',against:'Algoron'},
+      {rel:'so',subject:'Algoron',action:'retreat'}
     ]
   },
   {
