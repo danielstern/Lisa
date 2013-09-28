@@ -45,27 +45,29 @@ var standardExpressions1 = {
       case 'but':
         switch (Math.ceil(Math.random() * 2)) {
           case 1:
-          response += 'but, '
+          response += 'but'
           break;
           case 2:
-          response += 'however, '
+          response += 'however'
           break;
         }
         break;
       case 'so':
         switch (Math.ceil(Math.random() * 3)) {
           case 1:
-          response += 'so, '
+          response += 'so'
           break;
           case 2:
-          response += 'thus, '
+          response += 'thus'
           break;
           case 3:
-          response += 'as a result, '
+          response += 'as a result'
           break;
         }
         break;
     }
+
+    response += "##lp";
     
     response += lexicate(moment.subject) + " " + conjugate(moment.subject, moment.action, context.time);
     if (moment.object) {

@@ -13,6 +13,11 @@ function Speech(brain) {
     return "##hp";
   }
 
+  speech.lightPause = function () {
+    return "##lp";
+  }
+
+
 
   speech.prettify = function (phrase) {
 

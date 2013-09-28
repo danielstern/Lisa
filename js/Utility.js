@@ -18,13 +18,12 @@ _.mixin({
       strings = _.chain(strings)
         .without('')
         .map(function(string){
+          if (string == '##hp') return '</p><p>'
+
           string = filter(string);
           string = _.trim(string);
+          string = _.without(string.split('##lp'),'').join(', ');
           string = _.capitalize(string);
-          if (string == '##hp') {
-            string = '</p><p>';
-            return string;
-          }
           if (!_.endsWith(string, '.')) string = string + '.';
           if (string) string += " ";
 
