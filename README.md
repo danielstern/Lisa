@@ -7,7 +7,7 @@ lisa.thinks('You know nothing, Jon Snow.');
 // LISA: You know nothing, Jon Snow.
 ```
 
-Neuro-Computational Matrix
+About
 --------------------------
 <p>A neuro-computational matrix is a computer program that attempts to simulate the complex workings of the mind.</p>
 

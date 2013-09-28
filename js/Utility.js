@@ -30,12 +30,14 @@ _.mixin({
 
   extractIdeas: function(statement) {
 
-    ideas = statement.split(/[\s,;:!?'"']+/);
-    ideas = _.without(ideas, 'are','is','and','of','with','what','without','not','who','as','an','but','it','would','on','a','an','then','the','to','by','be','need','so','you','through','that','more','that’s','his','her','there','their','was','in');
+    statement = statement || '';
+    ideas = statement.split(/[\s,;.:!?'"']+/);
+    ideas = _.map(ideas,function(idea){return idea.toString().toLowerCase()});
+    ideas = _.without(ideas, '','are','is','and','of','with','what','without','not','generally','who','as','from','well','an','but','after','he','she','although','after','before','it','would','on','a','an','then','the','to','by','be','need','so','you','through','that','more','that’s','his','her','there','their','was','in');
     return ideas;
 
   },
-  
+
   stringContains: function(string, characters) {
 
     if (typeof characters == 'string') characters = [characters];
@@ -70,6 +72,15 @@ _.mixin({
     return _.levenshtein(string1.toString().toLowerCase(),string2.toString().toLowerCase()) < variance;
 
   },
+
+  bare: function(string) {
+
+    string = string.replace('.','').replace(',','').replace(':','').replace(';','');
+
+    return string;
+
+  },
+
 
   extractStory: function (story) {
 
