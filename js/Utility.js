@@ -39,6 +39,22 @@ _.mixin({
 
   },
 
+  occasionInvokesAttribute: function(moment, occasion) {
+
+    var invoked = true;
+
+
+      console.log('comparing...',moment,occasion);
+        if (occasion.action) {
+           if(occasion.action != moment.action) invoked = false;
+        }
+        if (occasion.object) {
+           if(occasion.object != moment.object) invoked = false;
+        }
+
+    return invoked;
+  },
+
   extractIdeas: function(statement) {
 
     statement = statement || '';

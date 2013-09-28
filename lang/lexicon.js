@@ -523,6 +523,11 @@ var Lexicon = {
       when:[{action:'use',object:'magic'}],
     },
     {
+      word:'evil',
+      when:[{action:'use',object:'dark magic'}],
+      applies:'subject'
+    },
+    {
       word:'brave',
       when:[{action:'kill',object:'monster'}],
     }

@@ -2,6 +2,8 @@ function Logic(brain) {
 
 	var logic = this;
   var things = brain.lexicon.things;
+  var attributes = brain.lexicon.attributes;
+  logic.brain = brain;
   var think = brain.host.thinks;
   var response = '';
 
@@ -271,6 +273,40 @@ function Logic(brain) {
 
     return [response,seed];
   }
+
+
+  logic.comment = function (moment, context) {
+
+    var response = '';
+
+    console.log('Commenting on...',moment);
+//    console.log('attributes?',attributes);
+
+    var applicableComments = [];
+
+    _.each(attributes,function(attribute){
+      _.each(attribute.when, function(occasion){
+
+        var intersects = _.occasionInvokesAttribute(occasion,moment);
+        if (intersects) {
+          console.log('intersection!',occasion,attribute);
+          applicableComments.push({subject:moment[attribute.applies],attribute:attribute.word});
+        }
+
+      })
+    })
+
+    //console.log('comments?',applicableComments);
+    var comment = _.sample(applicableComments);
+    console.log('comment?',comment);
+
+    if (!comment) return '';
+
+    var remark = logic.brain.speech.express.quality(comment.subject,comment.attribute);
+    console.log('remark?',remark);
+
+    return remark || '';
+  }
 /*
   logic.tellStoryMoment = function (seed) {
 
@@ -315,6 +351,16 @@ function Logic(brain) {
       var phrase = tellStoryMoment(moment);
       response += phrase;
       response += brain.speech.softPause();
+      var comment = logic.comment(moment);
+      if (comment && !brain.memory.short.recall(comment)) {
+
+        console.log('expressing comment',comment);
+        brain.memory.short.remember(comment);
+
+        response += comment;
+        response += brain.speech.softPause();
+
+      }
     });
 
     function tellStoryMoment(moment) {

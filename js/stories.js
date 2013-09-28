@@ -56,7 +56,7 @@ var _stories = [
       {subject:'Algoron',action:'attack',object:'Axos Braveheart'},
       {rel: 'so', subject:'Axos Braveheart',action:'fight',with:'Algoron'},
       {rel: 'but', subject:'Algoron',action:'use',object:'dark magic'},
-      {rel: 'so', subject:'Algoron',action:'retreat',to:'Mount Aur'},
+      {rel: 'so', subject:'Axos Braveheart',action:'retreat',to:'Mount Aur'},
     ],
   },
   {
