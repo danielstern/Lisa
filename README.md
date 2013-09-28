@@ -91,7 +91,7 @@ If an idea extends this idea, Lisa thinks about that instead.
 // LISA: Warriors are mighty. I don't like warriors.
 brain.logic.scopeDown(warrior);
 // LISA: Knights are a kind of warrior.
-// Lisa is now thinking about knights.
+// Lisa is now thinking about knights!
 
 ```
 
