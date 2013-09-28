@@ -309,6 +309,7 @@ function Logic(brain) {
 
        var phrase = '';
        if (!moment) return phrase;
+       if (brain.memory.short.recall(moment)) return phrase;
        phrase = brain.speech.express.moment(moment,{time:'past'});
        brain.memory.short.remember(moment);
        return phrase;

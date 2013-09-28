@@ -18,6 +18,7 @@ _.mixin({
       strings = _.chain(strings)
         .without('')
         .map(function(string){
+          string = filter(string);
           string = _.trim(string);
           string = _.capitalize(string);
           if (string == '##hp') {
