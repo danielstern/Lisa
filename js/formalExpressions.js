@@ -1,5 +1,5 @@
 var formalExpressions = {
-	  formalGreeting :function () {
+  formalGreeting: function () {
     switch (Math.ceil(Math.random() * 4)) {
     case 1:
       response = "Hello and welcome";

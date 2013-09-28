@@ -65,15 +65,12 @@ function Brain(host) {
 
   brain.whatIs = function(word, noAsync) {
 
-    var idea;
-
-    idea = extractIdea(word);
+    var idea = extractIdea(word);
 
     function extractIdea(word) {
-
-    var idea;
-
-    for (var i = 0; i < 2; i++)  {
+      
+      var idea;
+      for (var i = 0; i < 2; i++)  {
         idea = idea || _.find(brain.lexicon.things, function(idea){if (!idea.word) return; return _.probably(idea.word,word, i)});      
         idea = idea || _.find(brain.lexicon.things, function(idea){if (!idea.plural) return false; return _.probably(idea.plural, word, i)});
         idea = idea || _.find(brain.lexicon.expressions, function(idea){return _.probably(idea.said, word, i)});
@@ -106,8 +103,6 @@ function Brain(host) {
     return promise;
   }
 
-
-
   brain.ponder = function(idea) {
 
     var response = '';
@@ -131,4 +126,3 @@ function Brain(host) {
     return promise;
   }
 }
-

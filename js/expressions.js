@@ -1,13 +1,13 @@
 var standardExpressions1 = {
+
   nonsense: function () {
     return "I need scissors! 67!";
   },
+  
   quality: function (seed, quality) {
     response = lexicate(seed) + " " + conjugate(seed, 'is') + " " + quality;
     return response;
   },
- 
-  // logical sayings
 
   inheritance: function (seed, idea) {
     switch (Math.ceil(Math.random() * 5)) {
@@ -27,35 +27,34 @@ var standardExpressions1 = {
     return response;
   },
 
-  personalTrait:function (trait) {
+  personalTrait: function (trait) {
     response = "I'm " + trait;
     return response;
   },
 
-
-  association :function (seed, idea) {
+  association: function (seed, idea) {
     response = lexicate(seed) + " " + conjugate(seed, 'reminds') + " me of " + lexicate(idea);
     return response;
   },
 
-  moment :function (moment, context) {
+  moment: function (moment, context) {
     response = lexicate(moment.subject) + " " + conjugate(moment.subject, moment.action, context.time) + " " + lexicate(moment.object);
     return response;
   },
 
-  association :function (seed, idea) {
+  association: function (seed, idea) {
     response = lexicate(seed) + " " + conjugate(seed, 'reminds') + " me of " + lexicate(idea);
     return response;
   },
 
-  relationship :function (seed, relationship) {
+  relationship: function (seed, relationship) {
     if (!relationship) return response;
     response = lexicate(seed) + " " + verbalize(seed, relationship) + " " + preposit(relationship.object);
     return response;
   },
 
 
-  sharedQuality :function (subject, object, trait) {
+  sharedQuality: function (subject, object, trait) {
     switch (Math.ceil(Math.random() * 4)) {
     case 1:
     case 3:
@@ -74,17 +73,12 @@ var standardExpressions1 = {
     return response;
   },
 
-
-
-
-
-
-possessive:function (key, value) {
+  possessive: function (key, value) {
     response = "My " + key + " is " + value;
     return response;
   },
 
-   induction:function (seed, idea) {
+  induction: function (seed, idea) {
     switch (Math.ceil(Math.random() * 4)) {
     case 1:
     case 3:
@@ -105,6 +99,4 @@ possessive:function (key, value) {
 
     return response;
   }
-
-
 }

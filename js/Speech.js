@@ -4,15 +4,15 @@ function Speech(brain) {
   speech.brain = brain;
   speech.express = new Expresso(brain);
   var response = '';
- 
-  speech.softPause = function() {
+
+  speech.softPause = function () {
     return "//";
   }
 
 
-  speech.prettify = function(phrase) {
-     
-    phrase = _.lisaFormat(phrase,speech.brain.personality.filter);
+  speech.prettify = function (phrase) {
+
+    phrase = _.lisaFormat(phrase, speech.brain.personality.filter);
     return phrase;
   }
 }

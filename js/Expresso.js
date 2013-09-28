@@ -28,7 +28,7 @@ var Expresso = function (brain) {
     if (typeof seed == 'string') seed = brain.whatIs(seed);
 
     tense = tense || 'present';
-    
+
     var tl = transliterate;
     var context = 'plural';
     if (seed.pronoun == 'unique') context = 'singular';
@@ -36,7 +36,6 @@ var Expresso = function (brain) {
 
     var verb = tl[verb][tense][context];
     response = verb;
-
 
     return response;
   }
@@ -86,14 +85,12 @@ var Expresso = function (brain) {
       idea = {
         pronoun: ''
       }
-
     }
-
 
     if (word == idea.plural) idea.pronoun = 'pluralize';
 
-
     var returnWord = true;
+    
     switch (idea['pronoun']) {
     case 'unique':
       preposition = 'the';

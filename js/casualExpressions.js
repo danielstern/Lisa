@@ -1,5 +1,5 @@
 var casualExpressions = {
-	  perceiveSilence :function () {
+  perceiveSilence: function () {
 
     switch (Math.ceil(Math.random() * 5)) {
     case 1:
@@ -16,10 +16,11 @@ var casualExpressions = {
     default:
       break;
     }
+    
     return response;
 
   },
- pause: function () {
+  pause: function () {
     switch (Math.ceil(Math.random() * 9)) {
     case 1:
       response = "Hmmm... ";
@@ -48,6 +49,7 @@ var casualExpressions = {
     default:
       break;
     }
+
     return response;
   },
   incomprehension: function () {
@@ -79,10 +81,11 @@ var casualExpressions = {
     default:
       break;
     }
+
     return response;
   },
 
-  offense:function () {
+  offense: function () {
     switch (Math.ceil(Math.random() * 5)) {
     case 1:
     case 3:
@@ -95,11 +98,11 @@ var casualExpressions = {
     default:
       break;
     }
-    return response;
 
+    return response;
   },
 
-  parting:function () {
+  parting: function () {
     switch (Math.ceil(Math.random() * 5)) {
     case 1:
     case 3:
@@ -136,5 +139,4 @@ var casualExpressions = {
     }
     return response;
   },
-
 }
