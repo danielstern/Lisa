@@ -36,13 +36,13 @@ var _stories = [
       {subject:'Algoron',action:'attack',object:'Axos Braveheart'},
       {subject:'Axos Braveheart',action:'fight',with:'Algoron'},
         {$_: 'but', subject:'Algoron',action:'use',object:'dark magic'},
+        {$_: 'so', subject:'Algoron',action:'retreat',to:'Mount Aur'},
     ],
   },
   {
     sequence:
     [
       {subject:'Axos Braveheart',action:'kill',object:'zombie',with:'sword'},
-      {subject:'Zombie',action:'die'}
     ],
   },
    {

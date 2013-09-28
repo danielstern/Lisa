@@ -9,9 +9,9 @@ lisa.thinks('You know nothing, Jon Snow.');
 
 About
 --------------------------
-<p>A neuro-computational matrix is a computer program that attempts to simulate the complex workings of the mind.</p>
+A neuro-computational matrix is a computer program that attempts to simulate the complex workings of the mind.</p>
 
-<p>Lisa is designed to be the basis of an intelligent conversation simulator that will ultimately allow NPCs in games to say different things, every time - and mean it!</p>
+Lisa is designed to be the basis of an intelligent conversation simulator that will ultimately allow NPCs in games to say different things, every time - and mean it!
 
 ```javascript
 lisa.hears('sword').then(function(reply){
@@ -20,8 +20,13 @@ lisa.hears('sword').then(function(reply){
 // Swords are deadly.
 ```
 
-<p>Lisa has many other uses including teaching people to speak new languages, and simulating staff at kiosks.</p>
-<p>Lisa is designed with extensibility in mind. The human mind is a complex thing, and it's always growing. Lisa's codebase has a conversational design...</p>
+Why not give Lisa a try as:
+- the personality of your Raspberry Pi based project
+- the driver of the NPCs in your next RPG
+
+Lisa has many other uses including teaching people to speak new languages, and simulating staff at kiosks.
+
+Lisa is designed with extensibility in mind. The human mind is a complex thing, and it's always growing. Lisa's codebase has a conversational design...
 
 ```javascript
 lisa.brain.ponder().then{function(thought)
@@ -29,13 +34,6 @@ lisa.brain.ponder().then{function(thought)
     // 'Apples are crunchy.'
 }
 ```
-
-
-Lisa has several functions that naturally complement eachother. She can
-+ Talk about something random
-+ Riff on something you say to her
-+ Stick to a set pattern of behaviors (i.e., politely greeting visitors and answering questions)
-
 
 ```javascript
 lisa.brain.ponder('dogs').then{function(thought)
@@ -159,6 +157,8 @@ Lisa's long term memories and personality that persist past the current session.
 
 + Lisa can add new ideas and connections to her lexicon with her long term memory
 + Lisa can remember things you were talking about in the past and reminisce about them
+
+Lisa remembers stories with her long term memory that serve as the basis of her personality.
 
 #### Lexicon
 The Lexicon is an interchangeable module containing interrelating words and ideas. 

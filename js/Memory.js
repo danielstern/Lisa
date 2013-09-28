@@ -58,7 +58,7 @@ function LongTermMemory(memory) {
       if (_.contains(ideas,word))   {
 
         matchingStories.push(story);
-        console.log('found match',ideas,word)
+        
       } 
       
     })

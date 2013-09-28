@@ -65,6 +65,17 @@ var transliterate = {
     }
   },
 
+  retreat:{
+    past:{
+      singular:'retreated',
+      plural:'retreated'
+    },
+    present:{
+      singular:'retreats',
+      plural:'retreat',
+    }
+  },
+
   kill:{
     past:{
       singular:'killed',

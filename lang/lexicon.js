@@ -280,6 +280,13 @@ var Lexicon = {
       associated:['magic'],
     },
     {
+      word:'Mount Aur',
+      is:['enchanted','big'],
+      extends:['place'],
+      pronoun:'proper',
+      associated:[],
+    },
+    {
       word:'barbarian',
       is:['brutish','tough','strong'],
       extends:['warrior'],

@@ -42,7 +42,7 @@ _.mixin({
 
     if (typeof characters == 'string') characters = [characters];
 
-      var inString = _.find(characters,function(character){
+    var inString = _.find(characters,function(character){
       if (string.toString().indexOf(character) != -1) {
         return character;
       }
@@ -65,18 +65,17 @@ _.mixin({
     return lastCharOfString;
 
   },
+
   probably: function(string1, string2, variance) {
 
     variance = variance || 2;
-    
     return _.levenshtein(string1.toString().toLowerCase(),string2.toString().toLowerCase()) < variance;
 
   },
 
   bare: function(string) {
 
-    string = string.replace('.','').replace(',','').replace(':','').replace(';','');
-
+    string = string.replace(/[\s,;.:!?'"']+/,'');
     return string;
 
   },

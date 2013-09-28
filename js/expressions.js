@@ -45,6 +45,10 @@ var standardExpressions1 = {
     if (moment.with) {
       response += " with " + preposit(moment.with);
     } 
+
+    if (moment.to) {
+      response += " to " + preposit(moment.to);
+    } 
     return response;
   },
 
