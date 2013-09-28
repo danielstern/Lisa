@@ -53,6 +53,12 @@ var _stories = [
   {
     sequence:
     [
+      {subject:'Willas',action:'kill',object:'monster',when: {}}
+    ],
+  },
+  {
+    sequence:
+    [
       {subject:'Algoron',action:'attack',object:'Axos Braveheart'},
       {rel: 'so', subject:'Axos Braveheart',action:'fight',with:'Algoron'},
       {rel: 'but', subject:'Algoron',action:'use',object:'dark magic'},

@@ -47,12 +47,22 @@ _.mixin({
       console.log('comparing...',moment,occasion);
         if (occasion.action) {
            if(occasion.action != moment.action) invoked = false;
+           console.log('action not same.')
         }
         if (occasion.object) {
-           if(occasion.object != moment.object) invoked = false;
+           if(occasion.object != _.crack(moment.object)) invoked = false;
         }
 
+    console.log('invoked?',invoked)
+
     return invoked;
+  },
+
+  crack: function(string) {
+    if (string.split('|').length > 1) {
+      string = string.split('|')[1];
+    }
+    return string;
   },
 
   extractIdeas: function(statement) {

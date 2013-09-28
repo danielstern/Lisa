@@ -290,7 +290,7 @@ function Logic(brain) {
         var intersects = _.occasionInvokesAttribute(occasion,moment);
         if (intersects) {
           console.log('intersection!',occasion,attribute);
-          applicableComments.push({subject:moment[attribute.applies],attribute:attribute.word});
+          applicableComments.push({subject:moment[attribute.applies || 'subject'],attribute:attribute.word});
         }
 
       })

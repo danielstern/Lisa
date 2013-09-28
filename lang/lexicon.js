@@ -484,6 +484,11 @@ var Lexicon = {
       associated:[''],
     },
     {
+      word:'Willas',
+      extends:['Knight'],
+      pronoun:'proper',
+    },
+    {
       word:'goblin',
       extends:['monster'],
         relationship:[{
@@ -530,6 +535,7 @@ var Lexicon = {
     {
       word:'brave',
       when:[{action:'kill',object:'monster'}],
+      applies:'subject'
     }
     ],
    expressions:[
