@@ -3,6 +3,10 @@ var Expresso = function(brain)
     express = this;
     express.brain = brain;
 
+    express.learn = function(expression,operation) {
+    	express['expression'] = operation;
+    }
+
 
     express.nonsense = function() 
     {
@@ -408,8 +412,8 @@ var Expresso = function(brain)
 
 	  if (preposition) preposition += " ";
 	  return preposition + (returnWord ? word : '');
-	}
 
+	}
 	var preposit = express.preposit;
     var lexicate = express.lexicate;
     var verbalize = express.verbalize;

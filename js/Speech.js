@@ -1,9 +1,8 @@
-function Speech(host) {
+function Speech(brain) {
 
   var speech = this;
-  speech.host = host;
-  speech.express = new Expresso(host.brain);
-  speech.brain = host.brain;
+  speech.brain = brain;
+  speech.express = new Expresso(brain);
   var response = '';
  
   speech.softPause = function() {
@@ -13,7 +12,7 @@ function Speech(host) {
 
   speech.prettify = function(phrase) {
      
-    phrase = _.lisaFormat(phrase,speech.host.brain.personality.filter);
+    phrase = _.lisaFormat(phrase,speech.brain.personality.filter);
     return phrase;
   }
 }

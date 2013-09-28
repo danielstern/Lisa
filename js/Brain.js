@@ -11,7 +11,7 @@ function Brain(host) {
   brain.mood = brain.personality;
   
   brain.logic = new Logic(brain);
-  brain.speech = new Speech(brain.host);
+  brain.speech = new Speech(brain);
   brain.memory = new Memory(brain);
   brain.personality = new Personality(brain);
 
