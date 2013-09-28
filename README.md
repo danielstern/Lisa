@@ -148,11 +148,11 @@ Returns true if Lisa remembers having said that word at all within her short ter
     brain.memory.short.recall('profession');
     // true;
 
-##### `remember(remember)` 
+##### `remember(thought)` 
 Lisa remembers a thought for future recollection
 
-    brain.memory.short.remember('buy milk');
-    // lisa remembers this;
+    brain.memory.short.remember('kill bill');
+    // lisa remembers to kill bill;
 
 ##### Long Term Memory:
 Lisa's long term memories and personality that persist past the current session. Can use a database or local storage.
