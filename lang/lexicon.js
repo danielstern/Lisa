@@ -343,7 +343,7 @@ var Lexicon = {
       word:'dark magic',
       is:['deadly'],
       extends:['magic'],
-      pronoun:'concept',
+      pronoun:'force',
       associated:[],
     },
     {
@@ -357,7 +357,7 @@ var Lexicon = {
       word:'fire',
       is:[],
       extends:['force'],
-      pronoun:'concept',
+      pronoun:'force',
       associated:[],
     },
     {

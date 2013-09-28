@@ -8,11 +8,8 @@ var Expresso = function (brain) {
       return;
     }
 
-    console.log('express is learning...', expression);
-
     var expressions = _.pairs(expression);
 
-    console.log('express got expreession...', expressions);
     _.each(expressions, function (expression) {
       express.learn(expression[0], expression[1]);
     })
@@ -78,10 +75,22 @@ var Expresso = function (brain) {
 
     var preposition = '';
     var pronoun = '';
+    var referenced = false;
 
     word = word || '';
 
+    if (word.split('|').length > 1) {
+      var directive = word.split('|')[0];
+      word = word.split('|')[1];
+
+      switch (directive) {
+        case 'referenced':
+          referenced = true;
+      }
+    }
+
     var idea = express.brain.whatIs(word, true);
+    if (referenced || idea.pronoun != 'proper' && idea.pronoun != 'force') idea.pronoun = 'referenced';
 
     if (!idea) {
 
@@ -96,10 +105,12 @@ var Expresso = function (brain) {
     
     switch (idea['pronoun']) {
     case 'unique':
+    case 'referenced':
       preposition = 'the';
       break;
     case 'proper':
     case 'none':
+    case 'force':
     case 'pluralize':
     case 'concept':
       preposition = '';
