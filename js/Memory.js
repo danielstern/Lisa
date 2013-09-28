@@ -44,7 +44,7 @@ function ShortTermMemory(memory) {
 function LongTermMemory(memory) {
   var stories = _stories;
   var longTerm = this;
-  
+
   longTerm.getStories = function(seed) {
 
     if (!seed) return {};
@@ -81,8 +81,9 @@ var _stories = [
     sequence:
     [
       {subject:'Algoron',action:'go',object:'Emeraldia'},
+      {subject:'warrior',action:'attack',object:'Algoron'},
+      {subject:'Algoron',action:'use',object:'dark magic'},
       {subject:'Algoron',action:'kill',object:'warrior'},
-      {subject:'Algoron',action:'use',object:'dark magic'}
     ]
   }
 

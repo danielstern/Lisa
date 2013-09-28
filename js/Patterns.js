@@ -1,7 +1,7 @@
 var _lisapatterns =  {
 	exposition:
 	[
-		/*{
+		{
 			sequence:['demystify','scopeSideways']
 		},
 		{
@@ -15,31 +15,13 @@ var _lisapatterns =  {
 		},
 		{
 			sequence:['demystify','express-relationship']
-		},*/
+		},
 		{
 			sequence:['demystify','tell-story']
 		},
-		{
+		/*{
 			sequence:['demystify','tell-story','tell-story']
-		}
-	],
-	service:
-	[
-		{
-			sequence:['greet']
-		},
-		{
-			sequence:['greet','demystify-self']
-		},
-		{
-			sequence:['demystify-self','share-ego']
-		},
-		{
-			sequence:['demystify-self','share-ego','demystify-self']
-		},
-		{
-			sequence:['demystify-self']
-		},
+		}*/
 	],
 
 	greeting:

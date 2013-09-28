@@ -1,7 +1,5 @@
 function Personality() {  
 	var personality = this;
-	//personality.mode = 'PERSONALITY_SERVICE';
-	personality.mode = 'PERSONALITY_CLASSIC';
 
 	var patternsReturned = [];
 
@@ -13,17 +11,7 @@ function Personality() {
 		} 
 			else 
 		{
-			switch (personality.mode)
-			{
-				case 'PERSONALITY_CLASSIC':
-				pattern = _.sample(personality.patterns.exposition);
-				break;
-				case 'PERSONALITY_SERVICE':
-				pattern =  _.sample(personality.patterns.service);
-				default:
-				break;
-
-			}
+		    pattern = _.sample(personality.patterns.exposition);
 		}
 
 		patternsReturned.push(pattern);
@@ -56,6 +44,6 @@ function Personality() {
 		pronoun:'self',
 	}
 
-	//personality.filter = _filterSouthernGal;
-	personality.filter = _filterMadCommoner;
+	personality.filter = _filterSouthernGal;
+	//personality.filter = _filterMadCommoner;
 }

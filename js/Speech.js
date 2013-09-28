@@ -119,7 +119,6 @@ function Speech(host) {
 
     express.moment = function(moment, context) 
     {
-      console.log('expressing moment...',moment,context);
       response = lexicate(moment.subject) + " " + conjugate(moment.subject, moment.action, context.time) + " " + lexicate(moment.object);
       return response;
     }
@@ -329,9 +328,7 @@ function Speech(host) {
        if (seed.pronoun == 'unique') context = 'singular';
        if (!seed.plural) context = 'singular';
 
-       console.log('transliterating...',verb,context, tl)
        var verb = tl[verb][tense][context];
-       console.log('verb?',verb);
        response = verb;
 
 
@@ -341,8 +338,7 @@ function Speech(host) {
     var verbalize = function(seed,relationship) {
 
       var response = '';
-      console.log('verbalize...' , seed, relationship)
-       
+
 
       switch (relationship.action) {
         case 'weakness':
@@ -355,8 +351,6 @@ function Speech(host) {
         response = conjugate(seed,'use');
           break;
       }
-
-      console.log('response?',response)
 
        return response;
     }

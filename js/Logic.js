@@ -6,10 +6,10 @@ function Logic(brain) {
   var response = '';
 
   logic.demystify = function (seed, numberOfQualities) {
-     var response = '';
+
      if (!seed.is || !seed.is[0]) return response;
 
-     response += brain.speech.express.quality(seed, _.sample(seed.is));
+     response = brain.speech.express.quality(seed, _.sample(seed.is));
      response += brain.speech.softPause();
      
      return response;
@@ -18,6 +18,7 @@ function Logic(brain) {
   logic.ponder = function (seed) {
     var response = '';   
 
+    seed = seed || _.sample(logic.brain.things);
 
     if (seed.said !== undefined) {
       response = brain.logic.colloquilize(seed);
@@ -30,6 +31,8 @@ function Logic(brain) {
     _.each(sequence, function(command) {
    
       var thought;
+
+      console.log('Executing command:' + command);
 
       switch (command) {
 
@@ -61,7 +64,6 @@ function Logic(brain) {
 
         case 'scopeDown':
           brainwave = logic.scopeDown(seed);
-            console.log('got scopedown brainwave',brainwave,brainwave[1])
           thought = brainwave[0];
           seed = brainwave[1];
           break;
@@ -89,7 +91,7 @@ function Logic(brain) {
 
       if (!shortTerm.recall(thought)) {
         response += thought;
-        response += "//";
+        response += brain.speech.softPause();
         shortTerm.remember(thought);
       } 
       else {
@@ -113,11 +115,11 @@ function Logic(brain) {
     switch (Math.ceil(Math.random()*2)) {
     case 1:
       quality = _.sample(brain.personality.ego.qualities);
-      response += brain.speech.express.personalTrait(quality);
+      response = brain.speech.express.personalTrait(quality);
       break;
     case 2:
       relationship = _.sample(brain.personality.ego.relationship);
-      response += brain.speech.express.relationship(relationship);
+      response = brain.speech.express.relationship(relationship);
       break;
     }
 
@@ -127,8 +129,6 @@ function Logic(brain) {
 
   logic.expressRelationship = function(seed) {
 
-    var response = '';
-
 
     if (!seed.relationship || !seed.relationship[0]) 
     {
@@ -137,9 +137,8 @@ function Logic(brain) {
     }
 
     var relationship = _.sample(seed.relationship);
-    console.log('express relationship?',seed, relationship)
 
-    response += brain.speech.express.relationship(seed, relationship);
+    response = brain.speech.express.relationship(seed, relationship);
     response += brain.speech.softPause();
      
     return response;
@@ -148,7 +147,6 @@ function Logic(brain) {
 
   logic.shareEgo = function (being) {
 
-    var response = '';
     being = being || 'self';
 
     var traits = _.pairs(brain.personality.ego.identity);
@@ -161,18 +159,18 @@ function Logic(brain) {
   
     trait = trait || _.sample(traits);
   
-    response += brain.speech.express.possessive(trait[0], trait[1]);
+    response = brain.speech.express.possessive(trait[0], trait[1]);
     response += brain.speech.softPause();
 
     return response;
   }
 
   logic.scopeUp = function(seed) {
-     var response = '';
+
      if (!seed.extends) return [response,seed];
 
      console.log('scoping up...', seed);
-     response += brain.speech.express.inheritance(seed, seed.extends);
+     response = brain.speech.express.inheritance(seed, seed.extends);
      response += brain.speech.softPause();
 
      var scopeUpIdea = _.where(things,{word:seed.extends[0]});
@@ -199,7 +197,7 @@ function Logic(brain) {
       
     if (scopeDownIdea[0]) {
       var idea = _.sample(scopeDownIdea);
-      response += brain.speech.express.induction(seed, idea);
+      response = brain.speech.express.induction(seed, idea);
       response += brain.speech.softPause();
       seed = idea;
     }
@@ -260,7 +258,7 @@ function Logic(brain) {
    // response += brain.speech.express.association(seed,sidewaysIdea);
    // response += brain.speech.softPause();
     seed = sidewaysIdea;
-         response += brain.speech.softPause();
+ //        response += brain.speech.softPause();
 
     return [response,seed];
   }
@@ -270,8 +268,6 @@ function Logic(brain) {
     var response = '';
    // console.log('telling story...',seed);
     stories = brain.memory.long.getStories(seed);
-    console.log('got story...',stories);
-
     var story = _.sample(stories);
 
     if (!story) return response;

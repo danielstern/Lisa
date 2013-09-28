@@ -458,12 +458,16 @@ var Lexicon = {
       associated:['queen','throne','king']
     },
     {
-      word:'Queen',
+      word:'queen',
       is:['powerful','sneaky','ambitious','feared','well-connected'],
       extends:['royalty'],
-      pronoun:'unique',
       plural:'queens',
       associated:['king','throne','court','kingdom']
+    },
+    {
+      word:'The Queen',
+      pronoun:'concept',
+      see:'Queen Emeraldia'
     },
     {
       word:'kingdom',
@@ -574,6 +578,17 @@ var Lexicon = {
       present:{
         singular:'go to',
         plural:'goes to'
+      }
+    },
+
+    attack:{
+      past:{
+        singular:'attacked',
+        plural:'attacked'
+      },
+      present:{
+        singular:'attacks',
+        plural:'attack'
       }
     },
 
