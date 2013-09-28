@@ -73,10 +73,7 @@ var Expresso = function (brain) {
 
   express.synonomize = function (word) {
 
-    console.log('synonomizing...',word);
     var idea = brain.whatIs(word,true);
-    console.log('synonomize',idea);
-
     var synonym = _.sample(idea.synonyms || []) || idea.word;
 
     return synonym;
@@ -107,7 +104,6 @@ var Expresso = function (brain) {
     }
 
     var idea = express.brain.whatIs(word, true) || {};
-    console.log('preopositing...',word,idea,context)
     if (referenced && idea.pronoun != 'proper' && idea.pronoun != 'force') idea.pronoun = 'referenced';
 
     if (word == idea.plural) idea.pronoun = 'pluralize';
@@ -149,15 +145,16 @@ var Expresso = function (brain) {
     }
 
     if (assumed) {
+      console.log('context?',context);
+      var objective = context.objective;
       if (idea.gender) {
-        if (idea.gender == 'male') return 'he'; 
-        if (idea.gender == 'female') return 'she';
-        if (idea.gender == 'mixed') return 'they';
+        if (idea.gender == 'male') return objective ? 'him' : 'he'; 
+        if (idea.gender == 'female') return objective ? 'her' : 'she';
+        if (idea.gender == 'mixed') return objective ? 'them' : 'they';
       }
       return 'it';
     }
 
-    console.log('returning?',word)
     if (preposition) preposition += " ";
     return preposition + (returnWord ? word : '');
 

@@ -1,11 +1,13 @@
 var standardExpressions1 = {
 
   quality: function (seed, quality) {
+    var response = '';
     response = lexicate(seed) + " " + conjugate(seed, 'is') + " " + synonomize(quality);
     return response;
   },
 
   inheritance: function (seed, idea) {
+    var response = '';
     switch (Math.ceil(Math.random() * 5)) {
     case 1:
     case 2:
@@ -20,18 +22,20 @@ var standardExpressions1 = {
   },
 
   personalTrait: function (trait) {
+    var response = '';
     response = "I'm " + trait;
     return response;
   },
 
   association: function (seed, idea) {
+    var response = '';
     response = lexicate(seed) + " " + conjugate(seed, 'reminds') + " me of " + lexicate(idea);
     return response;
   },
 
   moment: function (moment, context) {
 
-    response = '';
+    var response = '';
 
     switch (moment.rel) {
       case 'but':
@@ -70,7 +74,7 @@ var standardExpressions1 = {
     } 
 
     if (moment.against) {
-      response += " against " + preposit(moment.against);
+      response += " against " + preposit(moment.against, {objective:true});
     }
 
     if (moment.to) {
@@ -81,7 +85,7 @@ var standardExpressions1 = {
 
   relationship: function (seed, relationship) {
     var response = '';
-    
+
     if (!relationship) return response;
     response = lexicate(seed) + " " + verbalize(seed, relationship) + " " + preposit(relationship.object, {pronoun:'plural'});
     return response;
@@ -89,6 +93,8 @@ var standardExpressions1 = {
 
 
   sharedQuality: function (subject, object, trait) {
+    var response = '';
+
     switch (Math.ceil(Math.random() * 4)) {
     case 1:
     case 3:
@@ -106,6 +112,7 @@ var standardExpressions1 = {
   },
 
   induction: function (seed, idea) {
+    var response = '';
     switch (Math.ceil(Math.random() * 4)) {
       default:
       response = "a kind of " + seed.word + " " + 'is' + " " + lexicate(idea);

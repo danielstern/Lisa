@@ -20,7 +20,7 @@ _.mixin({
         .map(function(string){
           if (string == '##hp') return '</p><p>'
 
-          string = filter(string);
+          string = filter.filterString(string);
           string = _.trim(string);
           string = _.without(string.split('##lp'),'').join(', ');
           string = _.capitalize(string);
@@ -31,7 +31,6 @@ _.mixin({
        })
        .value();
 
-    console.log('string array?',strings);
     string = strings.join('');
     string = '<p>'+string+'</p>';
 
@@ -43,11 +42,8 @@ _.mixin({
 
     var invoked = true;
 
-
-      console.log('comparing...',moment,occasion);
         if (occasion.action) {
            if(occasion.action != moment.action) invoked = false;
-           console.log('action not same.')
         }
         if (occasion.object) {
            if(occasion.object != _.crack(moment.object)) invoked = false;

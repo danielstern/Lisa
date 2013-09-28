@@ -1,6 +1,8 @@
 ponder = function (seed, logic) {
   var response = '';   
 
+  console.log("Ponder, ", seed)
+
   logic = logic || window.logic;
 
   seed = seed || _.sample(logic.brain.things);

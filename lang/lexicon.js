@@ -63,6 +63,7 @@ var Lexicon = {
     {
       word:'Axos',
       see:'Axos Braveheart',
+      gender:'male',
       pronoun:'proper',
     },
     {
@@ -297,6 +298,7 @@ var Lexicon = {
       word:'Willas',
       extends:['Knight'],
       pronoun:'proper',
+      gender:'male',
     },
     {
       word:'goblin',

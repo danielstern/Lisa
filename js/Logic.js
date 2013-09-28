@@ -58,7 +58,6 @@ function Logic(brain) {
 
 
     if (!seed.relationship || !seed.relationship[0]) {
-      console.log('no relationships...');
       return response;
     }
 
@@ -96,7 +95,6 @@ function Logic(brain) {
 
     if (!seed.extends) return [response, seed];
 
-    console.log('scoping up...', seed);
     response = brain.speech.express.inheritance(seed, seed.extends);
     response += brain.speech.softPause();
 
@@ -179,10 +177,6 @@ function Logic(brain) {
   logic.comment = function (moment, context) {
 
     var response = '';
-
-    console.log('Commenting on...', moment);
-    //    console.log('attributes?',attributes);
-
     var applicableComments = [];
 
     _.each(attributes, function (attribute) {
@@ -190,7 +184,6 @@ function Logic(brain) {
 
         var intersects = _.occasionInvokesAttribute(occasion, moment);
         if (intersects) {
-          console.log('intersection!', occasion, attribute);
           applicableComments.push({
             subject: moment[attribute.applies || 'subject'],
             attribute: attribute.word
@@ -200,14 +193,11 @@ function Logic(brain) {
       })
     })
 
-    //console.log('comments?',applicableComments);
     var comment = _.sample(applicableComments);
-    console.log('comment?', comment);
 
     if (!comment) return '';
 
     var remark = logic.brain.speech.express.quality(comment.subject, comment.attribute);
-    console.log('remark?', remark);
 
     return remark || '';
   }
@@ -229,7 +219,6 @@ function Logic(brain) {
       var comment = logic.comment(moment);
       if (comment && !brain.memory.short.recall(comment)) {
 
-        console.log('expressing comment', comment);
         brain.memory.short.remember(comment);
 
         response += comment;
@@ -268,7 +257,6 @@ function Logic(brain) {
   */
   logic.colloquilize = function (seed) {
 
-    console.log('colloquilize');
     switch (seed.
       for) {
     case 'greeting':

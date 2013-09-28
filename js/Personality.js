@@ -45,5 +45,5 @@ function Personality() {
 	}
 
 	// personality.filter = _filterSouthernGal;
-	personality.filter = _filterMadCommoner;
+	personality.filter = new _filterMadCommoner();
 }

@@ -27,7 +27,7 @@ var _stories = [
     sequence:
     [
       {subject:'main|Willas',action:'use',object:'holy magic',against:'Algoron'},
-      {rel:'so',subject:'Algoron',action:'retreat'}
+      {subject:'Algoron',action:'retreat'}
     ]
   },
   {
@@ -41,7 +41,7 @@ var _stories = [
     sequence:
     [
       {subject:'Vix the Vile',action:'go',object:'Mount Aur',when:
-        {subject:'Algoron',action:'attack',object:'emeraldia'}}
+      {subject:'Algoron',action:'attack',object:'emeraldia'}}
     ],
   },
   {
@@ -68,8 +68,15 @@ var _stories = [
     [
       {subject:'Algoron',action:'attack',object:'Axos Braveheart'},
       {rel: 'so', subject:'Axos Braveheart',action:'fight',with:'Algoron'},
-      {rel: 'but', subject:'Algoron',action:'use',object:'dark magic'},
-      {rel: 'so', subject:'Axos Braveheart',action:'retreat',to:'Mount Aur'},
+      {rel: 'but', subject:'Algoron',action:'use',object:'dark magic',against:'assumed|Axos'},
+      {subject:'Axos Braveheart',action:'retreat',to:'Mount Aur'},
+    ],
+  },
+  {
+    sequence:
+    [
+      {subject:'grimgoblin',action:'attack',object:'Willas'},
+      {subject:'main|grimgoblin',action:'use', object:'club',against:'assumed|Willas'},
     ],
   },
   {
