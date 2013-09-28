@@ -25,10 +25,17 @@ var _stories = [
     ]
   },
   {
-     sequence:
-     [
-     {subject:'Omnoth',action:'rule',object:'Emeraldia'},
-     {subject:'Omnoth',action:'dies'}
-     ],
+    sequence:
+    [
+      {subject:'Omnoth',action:'rule',object:'Emeraldia'},
+      {subject:'Omnoth',action:'die'}
+    ],
+  },
+  {
+    sequence:
+    [
+      {subject:'Axos Braveheart',action:'kill',object:'zombie',with:'sword'},
+      {subject:'Zombie',action:'die'}
+    ],
   }
 ]

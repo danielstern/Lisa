@@ -225,6 +225,19 @@ var Lexicon = {
       associated:[],
     },
     {
+      word:'Axos Braveheart',
+      is:['famous'],
+      extends:['knight'],
+      pronoun:'proper',
+      associated:[],
+    },
+    {
+      word:'Axos',
+      see:'Axos Braveheart',
+      pronoun:'proper',
+      associated:[],
+    },
+    {
       word:'Sword of Light',
       is:['very powerful','legendary','secret','hidden in a certain location','buried next to the well'],
       pronoun:'unique',
