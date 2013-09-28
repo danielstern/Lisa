@@ -44,6 +44,6 @@ function Personality() {
 		pronoun:'self',
 	}
 
-	personality.filter = _filterSouthernGal;
-	//personality.filter = _filterMadCommoner;
+	// personality.filter = _filterSouthernGal;
+	personality.filter = _filterMadCommoner;
 }

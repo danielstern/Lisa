@@ -360,6 +360,13 @@ var Lexicon = {
       associated:[],
     },
     {
+      word:'Theoch',
+      is:['fearsome'],
+      extends:['dragon'],
+      gender:'male',
+      pronoun:'proper'
+    },
+    {
       word:'magic',
       is:[],
       extends:['force'],

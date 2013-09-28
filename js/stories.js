@@ -33,8 +33,21 @@ var _stories = [
   {
     sequence:
     [
+      {subject:'Vix the Vile',action:'go',object:'Mount Aur',when:
+        {subject:'Algoron',action:'attack',object:'emeraldia'}}
+    ],
+  },
+  {
+    sequence:
+    [
+      {subject:'Algoron',action:'attack',object:'emeraldia',with:'Theoch'}};
+    ]
+  }
+  {
+    sequence:
+    [
       {subject:'Algoron',action:'kill',object:'Vix the Vile',when:
-        {subject:'Algoron',action:'use',object:'dark magic'}}
+      {subject:'Algoron',action:'use',object:'dark magic'}}
     ],
   },
   {
