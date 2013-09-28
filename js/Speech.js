@@ -9,6 +9,10 @@ function Speech(brain) {
     return "//";
   }
 
+  speech.hardPause = function () {
+    return "||";
+  }
+
 
   speech.prettify = function (phrase) {
 

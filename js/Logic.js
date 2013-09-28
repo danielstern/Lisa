@@ -259,7 +259,7 @@ function Logic(brain) {
 
     return [response,seed];
   }
-
+/*
   logic.tellStoryMoment = function (seed) {
 
     var response = '';
@@ -269,13 +269,15 @@ function Logic(brain) {
 
     if (!story) return response;
 
-    response += tellStoryMoment(story);
-
-    function tellStoryMoment(story) {
-
-       var moment = _.find(story.sequence, function(_moment) {
+    var moment = _.find(story.sequence, function(_moment) {
         return !brain.memory.short.recall(_moment)}
-       );
+    );
+
+    response += getPhrase(moment);
+
+    function getPhrase(moment) {
+
+       
 
          if (!moment) return response;
          response = brain.speech.express.moment(moment,{time:'past'});
@@ -285,28 +287,31 @@ function Logic(brain) {
 
     return response;
   }
+*/
 
   logic.tellStory = function (seed) {
 
-    var response = '';
-    console.log('telling story...',seed);
+    response = '';
+    response += brain.speech.hardPause();
+
     stories = brain.memory.long.getStories(seed);
     var story = _.sample(stories);
 
     if (!story) return response;
 
-    response += tellStoryMoment(story);
+    _.each(story.sequence , function(moment){
+      var phrase = tellStoryMoment(moment);
+      response += phrase;
+      response += brain.speech.softPause();
+    });
 
-    function tellStoryMoment(story) {
+    function tellStoryMoment(moment) {
 
-       var moment = _.find(story.sequence, function(_moment) {
-        return !brain.memory.short.recall(_moment)}
-       );
-
-         if (!moment) return response;
-         response = brain.speech.express.moment(moment,{time:'past'});
-         brain.memory.short.remember(moment);
-         return response;
+       var phrase = '';
+       if (!moment) return phrase;
+       phrase = brain.speech.express.moment(moment,{time:'past'});
+       brain.memory.short.remember(moment);
+       return phrase;
     }
 
     return response;

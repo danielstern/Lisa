@@ -5,7 +5,6 @@ var _stories = [
     [
       {subject:'Algoron',action:'go',object:'Emeraldia'},
       {subject:'Algoron',action:'kill',object:'Amnon'},
-      {subject:'Omnoth',action:'rule',object:'Emeraldia'}
     ]
   },
   {
@@ -29,6 +28,14 @@ var _stories = [
     [
       {subject:'Omnoth',action:'rule',object:'Emeraldia'},
       {subject:'Omnoth',action:'die'}
+    ],
+  },
+  {
+    sequence:
+    [
+      {subject:'Algoron',action:'attack',object:'Axos Braveheart'},
+      {subject:'Axos Braveheart',action:'fight',with:'Algoron'},
+        {$_: 'but', subject:'Algoron',action:'use',object:'dark magic'},
     ],
   },
   {

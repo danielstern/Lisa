@@ -43,6 +43,17 @@ var transliterate = {
     }
   },
 
+  fight:{
+    past:{
+      singular:'fought',
+      plural:'fought'
+    },
+    present:{
+      singular:'fights',
+      plural:'fight',
+    }
+  },
+
   hide:{
     past:{
       singular:'hid',

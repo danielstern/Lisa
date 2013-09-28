@@ -11,6 +11,7 @@ _.mixin({
   },
 
   lisaFormat: function(string, filter) {
+    string = string.replace('||','</p><p>')
     var strings = string.split('//');
     strings = _.without(strings, '');
 
