@@ -83,9 +83,8 @@ var Expresso = function (brain) {
   }
 
   express.preposit = function (word, context) {
-
+    
     var preposition = '';
-    var pronoun = '';
     var assumed = false;
     var referenced = false;
 
@@ -94,29 +93,24 @@ var Expresso = function (brain) {
     if (word.split('|').length > 1) {
       var directive = word.split('|')[0];
       word = word.split('|')[1];
-      console.log('directive?',word,directive);
 
       switch (directive) {
         case 'referenced':
         case 'main':
           referenced = true;
-        break;
+          break;
         case 'assumed':
           assumed = true;
+          break;
       }
     }
 
     var idea = express.brain.whatIs(word, true);
     if (referenced && idea.pronoun != 'proper' && idea.pronoun != 'force') idea.pronoun = 'referenced';
 
-    if (!idea) {
-
-      idea = {
-        pronoun: ''
-      }
-    }
-
     if (word == idea.plural) idea.pronoun = 'pluralize';
+    if (context.pronoun) idea.pronoun = context.pronoun;
+    if (idea.pronoun = 'plural') word = idea.plural;
 
     var returnWord = true;
     
@@ -129,6 +123,7 @@ var Expresso = function (brain) {
     case 'none':
     case 'force':
     case 'pluralize':
+    case 'plural':
     case 'concept':
       preposition = '';
       break;
