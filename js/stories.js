@@ -12,7 +12,6 @@ var _stories = [
     name:'the one where algoron battles a warrior',
     sequence:
     [
-      {subject:'Algoron',action:'go',object:'Emeraldia'},
       {subject:'warrior',action:'attack',object:'Algoron'},
       {subject:'Algoron',action:'use',object:'dark magic'},
       {subject:'Algoron',action:'kill',object:'warrior'},
@@ -24,7 +23,12 @@ var _stories = [
       {subject:'knight',action:'attack',object:'goblin',with:'sword'},
       {subject:'goblin',action:'die'}
     ]
+  },
+  {
+     sequence:
+     [
+     {subject:'Omnoth',action:'rule',object:'Emeraldia'},
+     {subject:'Omnoth',action:'dies'}
+     ],
   }
-
-
 ]

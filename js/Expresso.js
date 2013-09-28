@@ -53,6 +53,9 @@ var Expresso = function (brain) {
     case 'rule':
       response = conjugate(seed, 'is') + ' ruler of';
       break;
+    case 'effective':
+      response = conjugate(seed, 'is') + ' effective against';
+      break;
     case 'use':
       response = conjugate(seed, 'use');
       break;

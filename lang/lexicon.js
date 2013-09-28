@@ -207,6 +207,17 @@ var Lexicon = {
       associated:['shield','magic'],
     },
     {
+      word:'club',
+      is:['blunt'],
+      extends:['weapon'],
+      relationship:[{
+        object:'goblin',
+        action:'effective'
+      }],
+      plural:'clubs',
+      associated:[],
+    },
+    {
       word:'weapon',
       is:['dangerous'],
       extends:['tool'],

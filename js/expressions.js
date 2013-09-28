@@ -38,11 +38,13 @@ var standardExpressions1 = {
   },
 
   moment: function (moment, context) {
-    if (moment.object) {
-      response = lexicate(moment.subject) + " " + conjugate(moment.subject, moment.action, context.time) + " " + lexicate(moment.object)
-    } else {
       response = lexicate(moment.subject) + " " + conjugate(moment.subject, moment.action, context.time);
-    }
+    if (moment.object) {
+      response += " " + lexicate(moment.object)
+    } 
+    if (moment.with) {
+      response += " with " + preposit(moment.with);
+    } 
     return response;
   },
 
