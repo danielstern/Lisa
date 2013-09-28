@@ -77,7 +77,7 @@ var Expresso = function (brain) {
     var idea = brain.whatIs(word,true);
     console.log('synonomize',idea);
 
-    var synonym = _.sample(idea.synonyms) || idea.word;
+    var synonym = _.sample(idea.synonyms || []) || idea.word;
 
     return synonym;
   }

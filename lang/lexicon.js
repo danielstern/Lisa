@@ -536,7 +536,8 @@ var Lexicon = {
     {
       word:'brave',
       when:[{action:'kill',object:'monster'}],
-      applies:'subject'
+      applies:'subject',
+      synonyms:['heroic','fearless']
     }
     ],
    expressions:[

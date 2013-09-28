@@ -1,9 +1,5 @@
 var standardExpressions1 = {
 
-  nonsense: function () {
-    return "I need scissors! 67!";
-  },
-  
   quality: function (seed, quality) {
     response = lexicate(seed) + " " + conjugate(seed, 'is') + " " + synonomize(quality);
     return response;
@@ -79,11 +75,6 @@ var standardExpressions1 = {
     return response;
   },
 
-  association: function (seed, idea) {
-    response = lexicate(seed) + " " + conjugate(seed, 'reminds') + " me of " + lexicate(idea);
-    return response;
-  },
-
   relationship: function (seed, relationship) {
     if (!relationship) return response;
     response = lexicate(seed) + " " + verbalize(seed, relationship) + " " + preposit(relationship.object);
@@ -96,15 +87,8 @@ var standardExpressions1 = {
     case 1:
     case 3:
     case 4:
-      response = lexicate(subject) + " and " + lexicate(object) + " are both " + trait;
-      break;
-    case 2:
-      response = "both " + lexicate(subject) + " and " + lexicate(object) + " are " + trait;
-      break;
-      /*case 5:
-         response += lexicate(subject) + " and " + lexicate(object)  + " are similar because they are both " + trait;
-        break;*/
     default:
+      response = lexicate(subject) + " and " + lexicate(object) + " are both " + trait;
       break;
     }
     return response;
@@ -117,20 +101,8 @@ var standardExpressions1 = {
 
   induction: function (seed, idea) {
     switch (Math.ceil(Math.random() * 4)) {
-    case 1:
-    case 3:
-      // response += lexicate(idea) + " " + conjugate(idea, 'is') +" " + lexicate(seed);
-      // break;
-    case 4:
-      response = "one kind of " + seed.word + " " + 'is' + " " + lexicate(idea);
-      break;
-    case 2:
+      default:
       response = "a kind of " + seed.word + " " + 'is' + " " + lexicate(idea);
-      break;
-      /*case 5:
-        response += "I consider " + lexicate(idea) + " to be a kind of " + seed.word;
-        break;*/
-    default:
       break;
     }
 
