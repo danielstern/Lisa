@@ -35,6 +35,7 @@ _.mixin({
     return ideas;
 
   },
+  
   stringContains: function(string, characters) {
 
     if (typeof characters == 'string') characters = [characters];
@@ -66,7 +67,7 @@ _.mixin({
 
     variance = variance || 2;
     
-    return _.levenshtein(string1,string2) < variance;
+    return _.levenshtein(string1.toString().toLowerCase(),string2.toString().toLowerCase()) < variance;
 
   },
 
