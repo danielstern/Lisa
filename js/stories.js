@@ -37,5 +37,11 @@ var _stories = [
       {subject:'Axos Braveheart',action:'kill',object:'zombie',with:'sword'},
       {subject:'Zombie',action:'die'}
     ],
+  },
+   {
+    sequence:
+    [
+      {subject:'Axos Braveheart',action:'hide',object:'Sword of Light'},
+    ],
   }
 ]

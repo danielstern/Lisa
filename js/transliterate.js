@@ -43,6 +43,17 @@ var transliterate = {
     }
   },
 
+  hide:{
+    past:{
+      singular:'hid',
+      plural:'all hid'
+    },
+    present:{
+      singular:'hides',
+      plural:'hide',
+    }
+  },
+
   kill:{
     past:{
       singular:'killed',

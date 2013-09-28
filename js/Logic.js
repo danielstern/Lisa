@@ -81,6 +81,10 @@ function Logic(brain) {
           thought = logic.shareEgo('self');
           break;
 
+        case 'tell-story-moment':
+          thought = logic.tellStoryMoment(seed);
+          break;
+
         case 'tell-story':
           thought = logic.tellStory(seed);
           break;
@@ -256,7 +260,7 @@ function Logic(brain) {
     return [response,seed];
   }
 
-  logic.tellStory = function (seed) {
+  logic.tellStoryMoment = function (seed) {
 
     var response = '';
    // console.log('telling story...',seed);
@@ -279,10 +283,35 @@ function Logic(brain) {
          return response;
     }
 
-  
+    return response;
+  }
+
+  logic.tellStory = function (seed) {
+
+    var response = '';
+    console.log('telling story...',seed);
+    stories = brain.memory.long.getStories(seed);
+    var story = _.sample(stories);
+
+    if (!story) return response;
+
+    response += tellStoryMoment(story);
+
+    function tellStoryMoment(story) {
+
+       var moment = _.find(story.sequence, function(_moment) {
+        return !brain.memory.short.recall(_moment)}
+       );
+
+         if (!moment) return response;
+         response = brain.speech.express.moment(moment,{time:'past'});
+         brain.memory.short.remember(moment);
+         return response;
+    }
 
     return response;
   }
+
 
 
   /*

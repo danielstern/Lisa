@@ -17,13 +17,13 @@ var _lisapatterns =  {
 		{
 			sequence:['demystify','express-relationship']
 		},
+		*/
+		{
+			sequence:['demystify','tell-story-moment','tell-story-moment']
+		},
 		{
 			sequence:['demystify','tell-story']
 		},
-		*/
-		{
-			sequence:['demystify','tell-story','tell-story']
-		}
 	],
 
 	greeting:
