@@ -40,9 +40,9 @@ var _stories = [
   {
     sequence:
     [
-      {subject:'Algoron',action:'attack',object:'emeraldia',with:'Theoch'}};
+      {subject:'Algoron',action:'attack',object:'Emeraldia',with:'Theoch'},
     ]
-  }
+  },
   {
     sequence:
     [

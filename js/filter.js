@@ -45,25 +45,25 @@ var _filterMadCommoner = function(string) {
   switch (Math.ceil(Math.random()*50))
   {
     case 1:
-      response += ", m'lord";
+      response += "##lpm'lord";
       break;
     case 2:
-      response += ", milord"
+      response += "##lpmilord"
       break;
     case 3:
-      response += ", ser"
+      response += "##lpser"
       break;
     case 4:
-      response += ", hee-hee ha ha.";
+      response += "##lphee-hee ha ha.";
       break;
     case 5:
       response += "... *giggle*";
       break;
     case 7:
-      response = "well, " + response;
+      response = "well##lp" + response;
       break;
     case 8:
-      response = "so, " + response;
+      response = "so##lp" + response;
       break;
     case 9:
       response += "... ah hah hah hah hah!";

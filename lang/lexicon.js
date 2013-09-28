@@ -361,10 +361,15 @@ var Lexicon = {
     },
     {
       word:'Theoch',
-      is:['fearsome'],
+      is:['fearsome','cunning'],
       extends:['dragon'],
       gender:'male',
       pronoun:'proper'
+    },
+    {
+      word:'dragon',
+      is:['fearsome'],
+      extends:['creature'],
     },
     {
       word:'magic',
@@ -545,15 +550,15 @@ var Lexicon = {
    ],
     attributes:[ 
     {
-      word:'delicious',
-      associated:['tasty','yummy','scrumptious'],
+      word:'powerful',
+      when:[{action:'use',object:'magic'}],
+    },
+    {
+      word:'brave',
+      when:[{action:'kill',object:'monster'}],
     }
     ],
    expressions:[
-   {
-     said:'hits the spot.',
-     for:'tasty',
-   },
    {
      said:'hello',
      for:'greeting',
