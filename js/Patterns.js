@@ -14,13 +14,10 @@ var _lisapatterns =  {
 		{
 			sequence:['demystify','demystify','scopeUp']
 		},
+		*/
 		{
 			sequence:['demystify','express-relationship']
 		},
-		{
-			sequence:['demystify','tell-story-moment','tell-story-moment']
-		},
-		*/
 		{
 			sequence:['demystify','tell-story']
 		},

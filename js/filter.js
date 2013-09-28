@@ -25,7 +25,7 @@ var _filterSouthernGal = function(string) {
     case 9:
       break;
     case 10:
-     response = response + "...";
+     response += "...";
       break;
     case 11:
       break;
@@ -58,10 +58,8 @@ var _filterMadCommoner = function(string) {
       response += "... *giggle*";
       break;
     case 7:
-      response = "well##lp" + response;
       break;
     case 8:
-      response = "so##lp" + response;
       break;
     case 9:
       response += "... ah hah hah hah hah!";

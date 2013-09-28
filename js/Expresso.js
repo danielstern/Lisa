@@ -82,7 +82,7 @@ var Expresso = function (brain) {
     return synonym;
   }
 
-  express.preposit = function (word) {
+  express.preposit = function (word, context) {
 
     var preposition = '';
     var pronoun = '';

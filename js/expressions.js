@@ -77,7 +77,7 @@ var standardExpressions1 = {
 
   relationship: function (seed, relationship) {
     if (!relationship) return response;
-    response = lexicate(seed) + " " + verbalize(seed, relationship) + " " + preposit(relationship.object);
+    response = lexicate(seed) + " " + verbalize(seed, relationship) + " " + preposit(relationship.object, {pronoun:'plural'});
     return response;
   },
 
