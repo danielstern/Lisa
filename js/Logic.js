@@ -7,9 +7,21 @@ function Logic(brain) {
 
   logic.demystify = function (seed, numberOfQualities) {
 
-     if (!seed.is || !seed.is[0]) return response;
+    response = '';
 
-     response = brain.speech.express.quality(seed, _.sample(seed.is));
+    switch (Math.ceil(Math.random() * 3)) {
+      case 1:
+      response = logic.scopeUp(seed)[0];
+      break;
+      case 2:
+      response = logic.scopeSideways(seed)[0];
+      break;
+      case 3:
+      response = logic.scopeDown(seed)[0];
+      break;
+    }
+
+    // response = brain.speech.express.quality(seed, _.sample(seed.is));
      response += brain.speech.softPause();
      
      return response;

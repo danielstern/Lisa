@@ -197,19 +197,15 @@ var Lexicon = {
     {
       word:'tool',
       plural:'tools',
-      is:['useful','handy','helpful'],  
     },
     // role-playing things
     {
       word:'sword',
-      is:['sharp','dangerous','deadly','cool'],
       extends:['weapon'],
       plural:'swords',
-      associated:['shield','magic'],
     },
     {
       word:'club',
-      is:['blunt'],
       extends:['weapon'],
       relationship:[{
         object:'goblin',
@@ -417,7 +413,6 @@ var Lexicon = {
     },
     {
       word:'king',
-      is:['powerful','mighty','respected','feared','brave'],
       extends:['royalty'],
       pronoun:'',
       relationship:[{
@@ -425,22 +420,18 @@ var Lexicon = {
         action:'rule'
       }],
       plural:'kings',
-      associated:['queen','throne','sword','kingdom']
     },
     {
       word:'King Omnoth',
-      is:['king of Emeraldia','intelligent','brave','much feared'],
       extends:['king'],
       pronoun:'proper',
       relationship:[{
         object:'Emeraldia',
         action:'rule'
       }],
-      associated:[]
     },
     {
       word:'King Amnon',
-      is:['noble','good','kind'],
       extends:['king'],
       pronoun:'proper',
     },
@@ -456,20 +447,17 @@ var Lexicon = {
     },
     {
       word:'Emeraldia',
-      is:['vast','troubled'],
       extends:['place'],
       pronoun:'proper',
     },
     {
       word:'Queen Amandia',
-      is:['queen of Emeraldia','beautiful','brave','smart','enchanting'],
       extends:['queen'],
       pronoun:'proper',
       relationship:[{
         object:'Emeraldia',
         action:'rule'
       }],
-      associated:[]
     },
     {
       word:'Amandia',
@@ -477,7 +465,6 @@ var Lexicon = {
     },
     {
       word:'zombie',
-      is:['undead','dangerous'],
       extends:['monster'],
       relationship:[{
         object:'fire',
@@ -489,18 +476,15 @@ var Lexicon = {
       }
       ],
       plural:'zombies',
-      associated:[''],
     },
     {
       word:'monster',
-      is:['dangerous'],
       extends:['creature'],
       plural:'monsters',
       associated:[''],
     },
     {
       word:'goblin',
-      is:['dangerous'],
       extends:['monster'],
         relationship:[{
           object:'magic',
@@ -508,44 +492,29 @@ var Lexicon = {
         },
       ],
       plural:'goblins',
-      associated:[''],
     },
     {
       word:'grimgoblin',
-      is:['dangerous'],
       extends:['goblin'],
       plural:'grimgoblins',
       relationship:{
         object:'magic',
         relationship:'use'
       },
-      associated:[''],
     },
     {
       word:'royalty',
-      is:['powerful','mighty','wealthy','refined'],
       pronoun:'unique',
-      associated:['queen','throne','king']
     },
     {
       word:'queen',
-      is:['powerful','sneaky','ambitious','feared','well-connected'],
       extends:['royalty'],
       plural:'queens',
-      associated:['king','throne','court','kingdom']
     },
     {
       word:'The Queen',
       pronoun:'concept',
       see:'Queen Emeraldia'
-    },
-    {
-      word:'kingdom',
-      is:['vast','proud','great','populous','at war'],
-      extends:['place'],
-      pronoun:'unique',
-      plural:'kingdoms',
-      associated:['king','queen','court']
     },
    ],
     attributes:[ 

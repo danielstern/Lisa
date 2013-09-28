@@ -12,16 +12,12 @@ var standardExpressions1 = {
   inheritance: function (seed, idea) {
     switch (Math.ceil(Math.random() * 5)) {
     case 1:
+    case 2:
     case 3:
     case 4:
-      response = lexicate(seed) + " " + conjugate(seed, 'is') + " a kind of " + idea;
-      break;
-    case 2:
-      response = lexicate(seed) + " " + conjugate(seed, 'is') + " a type of " + idea;
-      break;
     case 5:
-      response = lexicate(seed) + " " + conjugate(seed, 'is') + " a variety of " + idea;
     default:
+      response = lexicate(seed) + " " + conjugate(seed, 'is') + " a " + idea;
       break;
     }
     return response;

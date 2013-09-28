@@ -1,5 +1,8 @@
 Lisa
 ====
+> Hmmm... ... ah hah hah hah hah!.
+> Axos Braveheart killed Algoron with the Sword of Light, ser. He hid it.
+(Lisa thought of the day)
 
 ```javascript
 var lisa = new Lisa();
