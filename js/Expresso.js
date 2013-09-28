@@ -75,6 +75,7 @@ var Expresso = function (brain) {
 
     var preposition = '';
     var pronoun = '';
+    var assumed = false;
     var referenced = false;
 
     word = word || '';
@@ -89,6 +90,8 @@ var Expresso = function (brain) {
         case 'main':
           referenced = true;
         break;
+        case 'assumed':
+          assumed = true;
       }
     }
 
@@ -137,6 +140,14 @@ var Expresso = function (brain) {
       break;
     }
 
+    if (assumed) {
+      if (idea.gender) {
+        if (idea.gender == 'male') return 'he'; 
+        if (idea.gender == 'female') return 'she';
+        if (idea.gender == 'mixed') return 'they';
+      }
+      return 'it';
+    }
     if (preposition) preposition += " ";
     return preposition + (returnWord ? word : '');
 

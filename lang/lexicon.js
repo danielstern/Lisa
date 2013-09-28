@@ -229,6 +229,7 @@ var Lexicon = {
       word:'Axos Braveheart',
       is:['famous'],
       extends:['knight'],
+      gender:'male',
       pronoun:'proper',
       associated:[],
     },
@@ -276,6 +277,7 @@ var Lexicon = {
     {
       word:'wizard',
       is:['wise','magical','powerful','feared'],
+      gender:'male',
       extends:['warrior'],
       plural:'wizards',
       associated:['magic'],
@@ -291,12 +293,14 @@ var Lexicon = {
       word:'barbarian',
       is:['brutish','tough','strong'],
       extends:['warrior'],
+      gender:'male',
       plural:'barbarians',
       associated:['sword'],
     },
     {
       word:'knight',
       is:['noble','tough','strong'],
+      gender:'male',
       extends:['warrior'],
       relationship:[{
         object:'sword',
@@ -308,6 +312,7 @@ var Lexicon = {
     {
       word:'nobleman',
       is:['wealthy','learned','pompous'],
+      gender:'male',
       extends:['noble'],
       plural:'noblemen',
       associated:['gold'],
@@ -315,6 +320,7 @@ var Lexicon = {
     {
       word:'Vix the Vile',
       is:['mighty','a rogue','from a distant land','a fearsome blackguard'],
+      gender:'female',
       pronoun:'proper',
       relationship: [
       {
@@ -333,6 +339,7 @@ var Lexicon = {
       word:'noble',
       is:['wealthy','distinguished'],
       extends:['person'],
+      gender:'mixed',
       plural:'nobles',
       associated:['gold'],
     },
@@ -340,6 +347,7 @@ var Lexicon = {
       word:'noblewoman',
       is:['gossipy','wealthy','flitty','airy'],
       extends:['noble'],
+      gender:'female',
       plural:'noblewomen',
       associated:['gold'],
     },
@@ -347,6 +355,7 @@ var Lexicon = {
       word:'warrior',
       is:[],
       extends:['person'],
+      gender:'male',
       plural:'warriors',
       associated:[],
     },
