@@ -3,6 +3,7 @@ var Expresso = function(brain)
     express = this;
     express.brain = brain;
 
+
     express.nonsense = function() 
     {
       return "I need scissors! 67!";
@@ -300,106 +301,117 @@ var Expresso = function(brain)
 
     }
 
-    var lexicate = function(seed) {
-
-       if (typeof seed == 'string') seed = {word:seed};
-       response = (seed.pronoun == 'unique' ? preposit(seed.word) : (seed.plural || preposit(seed.word)));
-
-       return response;
-    }
-
-    var conjugate = function(seed, verb, tense) {
-
-       if (typeof seed == 'string') seed = brain.whatIs(seed);
-
-       tense = tense || 'present';
-       //if (seed.pronoun == 'unique');
-       //response += (seed.pronoun == 'unique' ? preposit(seed.word) : (seed.plural || preposit(seed.word)));
-
-       var tl = transliterate;
-       var context = 'plural';
-       if (seed.pronoun == 'unique') context = 'singular';
-       if (!seed.plural) context = 'singular';
-
-       var verb = tl[verb][tense][context];
-       response = verb;
 
 
-       return response;
-    }
+	express.conjugate = function(seed, verb, tense) {
 
-    var verbalize = function(seed,relationship) {
+	   if (typeof seed == 'string') seed = brain.whatIs(seed);
 
-      var response = '';
+	   tense = tense || 'present';
+	   //if (seed.pronoun == 'unique');
+	   //response += (seed.pronoun == 'unique' ? preposit(seed.word) : (seed.plural || preposit(seed.word)));
 
+	   var tl = transliterate;
+	   var context = 'plural';
+	   if (seed.pronoun == 'unique') context = 'singular';
+	   if (!seed.plural) context = 'singular';
 
-      switch (relationship.action) {
-        case 'weakness':
-          response = conjugate(seed, 'is') + ' weak against'
-          break;
-        case 'rule':
-          response = conjugate(seed, 'is') + ' ruler of';
-          break;
-        case 'use':
-        response = conjugate(seed,'use');
-          break;
-      }
-
-       return response;
-    }
-
-    var preposit = function(word) 
-    {
-      var preposition = '';
-      var pronoun = '';
-
-      word = word || '';
-
-      var idea = express.brain.whatIs(word,true);
-
-      if (!idea) {
-
-         idea = {pronoun:''}
-
-      }
+	   var verb = tl[verb][tense][context];
+	   response = verb;
 
 
-      if (word == idea.plural) idea.pronoun = 'pluralize';
+	   return response;
+	}
 
-     
-      var returnWord = true;
-      switch (idea['pronoun'] )
-      {
-         case 'unique':
-           preposition = 'the';
-           break;
-         case 'proper':
-         case 'none':
-         case 'pluralize':
-         case 'concept':
-           preposition = '';
-           break;
-         case 'self':
-           preposition = 'I';
-           returnWord = false;
-           break;
-         default:
-         switch(word.toLowerCase().charAt(0))
-         {
-           case 'a':
-           case 'e':
-           case 'i':
-           case 'u':
-           case 'o':
-             preposition = 'an';
-             break;
-          default:
-            preposition = 'a';
-         }
-         break;
-      }
 
-      if (preposition) preposition += " ";
-      return preposition + (returnWord ? word : '');
-    }
-  }
+	express.verbalize = function(seed,relationship) {
+
+	  var response = '';
+
+
+	  switch (relationship.action) {
+	    case 'weakness':
+	      response = conjugate(seed, 'is') + ' weak against'
+	      break;
+	    case 'rule':
+	      response = conjugate(seed, 'is') + ' ruler of';
+	      break;
+	    case 'use':
+	    response = conjugate(seed,'use');
+	      break;
+	  }
+
+	   return response;
+	}
+
+
+
+
+	express.lexicate = function(seed) {
+
+	   if (typeof seed == 'string') seed = {word:seed};
+	   response = (seed.pronoun == 'unique' ? preposit(seed.word) : (seed.plural || preposit(seed.word)));
+
+	   return response;
+	}
+
+    express.preposit = function(word){
+
+	  var preposition = '';
+	  var pronoun = '';
+
+	  word = word || '';
+
+	  var idea = express.brain.whatIs(word,true);
+
+	  if (!idea) {
+
+	     idea = {pronoun:''}
+
+	  }
+
+
+	  if (word == idea.plural) idea.pronoun = 'pluralize';
+
+	 
+	  var returnWord = true;
+	  switch (idea['pronoun'] )
+	  {
+	     case 'unique':
+	       preposition = 'the';
+	       break;
+	     case 'proper':
+	     case 'none':
+	     case 'pluralize':
+	     case 'concept':
+	       preposition = '';
+	       break;
+	     case 'self':
+	       preposition = 'I';
+	       returnWord = false;
+	       break;
+	     default:
+	     switch(word.toLowerCase().charAt(0))
+	     {
+	       case 'a':
+	       case 'e':
+	       case 'i':
+	       case 'u':
+	       case 'o':
+	         preposition = 'an';
+	         break;
+	      default:
+	        preposition = 'a';
+	     }
+	     break;
+	  }
+
+	  if (preposition) preposition += " ";
+	  return preposition + (returnWord ? word : '');
+	}
+
+	var preposit = express.preposit;
+    var lexicate = express.lexicate;
+    var verbalize = express.verbalize;
+    var conjugate = express.conjugate;
+}
