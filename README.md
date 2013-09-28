@@ -89,9 +89,22 @@ If an idea extends this idea, Lisa thinks about that instead.
 ```
 // Lisa is thinking about warriors.
 // LISA: Warriors are mighty. I don't like warriors.
-brain.logic.scopeDown(idea);
+brain.logic.scopeDown(warrior);
 // LISA: Knights are a kind of warrior.
 // Lisa is now thinking about knights.
+
+```
+
+##### `scopeSideways(idea)`
+
+If the idea extends another idea, Lisa thinks about another idea that extends that thing.
+
+```
+// Lisa is thinking about love.
+// LISA: Love is an emotion.
+brain.logic.scopeSideways(love);
+// LISA: Love and happiness are both emotions.
+// Lisa is now thinking about happiness.
 
 ```
 
@@ -117,7 +130,7 @@ if (brain.memory.short.recall(thought)) {
 ```
 
 ##### Short Term Memory Functions
-###### `recall(thought)` 
+##### `recall(thought)` 
 Returns true if Lisa remembers saying the thought.
 
     brain.ponder('merlin');
@@ -125,7 +138,7 @@ Returns true if Lisa remembers saying the thought.
     brain.memory.short.recall('Merlin is a wizard.')
     // true;
 
-###### `scan(word)` 
+##### `scan(word)` 
 Returns true if Lisa remembers having said that word at all within her short term memory.
 
     brain.memory.short.scan('profession');
@@ -135,7 +148,7 @@ Returns true if Lisa remembers having said that word at all within her short ter
     brain.memory.short.recall('profession');
     // true;
 
-###### `remember(remember)` 
+##### `remember(remember)` 
 Lisa remembers a thought for future recollection
 
     brain.memory.short.remember('buy milk');
