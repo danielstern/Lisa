@@ -1,8 +1,5 @@
 Lisa
-----
-
->> The Sword of Light is hidden in a certain location. Oh... hee-hee ha ha...
->> - Lisa
+====
 
 ```javascript
 var lisa = new Lisa();
@@ -11,7 +8,7 @@ lisa.thinks('You know nothing, Jon Snow.');
 ```
 
 Neuro-Computational Matrix
-==========================
+--------------------------
 <p>A neuro-computational matrix is a computer program that attempts to simulate the complex workings of the mind.</p>
 
 <p>Lisa is designed to be the basis of an intelligent conversation simulator that will ultimately allow NPCs in games to say different things, every time - and mean it!</p>
@@ -98,21 +95,19 @@ brain.logic.scopeDown(idea);
 
 ```
 
-<h4>Emotion</h4>
+#### Emotion
 #### Personality    
 
 #### Memory    
 ##### Short Term Memory
-<p>Prevents Lisa from saying the same thing twice, rambling, etc.</p>
-<p>When Lisa says something, she stores the thought in her short term memory.</p>
+- Prevents Lisa from saying the same thing twice, rambling, etc.
+- When Lisa says something, she stores the thought in her short term memory.
 
 ```javascript
 var thought = logic.demystify('cheese');
 brain.memory.short.remember(thought);
 ```
-
-<p>Before Lisa says something, she can see in her short term memory if she's said something.</p>
-
+Before Lisa says something, she can see in her short term memory if she's said something.
 
 ```javascript
 if (brain.memory.short.recall(thought)) {
@@ -122,7 +117,7 @@ if (brain.memory.short.recall(thought)) {
 ```
 
 ##### Short Term Memory Functions
-###### `memory.short.recall(thought)` 
+###### `recall(thought)` 
 Returns true if Lisa remembers saying the thought.
 
     brain.ponder('merlin');
@@ -130,8 +125,8 @@ Returns true if Lisa remembers saying the thought.
     brain.memory.short.recall('Merlin is a wizard.')
     // true;
 
-###### `memory.short.scan(word)` 
-Returns true if Lisa remember having said that word at all within her short term memory.
+###### `scan(word)` 
+Returns true if Lisa remembers having said that word at all within her short term memory.
 
     brain.memory.short.scan('profession');
     // false;
@@ -140,7 +135,11 @@ Returns true if Lisa remember having said that word at all within her short term
     brain.memory.short.recall('profession');
     // true;
 
+###### `remember(remember)` 
+Lisa remembers a thought for future recollection
 
+    brain.memory.short.remember('buy milk');
+    // lisa remembers this;
 
 ##### Long Term Memory:
 Lisa's long term memories and personality that persist past the current session. Can use a database or local storage.
