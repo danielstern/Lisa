@@ -80,6 +80,11 @@ var Expresso = function (brain) {
 
   express.preposit = function (word, context) {
 
+    var idea;
+    if (word && typeof word != 'string') {
+      idea = word;
+      word = idea.word;
+    }
     
     var preposition = '';
     var assumed = false;
@@ -103,7 +108,7 @@ var Expresso = function (brain) {
       }
     }
 
-    var idea = express.brain.whatIs(word, true) || {};
+    idea = idea || express.brain.whatIs(word, true) || {};
     if (word == idea.plural) idea.pronoun = 'pluralize';
     if (context.pronoun) idea.pronoun = context.pronoun;
     if (idea.pronoun == 'plural' && idea.plural) word = idea.plural;

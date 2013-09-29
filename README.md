@@ -38,12 +38,7 @@ lisa.brain.ponder().then{function(thought)
 }
 ```
 
-```javascript
-lisa.brain.ponder('dogs').then{function(thought)
-  lisa.thinks(thought);
-  // 'Dogs are domestic. Dogs are reliable.'
-}
-```
+
 How It Works
 ------------
 ### Brain
@@ -74,46 +69,23 @@ brain.logic.demystify(idea);
 
 If the idea extends another idea, Lisa thinks about that instead.
 
-```
-// Lisa is thinking about wizards.
-// LISA: Wizards are generally pretty old.
-brain.logic.scopeUp(idea);
-// LISA: Wizards are a kind of person.
-// Lisa is now thinking about people.
-
-```
 
 ##### `scopeDown(idea)`
 
 If an idea extends this idea, Lisa thinks about that instead.
 
-```
-// Lisa is thinking about warriors.
-// LISA: Warriors are mighty. I don't like warriors.
-brain.logic.scopeDown(warrior);
-// LISA: Knights are a kind of warrior.
-// Lisa is now thinking about knights!
-
-```
 
 ##### `scopeSideways(idea)`
 
 If the idea extends another idea, Lisa thinks about another idea that extends that thing.
 
-```
-// Lisa is thinking about love.
-// LISA: Love is an emotion.
-brain.logic.scopeSideways(love);
-// LISA: Love and happiness are both emotions.
-// Lisa is now thinking about happiness.
-
-```
 
 #### Emotion
 #### Personality    
 
 #### Memory    
 ##### Short Term Memory
+
 - Prevents Lisa from saying the same thing twice, rambling, etc.
 - When Lisa says something, she stores the thought in her short term memory.
 
@@ -161,7 +133,7 @@ Lisa's long term memories and personality that persist past the current session.
 + Lisa can add new ideas and connections to her lexicon with her long term memory
 + Lisa can remember things you were talking about in the past and reminisce about them
 
-Lisa remembers stories with her long term memory that serve as the basis of her personality.
+Long term memory is where Lisa stores **stories** which are the basis of her neuro-computational matrix.
 
 #### Lexicon
 The Lexicon is an interchangeable module containing interrelating words and ideas. 
@@ -178,6 +150,34 @@ var Lexicon = {
     },
   ]
 }
+```
+
+##### Things
+Things in the lexicon represent nouns and are usually the subject or object in a moment.
+
+```
+    {
+      word:'knight',
+      gender:'male',
+      extends:['warrior'],
+      relationship:[{
+        object:'sword',
+        action:'use'
+      }],
+      plural:'knights',
+    }
+```
+
+##### Attributes
+Attributes are applied to things in the lexicon.
+
+```
+    {
+      word:'brave',
+      when:[{action:'kill',object:'monster'}],
+      applies:'subject',
+      synonyms:['heroic','fearless']
+    }
 ```
 
 

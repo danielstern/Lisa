@@ -2,7 +2,7 @@ var standardExpressions1 = {
 
   quality: function (seed, quality) {
     var response = '';
-    response = lexicate(seed) + " " + conjugate(seed, 'is') + " " + synonomize(quality);
+    response = preposit(seed) + " " + conjugate(seed, 'is') + " " + synonomize(quality);
     return response;
   },
 
@@ -15,7 +15,7 @@ var standardExpressions1 = {
     case 4:
     case 5:
     default:
-      response = lexicate(seed) + " " + conjugate(seed, 'is') + " a " + idea;
+      response = preposit(seed) + " " + conjugate(seed, 'is') + " a " + idea;
       break;
     }
     return response;
@@ -29,7 +29,7 @@ var standardExpressions1 = {
 
   association: function (seed, idea) {
     var response = '';
-    response = lexicate(seed) + " " + conjugate(seed, 'reminds') + " me of " + lexicate(idea);
+    response = preposit(seed) + " " + conjugate(seed, 'reminds') + " me of " + lexicate(idea);
     return response;
   },
 
@@ -96,7 +96,7 @@ var standardExpressions1 = {
     var response = '';
 
     if (!relationship) return response;
-    response = lexicate(seed) + " " + verbalize(seed, relationship) + " " + preposit(relationship.object, {pronoun:'plural'});
+    response = preposit(seed) + " " + verbalize(seed, relationship) + " " + preposit(relationship.object, {pronoun:'plural'});
     return response;
   },
 
@@ -109,7 +109,7 @@ var standardExpressions1 = {
     case 3:
     case 4:
     default:
-      response = lexicate(subject) + " and " + lexicate(object) + " are both " + trait;
+      response = preposit(subject) + " and " + preposit(object) + " are both " + trait;
       break;
     }
     return response;
@@ -124,7 +124,7 @@ var standardExpressions1 = {
     var response = '';
     switch (Math.ceil(Math.random() * 4)) {
       default:
-      response = "a kind of " + seed.word + " " + 'is' + " " + lexicate(idea);
+      response = "a kind of " + seed.word + " " + 'is' + " " + preposit(idea);
       break;
     }
 

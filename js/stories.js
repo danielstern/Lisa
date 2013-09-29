@@ -41,7 +41,7 @@ var _stories = [
     sequence:
     [
       {subject:'Willas',action:'go',object:'Grim Swamps'},
-      {subject:'goblin',action:'attack',object:'Willas'},
+      {subject:'goblin',action:'attack',object:'assumed|Willas'},
       {subject:'Willas',action:'is',object:'injured'},
       {subject:'Willas',action:'use',object:'magic',against:'main|goblin'},
       {subject:'goblin',action:'die'},
