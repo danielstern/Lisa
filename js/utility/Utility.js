@@ -59,12 +59,21 @@ _.mixin({
       string = string.split('|')[1];
     }
     if (string.split(':').length > 1) {
-      string = string.replace(/<>/gi,'')
-      .split(':')[1]
+      string = _.fizzle(string);
+      /*string.replace(/<>/gi,'')
+      .split(':')[1]*/
     }
 
     //console.log('crack returning...',string)
     return string;
+  },
+
+  fizzle: function(string) {
+    string = string.replace(/\$/gi,'')
+      .split(':')[1]
+    ;
+    return string;
+
   },
 
   oneToMany: function(string, returnQuality) {

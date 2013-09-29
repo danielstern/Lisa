@@ -28,11 +28,6 @@ var Lexicon = {
       pronoun:'none',
     },
     {
-      word:'Nick',
-      see:'self',
-      pronoun:'proper',
-    },
-    {
       word:'I',
       see:'self',
       pronoun:'none',
@@ -41,6 +36,16 @@ var Lexicon = {
       word:'place',
       hidden:'true',
       plural:'places',
+    },
+    {
+      word:'hill',
+      hidden:'true',
+      extends:['place'],
+      plural:'hills',
+    },
+    {
+      word:'top',
+      plural:'tops'
     },
     {
       word:'person',
