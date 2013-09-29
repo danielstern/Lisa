@@ -18,9 +18,12 @@ var _lisapatterns =  {
 			sequence:['demystify','express-relationship']
 		},
 		*/
-		{
+	/*{
 			sequence:['demystify','express-relationship','tell-story']
-		},
+		},*/
+		{
+			sequence:['demystify','draw-conclusion'],
+		}
 	],
 
 	greeting:

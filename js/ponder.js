@@ -59,6 +59,10 @@ ponder = function (seed, logic) {
         thought = brain.speech.express.formalGreeting();
         break;
 
+      case 'draw-conclusion':
+        thought = logic.drawConclusion(seed);
+        break;
+
       case 'demystify-self':
         thought = logic.demystifyPersonality('self');
         break;

@@ -206,7 +206,63 @@ function Logic(brain) {
 
     var remark = logic.brain.speech.express.quality(comment.subject, comment.attribute);
 
+    return '';
     return remark || '';
+  }
+
+  logic.drawConclusion = function (seed) {
+
+    var response = '';
+  
+    console.log('drawing conclusion about...',seed);
+    var stories = brain.memory.long.getStories(seed);
+    console.log('stories?',stories);
+    var allComments = [];
+
+    _.each(stories,function (story){
+      _.each(story.sequence,function(moment) {
+       // console.log('drawing conclusion from moment...',moment);
+        var comments = logic.getComments(moment);
+        allComments = allComments.concat(comments);
+
+       })
+   })
+
+    console.log('allComments?',allComments);
+    var allCommentsAboutSubject = _.filter(allComments,
+      function(comment){
+        if (logic.brain.whatIs(comment.subject,true) == seed) return true;})
+
+    console.log('allCommentsAboutSubject?',allCommentsAboutSubject);
+
+    var conclusion = _.sample(allCommentsAboutSubject);
+    var remark = logic.brain.speech.express.quality(conclusion.subject, conclusion.attribute);
+    response = remark;
+
+    return response || '';
+  }
+
+  logic.getComments = function (moment) {
+
+    var applicableComments = [];
+
+    _.each(attributes, function (attribute) {
+      _.each(attribute.when, function (occasion) {
+
+//        console.log('moment?',moment);
+
+        var intersects = _.occasionInvokesAttribute(moment, occasion);
+        if (intersects) {
+          applicableComments.push({
+            subject: moment[occasion.applies || 'subject'],
+            attribute: attribute.word
+          });
+        }
+
+      })
+    })
+
+    return applicableComments;
   }
 
   logic.tellStory = function (seed) {

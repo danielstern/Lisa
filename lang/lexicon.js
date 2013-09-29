@@ -370,9 +370,24 @@ var Lexicon = {
       form:'adjective',
     },
     {
-      word:'injured',
-      synonyms:['hurt','wounded'],
+      word:'dangerous',
+      when:[
+        {action:'kill',applies:'with'},
+        ],
       form:'adjective',
+    },
+    {
+      word:'cowardly',
+      when:[
+        {action:'retreat',applies:'subject'},
+      ],
+      form:'adjective',
+      synonyms:['craven','yellow']
+    },
+    {
+      word:'injured',
+      form:'adjective',
+      synonyms:['hurt','wounded'],
     },
     {
       word:'evil',
