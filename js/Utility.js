@@ -55,6 +55,7 @@ _.mixin({
   },
 
   crack: function(string) {
+    string = string || '';
     if (string.split('|').length > 1) {
       string = string.split('|')[1];
     }

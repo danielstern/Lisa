@@ -108,7 +108,10 @@ var Expresso = function (brain) {
     if (word == idea.plural) idea.pronoun = 'pluralize';
     if (context.pronoun) idea.pronoun = context.pronoun;
     if (idea.pronoun == 'plural' && idea.plural) word = idea.plural;
-    if (idea.form == "adjective") idea.pronoun = 'none';
+    if (idea.form == "adjective") {
+      idea.pronoun = 'none'
+      word = synonomize(idea.word);
+    }
 
     console.log('preposit...',word,context,idea);
 

@@ -346,6 +346,12 @@ var Lexicon = {
       form:'adjective',
     },
     {
+      word:'dead',
+      when:[{action:'die'}],
+      applies:'subject',
+      form:'adjective',
+    },
+    {
       word:'injured',
       synonyms:['hurt','wounded'],
       form:'adjective',
