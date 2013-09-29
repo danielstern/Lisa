@@ -91,7 +91,7 @@ var transliterate = {
   die:{
     past:{
       singular:'died',
-      plural:'all died'
+      plural:'died'
     },
     present:{
       singular:'dies',

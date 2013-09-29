@@ -19,7 +19,8 @@ var standardExpressions1 = {
     var context;
     if (!seed || seed.plural) context = 'plural';
     console.log('generality?',context, seed)
-    response = preposit(seed, {pronoun: 'plural'}) + " " + conjugate(seed, 'is', 'present', context) + " " + synonomize(quality);
+  //  response = preposit(seed, {pronoun: 'plural'}) + " " + conjugate(seed, 'is', 'present', context) + " " + synonomize(quality);
+    response = preposit(seed, {pronoun: 'plural'}) + " " + conjugate(seed, 'is', 'present', context) + " " + preposit(quality,{pronoun: 'plural'});
     return response;
   },
 
@@ -27,7 +28,7 @@ var standardExpressions1 = {
     var response = '';
     console.log('expressing inheritance', seed, idea)
 
-    response = window.brain.speech.express.quality(seed, idea[0]);
+    response = window.brain.speech.express.generality(seed, idea[0]);
 
     return response;
   },

@@ -87,7 +87,8 @@
               </tr>
               <tr>
                 <td colspan='2'>
-                  <button class='btn' ng-click='handleScopeUp()'>Scope Up</button>
+                  <button class='btn' ng-click='scopeUp()'>Scope Up</button>
+                  <button class='btn' ng-click='scopeDown()'>Scope Down</button>
                 </td>
               </tr>
             </tbody>
@@ -124,19 +125,22 @@
         $scope.thought = reply[1].word;
         $scope.recentThings.push(reply[1] || '?');
 
-      //  $scope.recentThings = _.last(_.initial($scope.recentThings),3);
         $scope.recentThings = _.last($scope.recentThings, 3);
               $scope.sayTo = '';
-      //  console.log('recent thigns?',$scope.recentThings)
 
       }
 
-      $scope.handleScopeUp = function() {
-        console.log('handle scopeup...')
-        var lisaDo = $Lisa.do('scope-up');
-        console.log('do?',lisaDo);
+      $scope.scopeUp = function(){$scope.lisaDirective('scopeUp')};
+      $scope.scopeDown = function(){$scope.lisaDirective('scopeDown')};
+
+      $scope.lisaDirective = function(directive) {
+
+        console.log('handle,' ,directive);
+        var lisaDo = $Lisa.do(directive);
+
         $Lisa.brain.seed = lisaDo[1];
         $scope.saying = lisaDo[0];
+        $scope.thought = lisaDo[1].word;
         $scope.sayTo = '';
       }
   }])

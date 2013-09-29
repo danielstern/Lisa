@@ -383,6 +383,13 @@ var Lexicon = {
       form:'adjective',
     },
     {
+      word:'fierce',
+      when:[
+        {action:'attack',applies:'subject'},
+        ],
+      form:'adjective',
+    },
+    {
       word:'cowardly',
       when:[
         {action:'retreat',applies:'subject'},
