@@ -57,6 +57,69 @@ var Lexicon = {
       plural:'people',
     },
     ],
+
+
+    attributes:[ 
+    {
+      word:'powerful',
+      form:'adjective',
+    },
+    {
+      word:'scary',
+      synonyms:['fearsome','frighting'],
+    },
+    {
+      word:'effective',
+      form:'adjective',
+    },
+    {
+      word:'dead',
+      form:'adjective',
+    },
+    {
+      word:'new',
+      form:'adjective',
+    },
+    {
+      word:'dangerous',
+      when:[
+        {action:'kill',applies:'with'},
+      ],
+      form:'adjective',
+    },
+    {
+      word:'fierce',
+      form:'adjective',
+    },
+    {
+      word:'cowardly',
+      when:[
+        {action:'retreat',applies:'subject'},
+      ],
+      form:'adjective',
+      synonyms:['craven','yellow']
+    },
+    {
+      word:'undead',
+      form:'adjective',
+      synonyms:['hollow']
+    },
+    {
+      word:'hurt',
+      form:'adjective',
+      synonyms:['injured','wounded'],
+    },
+    {
+      word:'evil',
+      form:'adjective',
+      synonyms:['foul','wicked']
+    },
+    {
+      word:'brave',
+      form:'adjective',
+      synonyms:['fearless']
+    }
+    ],
    expressions:[
    {
      said:'hello',
