@@ -46,7 +46,7 @@
     <div class="row">
       <div class='span5'>
         <h3>Lisa</h3>
-           <p>{{saying}}</p>
+           <p id='saying'>{{saying}}</p>
         <form id='conversation-form' ng-submit='sayRandom()'>
           <input  ng-model='sayTo' type='text'>
         <button class='btn' >Say Something Random</button>
@@ -112,7 +112,12 @@
         if (!reply[1])    return;
         $scope.thought = reply[1].word;
         $scope.recentThings.push(reply[1]);
+
         $scope.recentThings = _.last($scope.recentThings,3);
+        $scope.randomThings = _.sample(brain.lexicon.things, 3)
+        $scope.sayTo = '';
+
+
       }
 
       //$scope.sayRandom();
@@ -120,3 +125,8 @@
   
 
 </script>
+<style>
+ .word_split span:hover {
+    font-weight:bold;
+}
+</style>
