@@ -41,7 +41,6 @@ _.mixin({
 
     var invoked = true;
 
-    console.log('invoke attribute',moment, occasion)
 
         if (occasion.action) {
            if(occasion.action != moment.action) invoked = false;

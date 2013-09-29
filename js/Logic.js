@@ -124,7 +124,7 @@ function Logic(brain) {
 
     var response = '';
 
-      console.log('drawConclusion...',seed);
+
   
     var stories = brain.memory.long.getStories(_.crack(seed.word));
     var allComments = [];
@@ -137,7 +137,6 @@ function Logic(brain) {
        })
    })
 
-            console.log('allcomments?...',allComments);
 
     var allCommentsAboutSubject = _.filter(allComments,
       function(comment){
@@ -155,14 +154,11 @@ function Logic(brain) {
   logic.getComments = function (moment) {
 
 
-      console.log('get comment...',moment);
-
     var applicableComments = [];
 
     _.each(attributes, function (attribute) {
       _.each(attribute.when, function (occasion) {
 
-      console.log('get comment...',moment,occasion);
 
         var intersects = _.occasionInvokesAttribute(moment, occasion);
         if (intersects) {
