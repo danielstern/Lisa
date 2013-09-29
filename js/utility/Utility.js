@@ -67,6 +67,20 @@ _.mixin({
     return string;
   },
 
+  oneToMany: function(string, returnQuality) {
+    console.log('one to many...',string)
+     if (typeof string != 'string') return string;
+     var many;
+
+     if (string.split('&').length > 0) {
+      many = string.replace(/\<|\>/gi,'')
+       .split('&');
+    }
+
+    return many || string;
+  },
+
+
   extractIdeas: function(statement) {
 
     statement = statement || '';
@@ -131,6 +145,25 @@ _.mixin({
 
   },
 
+  sluice: function(ideas){
+    console.log('sluicing ideas...',ideas)
+
+    var newIdeas = [];
+
+     _.each(ideas,function(idea){
+
+       idea = _.clone(idea);
+       var ideaParts = _.oneToMany(idea);
+       ideaParts = _.map(ideaParts,function(ideaPart) {
+         return _.crack(ideaPart);
+       });
+       newIdeas = newIdeas.concat(ideaParts);
+
+    });
+    console.log('ideas new?',newIdeas);
+
+    return newIdeas;
+  },
 
   extractStory: function (story) {
 
@@ -139,10 +172,10 @@ _.mixin({
     _.each(story.sequence, function(moment) {
 
       ideas = ideas.concat(_.values(moment));
-      ideas = _.map(ideas,function(idea){
-        return _.crack(idea);
-      });
+     
     });
+
+    ideas = _.sluice(ideas);
 
     return ideas;
   }

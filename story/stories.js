@@ -9,4 +9,14 @@ var _stories = [
       }
     ]
   },
+  {
+    name:'2 - a generalization about my dad',
+    sequence:
+    [
+      {
+        subject:'<my|father&me>',action:'talk', howMuch:'a lot',
+          context:{general:true,time:'present'}
+      }
+    ]
+  },
 ]
