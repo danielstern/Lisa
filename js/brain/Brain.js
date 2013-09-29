@@ -58,7 +58,7 @@ function Brain(host) {
 
     var idea = extractIdea(_.crack(word));
 
-    console.log('what is...',word,idea)
+  //  console.log('what is...',word,idea)
 
     
     var context = brain.analyze(word);

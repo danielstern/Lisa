@@ -207,7 +207,7 @@ function Logic(brain) {
       console.log('tellstorymoment...',moment)
       if (brain.memory.short.recall(moment)) return phrase;
       var context = moment.context || {};
-      context.time = 'past';
+      context.time = context.time || 'past';
       phrase = brain.speech.express.moment(moment, context);
       brain.memory.short.remember(moment);
       return phrase;
