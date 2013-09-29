@@ -154,7 +154,7 @@ var _stories = [
     sequence:
     [
       {subject:'Axos Braveheart',action:'kill',object:'Algoron',with:'Sword of Light'},
-      {subject:'assumed|Axos Braveheart',action:'hide',object:'assumed|Sword of Light'},
+      {rel: 'then',subject:'assumed|Axos Braveheart',action:'hide',object:'assumed|Sword of Light'},
     ],
   }
 ]

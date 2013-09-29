@@ -124,12 +124,9 @@ var Expresso = function (brain) {
       }
     }
     
-    //console.log('prepositing 1.5. idea?',idea,typeof idea)
-
     if (idea instanceof Array) idea = idea[0];
     if (typeof idea == 'string') idea = express.brain.whatIs(idea, true)
 
-    //console.log('prepositing 1.75. idea?',idea,typeof idea)
     idea = idea || express.brain.whatIs(word, true) || {};
   //  console.log('prepositing 2',word,idea);
     if (!word) word = idea.word;

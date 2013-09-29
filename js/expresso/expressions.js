@@ -69,7 +69,7 @@ var standardExpressions1 = {
       }
       break;
     case 'so':
-      switch (Math.ceil(Math.random() * 1)) {
+      switch (Math.ceil(Math.random() * 3)) {
       case 1:
         response += 'so'
         break;
@@ -78,6 +78,19 @@ var standardExpressions1 = {
         break;
       case 3:
         response += 'as a result'
+        break;
+      }
+      break;
+    case 'then':
+      switch (Math.ceil(Math.random() * 3)) {
+      case 1:
+        response += 'then'
+        break;
+      case 2:
+        response += 'after that'
+        break;
+      case 3:
+        response += 'subsequently'
         break;
       }
       break;

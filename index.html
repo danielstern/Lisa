@@ -54,7 +54,6 @@
            <p id='saying'>{{saying}}</p>
         <form id='conversation-form' ng-submit='sayRandom()'>
           <input  ng-model='sayTo' type='text'>
-        <button class='btn' >Say Something Random</button>
         </form>
       </div>
        <div class='span3'>
@@ -81,6 +80,7 @@
                   <button class='btn' ng-click='scopeUp()'>Scope Up</button>
                   <button class='btn' ng-click='scopeDown()'>Scope Down</button>
                   <button class='btn' ng-click='scopeSideways()'>Scope Sideways</button>
+                  <button class='btn' ng-click='sayRandom()'>Keep Talking</button>
                 </td>
               </tr>
             </tbody>
