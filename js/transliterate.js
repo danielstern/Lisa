@@ -12,12 +12,12 @@ var transliterate = {
 
   go:{
     past:{
-      singular:'went to',
-      plural:'went to'
+      singular:'went',
+      plural:'went'
     },
     present:{
-      singular:'go to',
-      plural:'goes to'
+      singular:'go',
+      plural:'goes'
     }
   },
 

@@ -76,6 +76,8 @@ _.mixin({
 
   stringContains: function(string, characters) {
 
+    string = string || '';
+
     if (typeof characters == 'string') characters = [characters];
 
     var inString = _.find(characters,function(character){

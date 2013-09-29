@@ -3,7 +3,7 @@ var _stories = [
     name:'the one where algoron goes to Emeraldia and kills amnon',
     sequence:
     [
-      {subject:'Algoron',action:'go',object:'Emeraldia'},
+      {subject:'Algoron',action:'go',to:'Emeraldia'},
       {subject:'Algoron',action:'kill',object:'Amnon'},
     ]
   },
@@ -40,7 +40,13 @@ var _stories = [
   {
     sequence:
     [
-      {subject:'Willas',action:'go',object:'Grim Swamps'},
+      {subject:'<Willas&sorceress>',action:'go',to:'Emeraldia'},
+    ],
+  },
+  {
+    sequence:
+    [
+      {subject:'Willas',action:'go',to:'Grim Swamps'},
       {subject:'goblin',action:'attack',object:'assumed|Willas'},
       {subject:'Willas',action:'is',object:'injured'},
       {subject:'Willas',action:'use',object:'magic',against:'main|goblin'},
@@ -62,7 +68,7 @@ var _stories = [
   {
     sequence:
     [
-      {subject:'Vix the Vile',action:'go',object:'Mount Aur',when:
+      {subject:'Vix the Vile',action:'go',to:'Mount Aur',when:
       {subject:'Algoron',action:'attack',object:'emeraldia'}}
     ],
   },

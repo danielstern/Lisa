@@ -22,6 +22,7 @@ var Expresso = function (brain) {
 
   express.conjugate = function (seed, verb, tense) {
 
+    seed = seed || {};
     if (typeof seed == 'string') seed = brain.whatIs(seed);
 
     tense = tense || 'present';
@@ -79,6 +80,15 @@ var Expresso = function (brain) {
   }
 
   express.preposit = function (word, context) {
+
+    console.log('prepositing...',word);
+    if(_.stringContains(word,'<')) {
+      console.log('this is two words');
+      var words = word.replace(/[<>]/gi,'').split('&');
+      console.log('words?',words);
+      var propositedWords = _.map(words,function(word){return preposit(word)}); 
+      return _.toSentence(propositedWords);
+    }
 
     var idea;
     if (word && typeof word != 'string') {
