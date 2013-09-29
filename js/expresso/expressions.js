@@ -13,7 +13,7 @@ var standardExpressions1 = {
 
   generality: function (seed, quality) {
     var response = '';
-     console.log('generality?',seed, quality)
+  // console.log('generality?',seed, quality)
     if (typeof seed == 'string') seed = window.brain.whatIs(seed, true);
 
     var prepositedSubjects = '';
@@ -31,11 +31,13 @@ var standardExpressions1 = {
     var context;
     if (!seed || seed.plural) context = 'plural';
 
+    var objectForm = 'plural';
+    if (seed.pronoun == 'proper') objectForm = 'singular';
     if (prepositedSubjects) {
       response = prepositedSubjects + " " + conjugate(seed, 'is', 'present', 'plural') + " " + preposit(quality,{pronoun: 'plural'});
     } else {
        console.log('no preposited subjects...',seed,quality)
-       response = preposit(seed, {pronoun: 'plural'}) + " " + conjugate(seed, 'is', 'present', context) + " " + preposit(quality,{pronoun: 'plural'});
+       response = preposit(seed, {pronoun: 'plural'}) + " " + conjugate(seed, 'is', 'present', context) + " " + preposit(quality,{pronoun: objectForm});
        console.log('response?',response)
     }
     return response;
@@ -43,7 +45,7 @@ var standardExpressions1 = {
 
   inheritance: function (seed, idea) {
     var response = '';
-    console.log('expressing inheritance', seed, idea)
+   //console.log('expressing inheritance', seed, idea)
 
     response = window.brain.speech.express.generality(seed, idea);
 

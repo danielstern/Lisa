@@ -414,12 +414,14 @@ var Lexicon = {
       word:'evil',
       when:[{action:'use',object:'dark magic'}],
       applies:'subject',
+      form:'adjective',
       synonyms:['foul','wicked']
     },
     {
       word:'brave',
       when:[{action:'kill',object:'monster'}],
       applies:'subject',
+      form:'adjective',
       synonyms:['heroic','fearless']
     }
     ],
