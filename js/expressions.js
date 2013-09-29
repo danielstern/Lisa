@@ -2,7 +2,9 @@ var standardExpressions1 = {
 
   quality: function (seed, quality) {
     var response = '';
+  //  console.log('quality?',seed,quality)
     response = preposit(seed) + " " + conjugate(seed, 'is') + " " + synonomize(quality);
+    //    console.log('response coming from quality?',response)
     return response;
   },
 

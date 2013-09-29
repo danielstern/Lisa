@@ -53,9 +53,6 @@
         <button class='btn' >Say Something Random</button>
         </form>
       </div>
-      <div class='span3'>
-        <img src='../misc/lisa.jpg' width='200px' height='auto'>
-      </div>
        <div class='span3'>
          <table class='table'>
             <tr>
@@ -64,54 +61,29 @@
             </tr>
             </thead>
             <tbody>
+              <tr>
+                <th>
+                  Recently
+                </th>
+                <td>
+                  <p ng-repeat="thing in recentThings|limitTo:3">
+                    {{thing.word}}
+                 </p>
+                </td>
+              </tr>
             </tbody>
          </table>
       </div>
+      <div class='span3'>
+        <img src='../misc/lisa.jpg' width='200px' height='auto'>
+      </div>
+      
     </div>
 
   </div>
 </body>
 
 <script>
-
-/*
-    var $input = $('#conversation-input');
-    var inputText = $input.val();
-    $input.val('');
-
-    if (!inputText) {
-
-        $Lisa.saySomethingRandom().then(function(response){
-         $('#dialogue').html(response); 
-       })
-
-        return;
-
-    }
-
-    $Lisa.isTalkingTo($responder);
-    $Lisa.hears(inputText);
-
-    function $responder(words) {
-      $('#dialogue').html(words); 
-    }
-
-    e.preventDefault();
-    return false;
-  })
-
-  $('#saySomethingRandom').click(function(){
-
-    $Lisa.saySomethingRandom().then(function(response){
-       $('#dialogue').html(response); 
-    })
-      
-       $('#dialogue').html("Hmmm.."); 
-
-
-  });
-*/
-
 
   var lisaApp = angular.module('lisaApp',[])
    .controller('LisaController', ['$scope', function($scope) {
@@ -121,17 +93,21 @@
 
       $scope.saying = 'Hello!'
 
+      $scope.recentThings = [];
+
       $scope.sayRandom = function() {
 
         var reply = $Lisa.hears($scope.sayTo);
         $scope.saying = reply[0];
+        if (!reply[1])    return;
         $scope.thought = reply[1].word;
+        console.log('recentThings',$scope.recentThings)
+        $scope.recentThings.push(reply[1]);
+        $scope.recentThings = _.last($scope.recentThings,3);
       }
 
       //$scope.sayRandom();
   }])
   
-
-
 
 </script>

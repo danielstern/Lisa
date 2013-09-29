@@ -235,7 +235,8 @@ function Logic(brain) {
 
     console.log('allCommentsAboutSubject?',allCommentsAboutSubject);
 
-    var conclusion = _.sample(allCommentsAboutSubject) || {};
+    var conclusion = _.sample(allCommentsAboutSubject) || '';
+    if (!conclusion) return '';
     var remark = logic.brain.speech.express.quality(conclusion.subject, conclusion.attribute);
     response = remark;
 
