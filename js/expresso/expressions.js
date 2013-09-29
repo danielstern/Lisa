@@ -45,7 +45,6 @@ var standardExpressions1 = {
 
   inheritance: function (seed, idea) {
     var response = '';
-   //console.log('expressing inheritance', seed, idea)
 
     response = window.brain.speech.express.generality(seed, idea);
 
@@ -126,24 +125,24 @@ var standardExpressions1 = {
       response += " " + preposit(moment.object, _.clone(context));
     }
     if (moment.with) {
-      response += " with " + preposit(moment.with, context);
+      response += " with " + preposit(moment.with, _.clone(context));
     }
 
     if (moment.at) {
-      response += " at " + preposit(moment.at);
+      response += " at " + preposit(moment.at, _.clone(context));
     }
 
     if (moment.in) {
-      response += " in " + preposit(moment.in, context);
+      response += " in " + preposit(moment.in, _.clone(context));
     }
 
     if (moment.against) {
       var pronoun = (isGeneral) ? 'plural':'singular'
-      response += " against " + preposit(moment.against, {
-        main: true,
-        objective: true,
-        pronoun: pronoun
-      });
+      var againstContext = _.clone(context);
+      againstContext.pronoun = pronoun;
+      againstContext.main = true;
+      againstContext.objective = true;
+      response += " against " + preposit(moment.against, againstContext);
     }
 
     if (moment.to) {
@@ -168,19 +167,6 @@ var standardExpressions1 = {
   },
 
 
-  sharedQuality: function (subject, object, trait) {
-    var response = '';
-
-    switch (Math.ceil(Math.random() * 4)) {
-    case 1:
-    case 3:
-    case 4:
-    default:
-      response = preposit(subject) + " and " + preposit(object) + " are both " + trait;
-      break;
-    }
-    return response;
-  },
 
   induction: function (seed, idea) {
     var response = '';
