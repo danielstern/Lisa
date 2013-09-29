@@ -50,6 +50,12 @@ var _stories = [
   {
     sequence:
     [
+      {subject:'Willas',action:'arrive',at:'Grim Swamps'},
+    ],
+  },
+  {
+    sequence:
+    [
       {subject:'Vix the Vile',action:'go',object:'Mount Aur',when:
       {subject:'Algoron',action:'attack',object:'emeraldia'}}
     ],

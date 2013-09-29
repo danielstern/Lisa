@@ -186,7 +186,7 @@ function Logic(brain) {
     _.each(attributes, function (attribute) {
       _.each(attribute.when, function (occasion) {
 
-        console.log('moment?',moment);
+//        console.log('moment?',moment);
 
         var intersects = _.occasionInvokesAttribute(moment, occasion);
         if (intersects) {

@@ -73,6 +73,10 @@ var standardExpressions1 = {
       response += " with " + preposit(moment.with);
     } 
 
+    if (moment.at) {
+      response += " at " + preposit(moment.at);
+    } 
+
     if (moment.against) {
       response += " against " + preposit(moment.against, {objective:true});
     }

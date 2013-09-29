@@ -21,6 +21,17 @@ var transliterate = {
     }
   },
 
+  arrive:{
+    past:{
+      singular:'arrived',
+      plural:'arrived'
+    },
+    present:{
+      singular:'arrives',
+      plural:'arrive'
+    }
+  },
+
   attack:{
     past:{
       singular:'attacked',
