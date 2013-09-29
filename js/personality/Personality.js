@@ -17,5 +17,5 @@ function Personality() {
 	personality.patterns = _lisapatterns;
 
 	// personality.filter = _filterSouthernGal;
-	personality.filter = new _filterMadCommoner();
+//	personality.filter = new _filterMadCommoner();
 }

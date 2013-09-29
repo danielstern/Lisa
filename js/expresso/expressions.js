@@ -125,6 +125,12 @@ var standardExpressions1 = {
       context.objective = true;
       response += " " + preposit(moment.object, _.clone(context));
     }
+
+    if (moment.down) {
+      response += " down " + preposit(moment.down);
+    }
+
+
     if (moment.with) {
       response += " with " + preposit(moment.with, _.clone(context));
     }

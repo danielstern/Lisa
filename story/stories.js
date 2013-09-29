@@ -4,8 +4,14 @@ var _stories = [
     sequence:
     [
       {
+      	subject:'i',action:'need', object:"water"
+      },
+      {
         subject:'i',action:'go', to:"$top:hill$"
-      }
+      },
+      {
+        subject:'i',action:'fall', down:"referenced|hill"
+      },
     ]
   },
 ]

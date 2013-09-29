@@ -22,6 +22,30 @@ var transliterate = {
   },
 
 
+  need:{
+    past:{
+      singular:'needed',
+      plural:'needed'
+    },
+    present:{
+      singular:'need',
+      plural:'need'
+    }
+  },
+
+
+  fall:{
+    past:{
+      singular:'fell',
+      plural:'fell'
+    },
+    present:{
+      singular:'falls',
+      plural:'fall'
+    }
+  },
+
+
   talk:{
     past:{
       singular:'talked',

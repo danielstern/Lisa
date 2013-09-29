@@ -20,10 +20,11 @@ _.mixin({
         .map(function(string){
           if (string == '##hp') return ''
 
-          string = filter.filterString(string);
+          if (filter) string = filter.filterString(string);
           string = _.trim(string);
           string = _.without(string.split('##lp'),'').join(', ');
           string = _.capitalize(string);
+          //string = string + '.';
           if (_.stringNeedsClosure(string)) string = string + '.';
           if (string) string += " ";
 
@@ -126,7 +127,8 @@ _.mixin({
   stringNeedsClosure: function(string) {
 
     var lastCharOfString = string.toString().charAt(string.length - 1);
-    return lastCharOfString.indexOf(/[.,"']/) != -1;
+    //console.log('stringNeedsClosure?',string,lastCharOfString,lastCharOfString.indexOf(/[.,"']/),lastCharOfString.indexOf(/[.,"']/) == -1);
+    return lastCharOfString.indexOf(/[.,"']/) == -1;
 
   },
 

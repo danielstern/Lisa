@@ -103,12 +103,7 @@ var Expresso = function (brain) {
        var propertyIdea = brain.whatIs(property)
       if ( propertyIdea /*&& brain.whatIs(property).form != adjective*/) {
 
-        console.log('idea',propertyIdea);
-         console.log('idea',propertyIdea.form);
-         console.log('idea',propertyIdea.form != 'adjective');
-
          if (propertyIdea.form != 'adjective') {
-          console.log('this is SURELY not an adjective!');
           context.pronoun = 'none';
          }
       }
@@ -134,11 +129,11 @@ var Expresso = function (brain) {
       word = word.split('|')[1];
 
       switch (directive) {
-      case 'referenced':
       case 'my':
         context.possessive = true;
         context.possessor = 'self';
         break;
+      case 'referenced':
       case 'main':
         context.referenced = true;
         break;
