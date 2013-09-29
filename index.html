@@ -70,6 +70,16 @@
                  </p>
                 </td>
               </tr>
+               <tr>
+                <th>
+                  Random Things
+                </th>
+                <td>
+                  <p ng-repeat="thing in randomThings|limitTo:3">
+                    {{thing.word}}
+                 </p>
+                </td>
+              </tr>
             </tbody>
          </table>
       </div>
@@ -91,6 +101,7 @@
       $scope.thought = 'Unknown';
 
       $scope.saying = 'Hello!'
+      $scope.randomThings = _.sample(brain.lexicon.things, 3)
 
       $scope.recentThings = [];
 

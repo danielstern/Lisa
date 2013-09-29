@@ -84,6 +84,7 @@ ponder = function (seed, logic) {
     }
    
   })
-       
+
+  if (!response)   response = brain.speech.softPause();     
   return [response,seed];
 }
