@@ -119,6 +119,10 @@ var standardExpressions1 = {
       response += " at " + preposit(moment.at);
     }
 
+    if (moment.in) {
+      response += " in " + preposit(moment.in, context);
+    }
+
     if (moment.against) {
       var pronoun = (isGeneral) ? 'plural':'singular'
       response += " against " + preposit(moment.against, {

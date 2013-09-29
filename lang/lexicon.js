@@ -311,21 +311,17 @@ var Lexicon = {
     {
       word:'goblin',
       extends:['monster'],
-        relationship:[{
-          object:'magic',
-          action:'weakness'
-        },
-      ],
       plural:'goblins',
+    },
+    {
+      word:'wisp',
+      extends:['monster'],
+      plural:'wisps',
     },
     {
       word:'grimgoblin',
       extends:['goblin'],
       plural:'grimgoblins',
-      relationship:{
-        object:'magic',
-        relationship:'use'
-      },
     },
     {
       word:'Grim Swamps',

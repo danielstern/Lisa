@@ -26,6 +26,28 @@ var _stories = [
   {
     sequence:
     [
+      {subject:'wisp',action:'live',in:'Mount Aur',context:{general:true,time:'present'}},
+    ]
+  },
+  {
+    sequence:
+    [
+      {subject:'wisp',action:'use',object:'fire',context:{general:true,time:'present'}},
+    ]
+  },
+  {
+    name:'the one where willas fights a wisp',
+    sequence:
+    [
+      {subject:'wisp',action:'attack',object:'Willas',with:'fire'},
+      {subject:'willas',action:'block',object:'assumed|fire',with:'magic'},
+      {rel:'then',subject:'Willas', action:'kill',object:'assumed|wisp'},
+      {subject:'willas', action:'find',object:'$powerful:wand$'},
+    ]
+  },
+  {
+    sequence:
+    [
       {subject:'skeleton',action:'is',object:'undead',context:{general:true,time:'present'}},
     ]
   },

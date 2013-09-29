@@ -21,6 +21,40 @@ var transliterate = {
     }
   },
 
+  live:{
+    past:{
+      singular:'lived',
+      plural:'lived'
+    },
+    present:{
+      singular:'lives',
+      plural:'live'
+    }
+  },
+
+  block:{
+    past:{
+      singular:'blocked',
+      plural:'blocked'
+    },
+    present:{
+      singular:'blocks',
+      plural:'block'
+    }
+  },
+
+  find:{
+    past:{
+      singular:'found',
+      plural:'found'
+    },
+    present:{
+      singular:'finds',
+      plural:'find'
+    }
+  },
+
+
 
   laugh:{
     past:{
