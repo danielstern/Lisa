@@ -367,6 +367,11 @@ var Lexicon = {
       form:'adjective',
     },
     {
+      word:'scary',
+      form:'adjective',
+      synonyms:['fearsome','frighting'],
+    },
+    {
       word:'dead',
       when:[
         {action:'die',applies:'subject'},
@@ -392,6 +397,14 @@ var Lexicon = {
       ],
       form:'adjective',
       synonyms:['craven','yellow']
+    },
+    {
+      word:'undead',
+      when:[
+        {action:'reanimate',applies:'object'},
+      ],
+      form:'adjective',
+      synonyms:['hollow']
     },
     {
       word:'injured',

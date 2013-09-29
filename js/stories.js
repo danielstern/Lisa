@@ -26,7 +26,13 @@ var _stories = [
   {
     sequence:
     [
-      {subject:'main|knight',action:'kill',object:'goblin',with:'singular|crossbow'},
+      {subject:'skeleton',action:'is',object:'undead',context:{general:true,time:'present'}},
+    ]
+  },
+  {
+    sequence:
+    [
+      {subject:'knight',action:'kill',object:'goblin',with:'singular|crossbow'},
       {subject:'main|knight',action:'laugh'}
     ]
   },

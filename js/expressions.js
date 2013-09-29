@@ -65,7 +65,15 @@ var standardExpressions1 = {
 
     response += "##lp";
 
+    console.log('express moment',moment,context)
+
+    if (moment.context.general) {
+      console.log('making general statament');
+      response += preposit(moment.subject,{pronoun:'plural'}) + " " + conjugate(moment.subject, moment.action, 'present', 'plural');
+    }
+      else{
     response += preposit(moment.subject) + " " + conjugate(moment.subject, moment.action, context.time);
+  }
     if (moment.object) {
       response += " " + preposit(moment.object, {
         objective: true
