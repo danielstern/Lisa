@@ -113,8 +113,9 @@
         $scope.thought = reply[1].word;
         $scope.recentThings.push(reply[1]);
 
-        $scope.recentThings = _.last($scope.recentThings,3);
-        $scope.randomThings = _.sample(brain.lexicon.things, 3)
+      //  $scope.recentThings = _.last(_.initial($scope.recentThings),3);
+        $scope.recentThings = _.last($scope.recentThings, 3);
+        console.log('recent thigns?',$scope.recentThings)
 
       }
   }])

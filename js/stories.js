@@ -11,9 +11,9 @@ var _stories = [
     name:'the one where algoron battles a warrior',
     sequence:
     [
-      {subject:'main|warrior',action:'attack',object:'Algoron'},
+      {subject:'warrior',action:'attack',object:'Algoron'},
       {subject:'Algoron',action:'use',object:'dark magic'},
-      {subject:'Algoron',action:'kill',object:'referenced|warrior'},
+      {subject:'Algoron',action:'kill',object:'assumed|warrior'},
     ]
   },
   {
@@ -100,7 +100,7 @@ var _stories = [
       {rel:'but', subject:'sorceress',action:'help',object:'assumed|Willas'},
       {subject:'assumed|sorceress',action:'use',object:'magic',against:'main|skeletons'},
       {subject:'main|skeletons',action:'retreat'},
-      {rel:'but', subject:'Willas',action:'kill',object:'skeletons',with:'holy magic'},
+      {rel:'but', subject:'Willas',action:'kill',object:'referenced|skeletons',with:'holy magic'},
     ],
   },
   {

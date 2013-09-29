@@ -99,8 +99,6 @@ var Expresso = function (brain) {
       word = idea.word;
     }
 
-
-
     var preposition = '';
     var adjective = '';
     var assumed = false;
@@ -128,7 +126,7 @@ var Expresso = function (brain) {
     //  console.log('prepositing...',word,idea,context);
 
     if (word == idea.plural) idea.pronoun = 'pluralize';
-    if (context.pronoun) idea.pronoun = context.pronoun;
+    if (context.pronoun && idea.pronoun != 'proper') idea.pronoun = context.pronoun;
     if (idea.pronoun == 'plural' && idea.plural) word = idea.plural;
     if (idea.form == "adjective") {
       idea.pronoun = 'none'
