@@ -4,22 +4,16 @@ var standardExpressions1 = {
     var response = '';
   //  console.log('quality?',seed,quality)
     response = preposit(seed) + " " + conjugate(seed, 'is') + " " + synonomize(quality);
-    //    console.log('response coming from quality?',response)
+  //    console.log('response coming from quality?',response)
     return response;
   },
 
   inheritance: function (seed, idea) {
     var response = '';
-    switch (Math.ceil(Math.random() * 5)) {
-    case 1:
-    case 2:
-    case 3:
-    case 4:
-    case 5:
-    default:
-      response = preposit(seed) + " " + conjugate(seed, 'is') + " a " + idea;
-      break;
-    }
+    console.log('expressing inheritance',seed,idea)
+
+      response = preposit(seed,{pronoun:'plural'}) + " " + conjugate(seed, 'is') + " " + preposit(idea[0],{pronoun:'plural'});
+
     return response;
   },
 
@@ -72,7 +66,7 @@ var standardExpressions1 = {
       response += " " + preposit(moment.object, {objective:true})
     } 
     if (moment.with) {
-      response += " with " + preposit(moment.with);
+      response += " with " + preposit(moment.with, context);
     } 
 
     if (moment.at) {
@@ -97,8 +91,10 @@ var standardExpressions1 = {
   relationship: function (seed, relationship) {
     var response = '';
 
+    console.log('express relationship...',seed,relationship)
+
     if (!relationship) return response;
-    response = preposit(seed) + " " + verbalize(seed, relationship) + " " + preposit(relationship.object, {pronoun:'plural'});
+    response = preposit(seed) + " " + verbalize(seed, relationship) + " " + preposit(relationship.object);
     return response;
   },
 

@@ -2,25 +2,10 @@ var _lisapatterns =  {
 	exposition:
 	[
 		/*
-		{
-			sequence:['demystify','scopeSideways']
-		},
-		{
-			sequence:['demystify','demystify','scopeSideways']
-		},
-		{
-			sequence:['demystify','demystify','scopeDown']
-		},	
-		{
-			sequence:['demystify','demystify','scopeUp']
-		},
-		{
-			sequence:['demystify','express-relationship']
-		},
-		{
-			sequence:['demystify','express-relationship','tell-story']
-		},
 		*/
+		{
+			sequence:['demystify','express-relationship','']
+		},
 		{
 			sequence:['demystify','draw-conclusion'],
 		},

@@ -25,7 +25,7 @@ var Expresso = function (brain) {
     seed = seed || {};
     if (typeof seed == 'string') seed = brain.whatIs(seed);
     seed = seed || {};
-    
+
     tense = tense || 'present';
 
     var tl = transliterate;
@@ -85,17 +85,13 @@ var Expresso = function (brain) {
 
   express.preposit = function (word, context) {
 
-
     if(_.stringContains(word,'<')) {
-      console.log('this is two words');
       var words = word.replace(/[<>]/gi,'').split('&');
-      console.log('words?',words);
       var propositedWords = _.map(words,function(word){return preposit(word)}); 
       return _.toSentence(propositedWords);
     }
 
     if(_.stringContains(word,'$')) {
-      console.log('this is a word with an adjective');
       word = word.replace(/[$]/gi,'');
       var property = word.split(':')[0];
       word = word.split(':')[1];
@@ -108,6 +104,8 @@ var Expresso = function (brain) {
       idea = word;
       word = idea.word;
     }
+    
+
     
     var preposition = '';
     var adjective = '';
@@ -133,7 +131,9 @@ var Expresso = function (brain) {
     }
 
     idea = idea || express.brain.whatIs(word, true) || {};
-    if (word == idea.plural) idea.pronoun = 'pluralize';
+    console.log('prepositing...',word,idea,context);
+
+  //  if (word == idea.plural) idea.pronoun = 'pluralize';
     if (context.pronoun) idea.pronoun = context.pronoun;
     if (idea.pronoun == 'plural' && idea.plural) word = idea.plural;
     if (idea.form == "adjective") {

@@ -20,6 +20,8 @@ ponder = function (seed, logic) {
  
     var thought;
 
+    if (!command) return;
+
     console.log('Executing command:' + command);
 
     switch (command) {
