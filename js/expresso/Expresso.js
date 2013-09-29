@@ -77,9 +77,12 @@ var Expresso = function (brain) {
 
   express.preposit = function (word, context) {
 
-
     console.log('prepositing 1',word,context);
 
+    // if preposit is passed an array, assume the first item in the array is the word
+    if (word instanceof Array) word = word[0];
+
+    // Multiple subjects, as in <paul&john>
     if (_.stringContains(word, '<')) {
       var words = word.replace(/[<>]/gi, '').split('&');
       var propositedWords = _.map(words, function (word) {
@@ -88,6 +91,7 @@ var Expresso = function (brain) {
       return _.toSentence(propositedWords);
     }
 
+    // A subject with a property, e.g $new:bike$
     if (_.stringContains(word, '$')) {
       word = word.replace(/[$]/gi, '');
       var property = word.split(':')[0];
@@ -96,8 +100,9 @@ var Expresso = function (brain) {
       adjective = property;
     }
 
+    // if preposit is passed an object instead of a string (works on either)
     var idea;
-    if (word && typeof word != 'string') {
+    if (word && typeof word == 'object') {
       idea = word;
       word = idea.word;
     }
@@ -125,26 +130,26 @@ var Expresso = function (brain) {
       }
     }
     
-    if (idea instanceof Array) idea = idea[0];
     if (typeof idea == 'string') idea = express.brain.whatIs(idea, true)
 
     idea = idea || express.brain.whatIs(word, true) || {};
+    word = word || idea.word;
 
     console.log('prepositing 2',word,idea,context);
 
-    if (!word) word = idea.word;
-
-    if (word == idea.plural) idea.pronoun = 'pluralize';
-    if (context.pronoun && idea.pronoun != 'proper') idea.pronoun = context.pronoun;
+    if (word == idea.plural) idea.pronoun = 'plural';
+    if (context.pronoun && idea.pronoun != 'proper' && idea.pronoun != 'force') idea.pronoun = context.pronoun;
     if (idea.pronoun == 'plural' && idea.plural) word = idea.plural;
     if (idea.form == "adjective") {
       idea.pronoun = 'none'
       word = synonomize(idea.word);
     }
     if (referenced && idea.pronoun != 'proper' && idea.pronoun != 'force') idea.pronoun = 'referenced';
+    if (idea.pronoun == 'proper') idea.word = _.capitalize(idea.word);
 
     //console.log('preposit...',word,context,idea);
 
+  console.log('prepositing 3',word,idea,context);
 
     var returnWord = true;
 
