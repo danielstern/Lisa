@@ -19,7 +19,7 @@ var Expresso = function (brain) {
 
   express.learn(standardExpressions1);
   express.learn(casualExpressions);
-  
+
   express.conjugate = function (seed, verb, tense, context) {
 
     seed = seed || {};
@@ -78,7 +78,7 @@ var Expresso = function (brain) {
 
   express.preposit = function (word, context) {
 
-    console.log('prepositing 1',word,context);
+    console.log('Prepositing 1', word, context);
 
     // if preposit is passed an array, assume the first item in the array is the word
     if (word instanceof Array) word = word[0];
@@ -108,7 +108,6 @@ var Expresso = function (brain) {
       word = idea.word;
     }
 
-    var preposition = '';
     var adjective = '';
 
     context = context || {};
@@ -129,15 +128,15 @@ var Expresso = function (brain) {
         break;
       }
     }
-    
+
     if (typeof idea == 'string') idea = express.brain.whatIs(idea, true)
 
     idea = idea || express.brain.whatIs(word, true) || {};
     word = word || idea.word;
 
-    console.log('prepositing 2',word,idea,context);
+    console.log('Prepositing 2', word, idea, context);
 
-    // if the word is the plural form of the word, give it a plural pronoun, i.e., skeletons
+    // if the word is the plural form of the word, give it a plural pronoun, i.e., "skeletons" automatically get a plural pronoun
     if (word == idea.plural) idea.pronoun = 'plural';
 
     // if the context suggest a pronoun, override the existing one if it is not 'proper' or 'force';
@@ -152,16 +151,17 @@ var Expresso = function (brain) {
       word = synonomize(idea.word);
     }
 
-
+    // if the context suggests the word is referenced, and it is not a proper word, give it a referenced pronoun (it will conjugate with "the")
     if (context.referenced && idea.pronoun != 'proper' && idea.pronoun != 'force') idea.pronoun = 'referenced';
     if (idea.pronoun == 'proper') idea.word = _.capitalize(idea.word);
 
-    //console.log('preposit...',word,context,idea);
 
-  console.log('prepositing 3',word,idea,context);
+    console.log('Prepositing 3', word, idea, context);
 
+    
+    // based on the idea object, choose a preposition
     var returnWord = true;
-
+    var preposition = '';
     switch (idea['pronoun']) {
     case 'unique':
     case 'referenced':
@@ -194,9 +194,10 @@ var Expresso = function (brain) {
       break;
     }
 
-      console.log('prepositing 4',word,idea,context);
-    if (context.assumed) {
+    console.log('prepositing 4', word, idea, context);
 
+    // if the context suggests this words identity is assumed, replace it with the appropriate pronoun
+    if (context.assumed) {
       var objective = context.objective;
       if (idea.gender) {
         if (idea.gender == 'male') return objective ? 'him' : 'he';
@@ -206,9 +207,10 @@ var Expresso = function (brain) {
       return 'it';
     }
 
+    // add a space after the preposition, if it exists
     if (preposition) preposition += " ";
+
     var response = preposition + (returnWord ? word : '')
-    //  console.log('became...',response);
     return response;
 
   }
