@@ -104,7 +104,6 @@ var Expresso = function (brain) {
     }
 
     var idea = express.brain.whatIs(word, true) || {};
-    if (referenced && idea.pronoun != 'proper' && idea.pronoun != 'force') idea.pronoun = 'referenced';
     if (word == idea.plural) idea.pronoun = 'pluralize';
     if (context.pronoun) idea.pronoun = context.pronoun;
     if (idea.pronoun == 'plural' && idea.plural) word = idea.plural;
@@ -112,6 +111,7 @@ var Expresso = function (brain) {
       idea.pronoun = 'none'
       word = synonomize(idea.word);
     }
+    if (referenced && idea.pronoun != 'proper' && idea.pronoun != 'force') idea.pronoun = 'referenced';
 
     //console.log('preposit...',word,context,idea);
 

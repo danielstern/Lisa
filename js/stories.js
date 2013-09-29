@@ -51,6 +51,12 @@ var _stories = [
     sequence:
     [
       {subject:'Willas',action:'arrive',at:'Grim Swamps'},
+      {subject:'Willas',action:'rest'},
+      {subject:'skeletons',action:'attack',object:'assumed|Willas',during:'main|night'},
+      {rel:'but', subject:'sorceress',action:'help',object:'assumed|Willas'},
+      {subject:'assumed|sorceress',action:'use',object:'magic',against:'main|skeletons'},
+      {subject:'main|skeletons',action:'retreat'},
+      {rel:'but', subject:'Willas',action:'kill',object:'skeletons',with:'holy magic'},
     ],
   },
   {

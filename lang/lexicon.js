@@ -55,6 +55,11 @@ var Lexicon = {
       plural:'weapons',
     },
     {
+      word:'night',
+      extends:['time'],
+      pronoun:'concept',
+    },
+    {
       word:'Axos Braveheart',
       extends:['knight'],
       gender:'male',
@@ -65,6 +70,17 @@ var Lexicon = {
       see:'Axos Braveheart',
       gender:'male',
       pronoun:'proper',
+    },
+    {
+      word:'skeleton',
+      extends:['monster'],
+      plural:'skeletons'
+    },
+    {
+      word:'sorceress',
+      extends:['wizard'],
+      gender:'female',
+      plural:'sorceresses'
     },
     {
       word:'Sword of Light',

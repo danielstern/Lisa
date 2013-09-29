@@ -32,6 +32,28 @@ var transliterate = {
     }
   },
 
+  help:{
+    past:{
+      singular:'helped',
+      plural:'helped'
+    },
+    present:{
+      singular:'helps',
+      plural:'help'
+    }
+  },
+
+  rest:{
+    past:{
+      singular:'rested',
+      plural:'rested'
+    },
+    present:{
+      singular:'rest',
+      plural:'rest'
+    }
+  },
+
   attack:{
     past:{
       singular:'attacked',

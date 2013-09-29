@@ -65,9 +65,9 @@ var standardExpressions1 = {
 
     response += "##lp";
     
-    response += lexicate(moment.subject) + " " + conjugate(moment.subject, moment.action, context.time);
+    response += preposit(moment.subject) + " " + conjugate(moment.subject, moment.action, context.time);
     if (moment.object) {
-      response += " " + lexicate(moment.object)
+      response += " " + preposit(moment.object, {objective:true})
     } 
     if (moment.with) {
       response += " with " + preposit(moment.with);
@@ -78,12 +78,17 @@ var standardExpressions1 = {
     } 
 
     if (moment.against) {
-      response += " against " + preposit(moment.against, {objective:true});
+      response += " against " + preposit(moment.against, {main:true,objective:true});
     }
 
     if (moment.to) {
       response += " to " + preposit(moment.to);
     } 
+
+    if (moment.during) {
+      response += " during " + preposit(moment.during);
+    } 
+
     return response;
   },
 
