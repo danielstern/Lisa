@@ -21,6 +21,19 @@ var transliterate = {
     }
   },
 
+
+  talk:{
+    past:{
+      singular:'talked',
+      plural:'talked'
+    },
+    present:{
+      singular:'talks',
+      plural:'talk'
+    }
+  },
+
+
   say:{
     past:{
       singular:'said',

@@ -56,7 +56,7 @@ var standardExpressions1 = {
     var response = '';
     context = context || {};
 
-    console.log('Telling story moment...',moment,context)
+    console.log('Telling story moment 1,',moment,context)
 
     // If the moment has relevance, express it...
     switch (moment.rel) {
@@ -109,8 +109,9 @@ var standardExpressions1 = {
     if (isGeneral) {
 
       var generalContext;
-      generalContext = (logic.brain.whatIs(moment.subject).plural) ? 'plural' : 'singular';
-      generalContext += preposit(moment.subject,{pronoun:'plural'}) + " " + conjugate(moment.subject, moment.action, 'present', generalContext);
+      if (!logic.brain.whatIs(moment.subject)) generalContext = 'plural';
+      generalContext = generalContext || (logic.brain.whatIs(moment.subject) && logic.brain.whatIs(moment.subject).plural) ? 'plural' : 'singular';
+      response += preposit(moment.subject,{pronoun:'plural'}) + " " + conjugate(moment.subject, moment.action, 'present', generalContext);
     } 
     else {
 
@@ -154,9 +155,16 @@ var standardExpressions1 = {
       response += brain.speech.lightPause();
       response += ' "' + moment.said  + '" ';
     }
+
+    if (moment.howMuch) {
+      response += ' ' + preposit(moment.howMuch)  + ' ';
+    }
+
     if (moment.during) {
       response += " during " + preposit(moment.during);
     }
+
+    console.log('Telling story moment 2,',moment,context,response)
 
     return response;
   },

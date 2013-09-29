@@ -14,7 +14,7 @@ var _stories = [
     sequence:
     [
       {
-        subject:'<my|father&me>',action:'talk', howMuch:'a lot',
+        subject:'<my|father&me>',action:'talk', howMuch:'lot',
           context:{general:true,time:'present'}
       }
     ]
