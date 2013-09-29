@@ -2,24 +2,32 @@ var standardExpressions1 = {
 
   quality: function (seed, quality) {
     var response = '';
-    response = window.brain.speech.express.moment({subject:seed.word, object:quality, action:'is'})
-    //response = preposit(seed) + " " + conjugate(seed, 'is') + " " + synonomize(quality);
+    if (!seed) return response;
+    response = window.brain.speech.express.moment({
+      subject: seed.word,
+      object: quality,
+      action: 'is'
+    })
     return response;
   },
 
   generality: function (seed, quality) {
     var response = '';
-    var context; 
-    if (seed.plural) context = plural;
-    response = preposit(seed,{pronoun:'plural'}) + " " + conjugate(seed, 'is','present',context) + " " + synonomize(quality);
+     console.log('generality?',seed)
+    if (typeof seed == 'string') seed = window.brain.whatIs(seed, true);
+
+    var context;
+    if (!seed || seed.plural) context = 'plural';
+    console.log('generality?',context, seed)
+    response = preposit(seed, {pronoun: 'plural'}) + " " + conjugate(seed, 'is', 'present', context) + " " + synonomize(quality);
     return response;
   },
 
   inheritance: function (seed, idea) {
     var response = '';
-    console.log('expressing inheritance',seed,idea)
+    console.log('expressing inheritance', seed, idea)
 
-     response = window.brain.speech.express.quality(seed,idea[0]);// preposit(seed) + " " + conjugate(seed, 'is') + " " + preposit(idea[0]);
+    response = window.brain.speech.express.quality(seed, idea[0]);
 
     return response;
   },
@@ -30,56 +38,61 @@ var standardExpressions1 = {
     context = context || {};
 
     switch (moment.rel) {
-      case 'but':
-        switch (Math.ceil(Math.random() * 2)) {
-          case 1:
-          response += 'but'
-          break;
-          case 2:
-          response += 'however'
-          break;
-        }
+    case 'but':
+      switch (Math.ceil(Math.random() * 2)) {
+      case 1:
+        response += 'but'
         break;
-      case 'so':
-        switch (Math.ceil(Math.random() * 1)) {
-          case 1:
-          response += 'so'
-          break;
-          case 2:
-          response += 'thus'
-          break;
-          case 3:
-          response += 'as a result'
-          break;
-        }
+      case 2:
+        response += 'however'
         break;
+      }
+      break;
+    case 'so':
+      switch (Math.ceil(Math.random() * 1)) {
+      case 1:
+        response += 'so'
+        break;
+      case 2:
+        response += 'thus'
+        break;
+      case 3:
+        response += 'as a result'
+        break;
+      }
+      break;
     }
 
     response += "##lp";
-    
+
     response += preposit(moment.subject) + " " + conjugate(moment.subject, moment.action, context.time);
     if (moment.object) {
-      response += " " + preposit(moment.object, {objective:true})
-    } 
+      response += " " + preposit(moment.object, {
+        objective: true
+      })
+    }
     if (moment.with) {
       response += " with " + preposit(moment.with, context);
-    } 
+    }
 
     if (moment.at) {
       response += " at " + preposit(moment.at);
-    } 
+    }
 
     if (moment.against) {
-      response += " against " + preposit(moment.against, {main:true,objective:true});
+      response += " against " + preposit(moment.against, {
+        main: true,
+        objective: true
+      });
     }
 
     if (moment.to) {
       response += " to " + preposit(moment.to);
-    } 
+    }
 
     if (moment.during) {
       response += " during " + preposit(moment.during);
-    } 
+    }
 
     return response;
   },
@@ -87,7 +100,7 @@ var standardExpressions1 = {
   relationship: function (seed, relationship) {
     var response = '';
 
-    console.log('express relationship...',seed,relationship)
+    console.log('express relationship...', seed, relationship)
 
     if (!relationship) return response;
     response = preposit(seed) + " " + verbalize(seed, relationship) + " " + preposit(relationship.object);
@@ -109,16 +122,10 @@ var standardExpressions1 = {
     return response;
   },
 
-  possessive: function (key, value) {
-    response = "my " + key + " is " + value;
-    return response;
-  },
-
   induction: function (seed, idea) {
     var response = '';
     switch (Math.ceil(Math.random() * 4)) {
-      default:
-      response = "a kind of " + seed.word + " " + 'is' + " " + preposit(idea);
+      default: response = "a kind of " + seed.word + " " + 'is' + " " + preposit(idea);
       break;
     }
 

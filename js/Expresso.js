@@ -18,8 +18,7 @@ var Expresso = function (brain) {
 
   express.learn(standardExpressions1);
   express.learn(casualExpressions);
-  express.learn(formalExpressions);
-
+  
   express.conjugate = function (seed, verb, tense, context) {
 
     seed = seed || {};
@@ -29,16 +28,16 @@ var Expresso = function (brain) {
     tense = tense || 'present';
 
     var tl = transliterate;
-    if (!context ) {
-         context = 'plural';
+    if (!context) {
+      context = 'plural';
       if (seed.pronoun == 'unique') context = 'singular';
       if (!seed.plural) context = 'singular';
     }
 
     try {
-    var verb = tl[verb][tense][context];
+      var verb = tl[verb][tense][context];
     } catch (e) {
-      console.error('You are trying to access a verb not in the lexiary: ',verb)
+      console.error('You are trying to access a verb not in the lexiary: ', verb)
     }
     response = verb;
 
@@ -68,19 +67,9 @@ var Expresso = function (brain) {
     return response;
   }
 
-  express.lexicate = function (seed) {
-
-    if (typeof seed == 'string') seed = {
-      word: seed
-    };
-    response = (seed.pronoun == 'unique' ? preposit(seed.word) : (seed.plural || preposit(seed.word)));
-
-    return response;
-  }
-
   express.synonomize = function (word) {
 
-    var idea = brain.whatIs(word,true);
+    var idea = brain.whatIs(word, true);
     var synonym = _.sample(idea.synonyms || []) || idea.word;
 
     return synonym;
@@ -88,14 +77,16 @@ var Expresso = function (brain) {
 
   express.preposit = function (word, context) {
 
-    if(_.stringContains(word,'<')) {
-      var words = word.replace(/[<>]/gi,'').split('&');
-      var propositedWords = _.map(words,function(word){return preposit(word)}); 
+    if (_.stringContains(word, '<')) {
+      var words = word.replace(/[<>]/gi, '').split('&');
+      var propositedWords = _.map(words, function (word) {
+        return preposit(word)
+      });
       return _.toSentence(propositedWords);
     }
 
-    if(_.stringContains(word,'$')) {
-      word = word.replace(/[$]/gi,'');
+    if (_.stringContains(word, '$')) {
+      word = word.replace(/[$]/gi, '');
       var property = word.split(':')[0];
       word = word.split(':')[1];
       word = property + " " + word;
@@ -107,9 +98,9 @@ var Expresso = function (brain) {
       idea = word;
       word = idea.word;
     }
-    
 
-    
+
+
     var preposition = '';
     var adjective = '';
     var assumed = false;
@@ -123,18 +114,18 @@ var Expresso = function (brain) {
       word = word.split('|')[1];
 
       switch (directive) {
-        case 'referenced':
-        case 'main':
-          referenced = true;
-          break;
-        case 'assumed':
-          assumed = true;
-          break;
+      case 'referenced':
+      case 'main':
+        referenced = true;
+        break;
+      case 'assumed':
+        assumed = true;
+        break;
       }
     }
 
     idea = idea || express.brain.whatIs(word, true) || {};
-    console.log('prepositing...',word,idea,context);
+    //  console.log('prepositing...',word,idea,context);
 
     if (word == idea.plural) idea.pronoun = 'pluralize';
     if (context.pronoun) idea.pronoun = context.pronoun;
@@ -149,7 +140,7 @@ var Expresso = function (brain) {
 
 
     var returnWord = true;
-    
+
     switch (idea['pronoun']) {
     case 'unique':
     case 'referenced':
@@ -183,10 +174,10 @@ var Expresso = function (brain) {
     }
 
     if (assumed) {
-      console.log('context?',context);
+
       var objective = context.objective;
       if (idea.gender) {
-        if (idea.gender == 'male') return objective ? 'him' : 'he'; 
+        if (idea.gender == 'male') return objective ? 'him' : 'he';
         if (idea.gender == 'female') return objective ? 'her' : 'she';
         if (idea.gender == 'mixed') return objective ? 'them' : 'they';
       }
@@ -195,7 +186,7 @@ var Expresso = function (brain) {
 
     if (preposition) preposition += " ";
     var response = preposition + (returnWord ? word : '')
-        console.log('became...',response);
+    //  console.log('became...',response);
     return response;
 
   }

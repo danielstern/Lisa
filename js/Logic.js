@@ -325,11 +325,9 @@ function Logic(brain) {
       return brain.speech.express.greeting();
       break;
     case 'silence':
-      brain.host.thinks('Silence?');
       return brain.speech.express.perceiveSilence();
       break;
     case 'insult':
-      brain.host.thinks('How dare you!');
       return brain.speech.express.offense();
       break;
     case 'parting':

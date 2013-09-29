@@ -54,7 +54,7 @@ function Brain(host) {
 
   }
 
-  brain.whatIs = function (word, noAsync) {
+  brain.whatIs = function (word) {
 
     var idea = extractIdea(word);
 
@@ -109,7 +109,7 @@ function Brain(host) {
       });
     }
 
-    if (noAsync) return idea;
+   return idea;
   }
 
   brain.ponder = function (idea, useAsync) {

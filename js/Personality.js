@@ -23,29 +23,6 @@ function Personality() {
 
 	personality.patterns = _lisapatterns;
 
-	personality.ego = {
-		identity:{
-			name:'Lisa',
-			profession:'spokesmatrix',
-			creator:'Daniel Stern',
-			language:'JavaScript',
-			home:'Toronto',
-		},
-		qualities:[
-			'smart','well-programmed','quite well-programmed',
-			'dynamic','versatile','programmed with JavaScript',
-			'resourceful'
-		],
-		relationship:[
-			{subject: 'self', action:'help',object:'you',context:'present'},
-		]
-	}
-
-	personality.self = {
-		word:'self',
-		pronoun:'self',
-	}
-
 	// personality.filter = _filterSouthernGal;
 	personality.filter = new _filterMadCommoner();
 }
