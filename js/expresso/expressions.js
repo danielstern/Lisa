@@ -57,9 +57,11 @@ var standardExpressions1 = {
     var response = '';
     context = context || {};
 
-    console.log('telling story moment...',moment,context)
+    console.log('Telling story moment...',moment,context)
 
+    // If the moment has relevance, express it...
     switch (moment.rel) {
+
     case 'but':
       switch (Math.ceil(Math.random() * 2)) {
       case 1:
@@ -70,6 +72,7 @@ var standardExpressions1 = {
         break;
       }
       break;
+
     case 'so':
       switch (Math.ceil(Math.random() * 3)) {
       case 1:
@@ -83,6 +86,7 @@ var standardExpressions1 = {
         break;
       }
       break;
+
     case 'then':
       switch (Math.ceil(Math.random() * 3)) {
       case 1:
@@ -98,18 +102,25 @@ var standardExpressions1 = {
       break;
     }
 
-    response += "##lp";
+    // add a soft pause of necessary
+    if (moment.rel) response += "##lp";
 
+    // if the moment's context suggests it is a general moment, express it generally
     var isGeneral = (moment.context && moment.context.general);
     if (isGeneral) {
+
       var generalContext;
-      context2 = (logic.brain.whatIs(moment.subject).plural) ? 'plural' : 'singular';
+      generalContext = (logic.brain.whatIs(moment.subject).plural) ? 'plural' : 'singular';
       generalContext += preposit(moment.subject,{pronoun:'plural'}) + " " + conjugate(moment.subject, moment.action, 'present', generalContext);
-    } else {
+    } 
+    else {
+
       var subjectContext = _.clone(context);
-      subjectContext.pronoun = _.crack(moment.subject, true)
-     response += preposit(moment.subject, subjectContext) + " " + conjugate(moment.subject, moment.action, context.time);
-  }
+      var subjectIdea = logic.brain.whatIs(_.crack(moment.subject, true)) || {};
+      subjectContext.pronoun = subjectIdea.pronoun;
+      response += preposit(moment.subject, subjectContext) + " " + conjugate(moment.subject, moment.action, context.time);
+    }
+
     if (moment.object) {
       context.objective = true;
       response += " " + preposit(moment.object, _.clone(context));

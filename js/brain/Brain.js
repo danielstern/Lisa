@@ -109,7 +109,7 @@ function Brain(host) {
       });
     }
 
-   return idea;
+   return _.clone(idea);
   }
 
   brain.ponder = function (idea, useAsync) {
