@@ -56,7 +56,7 @@ function LongTermMemory(memory) {
     _.each(stories, function(story){
 
       var ideas = _.extractStory(story);
-      if (_.contains(ideas,word))   {
+      if (_.contains(ideas,word) || _.contains(ideas,seed.plural))   {
 
         matchingStories.push(story);
         
