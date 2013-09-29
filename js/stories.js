@@ -32,6 +32,12 @@ var _stories = [
   {
     sequence:
     [
+      {subject:'wizard',action:'use',object:'magic',context:{general:true,time:'present'}},
+    ]
+  },
+  {
+    sequence:
+    [
       {subject:'knight',action:'kill',object:'goblin',with:'singular|crossbow'},
       {subject:'main|knight',action:'laugh'}
     ]
