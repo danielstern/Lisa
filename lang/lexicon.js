@@ -28,6 +28,16 @@ var Lexicon = {
       pronoun:'none',
     },
     {
+      word:'Nick',
+      see:'self',
+      pronoun:'proper',
+    },
+    {
+      word:'I',
+      see:'self',
+      pronoun:'none',
+    },
+    {
       word:'place',
       hidden:'true',
       plural:'places',

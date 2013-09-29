@@ -145,10 +145,15 @@ var standardExpressions1 = {
       response += " against " + preposit(moment.against, againstContext);
     }
 
+
     if (moment.to) {
       response += " to " + preposit(moment.to);
     }
 
+    if (moment.said) {
+      response += brain.speech.lightPause();
+      response += ' "' + moment.said  + '" ';
+    }
     if (moment.during) {
       response += " during " + preposit(moment.during);
     }

@@ -120,6 +120,10 @@ var Expresso = function (brain) {
 
       switch (directive) {
       case 'referenced':
+      case 'my':
+        context.possessive = true;
+        context.possessor = 'self';
+        break;
       case 'main':
         context.referenced = true;
         break;
@@ -192,6 +196,19 @@ var Expresso = function (brain) {
         preposition = 'a';
       }
       break;
+    }
+
+    if (context.possessive) {
+      switch (context.possessor) {
+        case 'me':
+        case 'self':
+        case 'I':
+          preposition = 'my';
+          break;
+        default:
+          preposition = 'their'
+          break;
+      }
     }
 
     console.log('prepositing 4', word, idea, context);

@@ -24,7 +24,7 @@ _.mixin({
           string = _.trim(string);
           string = _.without(string.split('##lp'),'').join(', ');
           string = _.capitalize(string);
-          if (!_.endsWith(string, '.')) string = string + '.';
+          if (_.stringNeedsClosure(string)) string = string + '.';
           if (string) string += " ";
 
           return string;
@@ -99,6 +99,14 @@ _.mixin({
     return lastCharOfString == character;
 
   },
+
+  stringNeedsClosure: function(string) {
+
+    var lastCharOfString = string.toString().charAt(string.length - 1);
+    return lastCharOfString.indexOf(/[.,"']/) != -1;
+
+  },
+
 
   stringLastChar: function(string) {
 

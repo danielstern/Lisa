@@ -50,7 +50,7 @@
   <div class='container' ng-controller='LisaController'  style='padding:60px;'>
     <div class="row">
       <div class='span5'>
-        <h3>Lisa</h3>
+        <h3>Nick-a</h3>
            <p id='saying'>{{saying}}</p>
         <form id='conversation-form' ng-submit='sayRandom()'>
           <input  ng-model='sayTo' type='text'>
@@ -118,7 +118,7 @@
       $scope.saying = 'Hello!'
       $scope.randomThings = _.sample(brain.lexicon.things, 3)
 
-      $scope.sayTo = 'axos';
+      $scope.sayTo = 'father';
       $scope.recentThings = [];
 
       $scope.sayRandom = function() {
