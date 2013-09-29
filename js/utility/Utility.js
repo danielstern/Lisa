@@ -52,8 +52,9 @@ _.mixin({
     return invoked;
   },
 
-  crack: function(string) {
+  crack: function(string, returnQuality) {
     if (typeof string != 'string') return string;
+    if (returnQuality) return string.split('|')[0];
     if (string.split('|').length > 1) {
       string = string.split('|')[1];
     }

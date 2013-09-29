@@ -57,6 +57,8 @@ var standardExpressions1 = {
     var response = '';
     context = context || {};
 
+    console.log('telling story moment...',moment,context)
+
     switch (moment.rel) {
     case 'but':
       switch (Math.ceil(Math.random() * 2)) {
@@ -100,16 +102,17 @@ var standardExpressions1 = {
 
     var isGeneral = (moment.context && moment.context.general);
     if (isGeneral) {
-      var context;
-      context = (logic.brain.whatIs(moment.subject).plural) ? 'plural' : 'singular';
-      response += preposit(moment.subject,{pronoun:'plural'}) + " " + conjugate(moment.subject, moment.action, 'present', context);
+      var context2;
+      context2 = (logic.brain.whatIs(moment.subject).plural) ? 'plural' : 'singular';
+      response += preposit(moment.subject,{pronoun:'plural'}) + " " + conjugate(moment.subject, moment.action, 'present', context2);
     } else {
-     response += preposit(moment.subject) + " " + conjugate(moment.subject, moment.action, context.time);
+      var subjectContext = context;
+      subjectContext.pronoun = _.crack(moment.subject, true)
+     response += preposit(moment.subject, subjectContext) + " " + conjugate(moment.subject, moment.action, context.time);
   }
     if (moment.object) {
-      response += " " + preposit(moment.object, {
-        objective: true
-      })
+      context.objective = true;
+      response += " " + preposit(moment.object, context)
     }
     if (moment.with) {
       response += " with " + preposit(moment.with, context);

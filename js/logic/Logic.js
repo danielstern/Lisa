@@ -185,12 +185,9 @@ function Logic(brain) {
     stories = brain.memory.long.getStories(seed);
     var story = _.sample(stories);
 
-    console.log('telling story...',story,_.extractStory(story));
     var storyIdeas = _.shuffle(_.extractStory(story));
 
-    console.log('story ideas?',storyIdeas);
     brain.memory.short.remember(storyIdeas);
-    console.log('mem?',brain.memory.short)
 
 
     if (!story) return response;
@@ -207,10 +204,11 @@ function Logic(brain) {
 
       var phrase = '';
       if (!moment) return phrase;
+      console.log('tellstorymoment...',moment)
       if (brain.memory.short.recall(moment)) return phrase;
-      phrase = brain.speech.express.moment(moment, {
-        time: 'past'
-      });
+      var context = moment.context || {};
+      context.time = 'past';
+      phrase = brain.speech.express.moment(moment, context);
       brain.memory.short.remember(moment);
       return phrase;
     }

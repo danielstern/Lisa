@@ -46,6 +46,11 @@ var Lexicon = {
       plural:'Ivory Wands',
     },
     {
+      word:'wand',
+      extends:['weapon'],
+      plural:'wands',
+    },
+    {
       word:'club',
       extends:['weapon'],
       plural:'clubs',

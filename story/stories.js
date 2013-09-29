@@ -39,7 +39,7 @@ var _stories = [
     name:'the one where willas fights a wisp',
     sequence:
     [
-      {subject:'wisp',action:'attack',object:'Willas',with:'fire'},
+      {subject:'singular|wisp',action:'attack',object:'Willas',with:'fire'},
       {subject:'willas',action:'block',object:'assumed|fire',with:'magic'},
       {rel:'then',subject:'Willas', action:'kill',object:'assumed|wisp'},
       {subject:'willas', action:'find',object:'$powerful:wand$'},
