@@ -4,8 +4,8 @@ var _lisapatterns =  {
 		{
 			sequence:['tell-story']
 		},
-		{
+		/*{
 			sequence:['draw-conclusion'],
-		},
+		},*/
 	],
 }
