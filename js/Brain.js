@@ -23,10 +23,10 @@ function Brain(host) {
 
     var response = '';
 
-      var idea = brain.whatIs(words,true);
-      response = brain.ponder(idea,true);
-      console.log('returning sync...',response)
-      return [response,idea];
+    var idea = brain.whatIs(words, true);
+    response = brain.ponder(idea, true);
+    console.log('returning sync...', response)
+    return [response, idea];
 
   }
 

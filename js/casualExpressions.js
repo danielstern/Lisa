@@ -17,7 +17,7 @@ var casualExpressions = {
     default:
       break;
     }
-    
+
     return response;
 
   },

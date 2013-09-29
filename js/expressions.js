@@ -2,18 +2,16 @@ var standardExpressions1 = {
 
   quality: function (seed, quality) {
     var response = '';
-  //  console.log('quality?',seed,quality)
-    response = preposit(seed) + " " + conjugate(seed, 'is') + " " + synonomize(quality);
-  //    console.log('response coming from quality?',response)
+    response = window.brain.speech.express.moment({subject:seed.word, object:quality, action:'is'})
+    //response = preposit(seed) + " " + conjugate(seed, 'is') + " " + synonomize(quality);
     return response;
   },
 
-
   generality: function (seed, quality) {
     var response = '';
-  //  console.log('quality?',seed,quality)
-    response = preposit(seed,{pronoun:'plural'}) + " " + conjugate(seed, 'is','present','plural') + " " + synonomize(quality);
-  //    console.log('response coming from quality?',response)
+    var context; 
+    if (seed.plural) context = plural;
+    response = preposit(seed,{pronoun:'plural'}) + " " + conjugate(seed, 'is','present',context) + " " + synonomize(quality);
     return response;
   },
 
@@ -21,26 +19,15 @@ var standardExpressions1 = {
     var response = '';
     console.log('expressing inheritance',seed,idea)
 
-      response = preposit(seed) + " " + conjugate(seed, 'is') + " " + preposit(idea[0]);
+     response = window.brain.speech.express.quality(seed,idea[0]);// preposit(seed) + " " + conjugate(seed, 'is') + " " + preposit(idea[0]);
 
-    return response;
-  },
-
-  personalTrait: function (trait) {
-    var response = '';
-    response = "I'm " + trait;
-    return response;
-  },
-
-  association: function (seed, idea) {
-    var response = '';
-    response = preposit(seed) + " " + conjugate(seed, 'reminds') + " me of " + lexicate(idea);
     return response;
   },
 
   moment: function (moment, context) {
 
     var response = '';
+    context = context || {};
 
     switch (moment.rel) {
       case 'but':
