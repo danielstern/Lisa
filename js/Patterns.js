@@ -2,15 +2,15 @@ var _lisapatterns =  {
 	exposition:
 	[
 		/*
-		*/
 		{
 			sequence:['demystify','express-relationship','']
 		},
+		*/
 		{
-			sequence:['demystify','draw-conclusion'],
+			sequence:['draw-conclusion'],
 		},
 		{
-			sequence:['demystify','tell-story']
+			sequence:['tell-story']
 		}
 	],
 

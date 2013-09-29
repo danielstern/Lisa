@@ -107,7 +107,7 @@ _.mixin({
 
     string1 = string1 || '';
     string2 = string2 || '';
-    variance = variance || 2;
+    variance = variance || 0;
     return _.levenshtein(string1.toString().toLowerCase(),string2.toString().toLowerCase()) < variance;
 
   },

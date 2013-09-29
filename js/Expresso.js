@@ -20,7 +20,7 @@ var Expresso = function (brain) {
   express.learn(casualExpressions);
   express.learn(formalExpressions);
 
-  express.conjugate = function (seed, verb, tense) {
+  express.conjugate = function (seed, verb, tense, context) {
 
     seed = seed || {};
     if (typeof seed == 'string') seed = brain.whatIs(seed);
@@ -29,9 +29,12 @@ var Expresso = function (brain) {
     tense = tense || 'present';
 
     var tl = transliterate;
-    var context = 'plural';
-    if (seed.pronoun == 'unique') context = 'singular';
-    if (!seed.plural) context = 'singular';
+    if (!context ) {
+         context = 'plural';
+      if (seed.pronoun == 'unique') context = 'singular';
+      if (!seed.plural) context = 'singular';
+    }
+
     try {
     var verb = tl[verb][tense][context];
     } catch (e) {
@@ -133,7 +136,7 @@ var Expresso = function (brain) {
     idea = idea || express.brain.whatIs(word, true) || {};
     console.log('prepositing...',word,idea,context);
 
-  //  if (word == idea.plural) idea.pronoun = 'pluralize';
+    if (word == idea.plural) idea.pronoun = 'pluralize';
     if (context.pronoun) idea.pronoun = context.pronoun;
     if (idea.pronoun == 'plural' && idea.plural) word = idea.plural;
     if (idea.form == "adjective") {
@@ -191,7 +194,9 @@ var Expresso = function (brain) {
     }
 
     if (preposition) preposition += " ";
-    return preposition + (returnWord ? word : '');
+    var response = preposition + (returnWord ? word : '')
+        console.log('became...',response);
+    return response;
 
   }
   window.preposit = express.preposit;

@@ -8,11 +8,20 @@ var standardExpressions1 = {
     return response;
   },
 
+
+  generality: function (seed, quality) {
+    var response = '';
+  //  console.log('quality?',seed,quality)
+    response = preposit(seed,{pronoun:'plural'}) + " " + conjugate(seed, 'is','present','plural') + " " + synonomize(quality);
+  //    console.log('response coming from quality?',response)
+    return response;
+  },
+
   inheritance: function (seed, idea) {
     var response = '';
     console.log('expressing inheritance',seed,idea)
 
-      response = preposit(seed,{pronoun:'plural'}) + " " + conjugate(seed, 'is') + " " + preposit(idea[0],{pronoun:'plural'});
+      response = preposit(seed) + " " + conjugate(seed, 'is') + " " + preposit(idea[0]);
 
     return response;
   },

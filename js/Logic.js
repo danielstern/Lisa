@@ -214,9 +214,7 @@ function Logic(brain) {
 
     var response = '';
   
-    console.log('drawing conclusion about...',seed);
     var stories = brain.memory.long.getStories(seed);
-    console.log('stories?',stories);
     var allComments = [];
 
     _.each(stories,function (story){
@@ -228,16 +226,16 @@ function Logic(brain) {
        })
    })
 
-    console.log('allComments?',allComments);
     var allCommentsAboutSubject = _.filter(allComments,
       function(comment){
         if (logic.brain.whatIs(comment.subject,true) == seed) return true;})
 
-    console.log('allCommentsAboutSubject?',allCommentsAboutSubject);
 
     var conclusion = _.sample(allCommentsAboutSubject) || '';
     if (!conclusion) return '';
-    var remark = logic.brain.speech.express.quality(conclusion.subject, conclusion.attribute);
+  // var remark = logic.brain.speech.express.quality(conclusion.subject, conclusion.attribute);
+     var remark = logic.brain.speech.express.generality(conclusion.subject, conclusion.attribute);
+    //var remark = logic.brain.speech.express.moment({subject:conclusion.subject,object: conclusion.attribute, action:'is'},{time:'present'});
     response = remark;
 
     return response || '';
