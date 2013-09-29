@@ -1,4 +1,4 @@
-ponder = function (seed, logic) {
+ponder = function (seed, logic,directive) {
   var response = '';   
 
   console.log("Ponder, ", seed)
@@ -15,6 +15,8 @@ ponder = function (seed, logic) {
 
   var pattern = brain.personality.getPattern();
   var sequence = pattern.sequence;
+
+  if (directive) sequence = [directive];
 
   _.each(sequence, function(command) {
  
@@ -38,8 +40,10 @@ ponder = function (seed, logic) {
         thought = logic.expressRelationship(seed);
         break;
 
-      case 'scopeUp':
+      case 'scopeUp': 
+      case 'scope-up':
         brainwave = logic.scopeUp(seed);
+        console.log('doing scopeup',brainwave);
 
          thought = brainwave[0];
         seed = brainwave[1];

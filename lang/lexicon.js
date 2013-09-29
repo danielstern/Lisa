@@ -365,10 +365,10 @@ var Lexicon = {
     },
     {
       word:'dead',
-      when:[
+      /*when:[
         {action:'die',applies:'subject'},
-        {action:'kill',applies:'object'},
-        ],
+        {action:'kill',applies:'object'},  // these don't precisely make too much sense
+        ],*/
       form:'adjective',
     },
     {

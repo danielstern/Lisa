@@ -85,6 +85,11 @@
                  </p>
                 </td>
               </tr>
+              <tr>
+                <td colspan='2'>
+                  <button class='btn' ng-click='handleScopeUp()'>Scope Up</button>
+                </td>
+              </tr>
             </tbody>
          </table>
       </div>
@@ -108,6 +113,7 @@
       $scope.saying = 'Hello!'
       $scope.randomThings = _.sample(brain.lexicon.things, 3)
 
+      $scope.sayTo = 'goblin';
       $scope.recentThings = [];
 
       $scope.sayRandom = function() {
@@ -120,8 +126,18 @@
 
       //  $scope.recentThings = _.last(_.initial($scope.recentThings),3);
         $scope.recentThings = _.last($scope.recentThings, 3);
+              $scope.sayTo = '';
       //  console.log('recent thigns?',$scope.recentThings)
 
+      }
+
+      $scope.handleScopeUp = function() {
+        console.log('handle scopeup...')
+        var lisaDo = $Lisa.do('scope-up');
+        console.log('do?',lisaDo);
+        $Lisa.brain.seed = lisaDo[1];
+        $scope.saying = lisaDo[0];
+        $scope.sayTo = '';
       }
   }])
   
