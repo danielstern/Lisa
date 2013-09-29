@@ -80,6 +80,8 @@ var Expresso = function (brain) {
 
     console.log('Prepositing 1', word, context);
 
+       context = context || {};
+
     // if preposit is passed an array, assume the first item in the array is the word
     if (word instanceof Array) word = word[0];
 
@@ -97,7 +99,20 @@ var Expresso = function (brain) {
       word = word.replace(/[$]/gi, '');
       var property = word.split(':')[0];
       word = word.split(':')[1];
-      word = property + " " + word;
+       console.log('whatIs?',property,brain.whatIs(property));
+       var propertyIdea = brain.whatIs(property)
+      if ( propertyIdea /*&& brain.whatIs(property).form != adjective*/) {
+
+        console.log('idea',propertyIdea);
+         console.log('idea',propertyIdea.form);
+         console.log('idea',propertyIdea.form != 'adjective');
+
+         if (propertyIdea.form != 'adjective') {
+          console.log('this is SURELY not an adjective!');
+          context.pronoun = 'none';
+         }
+      }
+      word = preposit(property,{pronoun:'referenced'}) + " of " + preposit(word);
       adjective = property;
     }
 
@@ -110,7 +125,7 @@ var Expresso = function (brain) {
 
     var adjective = '';
 
-    context = context || {};
+ 
 
     word = word || '';
 
