@@ -20,7 +20,6 @@
 
     Lisa.do = function(directive,seed) {
 
-    	console.log('lisa do',directive);
     	var response = Lisa.brain.logic.ponder(Lisa.brain.seed,Lisa.brain.logic,directive);
     	response[0] = lisa.brain.speech.prettify(response[0]);
       return response;

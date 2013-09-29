@@ -126,6 +126,7 @@ _.mixin({
   extractStory: function (story) {
 
     var ideas = [];
+    if (!story) return ideas;
     _.each(story.sequence, function(moment) {
 
       ideas = ideas.concat(_.values(moment));

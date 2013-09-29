@@ -101,6 +101,8 @@ function Logic(brain) {
 
     var sidewaysIdea = _.sample(relatedThings);
 
+    response += logic.brain.speech.express.inheritance([seed,sidewaysIdea], seed.extends[0]);
+
     if (!sidewaysIdea) return [response, seed];
 
     seed = sidewaysIdea;
@@ -108,17 +110,6 @@ function Logic(brain) {
     return [response, seed];
   }
 
-
-  logic.comment = function (moment, context) {
-
-    var response = '';
-    var applicableComments = logic.getComments(moment);
-    var comment = _.sample(applicableComments);
-    if (!comment) return '';
-
-    var remark = logic.brain.speech.express.quality(comment.subject, comment.attribute);
-    return remark || '';
-  }
 
   logic.drawConclusion = function (seed) {
 
@@ -149,6 +140,17 @@ function Logic(brain) {
     response = remark;
 
     return response || '';
+  }
+
+  logic.comment = function (moment, context) {
+
+    var response = '';
+    var applicableComments = logic.getComments(moment);
+    var comment = _.sample(applicableComments);
+    if (!comment) return '';
+
+    var remark = logic.brain.speech.express.quality(comment.subject, comment.attribute);
+    return remark || '';
   }
 
   logic.getComments = function (moment) {

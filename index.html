@@ -135,11 +135,11 @@
       }
 
       $scope.scopeUp = function(){$scope.lisaDirective('scopeUp')};
+      $scope.scopeSideways = function(){$scope.lisaDirective('scopeSideways')};
       $scope.scopeDown = function(){$scope.lisaDirective('scopeDown')};
 
       $scope.lisaDirective = function(directive) {
 
-        console.log('handle,' ,directive);
         var lisaDo = $Lisa.do(directive);
 
         $Lisa.brain.seed = lisaDo[1];

@@ -77,6 +77,8 @@ var Expresso = function (brain) {
 
   express.preposit = function (word, context) {
 
+    console.log('prepositing',word)
+
     if (_.stringContains(word, '<')) {
       var words = word.replace(/[<>]/gi, '').split('&');
       var propositedWords = _.map(words, function (word) {
@@ -121,9 +123,15 @@ var Expresso = function (brain) {
         break;
       }
     }
+        console.log('prepositing 1.5. idea?',idea,typeof idea)
 
+    if (idea instanceof Array) idea = idea[0];
+    if (typeof idea == 'string') idea = express.brain.whatIs(idea, true)
+
+    console.log('prepositing 1.75. idea?',idea,typeof idea)
     idea = idea || express.brain.whatIs(word, true) || {};
     //  console.log('prepositing...',word,idea,context);
+    console.log('prepositing 2',word,idea)
 
     if (word == idea.plural) idea.pronoun = 'pluralize';
     if (context.pronoun && idea.pronoun != 'proper') idea.pronoun = context.pronoun;

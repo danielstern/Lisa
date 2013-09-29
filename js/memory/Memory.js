@@ -19,7 +19,6 @@ function ShortTermMemory(memory) {
 
     if (memory instanceof Array) {
       short.recentThings = short.recentThings.concat(memory);
-      console.log('this is an array, remember',memory)
     }
      else
     {

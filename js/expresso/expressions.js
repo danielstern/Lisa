@@ -13,14 +13,31 @@ var standardExpressions1 = {
 
   generality: function (seed, quality) {
     var response = '';
-     console.log('generality?',seed)
+     console.log('generality?',seed, quality)
     if (typeof seed == 'string') seed = window.brain.whatIs(seed, true);
+
+    var prepositedSubjects = '';
+    if (seed instanceof Array) {
+      var things = [];
+      things = _.map(seed,function(miniSeed){
+        return preposit(miniSeed,{plural:true,pronoun:'plural'});
+      })
+
+      console.log('Its an array. Things?' , things);
+      prepositedSubjects = _.toSentence(things);
+
+    }
 
     var context;
     if (!seed || seed.plural) context = 'plural';
-    console.log('generality?',context, seed)
-  //  response = preposit(seed, {pronoun: 'plural'}) + " " + conjugate(seed, 'is', 'present', context) + " " + synonomize(quality);
-    response = preposit(seed, {pronoun: 'plural'}) + " " + conjugate(seed, 'is', 'present', context) + " " + preposit(quality,{pronoun: 'plural'});
+
+    if (prepositedSubjects) {
+      response = prepositedSubjects + " " + conjugate(seed, 'is', 'present', 'plural') + " " + preposit(quality,{pronoun: 'plural'});
+    } else {
+       console.log('no preposited subjects...',seed,quality)
+       response = preposit(seed, {pronoun: 'plural'}) + " " + conjugate(seed, 'is', 'present', context) + " " + preposit(quality,{pronoun: 'plural'});
+       console.log('response?',response)
+    }
     return response;
   },
 
@@ -28,7 +45,7 @@ var standardExpressions1 = {
     var response = '';
     console.log('expressing inheritance', seed, idea)
 
-    response = window.brain.speech.express.generality(seed, idea[0]);
+    response = window.brain.speech.express.generality(seed, idea);
 
     return response;
   },
