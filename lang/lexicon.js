@@ -320,6 +320,11 @@ var Lexicon = {
       },
     },
     {
+      word:'Grim Swamps',
+      extends:['place'],
+      pronoun:'unique',
+    },
+    {
       word:'royalty',
       pronoun:'unique',
     },
@@ -333,11 +338,17 @@ var Lexicon = {
       pronoun:'concept',
       see:'Queen Emeraldia'
     },
-   ],
+   ], 
     attributes:[ 
     {
       word:'powerful',
       when:[{action:'use',object:'magic'}],
+      form:'adjective',
+    },
+    {
+      word:'injured',
+      synonyms:['hurt','wounded'],
+      form:'adjective',
     },
     {
       word:'evil',

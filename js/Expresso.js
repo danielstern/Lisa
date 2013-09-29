@@ -42,7 +42,6 @@ var Expresso = function (brain) {
 
     var response = '';
 
-
     switch (relationship.action) {
     case 'weakness':
       response = conjugate(seed, 'is') + ' weak against'
@@ -81,6 +80,7 @@ var Expresso = function (brain) {
 
   express.preposit = function (word, context) {
 
+    
     var preposition = '';
     var assumed = false;
     var referenced = false;
@@ -105,10 +105,13 @@ var Expresso = function (brain) {
 
     var idea = express.brain.whatIs(word, true) || {};
     if (referenced && idea.pronoun != 'proper' && idea.pronoun != 'force') idea.pronoun = 'referenced';
-
     if (word == idea.plural) idea.pronoun = 'pluralize';
     if (context.pronoun) idea.pronoun = context.pronoun;
     if (idea.pronoun == 'plural' && idea.plural) word = idea.plural;
+    if (idea.form == "adjective") idea.pronoun = 'none';
+
+    console.log('preposit...',word,context,idea);
+
 
     var returnWord = true;
     

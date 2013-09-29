@@ -40,6 +40,14 @@ var _stories = [
   {
     sequence:
     [
+      {subject:'Willas',action:'go',object:'Grim Swamps'},
+      {subject:'goblin',action:'attack',object:'Willas'},
+      {subject:'Willas',action:'is',object:'injured'},
+    ],
+  },
+  {
+    sequence:
+    [
       {subject:'Vix the Vile',action:'go',object:'Mount Aur',when:
       {subject:'Algoron',action:'attack',object:'emeraldia'}}
     ],
@@ -48,8 +56,7 @@ var _stories = [
     sequence:
     [
       {subject:'Algoron',action:'attack',object:'Emeraldia',with:'Theoch'},
-    ]
-  },
+    ]   },
   {
     sequence:
     [
