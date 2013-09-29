@@ -21,6 +21,18 @@ var transliterate = {
     }
   },
 
+
+  laugh:{
+    past:{
+      singular:'laughed',
+      plural:'laughed'
+    },
+    present:{
+      singular:'laughs',
+      plural:'laugh'
+    }
+  },
+
   arrive:{
     past:{
       singular:'arrived',

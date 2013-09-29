@@ -48,6 +48,7 @@ function LongTermMemory(memory) {
   longTerm.getStories = function(seed) {
 
     if (!seed) return {};
+    if (typeof seed == 'string') seed = brain.whatIs(seed);
 
     var word = seed.word;
     var matchingStories = [];

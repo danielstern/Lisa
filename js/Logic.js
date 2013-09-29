@@ -7,55 +7,10 @@ function Logic(brain) {
   var think = brain.host.thinks;
   var response = '';
 
-  logic.demystify = function (seed, numberOfQualities) {
-
-    response = '';
-
-    switch (Math.ceil(Math.random() * 3)) {
-    case 1:
-      response = logic.scopeUp(seed)[0];
-      break;
-    case 2:
-      response = logic.scopeSideways(seed)[0];
-      break;
-    case 3:
-      response = logic.scopeDown(seed)[0];
-      break;
-    }
-
-    response += brain.speech.softPause();
-
-    return response;
-  }
-
   logic.ponder = ponder;
   window.logic = this;
 
-  logic.demystifyPersonality = function (being) {
-
-    var response = '';
-    being = being || 'self';
-
-    var quality;
-    var relationship;
-
-    switch (Math.ceil(Math.random() * 2)) {
-    case 1:
-      quality = _.sample(brain.personality.ego.qualities);
-      response = brain.speech.express.personalTrait(quality);
-      break;
-    case 2:
-      relationship = _.sample(brain.personality.ego.relationship);
-      response = brain.speech.express.relationship(relationship);
-      break;
-    }
-
-    response += brain.speech.softPause();
-    return response;
-  }
-
   logic.expressRelationship = function (seed) {
-
 
     if (!seed.relationship || !seed.relationship[0]) {
       return response;
@@ -70,26 +25,6 @@ function Logic(brain) {
 
   }
 
-  logic.shareEgo = function (being) {
-
-    being = being || 'self';
-
-    var traits = _.pairs(brain.personality.ego.identity);
-    var trait;
-
-    if (!brain.memory.short.scan(brain.personality.ego.identity.name)) {
-      trait = _.find(traits, function (trait) {
-        return trait[0] == 'name'
-      });
-    }
-
-    trait = trait || _.sample(traits);
-
-    response = brain.speech.express.possessive(trait[0], trait[1]);
-    response += brain.speech.softPause();
-
-    return response;
-  }
 
   logic.scopeUp = function (seed) {
 
@@ -177,54 +112,32 @@ function Logic(brain) {
   logic.comment = function (moment, context) {
 
     var response = '';
-    var applicableComments = [];
-
-      //  console.log('commenting on',moment)
-
-
-
-    _.each(attributes, function (attribute) {
-      _.each(attribute.when, function (occasion) {
-
-//        console.log('moment?',moment);
-
-        var intersects = _.occasionInvokesAttribute(moment, occasion);
-        if (intersects) {
-          applicableComments.push({
-            subject: moment[occasion.applies || 'subject'],
-            attribute: attribute.word
-          });
-        }
-
-      })
-    })
-
- //   console.log('comments',applicableComments)
+    var applicableComments = logic.getComments(moment);
     var comment = _.sample(applicableComments);
-
     if (!comment) return '';
 
     var remark = logic.brain.speech.express.quality(comment.subject, comment.attribute);
-
-    return '';
     return remark || '';
   }
 
   logic.drawConclusion = function (seed) {
 
     var response = '';
+
+      console.log('drawConclusion...',seed);
   
-    var stories = brain.memory.long.getStories(seed);
+    var stories = brain.memory.long.getStories(_.crack(seed.word));
     var allComments = [];
 
     _.each(stories,function (story){
       _.each(story.sequence,function(moment) {
-       // console.log('drawing conclusion from moment...',moment);
         var comments = logic.getComments(moment);
         allComments = allComments.concat(comments);
 
        })
    })
+
+            console.log('allcomments?...',allComments);
 
     var allCommentsAboutSubject = _.filter(allComments,
       function(comment){
@@ -233,9 +146,7 @@ function Logic(brain) {
 
     var conclusion = _.sample(allCommentsAboutSubject) || '';
     if (!conclusion) return '';
-  // var remark = logic.brain.speech.express.quality(conclusion.subject, conclusion.attribute);
      var remark = logic.brain.speech.express.generality(conclusion.subject, conclusion.attribute);
-    //var remark = logic.brain.speech.express.moment({subject:conclusion.subject,object: conclusion.attribute, action:'is'},{time:'present'});
     response = remark;
 
     return response || '';
@@ -243,18 +154,21 @@ function Logic(brain) {
 
   logic.getComments = function (moment) {
 
+
+      console.log('get comment...',moment);
+
     var applicableComments = [];
 
     _.each(attributes, function (attribute) {
       _.each(attribute.when, function (occasion) {
 
-//        console.log('moment?',moment);
+      console.log('get comment...',moment,occasion);
 
         var intersects = _.occasionInvokesAttribute(moment, occasion);
         if (intersects) {
           applicableComments.push({
-            subject: moment[occasion.applies || 'subject'],
-            attribute: attribute.word
+            subject: _.crack(moment[occasion.applies || 'subject']),
+            attribute: _.crack(attribute.word)
           });
         }
 
@@ -279,14 +193,14 @@ function Logic(brain) {
       response += phrase;
       response += brain.speech.softPause();
       var comment = logic.comment(moment);
-      if (comment && !brain.memory.short.recall(comment)) {
+     /* if (comment && !brain.memory.short.recall(comment)) {
 
         brain.memory.short.remember(comment);
 
         response += comment;
         response += brain.speech.softPause();
 
-      }
+      }*/
     });
 
     function tellStoryMoment(moment) {

@@ -5,12 +5,12 @@ var _lisapatterns =  {
 		{
 			sequence:['demystify','express-relationship','']
 		},
+		{
+			sequence:['tell-story']
+		}
 		*/
 		{
 			sequence:['draw-conclusion'],
 		},
-		{
-			sequence:['tell-story']
-		}
 	],
 }

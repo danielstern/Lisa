@@ -7,14 +7,7 @@ function Personality() {
 
 		var pattern;
 		   pattern = _.sample(personality.patterns.exposition);
-		   /*
-		if (patternsReturned.length == 0) {
-			pattern = _.sample(personality.patterns.greeting);
-		} 
-			else 
-		{
-		    pattern = _.sample(personality.patterns.exposition);
-		}*/
+
 
 		patternsReturned.push(pattern);
 		return pattern;

@@ -25,7 +25,7 @@ function Brain(host) {
 
     var idea = brain.whatIs(words, true);
     response = brain.ponder(idea, true);
-    console.log('returning sync...', response)
+
     return [response, idea];
 
   }
@@ -56,7 +56,7 @@ function Brain(host) {
 
   brain.whatIs = function (word) {
 
-    var idea = extractIdea(word);
+    var idea = extractIdea(_.crack(word));
 
     function extractIdea(word) {
 

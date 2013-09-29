@@ -46,8 +46,7 @@ ponder = function (seed, logic) {
         break;
 
       case 'scopeSideways':
-        brainwave = logic.scopeSideways(seed);
-      
+        brainwave = logic.scopeSideways(seed); 
         thought = brainwave[0];
         seed = brainwave[1];
         break;
@@ -64,18 +63,6 @@ ponder = function (seed, logic) {
 
       case 'draw-conclusion':
         thought = logic.drawConclusion(seed);
-        break;
-
-      case 'demystify-self':
-        thought = logic.demystifyPersonality('self');
-        break;
-
-      case 'share-ego':
-        thought = logic.shareEgo('self');
-        break;
-
-      case 'tell-story-moment':
-        thought = logic.tellStoryMoment(seed);
         break;
 
       case 'tell-story':

@@ -100,7 +100,6 @@
         $scope.saying = reply[0];
         if (!reply[1])    return;
         $scope.thought = reply[1].word;
-        console.log('recentThings',$scope.recentThings)
         $scope.recentThings.push(reply[1]);
         $scope.recentThings = _.last($scope.recentThings,3);
       }

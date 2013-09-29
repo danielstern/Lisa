@@ -41,10 +41,8 @@ _.mixin({
 
     var invoked = true;
 
-/*
-        console.log('searching for intersection',moment,occasion);
-        console.log('moment object,occasion object',moment.object,occasion.object);
-*/
+    console.log('invoke attribute',moment, occasion)
+
         if (occasion.action) {
            if(occasion.action != moment.action) invoked = false;
         }
@@ -56,10 +54,16 @@ _.mixin({
   },
 
   crack: function(string) {
-    string = string || '';
+    if (typeof string != 'string') return string;
     if (string.split('|').length > 1) {
       string = string.split('|')[1];
     }
+    if (string.split(':').length > 1) {
+      string = string.replace(/<>/gi,'')
+      .split(':')[1]
+    }
+
+    //console.log('crack returning...',string)
     return string;
   },
 
@@ -126,7 +130,11 @@ _.mixin({
     _.each(story.sequence, function(moment) {
 
       ideas = ideas.concat(_.values(moment));
+      ideas = _.map(ideas,function(idea){
+        return _.crack(idea);
+      });
     });
+
     return ideas;
   }
 

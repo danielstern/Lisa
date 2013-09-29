@@ -4,6 +4,42 @@
 		"selected_items":
 		[
 			[
+				"con",
+				"container"
+			],
+			[
+				"use",
+				"useAsync"
+			],
+			[
+				"pre",
+				"preposit"
+			],
+			[
+				"get",
+				"getComments"
+			],
+			[
+				"co",
+				"console"
+			],
+			[
+				"re",
+				"response"
+			],
+			[
+				"appl",
+				"applicableComments"
+			],
+			[
+				"in",
+				"invoked"
+			],
+			[
+				"scope",
+				"scopeUp"
+			],
+			[
 				"express",
 				"expression"
 			],
@@ -26,10 +62,6 @@
 			[
 				"c",
 				"conjugate"
-			],
-			[
-				"pre",
-				"preposit"
 			],
 			[
 				"string",
@@ -64,20 +96,12 @@
 				"scopeSideways"
 			],
 			[
-				"scope",
-				"scopeUpIdea"
-			],
-			[
 				"demi",
 				"demystify-self"
 			],
 			[
 				"pa",
 				"patternsReturned"
-			],
-			[
-				"re",
-				"relationship"
 			],
 			[
 				"rel",
@@ -135,6 +159,14 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "js/Lisa.js",
+			"settings":
+			{
+				"buffer_size": 282,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -160,30 +192,37 @@
 	},
 	"file_history":
 	[
+		"/C/wamp/www/lisa/js/patterns.js",
+		"/C/wamp/www/lisa/js/Personality.js",
+		"/C/wamp/www/lisa/js/Expresso.js",
+		"/C/wamp/www/lisa/js/Logic.js",
+		"/C/wamp/www/lisa/js/expressions.js",
+		"/C/wamp/www/lisa/js/Brain.js",
+		"/C/wamp/www/lisa/js/filter.js",
+		"/C/wamp/www/lisa/js/formalExpressions.js",
+		"/C/wamp/www/lisa/index.html",
+		"/C/wamp/www/lisa/js/casualExpressions.js",
+		"/C/wamp/www/lisa/js/Utility.js",
+		"/C/wamp/www/lisa/js/ponder.js",
+		"/C/wamp/www/lisa/js/Lisa.js",
+		"/C/wamp/www/lisa/lang/lexicon.js",
+		"/C/wamp/www/lisa/js/transliterate.js",
+		"/C/wamp/www/assassin/js/calculator.js",
+		"/C/wamp/www/lisa/js/stories.js",
+		"/C/wamp/www/lisa/README.md",
+		"/C/wamp/www/lisa/js/Speech.js",
+		"/C/wamp/www/lisa/js/Memory.js",
+		"/C/node/my-angular-project/.travis.yml",
+		"/C/node/myangular2/package.json",
+		"/C/node/my-angular-project/.gitignore",
+		"/C/node/my-angular-project/node_modules/karma-coffee-preprocessor/node_modules/coffee-script/Rakefile",
 		"/C/Users/New Owner/express_example/views/layout.jade",
 		"/C/Users/New Owner/express_example/views/index.jade",
 		"/C/node/mynodeapp/package.json",
 		"/C/node/mynodeapp/app.js",
-		"/C/wamp/www/lisa/js/Speech.js",
-		"/C/wamp/www/lisa/js/formalExpressions.js",
-		"/C/wamp/www/lisa/js/casualExpressions.js",
-		"/C/wamp/www/lisa/js/Expresso.js",
-		"/C/wamp/www/lisa/index.html",
-		"/C/wamp/www/lisa/js/Brain.js",
-		"/C/wamp/www/lisa/js/expressions.js",
 		"/C/wamp/www/lisa/js/frasier.js",
 		"/C/Users/New Owner/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
-		"/C/wamp/www/lisa/lang/lexicon.js",
-		"/C/wamp/www/lisa/js/transliterate.js",
-		"/C/wamp/www/lisa/README.md",
-		"/C/wamp/www/lisa/js/Personality.js",
-		"/C/wamp/www/lisa/js/Memory.js",
-		"/C/wamp/www/lisa/js/patterns.js",
-		"/C/wamp/www/lisa/js/Logic.js",
-		"/C/wamp/www/lisa/js/Utility.js",
 		"/C/wamp/www/lisa/lib/underscore/underscore.string.js",
-		"/C/wamp/www/lisa/js/Lisa.js",
-		"/C/wamp/www/lisa/js/filter.js",
 		"/C/Users/New Owner/Documents/portfoliolinks",
 		"/C/wamp/www/lisa/js/Psychic.js",
 		"/C/wamp/www/lisa/js/Patterns.js",
@@ -209,6 +248,70 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"colloqu",
+			".qual",
+			"quality",
+			"conjuga",
+			"drawConc",
+			"comment",
+			"relations",
+			"express",
+			"monsters",
+			"monster",
+			"is",
+			"tellst",
+			"omnoth",
+			"sword",
+			"dorceress",
+			"go'",
+			"go",
+			"'go'",
+			"go",
+			"concl",
+			"comment",
+			"retreat",
+			"lexica",
+			"monster",
+			"tellsto",
+			"comment",
+			"willas",
+			"moment",
+			"preposit",
+			"axos",
+			"console",
+			"dragon",
+			"dragons",
+			"plural",
+			"moment",
+			"magic",
+			"kind of",
+			"relationsh",
+			"relations",
+			"thus",
+			"comparin",
+			"applies",
+			"comment",
+			"},\n",
+			"comment",
+			"tellstor",
+			"emeraldia",
+			"emerald",
+			"tellsto",
+			"tellstory",
+			"i'm",
+			"I'm",
+			"I'",
+			"moment",
+			"dark",
+			"console",
+			"moment",
+			"found m",
+			"tellsto",
+			"tellst",
+			"sword",
+			"club",
+			"sword",
+			"club",
 			"= function",
 			"express.",
 			"= function",
@@ -272,24 +375,10 @@
 			"preposit",
 			"quality",
 			"		{",
-			"whatis",
-			"things",
-			"food",
-			"associat",
-			"remind",
-			"inheri",
-			"a kind of",
-			"royalty",
-			"remind",
-			"whatis",
-			"fruit",
-			"inherit",
-			"chatty",
-			"express.as",
-			"remind"
+			"whatis"
 		],
-		"highlight": true,
-		"in_selection": true,
+		"highlight": false,
+		"in_selection": false,
 		"preserve_case": false,
 		"regex": false,
 		"replace_history":
@@ -308,8 +397,37 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "js/Lisa.js",
+					"settings":
+					{
+						"buffer_size": 282,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								83,
+								83
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -359,16 +477,20 @@
 	},
 	"select_project":
 	{
-		"height": 0.0,
+		"height": 500.0,
 		"selected_items":
 		[
+			[
+				"",
+				"/C/wamp/www/lisa/lisa-project.sublime-project"
+			]
 		],
-		"width": 0.0
+		"width": 380.0
 	},
-	"show_minimap": true,
+	"show_minimap": false,
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 205.0,
-	"status_bar_visible": true
+	"side_bar_width": 226.0,
+	"status_bar_visible": false
 }
