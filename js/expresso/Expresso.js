@@ -22,7 +22,7 @@ var Expresso = function (brain) {
 
   express.conjugate = function (seed, verb, tense, context) {
 
-    console.log('conjugating',seed, verb, tense, context)
+//    console.log('conjugating',seed, verb, tense, context)
 
     seed = seed || {};
     if (typeof seed == 'string') seed = brain.whatIs(seed);

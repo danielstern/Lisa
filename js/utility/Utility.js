@@ -168,7 +168,7 @@ _.mixin({
   },
 
   sluice: function(ideas){
-    console.log('sluicing ideas...',ideas)
+    //console.log('sluicing ideas...',ideas)
 
     var newIdeas = [];
 

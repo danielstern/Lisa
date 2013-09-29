@@ -30,9 +30,22 @@ var transliterate = {
       plural:'needed'
     },
     present:{
-      singular:'need',
+      singular:'needs',
       plural:'need'
-    }
+    },
+    synonyms:['require']
+  },
+
+  require:{
+    past:{
+      singular:'required',
+      plural:'required'
+    },
+    present:{
+      singular:'requires',
+      plural:'require'
+    },
+    synonyms:['need']
   },
 
   jump:{
@@ -43,7 +56,20 @@ var transliterate = {
     present:{
       singular:'jumps',
       plural:'jump'
-    }
+    },
+     synonyms:['leap']
+  },
+
+  leap:{
+    past:{
+      singular:'leaped',
+      plural:'leaped'
+    },
+    present:{
+      singular:'leaps',
+      plural:'leap'
+    },
+     synonyms:['jump']
   },
 
   burn:{

@@ -204,7 +204,7 @@ function Logic(brain) {
 
       var phrase = '';
       if (!moment) return phrase;
-      console.log('tellstorymoment...',moment)
+     //console.log('tellstorymoment...',moment)
       if (brain.memory.short.recall(moment)) return phrase;
       var context = moment.context || {};
       context.time = context.time || 'past';
