@@ -48,10 +48,6 @@ var Lexicon = {
     {
       word:'club',
       extends:['weapon'],
-      relationship:[{
-        object:'goblin',
-        action:'effective'
-      }],
       plural:'clubs',
     },
     {
@@ -133,10 +129,6 @@ var Lexicon = {
       word:'knight',
       gender:'male',
       extends:['warrior'],
-      relationship:[{
-        object:'sword',
-        action:'use'
-      }],
       plural:'knights',
     },
     {
@@ -150,11 +142,6 @@ var Lexicon = {
       word:'Vix the Vile',
       gender:'female',
       pronoun:'proper',
-      relationship: [
-      {
-          object:'fire',
-          action:'use'
-      }],
       extends:['rogue'],
     },
     {

@@ -69,7 +69,9 @@ var standardExpressions1 = {
 
     if (moment.context && moment.context.general) {
 
-      response += preposit(moment.subject,{pronoun:'plural'}) + " " + conjugate(moment.subject, moment.action, 'present', 'plural');
+      var context;
+      context = (logic.brain.whatIs(moment.subject).plural) ? 'plural' : 'singular';
+      response += preposit(moment.subject,{pronoun:'plural'}) + " " + conjugate(moment.subject, moment.action, 'present', context);
     } else {
     response += preposit(moment.subject) + " " + conjugate(moment.subject, moment.action, context.time);
   }

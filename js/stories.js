@@ -38,6 +38,18 @@ var _stories = [
   {
     sequence:
     [
+      {subject:'Vix the Vile',action:'use',object:'fire',context:{general:true,time:'present'}},
+    ]
+  },
+  {
+    sequence:
+    [
+      {subject:'knight',action:'use',object:'sword',context:{general:true,time:'present'}},
+    ]
+  },
+  {
+    sequence:
+    [
       {subject:'knight',action:'kill',object:'goblin',with:'singular|crossbow'},
       {subject:'main|knight',action:'laugh'}
     ]
