@@ -18,7 +18,7 @@ _.mixin({
       strings = _.chain(strings)
         .without('')
         .map(function(string){
-          if (string == '##hp') return '</p><p>'
+          if (string == '##hp') return ''
 
           string = filter.filterString(string);
           string = _.trim(string);
@@ -32,7 +32,6 @@ _.mixin({
        .value();
 
     string = strings.join('');
-    string = '<p>'+string+'</p>';
 
     return string;
 

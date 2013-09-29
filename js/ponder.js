@@ -3,6 +3,7 @@ ponder = function (seed, logic) {
 
   console.log("Ponder, ", seed)
 
+
   logic = logic || window.logic;
 
   seed = seed || _.sample(logic.brain.things);

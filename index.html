@@ -1,7 +1,7 @@
 <!doctype HTML>
 <!-- Copyright 2013 danielstern.ca - feel free to examine, learn and apply -->
 
-<html ng-app=''> 
+<html ng-app='lisaApp'> 
 <head>
   <title>LISA: The Neuro-Computational Matrix</title>
   <meta name="viewport" content="width=device-width; initial-scale=1.0;">
@@ -41,22 +41,31 @@
   <script src="js/Expresso.js"></script>
 
 
-
-
 </head>
 <body>
-  <div class='container' style='padding:60px;'>
+  <div class='container' ng-controller='LisaController'  style='padding:60px;'>
     <div class="row">
       <div class='span5'>
         <h3>Lisa</h3>
-        <p id='dialogue'>Hey there.</p>
-        <form id='conversation-form'>
-          <input class='disabled' id='conversation-input' type='text'>
+           <p>{{saying}}</p>
+        <form id='conversation-form' ng-submit='sayRandom()'>
+          <input class='disabled' ng-model='sayTo' id='conversation-input' type='text'>
+        <button class='btn' >Say Something Random</button>
         </form>
-        <button class='btn' id='saySomethingRandom'>Say Something Random</button>
       </div>
       <div class='span3'>
         <img src='../misc/lisa.jpg' width='200px' height='auto'>
+      </div>
+       <div class='span3'>
+         <table class='table'>
+            <tr>
+              <th>Thinking About</th>
+              <td>{{thought}}</td>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+         </table>
       </div>
     </div>
 
@@ -65,8 +74,7 @@
 
 <script>
 
-  $('#conversation-form').submit(function(e){
-
+/*
     var $input = $('#conversation-input');
     var inputText = $input.val();
     $input.val('');
@@ -102,13 +110,28 @@
 
 
   });
+*/
 
 
-  var $Lisa = new Lisa();
+  var lisaApp = angular.module('lisaApp',[])
+   .controller('LisaController', ['$scope', function($scope) {
 
-  $Lisa.saySomethingRandom().then(function(response){
-    $('#dialogue').html(response); 
-  })
+      var $Lisa = new Lisa();
+      $scope.thought = 'Unknown';
+
+      $scope.saying = 'Hello!'
+
+      $scope.sayRandom = function() {
+
+        var reply = $Lisa.hears($scope.sayTo);
+        $scope.saying = $Lisa.hears($scope.sayTo)[0];
+        $scope.thought = $Lisa.hears($scope.sayTo)[1].word;
+      }
+
+      $scope.sayRandom();
+  }])
+  
+
 
 
 </script>

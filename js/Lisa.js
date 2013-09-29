@@ -36,10 +36,7 @@
 
     Lisa.hears = function(words) {
 
-      Lisa.brain.process(words).then(function(reply){
-        Lisa.says(reply);
-      });
-
+      return Lisa.brain.process(words,true);
 
     }
 
@@ -49,18 +46,8 @@
 
     }
 
-    Lisa.saySomethingRandom = function() {
-
-      var _callback;
-      var promise = new Promise(_callback);
-
-     Lisa.brain.ponder().then(function(response) {
-        promise.resolve(response)
-     });
-
-      return promise;
     
-    };
+
 
 
     Lisa.says = function(words) {
@@ -71,4 +58,5 @@
     }
 
     Lisa.brain = new Brain(Lisa);
+    Lisa.ponder = Lisa.brain.ponder;
   }
