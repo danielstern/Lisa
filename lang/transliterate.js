@@ -34,6 +34,7 @@ var transliterate = {
   },
 
 
+
   fall:{
     past:{
       singular:'fell',
@@ -42,8 +43,34 @@ var transliterate = {
     present:{
       singular:'falls',
       plural:'fall'
-    }
+    },
+    synonyms:['tumble','plummet']
   },
+
+  tumble:{
+    past:{
+      singular:'tumbled',
+      plural:'tumbled'
+    },
+    present:{
+      singular:'tumbles',
+      plural:'tumble'
+    },
+    synonyms:['plummet','fall']
+  },
+
+  plummet:{
+    past:{
+      singular:'plummeted',
+      plural:'plummeted'
+    },
+    present:{
+      singular:'plummets',
+      plural:'plummet'
+    },
+    synonyms:['fall','tumble']
+  },
+
 
 
   talk:{

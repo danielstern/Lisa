@@ -140,6 +140,17 @@ _.mixin({
 
   },
 
+  getVerbSynonyms: function(verb) {
+    var lexiary = window.transliterate;
+
+    //console.log('getting synonyms for...', verb,lexiary);
+    if(lexiary[verb]) var synonyms = lexiary[verb].synonyms;
+    console.log('getting synonyms for...', verb,lexiary,synonyms);
+    return synonyms;
+
+
+  },
+
   probably: function(string1, string2, variance) {
 
     string1 = string1 || '';

@@ -35,6 +35,9 @@ var Expresso = function (brain) {
       if (!seed.plural) context = 'singular';
     }
 
+    var synonyms = _.getVerbSynonyms(verb);
+    if (synonyms && synonyms[0]) verb = _.sample(synonyms);
+
     try {
       var verb = tl[verb][tense][context];
     } catch (e) {
@@ -78,7 +81,7 @@ var Expresso = function (brain) {
 
   express.preposit = function (word, context) {
 
-    console.log('Prepositing 1', word, context);
+  //  console.log('Prepositing 1', word, context);
 
        context = context || {};
 
@@ -148,7 +151,7 @@ var Expresso = function (brain) {
     idea = idea || express.brain.whatIs(word, true) || {};
     word = word || idea.word;
 
-    console.log('Prepositing 2', word, idea, context);
+  //  console.log('Prepositing 2', word, idea, context);
 
     // if the word is the plural form of the word, give it a plural pronoun, i.e., "skeletons" automatically get a plural pronoun
     if (word == idea.plural) idea.pronoun = 'plural';
@@ -170,7 +173,7 @@ var Expresso = function (brain) {
     if (idea.pronoun == 'proper') idea.word = _.capitalize(idea.word);
 
 
-    console.log('Prepositing 3', word, idea, context);
+  //  console.log('Prepositing 3', word, idea, context);
 
     
     // based on the idea object, choose a preposition
