@@ -42,14 +42,16 @@ _.mixin({
 
     var invoked = true;
 
+/*
+        console.log('searching for intersection',moment,occasion);
+        console.log('moment object,occasion object',moment.object,occasion.object);
+*/
         if (occasion.action) {
            if(occasion.action != moment.action) invoked = false;
         }
         if (occasion.object) {
            if(occasion.object != _.crack(moment.object)) invoked = false;
         }
-
-    console.log('invoked?',invoked)
 
     return invoked;
   },

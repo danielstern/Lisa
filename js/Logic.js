@@ -179,13 +179,19 @@ function Logic(brain) {
     var response = '';
     var applicableComments = [];
 
+      //  console.log('commenting on',moment)
+
+
+
     _.each(attributes, function (attribute) {
       _.each(attribute.when, function (occasion) {
 
-        var intersects = _.occasionInvokesAttribute(occasion, moment);
+        console.log('moment?',moment);
+
+        var intersects = _.occasionInvokesAttribute(moment, occasion);
         if (intersects) {
           applicableComments.push({
-            subject: moment[attribute.applies || 'subject'],
+            subject: moment[occasion.applies || 'subject'],
             attribute: attribute.word
           });
         }
@@ -193,6 +199,7 @@ function Logic(brain) {
       })
     })
 
+ //   console.log('comments',applicableComments)
     var comment = _.sample(applicableComments);
 
     if (!comment) return '';

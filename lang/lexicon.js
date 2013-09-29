@@ -347,8 +347,10 @@ var Lexicon = {
     },
     {
       word:'dead',
-      when:[{action:'die'}],
-      applies:'subject',
+      when:[
+        {action:'die',applies:'subject'},
+        {action:'kill',applies:'object'},
+        ],
       form:'adjective',
     },
     {

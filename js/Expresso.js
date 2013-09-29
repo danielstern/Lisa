@@ -113,7 +113,7 @@ var Expresso = function (brain) {
       word = synonomize(idea.word);
     }
 
-    console.log('preposit...',word,context,idea);
+    //console.log('preposit...',word,context,idea);
 
 
     var returnWord = true;
