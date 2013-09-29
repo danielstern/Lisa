@@ -75,20 +75,12 @@
                  </p>
                 </td>
               </tr>
-               <tr>
-                <th>
-                  Random Things
-                </th>
-                <td>
-                  <p ng-repeat="thing in randomThings|limitTo:3">
-                    {{thing.word}}
-                 </p>
-                </td>
-              </tr>
+               
               <tr>
                 <td colspan='2'>
                   <button class='btn' ng-click='scopeUp()'>Scope Up</button>
                   <button class='btn' ng-click='scopeDown()'>Scope Down</button>
+                  <button class='btn' ng-click='scopeSideways()'>Scope Sideways</button>
                 </td>
               </tr>
             </tbody>
@@ -96,6 +88,18 @@
       </div>
       <div class='span3'>
         <img src='../misc/lisa.jpg' width='200px' height='auto'>
+        <table class='table'>
+          <tr>
+            <th>
+              Random Things
+            </th>
+            <td>
+              <p ng-repeat="thing in randomThings|limitTo:3">
+                {{thing.word}}
+             </p>
+            </td>
+          </tr>
+        </table>
       </div>
       
     </div>

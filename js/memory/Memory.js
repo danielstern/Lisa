@@ -11,14 +11,21 @@ function ShortTermMemory(memory) {
 
   var short = this;
   short.memory = memory;
-  short.capacity = 25;
+  short.capacity = 1000;
 
   short.recentThings = [];
 
   short.remember = function(memory) {
 
-    short.recentThings.push(memory);
-    
+    if (memory instanceof Array) {
+      short.recentThings = short.recentThings.concat(memory);
+      console.log('this is an array, remember',memory)
+    }
+     else
+    {
+      short.recentThings.push(memory);
+    }
+      
   }
 
   short.recall = function(memory) {
