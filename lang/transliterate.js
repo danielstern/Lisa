@@ -21,6 +21,16 @@ var transliterate = {
     }
   },
 
+  say:{
+    past:{
+      singular:'said',
+      plural:'said'
+    },
+    present:{
+      singular:'said',
+      plural:'said'
+    }
+  },
   live:{
     past:{
       singular:'lived',

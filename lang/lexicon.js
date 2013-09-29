@@ -3,13 +3,29 @@ var Lexicon = {
     // special things
    {
       word:'self',
+      extends:['person'],
       pronoun:'self',
       hidden:'true',
     },
     {
       word:'you',
+      extends:['person'],
       pronoun:'none',
       hidden:'true',
+    },
+    {
+      word:'father',
+      extends:['person'],
+      plural:'fathers'
+    },
+    {
+      word:'advice',
+      pronoun:'none',
+    },
+    {
+      word:'me',
+      see:'self',
+      pronoun:'none',
     },
     {
       word:'place',
@@ -17,414 +33,10 @@ var Lexicon = {
       plural:'places',
     },
     {
-      word:'force',
-      hidden:'true',
-      plural:'forces',
-    },
-    {
-      word:'creature',
-      hidden:'true',
-      plural:'creatures',
-    },
-    {
       word:'person',
       hidden:'true',
       plural:'people',
     },
-    {
-      word:'tool',
-      plural:'tools',
-    },
-    {
-      word:'sword',
-      extends:['weapon'],
-      plural:'swords',
-    },
-    {
-      word:'Ivory Wand',
-      extends:['wand'],
-      plural:'Ivory Wands',
-    },
-    {
-      word:'wand',
-      extends:['weapon'],
-      plural:'wands',
-    },
-    {
-      word:'club',
-      extends:['weapon'],
-      plural:'clubs',
-    },
-    {
-      word:'weapon',
-      extends:['tool'],
-      plural:'weapons',
-    },
-    {
-      word:'night',
-      extends:['time'],
-      pronoun:'concept',
-    },
-    {
-      word:'Axos Braveheart',
-      extends:['knight'],
-      gender:'male',
-      pronoun:'proper',
-    },
-    {
-      word:'Axos',
-      see:'Axos Braveheart',
-      gender:'male',
-      pronoun:'proper',
-    },
-    {
-      word:'skeleton',
-      extends:['monster'],
-      plural:'skeletons'
-    },
-    {
-      word:'sorceress',
-      extends:['wizard'],
-      gender:'female',
-      plural:'sorceresses'
-    },
-    {
-      word:'Sword of Light',
-      pronoun:'unique',
-      extends:['weapon'],
-    },
-    {
-      word:'axe',
-      extends:['weapon'],
-      plural:'axes',
-    },
-    {
-      word:'crossbow',
-      extends:['weapon'],
-      plural:'crossbows',
-    },
-    {
-      word:'bow',
-      extends:['weapon'],
-      plural:'bows',
-    },
-    {
-      word:'spear',
-      extends:['weapon'],
-      plural:'spears',
-    },
-    {
-      word:'wizard',
-      gender:'male',
-      extends:['warrior'],
-      plural:'wizards',
-    },
-    {
-      word:'Mount Aur',
-      extends:['place'],
-      pronoun:'proper',
-    },
-    {
-      word:'barbarian',
-      extends:['warrior'],
-      gender:'male',
-      plural:'barbarians',
-    },
-    {
-      word:'knight',
-      gender:'male',
-      extends:['warrior'],
-      plural:'knights',
-    },
-    {
-      word:'nobleman',
-      gender:'male',
-      extends:['noble'],
-      plural:'noblemen',
-      associated:['gold'],
-    },
-    {
-      word:'Vix the Vile',
-      gender:'female',
-      pronoun:'proper',
-      extends:['rogue'],
-    },
-    {
-      word:'Vix',
-      see:'Vix the Vile',
-      pronoun:'proper',
-    },
-    {
-      word:'rogue',
-      extends:'person',
-      plural:'rogues'
-    },
-    {
-      word:'noble',
-      extends:['person'],
-      gender:'mixed',
-      plural:'nobles',
-    },
-    {
-      word:'noblewoman',
-      extends:['noble'],
-      gender:'female',
-      plural:'noblewomen',
-    },
-    {
-      word:'warrior',
-      extends:['person'],
-      gender:'male',
-      plural:'warriors',
-    },
-    {
-      word:'Theoch',
-      is:['fearsome','cunning'],
-      extends:['dragon'],
-      gender:'male',
-      pronoun:'proper'
-    },
-    {
-      word:'dragon',
-      extends:['creature'],
-      plural:'dragons'
-    },
-    {
-      word:'magic',
-      extends:['force'],
-      pronoun:'force',
-    },
-    {
-      word:'dark magic',
-      extends:['magic'],
-      pronoun:'force',
-    },
-    {
-      word:'holy magic',
-      extends:['magic'],
-      pronoun:'force',
-    },
-    {
-      word:'ice',
-      see:'ice magic'
-    },
-    {
-      word:'ice magic',
-      extends:['magic'],
-      relationship:[{
-        object:'dragon',
-        action:'effective'
-      }],
-      pronoun:'force',
-    },
-    {
-      word:'fire',
-      extends:['force'],
-      pronoun:'force',
-    },
-    {
-      word:'Algoron',
-      pronoun:'proper',
-      relationship:[{
-        object:'magic',
-        action:'use'
-      },
-      {
-        object:'dark magic',
-        action:'use'
-      }
-      ],
-      extends:['wizard'],
-    },
-    {
-      word:'king',
-      extends:['royalty'],
-      pronoun:'',
-      relationship:[{
-        object:'kingdom',
-        action:'rule'
-      }],
-      plural:'kings',
-    },
-    {
-      word:'King Omnoth',
-      extends:['king'],
-      pronoun:'proper',
-      relationship:[{
-        object:'Emeraldia',
-        action:'rule'
-      }],
-    },
-    {
-      word:'King Amnon',
-      extends:['king'],
-      pronoun:'proper',
-    },
-    {
-      word:'Amnon',
-      see:'King Amnon',
-       pronoun:'proper',
-    },
-    {
-      word:'Omnoth',
-      see:'King Omnoth',
-      pronoun:'proper',
-    },
-    {
-      word:'Emeraldia',
-      extends:['place'],
-      pronoun:'proper',
-    },
-    {
-      word:'Queen Amandia',
-      extends:['queen'],
-      pronoun:'proper',
-      relationship:[{
-        object:'Emeraldia',
-        action:'rule'
-      }],
-    },
-    {
-      word:'Amandia',
-      see:'Queen Amandia'
-    },
-    {
-      word:'zombie',
-      extends:['monster'],
-      relationship:[{
-        object:'fire',
-        action:'weakness'
-      },
-      {
-        object:'holy magic',
-        action:'weakness'
-      }
-      ],
-      plural:'zombies',
-    },
-    {
-      word:'monster',
-      extends:['creature'],
-      plural:'monsters',
-    },
-    {
-      word:'Willas',
-      extends:['Knight'],
-      pronoun:'proper',
-      gender:'male',
-    },
-    {
-      word:'goblin',
-      extends:['monster'],
-      plural:'goblins',
-    },
-    {
-      word:'wisp',
-      extends:['monster'],
-      plural:'wisps',
-    },
-    {
-      word:'grimgoblin',
-      extends:['goblin'],
-      plural:'grimgoblins',
-    },
-    {
-      word:'Grim Swamps',
-      extends:['place'],
-      pronoun:'unique',
-    },
-    {
-      word:'royalty',
-      pronoun:'unique',
-    },
-    {
-      word:'queen',
-      extends:['royalty'],
-      plural:'queens',
-    },
-    {
-      word:'The Queen',
-      pronoun:'concept',
-      see:'Queen Emeraldia'
-    },
-   ], 
-    attributes:[ 
-    {
-      word:'powerful',
-      when:[{action:'use',object:'magic'}],
-      form:'adjective',
-    },
-    {
-      word:'scary',
-      form:'adjective',
-      synonyms:['fearsome','frighting'],
-    },
-    {
-      word:'effective',
-      form:'adjective',
-      synonyms:['strong','useful'],
-    },
-    {
-      word:'dead',
-      /*when:[
-        {action:'die',applies:'subject'},
-        {action:'kill',applies:'object'},  // these don't precisely make too much sense
-        ],*/
-      form:'adjective',
-    },
-    {
-      word:'new',
-      form:'adjective',
-    },
-    {
-      word:'dangerous',
-      when:[
-        {action:'kill',applies:'with'},
-        ],
-      form:'adjective',
-    },
-    {
-      word:'fierce',
-      when:[
-        {action:'attack',applies:'subject'},
-        ],
-      form:'adjective',
-    },
-    {
-      word:'cowardly',
-      when:[
-        {action:'retreat',applies:'subject'},
-      ],
-      form:'adjective',
-      synonyms:['craven','yellow']
-    },
-    {
-      word:'undead',
-      when:[
-        {action:'reanimate',applies:'object'},
-      ],
-      form:'adjective',
-      synonyms:['hollow']
-    },
-    {
-      word:'injured',
-      form:'adjective',
-      synonyms:['hurt','wounded'],
-    },
-    {
-      word:'evil',
-      when:[{action:'use',object:'dark magic'}],
-      applies:'subject',
-      form:'adjective',
-      synonyms:['foul','wicked']
-    },
-    {
-      word:'brave',
-      when:[{action:'kill',object:'monster'}],
-      applies:'subject',
-      form:'adjective',
-      synonyms:['heroic','fearless']
-    }
     ],
    expressions:[
    {
@@ -432,56 +44,20 @@ var Lexicon = {
      for:'greeting',
     },
   {
-    said:'greetings',
-    for:'greeting',
-   },
-  {
      said:'hi',
-     for:'greeting',
-    },
-    {
-     said:'howdy',
-     for:'greeting',
-    },
-    {
-     said:'hey',
      for:'greeting',
     },
     {
      said:'bye',
      for:'parting',
     },
-    {
-     said:'bye bye',
-     for:'parting',
-    },
-      {
-     said:'seeya',
-     for:'parting',
-    },
-      {
-     said:'see you',
-     for:'parting',
-    },
-   {
-     said:"what's up?",
-     for:'greeting',
-    },
    {
      said:"",
      for:'silence',
     },
   {
-     said:"...",
+      said:"...",
      for:'silence',
-    },
-    {
-     said:"fuck you",  
-     for:'insult',
-    },
-    {
-     said:"screw you",
-     for:'insult',
     },
     {
      said:"damn you",
