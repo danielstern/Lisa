@@ -41,6 +41,11 @@ var Lexicon = {
       plural:'swords',
     },
     {
+      word:'Ivory Wand',
+      extends:['wand'],
+      plural:'Ivory Wands',
+    },
+    {
       word:'club',
       extends:['weapon'],
       relationship:[{
@@ -367,6 +372,10 @@ var Lexicon = {
         {action:'die',applies:'subject'},
         {action:'kill',applies:'object'},
         ],
+      form:'adjective',
+    },
+    {
+      word:'new',
       form:'adjective',
     },
     {

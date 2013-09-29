@@ -41,6 +41,7 @@ var _stories = [
     sequence:
     [
       {subject:'<Willas&sorceress>',action:'go',to:'Emeraldia'},
+      {subject:'Willas',action:'buy',object:'$new:Ivory Wand$'},
     ],
   },
   {

@@ -32,6 +32,17 @@ var transliterate = {
     }
   },
 
+  buy:{
+    past:{
+      singular:'bought',
+      plural:'bought'
+    },
+    present:{
+      singular:'buys',
+      plural:'buy'
+    }
+  },
+
   help:{
     past:{
       singular:'helped',

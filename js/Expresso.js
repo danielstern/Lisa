@@ -31,8 +31,11 @@ var Expresso = function (brain) {
     var context = 'plural';
     if (seed.pronoun == 'unique') context = 'singular';
     if (!seed.plural) context = 'singular';
-
+    try {
     var verb = tl[verb][tense][context];
+    } catch (e) {
+      console.error('You are trying to access a verb not in the lexiary: ',verb)
+    }
     response = verb;
 
     return response;
@@ -81,6 +84,8 @@ var Expresso = function (brain) {
 
   express.preposit = function (word, context) {
 
+  
+
     console.log('prepositing...',word);
     if(_.stringContains(word,'<')) {
       console.log('this is two words');
@@ -90,6 +95,15 @@ var Expresso = function (brain) {
       return _.toSentence(propositedWords);
     }
 
+    if(_.stringContains(word,'$')) {
+      console.log('this is a word with an adjective');
+      word = word.replace(/[$]/gi,'');
+      var property = word.split(':')[0];
+      word = word.split(':')[1];
+      word = property + " " + word;
+      adjective = property;
+    }
+
     var idea;
     if (word && typeof word != 'string') {
       idea = word;
@@ -97,6 +111,7 @@ var Expresso = function (brain) {
     }
     
     var preposition = '';
+    var adjective = '';
     var assumed = false;
     var referenced = false;
     context = context || {};
