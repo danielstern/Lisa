@@ -130,6 +130,10 @@ var standardExpressions1 = {
       response += " down " + preposit(moment.down);
     }
 
+    if (moment.over) {
+      response += " over " + preposit(moment.over, _.clone(context));
+    }
+
 
     if (moment.with) {
       response += " with " + preposit(moment.with, _.clone(context));
@@ -168,6 +172,11 @@ var standardExpressions1 = {
 
     if (moment.during) {
       response += " during " + preposit(moment.during);
+    }
+
+    if (moment.too) {
+          response += brain.speech.lightPause();
+      response += " too ";
     }
 
     console.log('Telling story moment 2,',moment,context,response)

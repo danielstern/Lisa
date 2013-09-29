@@ -33,6 +33,28 @@ var transliterate = {
     }
   },
 
+  jump:{
+    past:{
+      singular:'jumped',
+      plural:'jumped'
+    },
+    present:{
+      singular:'jumps',
+      plural:'jump'
+    }
+  },
+
+  burn:{
+    past:{
+      singular:'burned',
+      plural:'burned'
+    },
+    present:{
+      singular:'burns',
+      plural:'burn'
+    }
+  },
+
 
 
   fall:{

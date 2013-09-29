@@ -33,6 +33,10 @@ var Lexicon = {
       pronoun:'none',
     },
     {
+      word:'candlestick',
+      plural:'candlesticks',
+    },
+    {
       word:'place',
       hidden:'true',
       plural:'places',
@@ -78,8 +82,14 @@ var Lexicon = {
       form:'adjective',
     },
     {
+      word:'fast',
+      form:'adjective',
+      synonyms:['quick','speedy'],
+    },
+    {
       word:'dead',
       form:'adjective',
+
     },
     {
       word:'new',
