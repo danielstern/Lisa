@@ -102,17 +102,17 @@ var standardExpressions1 = {
 
     var isGeneral = (moment.context && moment.context.general);
     if (isGeneral) {
-      var context2;
+      var generalContext;
       context2 = (logic.brain.whatIs(moment.subject).plural) ? 'plural' : 'singular';
-      response += preposit(moment.subject,{pronoun:'plural'}) + " " + conjugate(moment.subject, moment.action, 'present', context2);
+      generalContext += preposit(moment.subject,{pronoun:'plural'}) + " " + conjugate(moment.subject, moment.action, 'present', generalContext);
     } else {
-      var subjectContext = context;
+      var subjectContext = _.clone(context);
       subjectContext.pronoun = _.crack(moment.subject, true)
      response += preposit(moment.subject, subjectContext) + " " + conjugate(moment.subject, moment.action, context.time);
   }
     if (moment.object) {
       context.objective = true;
-      response += " " + preposit(moment.object, context)
+      response += " " + preposit(moment.object, _.clone(context));
     }
     if (moment.with) {
       response += " with " + preposit(moment.with, context);

@@ -1,6 +1,7 @@
 var Expresso = function (brain) {
   express = this;
   express.brain = brain;
+  var context;
 
   express.learn = function (expression, operation) {
     if (operation) {
@@ -109,8 +110,7 @@ var Expresso = function (brain) {
 
     var preposition = '';
     var adjective = '';
-    var assumed = false;
-    var referenced = false;
+
     context = context || {};
 
     word = word || '';
@@ -122,10 +122,10 @@ var Expresso = function (brain) {
       switch (directive) {
       case 'referenced':
       case 'main':
-        referenced = true;
+        context.referenced = true;
         break;
       case 'assumed':
-        assumed = true;
+        context.assumed = true;
         break;
       }
     }
@@ -137,14 +137,23 @@ var Expresso = function (brain) {
 
     console.log('prepositing 2',word,idea,context);
 
+    // if the word is the plural form of the word, give it a plural pronoun, i.e., skeletons
     if (word == idea.plural) idea.pronoun = 'plural';
+
+    // if the context suggest a pronoun, override the existing one if it is not 'proper' or 'force';
     if (context.pronoun && idea.pronoun != 'proper' && idea.pronoun != 'force') idea.pronoun = context.pronoun;
-    if (idea.pronoun == 'plural' && idea.plural) word = idea.plural;
+
+    // if the context suggest a plural pronoun, use the words plural in place of the word, if it has one
+    if (context.pronoun == 'plural' && idea.plural) word = idea.plural;
+
+    // if the idea is an adjective, give it no pronoun and grab a synonym of it, for fun
     if (idea.form == "adjective") {
       idea.pronoun = 'none'
       word = synonomize(idea.word);
     }
-    if (referenced && idea.pronoun != 'proper' && idea.pronoun != 'force') idea.pronoun = 'referenced';
+
+
+    if (context.referenced && idea.pronoun != 'proper' && idea.pronoun != 'force') idea.pronoun = 'referenced';
     if (idea.pronoun == 'proper') idea.word = _.capitalize(idea.word);
 
     //console.log('preposit...',word,context,idea);
@@ -185,7 +194,8 @@ var Expresso = function (brain) {
       break;
     }
 
-    if (assumed) {
+      console.log('prepositing 4',word,idea,context);
+    if (context.assumed) {
 
       var objective = context.objective;
       if (idea.gender) {
