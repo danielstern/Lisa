@@ -110,12 +110,6 @@ function Brain(host) {
     }
 
     if (noAsync) return idea;
-
-    var promise = new Promise();
-    setTimeout(function () {
-      promise.resolve(idea)
-    }, 100);
-    return promise;
   }
 
   brain.ponder = function (idea, useAsync) {
@@ -137,11 +131,6 @@ function Brain(host) {
 
     response = brain.speech.prettify(response);
 
-    if (useAsync) return response;
-
-    setTimeout(function () {
-      promise.resolve(response)
-    }, 50);
-    return promise;
+    return response;
   }
 }

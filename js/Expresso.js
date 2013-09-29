@@ -24,7 +24,8 @@ var Expresso = function (brain) {
 
     seed = seed || {};
     if (typeof seed == 'string') seed = brain.whatIs(seed);
-
+    seed = seed || {};
+    
     tense = tense || 'present';
 
     var tl = transliterate;
@@ -84,9 +85,7 @@ var Expresso = function (brain) {
 
   express.preposit = function (word, context) {
 
-  
 
-    console.log('prepositing...',word);
     if(_.stringContains(word,'<')) {
       console.log('this is two words');
       var words = word.replace(/[<>]/gi,'').split('&');

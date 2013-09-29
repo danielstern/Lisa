@@ -49,7 +49,7 @@
         <h3>Lisa</h3>
            <p>{{saying}}</p>
         <form id='conversation-form' ng-submit='sayRandom()'>
-          <input class='disabled' ng-model='sayTo' id='conversation-input' type='text'>
+          <input  ng-model='sayTo' type='text'>
         <button class='btn' >Say Something Random</button>
         </form>
       </div>
@@ -124,11 +124,11 @@
       $scope.sayRandom = function() {
 
         var reply = $Lisa.hears($scope.sayTo);
-        $scope.saying = $Lisa.hears($scope.sayTo)[0];
-        $scope.thought = $Lisa.hears($scope.sayTo)[1].word;
+        $scope.saying = reply[0];
+        $scope.thought = reply[1].word;
       }
 
-      $scope.sayRandom();
+      //$scope.sayRandom();
   }])
   
 
