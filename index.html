@@ -111,11 +111,11 @@
         $scope.saying = reply[0];
         if (!reply[1])    return;
         $scope.thought = reply[1].word;
-        $scope.recentThings.push(reply[1]);
+        $scope.recentThings.push(reply[1] || '?');
 
       //  $scope.recentThings = _.last(_.initial($scope.recentThings),3);
         $scope.recentThings = _.last($scope.recentThings, 3);
-        console.log('recent thigns?',$scope.recentThings)
+      //  console.log('recent thigns?',$scope.recentThings)
 
       }
   }])
