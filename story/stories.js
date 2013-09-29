@@ -15,6 +15,9 @@ var _stories = [
       {
         subject:'i',action:'is', object:"hurt"
       },
+      {
+        rel:'then', subject:'Jill',action:'fall', down:"referenced|hill"
+      }
     ]
   },
 ]

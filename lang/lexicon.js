@@ -56,7 +56,12 @@ var Lexicon = {
       hidden:'true',
       plural:'people',
     },
-    ],
+    {
+      word:'Jill',
+      extends:'people',
+      pronoun:'proper',
+    },
+  ],
 
 
     attributes:[ 
