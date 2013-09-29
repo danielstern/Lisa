@@ -22,6 +22,8 @@ var transliterate = {
   },
 
 
+
+
   need:{
     past:{
       singular:'needed',
@@ -54,6 +56,45 @@ var transliterate = {
       plural:'burn'
     }
   },
+
+  reside:{
+    past:{
+      singular:'resided',
+      plural:'resided'
+    },
+    present:{
+      singular:'resides',
+      plural:'reside'
+    },
+    synonyms:['live','dwell']
+  },
+
+  live:{
+    past:{
+      singular:'lived',
+      plural:'lived'
+    },
+    present:{
+      singular:'live',
+      plural:'lives'
+    },
+    synonyms:[]
+  },
+
+  dwell:{
+    past:{
+      singular:'dwelled',
+      plural:'dwelled'
+    },
+    present:{
+      singular:'dwells',
+      plural:'dwell'
+    },
+    synonyms:[]
+  },
+
+
+
 
 
 

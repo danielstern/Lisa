@@ -78,7 +78,7 @@ _.mixin({
   },
 
   oneToMany: function(string, returnQuality) {
-    console.log('one to many...',string)
+ //   console.log('one to many...',string)
      if (typeof string != 'string') return string;
      var many;
 
@@ -145,7 +145,7 @@ _.mixin({
 
     //console.log('getting synonyms for...', verb,lexiary);
     if(lexiary[verb]) var synonyms = lexiary[verb].synonyms;
-    console.log('getting synonyms for...', verb,lexiary,synonyms);
+  //  console.log('getting synonyms for...', verb,lexiary,synonyms);
     return synonyms;
 
 
@@ -182,7 +182,6 @@ _.mixin({
        newIdeas = newIdeas.concat(ideaParts);
 
     });
-    console.log('ideas new?',newIdeas);
 
     return newIdeas;
   },
@@ -193,11 +192,14 @@ _.mixin({
     if (!story) return ideas;
     _.each(story.sequence, function(moment) {
 
+       //console.log('extract story',story,ideas,moment)
+
       ideas = ideas.concat(_.values(moment));
      
     });
 
     ideas = _.sluice(ideas);
+   // console.log('extract story',story,ideas)
 
     return ideas;
   }

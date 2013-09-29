@@ -189,7 +189,7 @@ function Logic(brain) {
 
     brain.memory.short.remember(storyIdeas);
 
-
+    console.log('tell story?',seed,stories);
     if (!story) return response;
 
     _.each(story.sequence, function (moment) {
@@ -215,16 +215,6 @@ function Logic(brain) {
 
     return response;
   }
-
-  /*
-  Induct
-  consider a seed(A) scopeUp (to B), demystify, and then conclude that A must also have that property because A is B.
-  */
-
-  /*
-  Contrast
-  note how two things share a trait do not share a like trait
-  */
 
   /*
   Colliquilize: use cultural knowledge to reply appropriately.

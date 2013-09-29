@@ -65,6 +65,16 @@ var Lexicon = {
       extends:'people',
       pronoun:'proper',
     },
+    {
+      word:'Muffin Man',
+      extends:'people',
+      pronoun:'unique',
+    },
+    {
+      word:'Drury Lane',
+      extends:['place'],
+      pronoun:'proper'
+    },
   ],
 
 

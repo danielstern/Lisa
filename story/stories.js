@@ -22,7 +22,7 @@ var _stories = [
   },
 
   {
-    name:'1 - the one where i got burned',
+    name:'2 - the one where i got burned',
     sequence:
     [
       {
@@ -33,6 +33,15 @@ var _stories = [
       },
       {
         rel:'but',subject:'referenced|candlestick',action:'burn', object:'me'
+      },
+    ]
+  },
+  {
+    name:'3 - the one i heard about the muffin man',
+    sequence:
+    [
+      {
+        subject:'Muffin Man',action:'reside', in:"Drury Lane",context:{time:'present'}
       },
     ]
   },
