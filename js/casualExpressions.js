@@ -41,15 +41,13 @@ var casualExpressions = {
       response = "Uh... ";
       break;
     case 7:
-      response = "... ";
-      break;
-    case 8:
-      response = "And... ";
-      break;
-    case 9:
       response = "Oh... ";
       break;
+    case 8:
+    case 9:
     default:
+      response = "... ";
+      break;
       break;
     }
 

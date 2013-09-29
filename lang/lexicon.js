@@ -359,6 +359,11 @@ var Lexicon = {
       synonyms:['fearsome','frighting'],
     },
     {
+      word:'effective',
+      form:'adjective',
+      synonyms:['strong','useful'],
+    },
+    {
       word:'dead',
       when:[
         {action:'die',applies:'subject'},

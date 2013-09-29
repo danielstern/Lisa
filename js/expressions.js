@@ -65,15 +65,13 @@ var standardExpressions1 = {
 
     response += "##lp";
 
-    console.log('express moment',moment,context)
-
-    if (moment.context && moment.context.general) {
-
+    var isGeneral = (moment.context && moment.context.general);
+    if (isGeneral) {
       var context;
       context = (logic.brain.whatIs(moment.subject).plural) ? 'plural' : 'singular';
       response += preposit(moment.subject,{pronoun:'plural'}) + " " + conjugate(moment.subject, moment.action, 'present', context);
     } else {
-    response += preposit(moment.subject) + " " + conjugate(moment.subject, moment.action, context.time);
+     response += preposit(moment.subject) + " " + conjugate(moment.subject, moment.action, context.time);
   }
     if (moment.object) {
       response += " " + preposit(moment.object, {
@@ -89,9 +87,11 @@ var standardExpressions1 = {
     }
 
     if (moment.against) {
+      var pronoun = (isGeneral) ? 'plural':'singular'
       response += " against " + preposit(moment.against, {
         main: true,
-        objective: true
+        objective: true,
+        pronoun: pronoun
       });
     }
 

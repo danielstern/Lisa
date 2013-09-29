@@ -38,6 +38,12 @@ var _stories = [
   {
     sequence:
     [
+      {subject:'club',action:'is',object:'effective',against:'skeleton',context:{general:true,time:'present'}},
+    ]
+  },
+  {
+    sequence:
+    [
       {subject:'Vix the Vile',action:'use',object:'fire',context:{general:true,time:'present'}},
     ]
   },
