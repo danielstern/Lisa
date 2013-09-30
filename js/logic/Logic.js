@@ -215,8 +215,8 @@ function Logic(brain) {
 
         });
 
-      });
       response += brain.speech.hardPause();
+      });
     }
 
 
