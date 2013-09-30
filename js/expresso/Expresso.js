@@ -85,8 +85,6 @@ var Expresso = function (brain) {
     }
 
     // A subject with a property, e.g $new:bike$
-
-    //var things = word.replace(/[$]/gi, '');
     if (_.fizzle(word) && _.fizzle(word).thing) {
       var property = _.fizzle(word).has;
       word = _.fizzle(word).thing;

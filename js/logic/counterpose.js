@@ -3,7 +3,6 @@ counterpose = function (seed,logic,directive) {
 
   logic = logic || window.logic;
 
-  //seed = seed || _.sample(logic.brain.things);
   if (!seed) return [brain.speech.express.incomprehension()];
 
   // If the seed is a saying, reply appropriately, i.e., << Good morning <:> How do you do? >>.

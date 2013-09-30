@@ -11,6 +11,63 @@ function Logic(brain) {
 
   var _lisaPatterns = ['tell-story'];
 
+  
+  logic.tellStory = function (seed) {
+
+    response = '';
+    // response += brain.speech.hardPause();
+
+    stories = brain.memory.long.getStories(seed);
+    var story = _.sample(stories);
+
+    var storyIdeas = _.shuffle(_.extractStory(story));
+
+    brain.memory.short.remember(storyIdeas);
+
+
+    if (!story) return response;
+
+    if (_.has(story, 'epic')) {
+      _.each(story.epic, function (parable) {
+        _.each(parable.sequence, function (sequence) {
+
+          var phrase = tellStoryMoment(sequence);
+          response += phrase;
+          response += brain.speech.softPause();
+
+        });
+
+      response += brain.speech.hardPause();
+      });
+    }
+
+
+
+    _.each(story.sequence, function (moment) {
+      var phrase = tellStoryMoment(moment);
+      response += phrase;
+      response += brain.speech.softPause();
+
+    });
+
+    function tellStoryMoment(moment) {
+
+      var phrase = '';
+      if (!moment) return phrase;
+      //console.log('tellstorymoment...',moment)
+      if (brain.memory.short.recall(moment)) return phrase;
+      var context = moment.context || {};
+      context.time = context.time || 'past';
+      phrase = brain.speech.express.moment(moment, context);
+      brain.memory.short.remember(moment);
+      return phrase;
+    }
+
+   // console.log('Telling story...', seed, stories, response);
+
+    return response;
+  }
+
   logic.expressRelationship = function (seed) {
 
     if (!seed.relationship || !seed.relationship[0]) {
@@ -153,61 +210,6 @@ function Logic(brain) {
     return applicableComments;
   }
 
-  logic.tellStory = function (seed) {
-
-    response = '';
-    // response += brain.speech.hardPause();
-
-    stories = brain.memory.long.getStories(seed);
-    var story = _.sample(stories);
-
-    var storyIdeas = _.shuffle(_.extractStory(story));
-
-    brain.memory.short.remember(storyIdeas);
-
-
-    if (!story) return response;
-
-    if (_.has(story, 'epic')) {
-      _.each(story.epic, function (parable) {
-        _.each(parable.sequence, function (sequence) {
-
-          var phrase = tellStoryMoment(sequence);
-          response += phrase;
-          response += brain.speech.softPause();
-
-        });
-
-      response += brain.speech.hardPause();
-      });
-    }
-
-
-
-    _.each(story.sequence, function (moment) {
-      var phrase = tellStoryMoment(moment);
-      response += phrase;
-      response += brain.speech.softPause();
-
-    });
-
-    function tellStoryMoment(moment) {
-
-      var phrase = '';
-      if (!moment) return phrase;
-      //console.log('tellstorymoment...',moment)
-      if (brain.memory.short.recall(moment)) return phrase;
-      var context = moment.context || {};
-      context.time = context.time || 'past';
-      phrase = brain.speech.express.moment(moment, context);
-      brain.memory.short.remember(moment);
-      return phrase;
-    }
-
-   // console.log('Telling story...', seed, stories, response);
-
-    return response;
-  }
 
   /*
   Colliquilize: use cultural knowledge to reply appropriately.
