@@ -6,7 +6,7 @@ var moment = {
     context = context || {};
           context.objective = false;
 
-//    console.log('Telling story moment 1,',moment,context)
+   console.log('Telling story moment 1,',moment,context)
 
     // If the moment has relevance, express it...
     switch (moment.rel) {

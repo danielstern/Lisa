@@ -74,7 +74,7 @@ var _stories = [
         ]
       },
       {
-        name:'I-2 - the one where my mother and I talk',
+        name:'I-2 - the one where mother and I talk',
         sequence:
         [
           {
@@ -108,6 +108,9 @@ var _stories = [
         [
           {
             subject:'<me&referenced|cow>',action:'is', what:'going', to:'market',
+          },
+          {
+            subject:'I',action:'meet', object:'$old:man$'
           },
         ]
       },

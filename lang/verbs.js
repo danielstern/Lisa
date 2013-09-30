@@ -9,6 +9,17 @@ var verbs = {
       plural:'are'
     }
   },
+  meet:{
+    past:{
+      singular:'met',
+      plural:'met'
+    },
+    present:{
+      singular:'meets',
+      plural:'meet'
+    }
+  },
+
 
   go:{
     past:{

@@ -58,6 +58,11 @@ var Lexicon = {
       pronoun:'force'
     },
     {
+      word:'man',
+      plural:'men',
+      extends:['person']
+    },
+    {
       word:'advice',
       pronoun:'none',
     },
@@ -68,7 +73,8 @@ var Lexicon = {
     },
     {
       word:'I',
-      see:'self',
+      see:'me',
+      
       pronoun:'none',
     },
     {
@@ -142,6 +148,11 @@ var Lexicon = {
       word:'dead',
       form:'adjective',
 
+    },
+    {
+      word:'old',
+      form:'adjective',
+      synonyms:['wizened','ancient']
     },
     {
       word:'new',

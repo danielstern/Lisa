@@ -70,7 +70,7 @@ var Expresso = function (brain) {
 
     context = context || {};
 
-    //       console.log('Prepositing:', word, context)
+ //  console.log('Prepositing 1:', word, context)
 
     // if preposit is passed an array, assume the first item in the array is the word
     if (word instanceof Array) word = word[0];
@@ -93,7 +93,7 @@ var Expresso = function (brain) {
 
       var propertyIdea = brain.whatIs(property);
       var isAdjective = false;
-      if (propertyIdea /*&& brain.whatIs(property).form != adjective*/ ) {
+      if (propertyIdea) {
 
         if (propertyIdea.form != 'adjective') {
           context.pronoun = 'none';
@@ -105,9 +105,13 @@ var Expresso = function (brain) {
         }
 
       }
+
+      var newWordContext = {};
+      if (propertyIdea.form == 'adjective') newWordContext.pronoun = 'none';
+      
       word = preposit(property, {
         pronoun: 'referenced'
-      }) + (isAdjective ? " " : ' of ') + preposit(word);
+      }) + (isAdjective ? " " : ' of ') + preposit(word,newWordContext);
       adjective = property;
     }
 
@@ -146,6 +150,7 @@ var Expresso = function (brain) {
       }
     }
 
+
     if (typeof idea == 'string') idea = express.brain.whatIs(idea, true)
 
     idea = idea || express.brain.whatIs(word, true) || {};
@@ -165,6 +170,7 @@ var Expresso = function (brain) {
       idea.pronoun = 'none'
       word = synonomize(idea.word);
     }
+   // console.log('Prepositing 2:', word, idea, context)
 
     // if the context suggests the word is referenced, and it is not a proper word, give it a referenced pronoun (it will conjugate with "the")
     if (context.referenced && idea.pronoun != 'proper' && idea.pronoun != 'force') idea.pronoun = 'referenced';
