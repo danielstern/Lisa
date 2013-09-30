@@ -27,16 +27,13 @@ function Conjugator() {
 		tense = tense || 'present';
 		context = context || 'singular';
 
-		console.log('getword1',verb,tl)
-
 		if (!_.has(tl,verb)) {
-			console.log('This verb is not in the lexiary',verb);
+			console.error('This verb is not in the lexiary',verb);
 			return verb;
 		}
 
 
 		var verbIdea = tl[verb];
-		console.log(verbIdea,tense)
 		var verbeTense;
 
 		if (!_.has(verbIdea, tense)) {
@@ -55,6 +52,25 @@ function Conjugator() {
 		var word = verbeTense[context];
 
     return word;
+
+	}
+
+
+	cj.getIdea = function(verb) {
+
+		if (!verb) return;
+
+		if (!_.has(tl,verb)) {
+			console.error('IDEA: This verb is not in the lexiary',verb);
+			return verb;
+		}
+
+		var verbIdea = tl[verb];
+		verbIdea.form = 'verb';
+
+		console.log('getidea...',verb,verbIdea)
+		
+    return verbIdea;
 
 	}
 }

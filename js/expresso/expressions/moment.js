@@ -39,13 +39,10 @@ var moment = {
     case 'then':
       switch (Math.ceil(Math.random() * 3)) {
       case 1:
-        response += 'then'
-        break;
-      case 2:
         response += 'after that'
         break;
-      case 3:
-        response += 'subsequently'
+      case 2:
+        response += 'then'
         break;
       }
       break;

@@ -151,9 +151,12 @@ _.mixin({
   },
 
   getVerbSynonyms: function(verb) {
-    var lexiary = window.verbs;
-    if(lexiary[verb]) var synonyms = lexiary[verb].synonyms;
-
+    var cj = window.cj;
+    idea = cj.getIdea(verb);
+    console.log('get verb synonyms...',verb,cj,idea)
+    if (!idea || !idea.synonyms) return [verb];
+    var synonyms = idea.synonyms;
+    console.log('returning synonyms...',synonyms)
     return synonyms;
 
 

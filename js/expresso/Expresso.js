@@ -2,6 +2,7 @@ var Expresso = function (brain) {
   express = this;
   express.brain = brain;
   express.conjugator = new Conjugator();
+  window.cj = express.conjugator;
 
   express.conjugate = function (seed, verb, tense, context) {
 
