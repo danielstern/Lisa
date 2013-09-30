@@ -96,4 +96,5 @@ var Expresso = function (brain) {
   window.verbalize = expresso.verbalize;
   window.conjugate = expresso.conjugate;
   window.synonomize = expresso.synonomize;
+  window.express = expresso;
 }

@@ -112,6 +112,33 @@ var _stories = [
           {
             subject:'I',action:'meet', object:'$old:man$'
           },
+          {
+            subject:'referenced|man',action:'say', to:'me', 
+              said:'Good morning, Jack.',
+          },
+          {
+            subject:'I',action:'say', 
+              said:'Good morning to you.',
+          },
+          {
+            subject:'referenced|man',action:'say',
+              said:'Well, Jack, and where are you off to?',
+          },
+          {
+            subject:'I',action:'say', 
+              said:"I'm going to market to sell our cow there.",
+          },
+          {
+            dialogue:{
+              between:{first:'referenced|man',second:'me'},
+              said:[
+                'Good morning, Jack.',
+                'Good morning to you.',
+                'Well, Jack, and where are you off to?',
+                "I'm going to market to sell our cow there.",
+              ]
+            }
+          }
         ]
       },
     ]

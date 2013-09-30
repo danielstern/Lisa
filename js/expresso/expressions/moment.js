@@ -6,6 +6,36 @@ var moment = {
     context = context || {};
     context.objective = false;
 
+    console.log('tell story moment...',moment,context);
+
+    if (moment.dialogue) {
+
+      console.log('this is a dialogue...');
+      var dialogue = moment.dialogue;
+      var firstSpeaking = true;
+
+      _.each(dialogue.said, function(phrase) {
+        var dialogueMoment = {};
+        var first = dialogue.between.first;
+        var second = dialogue.between.second;
+        dialogueMoment.subject = (firstSpeaking ? first : second);
+        dialogueMoment.action = ('say');
+        dialogueMoment.to = (firstSpeaking ? second : first);
+        firstSpeaking = !firstSpeaking;
+
+        dialogueMoment.said = phrase;
+        console.log('new moment?',dialogueMoment);
+
+        response += express.moment(dialogueMoment,context);
+        response += brain.speech.hardPause();
+
+
+      })
+
+      return response;
+    };
+
+
 
     // If the moment has relevance, express it...
     switch (moment.rel) {
