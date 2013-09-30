@@ -1,24 +1,8 @@
 var Expresso = function (brain) {
   express = this;
   express.brain = brain;
-  var context;
 
-  express.learn = function (expression, operation) {
-    if (operation) {
-      express[expression] = operation;
-      return;
-    }
 
-    var expressions = _.pairs(expression);
-
-    _.each(expressions, function (expression) {
-      express.learn(expression[0], expression[1]);
-    })
-
-  }
-
-  express.learn(standardExpressions1);
-  express.learn(casualExpressions);
 
   express.conjugate = function (seed, verb, tense, context) {
 
@@ -271,6 +255,26 @@ var Expresso = function (brain) {
     return response;
 
   }
+
+
+  express.learn = function (expression, operation) {
+    if (operation) {
+      express[expression] = operation;
+      return;
+    }
+
+    var expressions = _.pairs(expression);
+
+    _.each(expressions, function (expression) {
+      express.learn(expression[0], expression[1]);
+    })
+
+  }
+
+
+  express.learn(moment);
+  express.learn(expressions);
+
   window.preposit = express.preposit;
   window.lexicate = express.lexicate;
   window.verbalize = express.verbalize;

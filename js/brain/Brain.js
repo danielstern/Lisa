@@ -7,15 +7,12 @@ function Brain(host) {
 
   brain.host = host;
   brain.lexicon = Lexicon;
-  brain.personality = brain.host.personality;
-  brain.mood = brain.personality;
 
   brain.logic = new Logic(brain);
   brain.speech = new Speech(brain);
   brain.memory = new Memory(brain);
-  brain.personality = new Personality(brain);
 
-  brain.patterns = brain.personality.patterns;
+  brain.patterns = [['tell-story']];
   brain.things = brain.lexicon.things;
 
 

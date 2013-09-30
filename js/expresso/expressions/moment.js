@@ -1,54 +1,4 @@
-var standardExpressions1 = {
-
-  quality: function (seed, quality) {
-    var response = '';
-    if (!seed) return response;
-    response = window.brain.speech.express.moment({
-      subject: seed.word,
-      object: quality,
-      action: 'is'
-    })
-    return response;
-  },
-
-  generality: function (seed, quality) {
-    var response = '';
-  // console.log('generality?',seed, quality)
-    if (typeof seed == 'string') seed = window.brain.whatIs(seed, true);
-
-    var prepositedSubjects = '';
-    if (seed instanceof Array) {
-      var things = [];
-      things = _.map(seed,function(miniSeed){
-        return preposit(miniSeed,{plural:true,pronoun:'plural'});
-      })
-
-      prepositedSubjects = _.toSentence(things);
-
-    }
-
-    var context;
-    if (!seed || seed.plural) context = 'plural';
-
-    var objectForm = 'plural';
-    if (seed.pronoun == 'proper') objectForm = 'singular';
-    if (prepositedSubjects) {
-      response = prepositedSubjects + " " + conjugate(seed, 'is', 'present', 'plural') + " " + preposit(quality,{pronoun: 'plural'});
-    } else {
-   
-       response = preposit(seed, {pronoun: 'plural'}) + " " + conjugate(seed, 'is', 'present', context) + " " + preposit(quality,{pronoun: objectForm});
-    
-    }
-    return response;
-  },
-
-  inheritance: function (seed, idea) {
-    var response = '';
-
-    response = window.brain.speech.express.generality(seed, idea);
-
-    return response;
-  },
+var moment = {
 
   moment: function (moment, context) {
 
@@ -193,25 +143,5 @@ var standardExpressions1 = {
     return response;
   },
 
-  relationship: function (seed, relationship) {
-    var response = '';
 
- //   console.log('express relationship...', seed, relationship)
-
-    if (!relationship) return response;
-    response = preposit(seed) + " " + verbalize(seed, relationship) + " " + preposit(relationship.object);
-    return response;
-  },
-
-
-
-  induction: function (seed, idea) {
-    var response = '';
-    switch (Math.ceil(Math.random() * 4)) {
-      default: response = "a kind of " + seed.word + " " + 'is' + " " + preposit(idea);
-      break;
-    }
-
-    return response;
-  }
 }

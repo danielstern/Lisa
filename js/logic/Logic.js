@@ -10,6 +10,8 @@ function Logic(brain) {
   logic.ponder = ponder;
   window.logic = this;
 
+  var _lisaPatterns = ['tell-story'];
+
   logic.expressRelationship = function (seed) {
 
     if (!seed.relationship || !seed.relationship[0]) {

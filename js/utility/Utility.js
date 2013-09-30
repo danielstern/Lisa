@@ -10,7 +10,7 @@ _.mixin({
      return string;
   },
 
-  lisaFormat: function(string, filter) {
+  lisaFormat: function(string) {
 
     string = string.replace(/##hp/gi,'##sp##hp##sp')
 
@@ -20,7 +20,6 @@ _.mixin({
         .map(function(string){
           if (string == '##hp') return "</p><p>"
 
-          if (filter) string = filter.filterString(string);
           string = _.trim(string);
           string = _.without(string.split('##lp'),'').join(', ');
           string = _.capitalize(string);

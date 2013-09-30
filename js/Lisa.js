@@ -1,4 +1,4 @@
- function Lisa(personality) {
+ function Lisa() {
 
     var Lisa = this;
     var lisa = Lisa;

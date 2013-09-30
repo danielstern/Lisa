@@ -13,8 +13,7 @@ ponder = function (seed, logic,directive) {
     return [response,seed]
   }
 
-  var pattern = brain.personality.getPattern();
-  var sequence = pattern.sequence;
+  var sequence = _.sample(brain.patterns);
 
   if (directive) sequence = [directive];
 

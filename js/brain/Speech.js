@@ -17,11 +17,9 @@ function Speech(brain) {
     return "##lp";
   }
 
-
-
   speech.prettify = function (phrase) {
 
-    phrase = _.lisaFormat(phrase, speech.brain.personality.filter);
+    phrase = _.lisaFormat(phrase);
     return phrase;
   }
 }
