@@ -66,7 +66,7 @@ var _stories = [
              subject:'referenced|cow',action:'give', object:'milk'
           },
           {
-             subject:'<me&my|mother>',action:'bring', object:'referenced|milk',to:'market'
+             subject:'<me&my|mother>',action:'bring', object:'referenced|milk',to:'market',when:'every day'
           },
           {
              rel:'then',subject:'referenced|cow',action:'give', object:'$no:milk$'

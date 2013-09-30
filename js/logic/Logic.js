@@ -180,7 +180,7 @@ function Logic(brain) {
 
 
     response = '';
-    response += brain.speech.hardPause();
+   // response += brain.speech.hardPause();
 
     stories = brain.memory.long.getStories(seed);
     var story = _.sample(stories);
@@ -199,8 +199,7 @@ function Logic(brain) {
   
         _.each(epic, function(parable) {
 
-                console.log('parable..?', parable)
-               
+             console.log('parable..?', parable);               
 
             console.log('telling parable...', parable)
 
@@ -208,8 +207,12 @@ function Logic(brain) {
              response += phrase;
              response += brain.speech.softPause();
 
+
       });
+         response += brain.speech.hardPause();
       }
+
+
 
     _.each(story.sequence, function (moment) {
       var phrase = tellStoryMoment(moment);
