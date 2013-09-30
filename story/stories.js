@@ -112,7 +112,7 @@ var _stories = [
           {
             subject:'I',action:'meet', object:'$old:man$'
           },
-          {
+       /*   {
             subject:'referenced|man',action:'say', to:'me', 
               said:'Good morning, Jack.',
           },
@@ -127,7 +127,7 @@ var _stories = [
           {
             subject:'I',action:'say', 
               said:"I'm going to market to sell our cow there.",
-          },
+          },*/
           {
             dialogue:{
               between:{first:'referenced|man',second:'me'},

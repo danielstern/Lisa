@@ -8,7 +8,7 @@ function Prepositor() {
     if (word instanceof Array) word = word[0];
 
     if (_.stringContains(word, '<')) {
-      	return pt.prepositBundle(word);
+      	return pt.prepositBundle(word, context);
     }
 
     if (_.fizzle(word) && _.fizzle(word).thing) {
@@ -142,16 +142,21 @@ function Prepositor() {
     // add a space after the preposition, if it exists
     if (preposition) preposition += " ";
 
-    var response = preposition + (returnWord ? word : '')
+    var response = preposition + (returnWord ? word : '');
+    if (response == 'me' && !context.objective && !context.asBundle) response = 'I'; // English is a hacky language.
+
+     console.log('Prepositing 2:', word, idea, context, response)
     return response;
 
   }
 
   
-	pt.prepositBundle = function(bundle) {
+	pt.prepositBundle = function(bundle, context) {
 		var words = bundle.replace(/[<>]/gi, '').split('&');
     var propositedWords = _.map(words, function (word) {
-        return preposit(word)
+        var prepositContext = _.clone(context);
+        prepositContext.asBundle = true;
+        return preposit(word, prepositContext)
     });
 
     propositedWords = _.toSentence(propositedWords);
