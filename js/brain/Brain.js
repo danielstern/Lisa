@@ -60,6 +60,8 @@ function Brain(host) {
       idea = extractIdea(context.ideas[0]);
     }
 
+    console.log('what is',word,context)
+
 
    return _.clone(idea);
   }
