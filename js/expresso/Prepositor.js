@@ -2,30 +2,15 @@ function Prepositor() {
 
 	var pt = this;
 
-	pt.prepositBundle = function(bundle) {
-		var words = bundle.replace(/[<>]/gi, '').split('&');
-    var propositedWords = _.map(words, function (word) {
-        return preposit(word)
-    });
-
-    propositedWords = _.toSentence(propositedWords);
-    return propositedWords;
-	}
 	pt.preposit = function (word, context) {
 
     context = context || {};
-
- //  console.log('Prepositing 1:', word, context)
-
-    // if preposit is passed an array, assume the first item in the array is the word
     if (word instanceof Array) word = word[0];
 
-    // Multiple subjects, as in <paul&john>
     if (_.stringContains(word, '<')) {
       	return pt.prepositBundle(word);
     }
 
-    // A subject with a property, e.g $new:bike$
     if (_.fizzle(word) && _.fizzle(word).thing) {
       var property = _.fizzle(word).has;
       word = _.fizzle(word).thing;
@@ -33,7 +18,7 @@ function Prepositor() {
       //console.log('fizzle?',word,_.fizzle(word))
 
       var propertyIdea = brain.whatIs(property);
-      var isAdjective = false;
+
       if (propertyIdea) {
 
         if (propertyIdea.form != 'adjective') {
@@ -41,7 +26,7 @@ function Prepositor() {
         }
 
         if (propertyIdea.form == 'adjective') {
-          isAdjective = true;
+        	propertyIdea.isAdjective = true;
           if (propertyIdea.noPronoun) context.pronoun = 'none';
         }
 
@@ -52,7 +37,7 @@ function Prepositor() {
       
       word = preposit(property, {
         pronoun: 'referenced'
-      }) + (isAdjective ? " " : ' of ') + preposit(word,newWordContext);
+      }) + (propertyIdea.isAdjective ? " " : ' of ') + preposit(word,newWordContext);
       adjective = property;
     }
 
@@ -90,7 +75,6 @@ function Prepositor() {
         break;
       }
     }
-
 
     if (typeof idea == 'string') idea = express.brain.whatIs(idea, true)
 
@@ -162,6 +146,17 @@ function Prepositor() {
     return response;
 
   }
+
+  
+	pt.prepositBundle = function(bundle) {
+		var words = bundle.replace(/[<>]/gi, '').split('&');
+    var propositedWords = _.map(words, function (word) {
+        return preposit(word)
+    });
+
+    propositedWords = _.toSentence(propositedWords);
+    return propositedWords;
+	}
 
   pt.getPreposition = function(idea) {
 
