@@ -17,7 +17,7 @@ var Expresso = function (brain) {
     tense = tense || 'present';
 
 
-    var tl = transliterate;
+    var tl = verbs;
     if (!context) {
       context = 'plural';
       if (seed.pronoun == 'unique') context = 'singular';

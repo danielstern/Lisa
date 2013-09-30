@@ -151,7 +151,7 @@ _.mixin({
   },
 
   getVerbSynonyms: function(verb) {
-    var lexiary = window.transliterate;
+    var lexiary = window.verbs;
     if(lexiary[verb]) var synonyms = lexiary[verb].synonyms;
 
     return synonyms;

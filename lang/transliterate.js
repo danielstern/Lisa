@@ -1,4 +1,4 @@
-var transliterate = {
+var verbs = {
   is:{
     past:{
       singular:'was',
