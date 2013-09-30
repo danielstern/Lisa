@@ -1,8 +1,17 @@
 function Prepositor() {
 
 	var pt = this;
-	pt.preposit = function (word, context) {
 
+	pt.prepositBundle = function(bundle) {
+		var words = bundle.replace(/[<>]/gi, '').split('&');
+    var propositedWords = _.map(words, function (word) {
+        return preposit(word)
+    });
+
+    propositedWords = _.toSentence(propositedWords);
+    return propositedWords;
+	}
+	pt.preposit = function (word, context) {
 
     context = context || {};
 
@@ -13,11 +22,7 @@ function Prepositor() {
 
     // Multiple subjects, as in <paul&john>
     if (_.stringContains(word, '<')) {
-      var words = word.replace(/[<>]/gi, '').split('&');
-      var propositedWords = _.map(words, function (word) {
-        return preposit(word)
-      });
-      return _.toSentence(propositedWords);
+      	return pt.prepositBundle(word);
     }
 
     // A subject with a property, e.g $new:bike$
