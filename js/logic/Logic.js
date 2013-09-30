@@ -1,8 +1,8 @@
 function Logic(brain) {
 
   var logic = this;
-  var things = brain.lexicon.things;
-  var attributes = brain.lexicon.attributes;
+ // var things = brain.lexicon.things;
+//  var attributes = brain.lexicon.attributes;
   logic.brain = brain;
   var response = '';
 

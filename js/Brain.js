@@ -3,11 +3,12 @@ function Brain(host) {
   var brain = this;
   window.brain = brain; // this allows you to learn about Lisa by inspecting her brain in the console.
   brain.host = host;
-  brain.lexicon = Lexicon;
 
   brain.logic = new Logic(brain);
   brain.speech = new Speech(brain);
   brain.memory = new Memory(brain);
+
+  brain.lexicon = brain.speech.express.lexicator;
 
   brain.patterns = [
     ['tell-story']
@@ -58,7 +59,7 @@ function Brain(host) {
       idea = extractIdea(_.sample(context.ideas));
     }
 
-    //console.log('What is: ', word, idea, context);
+    console.log('What is: ', word, idea, context);
 
 
     return _.clone(idea);
@@ -71,8 +72,8 @@ function Brain(host) {
     if (brain.seed && brain.seed.hidden) brain.seed = '';
 
     // what was passed, or what the brain was thinking about last, or something random
-    idea = idea || brain.seed || _.sample(brain.lexicon.things);
-    if (idea.hidden == 'true') _.sample(brain.lexicon.things);
+    idea = idea || brain.seed || brain.lexicon.getRandomWord();
+    if (idea.hidden == 'true') brain.lexicon.getRandomWord();
 
     if (idea && idea.see) idea = brain.whatIs(idea.see[0], true);
 
@@ -80,7 +81,7 @@ function Brain(host) {
     response = ponder[0];
     brain.seed = ponder[1];
 
-    // console.log('Ponder',idea,response)
+    console.log('Ponder',idea,response)
     if (!response) response = brain.speech.express.pause();
 
     response = brain.speech.prettify(response);
@@ -93,33 +94,8 @@ function Brain(host) {
 function extractIdea(word) {
 
   var idea;
-  for (var i = 0; i < 2; i++) {
-    idea = idea || _.find(brain.lexicon.things, function (idea) {
-      if (!idea.word) return;
-      return _.probably(idea.word, word, i)
-    });
-    idea = idea || _.find(brain.lexicon.things, function (idea) {
-      if (!idea.plural) return false;
-      return _.probably(idea.plural, word, i)
-    });
-    idea = idea || _.find(brain.lexicon.expressions, function (idea) {
-      return _.probably(idea.said, word, i)
-    });
-  }
 
-  for (var i = 0; i < 2; i++) {
-    idea = idea || _.find(brain.lexicon.attributes, function (idea) {
-      if (!idea.word) return;
-      return _.probably(idea.word, word, i)
-    });
-    idea = idea || _.find(brain.lexicon.attributes, function (idea) {
-      if (!idea.plural) return false;
-      return _.probably(idea.plural, word, i)
-    });
-    idea = idea || _.find(brain.lexicon.expressions, function (idea) {
-      return _.probably(idea.said, word, i)
-    });
-  }
+  idea = brain.lexicon.getWord(word); 
 
   return idea;
 }
