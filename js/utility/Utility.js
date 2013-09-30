@@ -173,7 +173,9 @@ _.mixin({
 
     var newIdeas = [];
 
-    if (!ideas instanceof Array) return _.seive(ideas);
+    console.log('sluice...', ideas)
+
+    if (ideas instanceof Array) return _.seive(ideas);
 
      _.each(ideas,function(idea){
 
@@ -231,8 +233,9 @@ _.mixin({
      
     });
 
+    console.log('extract story 1',story,ideas)
     ideas = _.sluice(ideas);
-    console.log('extract story',story,ideas)
+    console.log('extract story 2',story,ideas)
 
     return ideas;
   }
