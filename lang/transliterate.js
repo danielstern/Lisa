@@ -33,6 +33,18 @@ var transliterate = {
     }
   },
 
+  wring:{
+    past:{
+      singular:'wrung',
+      plural:'wrung'
+    },
+    present:{
+      singular:'wrings',
+      plural:'wring'
+    }
+  },
+
+
 
   give:{
     past:{

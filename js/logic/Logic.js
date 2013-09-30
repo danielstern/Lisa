@@ -194,18 +194,29 @@ function Logic(brain) {
 
       if (_.has(story, 'epic')) {
 
-        console.log('epic...', story.epic[0].sequence)
-        var epic = story.epic[0].sequence;
+        console.log('epic...', story.epic)
+        var epic = story.epic;
   
         _.each(epic, function(parable) {
 
              console.log('parable..?', parable);               
 
-            console.log('telling parable...', parable)
+             _.each(parable.sequence, function(sequence) {
 
-             var phrase = tellStoryMoment(parable);
-             response += phrase;
-             response += brain.speech.softPause();
+                      console.log('sequence?', sequence);     
+
+
+                             var phrase = tellStoryMoment(sequence);
+
+                                console.log('phrase?', phrase);     
+                             response += phrase;
+                             response += brain.speech.softPause();
+
+
+
+              });
+  
+
 
 
       });

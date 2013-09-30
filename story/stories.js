@@ -50,7 +50,7 @@ var _stories = [
     epic:
     [
       {
-        name:'I-1 - the one with my mom',
+        name:'I-1 - the one where the cow stops giving milk',
         sequence:
         [
           {
@@ -71,6 +71,20 @@ var _stories = [
           {
              rel:'then',subject:'referenced|cow',action:'give', object:'$no:milk$'
           }
+        ]
+      },
+      {
+        name:'I-2 - the one where my mother and I talk',
+        sequence:
+        [
+          {
+            subject:'my|mother',action:'say', 
+              said:'What shall we do, what shall we do?',
+              to:'me'
+          },
+          {
+             subject:'my|mother',action:'wring', object:'her|hands'
+          },
         ]
       },
     ]
