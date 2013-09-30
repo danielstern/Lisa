@@ -85,8 +85,6 @@ var expressions = {
     case 1:
     case 3:
     case 4:
-      response = "Yes?";
-      break;
     case 2:
       response = "Why don't you say something?";
       break;
@@ -94,6 +92,7 @@ var expressions = {
       response = "...";
       break;
     default:
+      response = "Yes?";
       break;
     }
 

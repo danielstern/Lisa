@@ -4,7 +4,7 @@ var Expresso = function (brain) {
 
   express.conjugate = function (seed, verb, tense, context) {
 
-  // console.log('Expresso is Conjugating: ',seed, verb, tense, context);
+    // console.log('Expresso is Conjugating: ',seed, verb, tense, context);
 
     if (_.oneToMany(seed) instanceof Array) {
       context = 'plural';
@@ -71,9 +71,9 @@ var Expresso = function (brain) {
   express.preposit = function (word, context) {
 
 
-       context = context || {};
+    context = context || {};
 
-//       console.log('Prepositing:', word, context)
+    //       console.log('Prepositing:', word, context)
 
     // if preposit is passed an array, assume the first item in the array is the word
     if (word instanceof Array) word = word[0];
@@ -95,21 +95,23 @@ var Expresso = function (brain) {
       var property = word.split(':')[0];
       word = word.split(':')[1];
 
-       var propertyIdea = brain.whatIs(property);
-       var isAdjective = false;
-      if ( propertyIdea /*&& brain.whatIs(property).form != adjective*/) {
+      var propertyIdea = brain.whatIs(property);
+      var isAdjective = false;
+      if (propertyIdea /*&& brain.whatIs(property).form != adjective*/ ) {
 
-         if (propertyIdea.form != 'adjective') {
-           context.pronoun = 'none';
-         }
+        if (propertyIdea.form != 'adjective') {
+          context.pronoun = 'none';
+        }
 
         if (propertyIdea.form == 'adjective') {
           isAdjective = true;
           if (propertyIdea.noPronoun) context.pronoun = 'none';
-        } 
+        }
 
       }
-      word = preposit(property,{pronoun:'referenced'}) + (isAdjective ? " " : ' of ') + preposit(word);
+      word = preposit(property, {
+        pronoun: 'referenced'
+      }) + (isAdjective ? " " : ' of ') + preposit(word);
       adjective = property;
     }
 
@@ -121,9 +123,6 @@ var Expresso = function (brain) {
     }
 
     var adjective = '';
-
- 
-
     word = word || '';
 
     if (word.split('|').length > 1) {
@@ -156,7 +155,6 @@ var Expresso = function (brain) {
     idea = idea || express.brain.whatIs(word, true) || {};
     word = word || idea.word;
 
-
     // if the word is the plural form of the word, give it a plural pronoun, i.e., "skeletons" automatically get a plural pronoun
     if (word == idea.plural) idea.pronoun = 'plural';
 
@@ -176,13 +174,10 @@ var Expresso = function (brain) {
     if (context.referenced && idea.pronoun != 'proper' && idea.pronoun != 'force') idea.pronoun = 'referenced';
     if (idea.pronoun == 'proper') idea.word = _.capitalize(idea.word);
 
-
-  //  console.log('Prepositing 3', word, idea, context);
-
-    
     // based on the idea object, choose a preposition
     var returnWord = true;
     var preposition = '';
+
     switch (idea['pronoun']) {
     case 'unique':
     case 'referenced':
@@ -217,24 +212,22 @@ var Expresso = function (brain) {
 
     if (context.possessive) {
       switch (context.possessor) {
-        case 'me':
-        case 'self':
-        case 'I':
-          preposition = 'my';
-          break;
-        case 'male':
-          preposition = 'his';
-          break;
-        case 'female':
-          preposition = 'her';
-          break;
-        default:
-          preposition = 'their'
-          break;
+      case 'me':
+      case 'self':
+      case 'I':
+        preposition = 'my';
+        break;
+      case 'male':
+        preposition = 'his';
+        break;
+      case 'female':
+        preposition = 'her';
+        break;
+      default:
+        preposition = 'their'
+        break;
       }
     }
-
-  //  console.log('prepositing 4', word, idea, context);
 
     // if the context suggests this words identity is assumed, replace it with the appropriate pronoun
     if (context.assumed) {
@@ -255,7 +248,6 @@ var Expresso = function (brain) {
 
   }
 
-
   express.learn = function (expression, operation) {
     if (operation) {
       express[expression] = operation;
@@ -269,7 +261,6 @@ var Expresso = function (brain) {
     })
 
   }
-
 
   express.learn(moment);
   express.learn(expressions);
