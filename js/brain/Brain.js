@@ -55,7 +55,7 @@ function Brain(host) {
 
     var idea = extractIdea(_.crack(word));
 
-   console.log('Brain: what is...', word, idea);
+  // console.log('Brain: what is...', word, idea);
 
     
     var context = brain.analyze(word);
@@ -64,7 +64,6 @@ function Brain(host) {
       idea = extractIdea(context.ideas[0]);
     }
 
-   if (idea && idea.see) idea = brain.whatIs(idea.see[0], true);
 
    return _.clone(idea);
   }
@@ -72,7 +71,6 @@ function Brain(host) {
   brain.ponder = function (idea) {
 
     var response = '';
-    var promise = new Promise();
 
     if (brain.seed && brain.seed.hidden) brain.seed = '';
 
@@ -80,6 +78,7 @@ function Brain(host) {
     idea = idea || brain.seed || _.sample(brain.lexicon.things);
     if (idea.hidden == 'true') _.sample(brain.lexicon.things); 
 
+    if (idea && idea.see) idea = brain.whatIs(idea.see[0], true);
 
     var ponder = brain.logic.ponder(idea)
     response = ponder[0];
@@ -89,8 +88,8 @@ function Brain(host) {
 
     return response;
   }
-}
 
+}
 function extractIdea(word) {
 
       var idea;

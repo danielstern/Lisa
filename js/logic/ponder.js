@@ -23,21 +23,9 @@ ponder = function (seed, logic,directive) {
 
     if (!command) return;
 
-    console.log('Executing command:' + command);
+ //   console.log('Executing command:' + command);
 
     switch (command) {
-
-      case 'demystify':
-        thought = logic.demystify(seed);
-        break;
-
-      case 'compare':
-        thought = logic.compare(seed);
-        break;
-
-      case 'express-relationship':
-        thought = logic.expressRelationship(seed);
-        break;
 
       case 'scopeUp': 
       case 'scope-up':
