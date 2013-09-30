@@ -1,8 +1,6 @@
 function Brain(host) {
 
   var brain = this;
-  brain.think = host.thinks;
-
   window.brain = brain; // this allows you to learn about Lisa by inspecting her brain in the console.
 
   brain.host = host;
@@ -13,8 +11,6 @@ function Brain(host) {
   brain.memory = new Memory(brain);
 
   brain.patterns = [['tell-story']];
-  brain.things = brain.lexicon.things;
-
 
   brain.process = function (words) {
 
