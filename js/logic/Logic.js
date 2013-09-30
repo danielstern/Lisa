@@ -190,25 +190,23 @@ function Logic(brain) {
 
     brain.memory.short.remember(storyIdeas);
 
-    console.log('tell story?', seed, stories);
+    console.log('Telling story...', seed, stories);
     if (!story) return response;
 
     if (_.has(story, 'epic')) {
 
-      console.log('epic...', story.epic)
       var epic = story.epic;
 
       _.each(epic, function (parable) {
 
-        console.log('parable..?', parable);
+      
 
         _.each(parable.sequence, function (sequence) {
 
-          console.log('sequence?', sequence);
 
           var phrase = tellStoryMoment(sequence);
 
-          console.log('phrase?', phrase);
+        
           response += phrase;
           response += brain.speech.softPause();
 

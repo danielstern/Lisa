@@ -128,6 +128,12 @@ var standardExpressions1 = {
       response += " " + preposit(moment.object, _.clone(context));
     }
 
+
+    if (moment.what) {
+      response += " " + moment.what + " ";
+    }
+
+
     if (moment.down) {
       response += " down " + preposit(moment.down);
     }
@@ -182,7 +188,7 @@ var standardExpressions1 = {
       response += " too ";
     }
 
-    console.log('Telling story moment 2,',moment,context,response)
+   
 
     return response;
   },
@@ -190,7 +196,7 @@ var standardExpressions1 = {
   relationship: function (seed, relationship) {
     var response = '';
 
-    console.log('express relationship...', seed, relationship)
+ //   console.log('express relationship...', seed, relationship)
 
     if (!relationship) return response;
     response = preposit(seed) + " " + verbalize(seed, relationship) + " " + preposit(relationship.object);

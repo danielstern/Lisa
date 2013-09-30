@@ -61,11 +61,8 @@ _.mixin({
     }
     if (string.split(':').length > 1) {
       string = _.fizzle(string);
-      /*string.replace(/<>/gi,'')
-      .split(':')[1]*/
     }
 
-    //console.log('crack returning...',string)
     return string;
   },
 
@@ -78,7 +75,6 @@ _.mixin({
   },
 
   oneToMany: function(string, returnQuality) {
- //   console.log('one to many...',string)
      if (typeof string != 'string') return string;
      var many;
 
@@ -127,11 +123,9 @@ _.mixin({
   stringNeedsClosure: function(string) {
 
     var lastCharOfString = string.toString().charAt(string.length - 1);
-    console.log('string needs closure',string)
     var pattern = /[.,"']/;
     var patternMatch = pattern.exec(lastCharOfString);
-    console.log('patternmatch?',patternMatch)
-    //console.log('stringNeedsClosure?',string,lastCharOfString,lastCharOfString.indexOf(/[.,"']/),lastCharOfString.indexOf(/[.,"']/) == -1);
+
     return patternMatch ? false : true;
 
   },
@@ -146,10 +140,8 @@ _.mixin({
 
   getVerbSynonyms: function(verb) {
     var lexiary = window.transliterate;
-
-    //console.log('getting synonyms for...', verb,lexiary);
     if(lexiary[verb]) var synonyms = lexiary[verb].synonyms;
-  //  console.log('getting synonyms for...', verb,lexiary,synonyms);
+
     return synonyms;
 
 
@@ -172,7 +164,6 @@ _.mixin({
   },
 
   sluice: function(ideas){
-    //console.log('sluicing ideas...',ideas)
 
     var newIdeas = [];
 
@@ -195,14 +186,14 @@ _.mixin({
     var ideas = [];
     if (!story) return ideas;
     if (_.has(story, 'epic')) {
-      console.log('this is an epic...');
-      console.log('seq?',story);
+  //    console.log('this is an epic...');
+   //   console.log('seq?',story);
         _.each(story.epic, function(parable) {
 
           _.each(parable.sequence, function(moment) {
 
 
-             console.log('extract story',story,ideas,moment)
+     //        console.log('extract story',story,ideas,moment)
             ideas = ideas.concat(_.values(moment));
        
             });
@@ -211,14 +202,11 @@ _.mixin({
     }
     _.each(story.sequence, function(moment) {
 
-       //console.log('extract story',story,ideas,moment)
-
       ideas = ideas.concat(_.values(moment));
      
     });
 
     ideas = _.sluice(ideas);
-   // console.log('extract story',story,ideas)
 
     return ideas;
   }
@@ -235,58 +223,3 @@ function Promise(params) {
   this.resolve = this.callback || function(){};
 
 }
-
-(function($){
-  function injector(t, splitter, klass, after) {
-    var a = t.text().split(splitter), inject = '';
-    if (a.length) {
-      $(a).each(function(i, item) {
-        inject += '<span class="'+klass+(i+1)+'">'+item+'</span>'+after;
-      }); 
-      t.empty().append(inject);
-    }
-  }
-
-  var methods = {
-    init : function() {
-
-      return this.each(function() {
-        injector($(this), '', 'char', '');
-      });
-
-    },
-
-    words : function() {
-
-      return this.each(function() {
-        injector($(this), ' ', 'word', ' ');
-      });
-
-    },
-
-    lines : function() {
-
-      return this.each(function() {
-        var r = "eefec303079ad17405c889e092e105b0";
-        // Because it's hard to split a <br/> tag consistently across browsers,
-        // (*ahem* IE *ahem*), we replace all <br/> instances with an md5 hash 
-        // (of the word "split").  If you're trying to use this plugin on that 
-        // md5 hash string, it will fail because you're being ridiculous.
-        injector($(this).children("br").replaceWith(r).end(), r, 'line', '');
-      });
-
-    }
-  };
-
-  $.fn.lettering = function( method ) {
-    // Method calling logic
-    if ( method && methods[method] ) {
-      return methods[ method ].apply( this, [].slice.call( arguments, 1 ));
-    } else if ( method === 'letters' || ! method ) {
-      return methods.init.apply( this, [].slice.call( arguments, 0 ) ); // always pass an array
-    }
-    $.error( 'Method ' +  method + ' does not exist on jQuery.lettering' );
-    return this;
-  };
-
-})(jQuery);

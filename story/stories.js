@@ -102,6 +102,15 @@ var _stories = [
           },
         ]
       },
+      {
+        name:'I-3 - the one where we meet the old man',
+        sequence:
+        [
+          {
+            subject:'<me&referenced|cow>',action:'is', what:'going', to:'market',
+          },
+        ]
+      },
     ]
   },
 ]

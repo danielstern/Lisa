@@ -22,13 +22,19 @@ var Expresso = function (brain) {
 
   express.conjugate = function (seed, verb, tense, context) {
 
-//    console.log('conjugating',seed, verb, tense, context)
+    console.log('Express is Conjugating: ',seed, verb, tense, context);
+
+    if (_.oneToMany(seed) instanceof Array) {
+      context = 'plural';
+    }
 
     seed = seed || {};
     if (typeof seed == 'string') seed = brain.whatIs(seed);
     seed = seed || {};
 
     tense = tense || 'present';
+
+
 
     var tl = transliterate;
     if (!context) {
@@ -83,7 +89,6 @@ var Expresso = function (brain) {
 
   express.preposit = function (word, context) {
 
-    console.log('Prepositing 1', word, context);
 
        context = context || {};
 
@@ -106,19 +111,17 @@ var Expresso = function (brain) {
       word = word.replace(/[$]/gi, '');
       var property = word.split(':')[0];
       word = word.split(':')[1];
-       console.log('whatIs?',property,brain.whatIs(property));
+
        var propertyIdea = brain.whatIs(property);
        var isAdjective = false;
       if ( propertyIdea /*&& brain.whatIs(property).form != adjective*/) {
 
          if (propertyIdea.form != 'adjective') {
-           console.log('making noun...')
            context.pronoun = 'none';
          }
 
         if (propertyIdea.form == 'adjective') {
           isAdjective = true;
-          console.log('its an adjective',propertyIdea);
           if (propertyIdea.noPronoun) context.pronoun = 'none';
         } 
 
@@ -170,7 +173,6 @@ var Expresso = function (brain) {
     idea = idea || express.brain.whatIs(word, true) || {};
     word = word || idea.word;
 
-    console.log('Prepositing 2', word, idea, context);
 
     // if the word is the plural form of the word, give it a plural pronoun, i.e., "skeletons" automatically get a plural pronoun
     if (word == idea.plural) idea.pronoun = 'plural';
@@ -249,7 +251,7 @@ var Expresso = function (brain) {
       }
     }
 
-    console.log('prepositing 4', word, idea, context);
+  //  console.log('prepositing 4', word, idea, context);
 
     // if the context suggests this words identity is assumed, replace it with the appropriate pronoun
     if (context.assumed) {
