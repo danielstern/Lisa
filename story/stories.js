@@ -61,7 +61,7 @@ var _stories = [
             subject:'my|mother',action:'have', object:'cow',
           },
           {
-             subject:'$name:cow$',action:'is', object:'Milky-White'
+             subject:'$name:referenced|cow$',action:'is', object:'Milky-White'
           }
         ]
       },
