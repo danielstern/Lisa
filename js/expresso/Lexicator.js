@@ -14,13 +14,6 @@ function Lexicator() {
   }
 
   lx.absorb = function (word) {
-  //	console.log('absorbing...',word)
-  	/*if (word.form == 'adjective') {
-  		lx.attributes.push(word);
-  	}
-  	else {
-  	  lx.things.push(word);	
-  	}*/
   	lx.things.push(word);	
   }
 
