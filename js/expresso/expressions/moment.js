@@ -6,7 +6,7 @@ var moment = {
     context = context || {};
     context.objective = false;
 
-    console.log('tell story moment...',moment,context);
+  //  console.log('tell story moment...',moment,context);
 
     if (moment.dialogue) {
 

@@ -153,6 +153,31 @@ var _stories = [
           },
         ]
       },
+      {
+        name:'I-2 - the one where mother and I talk',
+        sequence:
+        [
+           {
+            dialogue:{
+              between:{first:'my|mother',second:'me'},
+              said:[
+                "Back already, Jack? I see you haven't got Milky-white, so you've sold her. How much did you get for her?",
+                "You'll never guess, mother.",
+                "No, you don't say so. Good boy! Five pounds, ten, fifteen, no, it can't be twenty.",
+                "I told you you couldn't guess. What do you say to these beans; they're magical, plant them overnight and --",
+                "What! Have you been such a fool, such a dolt, such an idiot, as to give away my Milky-white, the best milker in the parish, and prime beef to boot, for a set of paltry beans? Take that! Take that! Take that! And as for your precious beans here they go out of the window. And now off with you to bed. Not a sup shall you drink, and not a bit shall you swallow this very night",
+              ]
+            },
+          },
+            {
+              subject:'I',action:'go', to:'my|room', 
+            },
+            {
+              subject:'I',action:'feel', object:'sad', 
+            }
+        
+        ]
+      }
     ]
   },
 ]

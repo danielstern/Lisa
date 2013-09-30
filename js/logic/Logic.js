@@ -17,6 +17,7 @@ function Logic(brain) {
     response = '';
     // response += brain.speech.hardPause();
 
+
     stories = brain.memory.long.getStories(seed);
     var story = _.sample(stories);
 
@@ -24,7 +25,7 @@ function Logic(brain) {
 
     brain.memory.short.remember(storyIdeas);
 
-
+//    console.log('tell story', seed)
     if (!story) return response;
 
     if (_.has(story, 'epic')) {
@@ -34,12 +35,14 @@ function Logic(brain) {
         return parable;
       });
 
-      brain.memory.short.remember(nextUntoldParable);
+  //    console.log('next parable?',nextUntoldParable);
+
 
       if (!nextUntoldParable) {
         response += "I've told you all I know about " + seed.word;
       } else {
 
+        brain.memory.short.remember(nextUntoldParable);
         _.each(nextUntoldParable.sequence, function (sequence) {
 
           var phrase = logic.tellStoryMoment(sequence);

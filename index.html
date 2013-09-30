@@ -50,11 +50,12 @@
         <h3>Jack</h3>
            <div id='saying' ng-bind-html-unsafe='saying' style='margin-bottom:10px' ></div>
         <form id='conversation-form' ng-submit='reply()'>
-          <input  ng-model='sayTo' type='text'>
+          <input  ng-model='sayTo' class='input input-block-level' type='text'>
+          <button class='btn btn-block'>Keep Talking</button>
         </form>
       </div>
        <div class='span3'>
-         <table class='table'>
+   <!--      <table class='table'>
             <tr>
               <th>Thinking About</th>
               <td>{{thought}}</td>
@@ -74,14 +75,14 @@
                
               <tr>
                 <td colspan='2'>
-                  <button class='btn' ng-click='reply()'>Keep Talking</button>
+                  
                 </td>
               </tr>
             </tbody>
          </table>
       </div>
       <div class='span3'>
-        <!--<img src='../misc/nick.jpg' width='200px' height='auto'>-->
+        <img src='../misc/nick.jpg' width='200px' height='auto'>
         <table class='table'>
           <tr>
             <th>
@@ -93,7 +94,7 @@
              </p>
             </td>
           </tr>
-        </table>
+        </table>-->
       </div>
       
     </div>

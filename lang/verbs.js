@@ -32,6 +32,19 @@ var _verbs = {
   },
 
 
+  feel:{
+    past:{
+      singular:'felt',
+      plural:'felt'
+    },
+    present:{
+      singular:'feels',
+      plural:'feel'
+    }
+  },
+
+
+
   go:{
     past:{
       singular:'went',

@@ -19,7 +19,7 @@ counterpose = function (seed,logic,directive) {
 
     if (!command) return;
 
- // console.log('Executing command:' + command);
+  console.log('Executing command:' + command);
 
     switch (command) {
 
