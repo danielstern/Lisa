@@ -51,19 +51,19 @@ function Brain(host) {
 
     var idea = extractIdea(_.crack(word));
 
-  // console.log('Brain: what is...', word, idea);
+    // console.log('Brain: what is...', word, idea);
 
-    
+
     var context = brain.analyze(word);
 
     if (context.ideas && context.ideas.length == 1) {
       idea = extractIdea(_.sample(context.ideas));
     }
 
-    console.log('what is',word,context)
+    console.log('what is', word, context)
 
 
-   return _.clone(idea);
+    return _.clone(idea);
   }
 
   brain.ponder = function (idea) {
@@ -74,7 +74,7 @@ function Brain(host) {
 
     // what was passed, or what the brain was thinking about last, or something random
     idea = idea || brain.seed || _.sample(brain.lexicon.things);
-    if (idea.hidden == 'true') _.sample(brain.lexicon.things); 
+    if (idea.hidden == 'true') _.sample(brain.lexicon.things);
 
     if (idea && idea.see) idea = brain.whatIs(idea.see[0], true);
 
@@ -82,7 +82,7 @@ function Brain(host) {
     response = ponder[0];
     brain.seed = ponder[1];
 
-   // console.log('Ponder',idea,response)
+    // console.log('Ponder',idea,response)
 
     if (!response) response = brain.speech.express.pause();
 
@@ -92,36 +92,37 @@ function Brain(host) {
   }
 
 }
+
 function extractIdea(word) {
 
-      var idea;
-      for (var i = 0; i < 2; i++) {
-        idea = idea || _.find(brain.lexicon.things, function (idea) {
-          if (!idea.word) return;
-          return _.probably(idea.word, word, i)
-        });
-        idea = idea || _.find(brain.lexicon.things, function (idea) {
-          if (!idea.plural) return false;
-          return _.probably(idea.plural, word, i)
-        });
-        idea = idea || _.find(brain.lexicon.expressions, function (idea) {
-          return _.probably(idea.said, word, i)
-        });
-      }
+  var idea;
+  for (var i = 0; i < 2; i++) {
+    idea = idea || _.find(brain.lexicon.things, function (idea) {
+      if (!idea.word) return;
+      return _.probably(idea.word, word, i)
+    });
+    idea = idea || _.find(brain.lexicon.things, function (idea) {
+      if (!idea.plural) return false;
+      return _.probably(idea.plural, word, i)
+    });
+    idea = idea || _.find(brain.lexicon.expressions, function (idea) {
+      return _.probably(idea.said, word, i)
+    });
+  }
 
-      for (var i = 0; i < 2; i++) {
-        idea = idea || _.find(brain.lexicon.attributes, function (idea) {
-          if (!idea.word) return;
-          return _.probably(idea.word, word, i)
-        });
-        idea = idea || _.find(brain.lexicon.attributes, function (idea) {
-          if (!idea.plural) return false;
-          return _.probably(idea.plural, word, i)
-        });
-        idea = idea || _.find(brain.lexicon.expressions, function (idea) {
-          return _.probably(idea.said, word, i)
-        });
-      }
+  for (var i = 0; i < 2; i++) {
+    idea = idea || _.find(brain.lexicon.attributes, function (idea) {
+      if (!idea.word) return;
+      return _.probably(idea.word, word, i)
+    });
+    idea = idea || _.find(brain.lexicon.attributes, function (idea) {
+      if (!idea.plural) return false;
+      return _.probably(idea.plural, word, i)
+    });
+    idea = idea || _.find(brain.lexicon.expressions, function (idea) {
+      return _.probably(idea.said, word, i)
+    });
+  }
 
-      return idea;
-    }
+  return idea;
+}
