@@ -15,32 +15,34 @@ function ShortTermMemory(memory) {
 
   short.recentThings = [];
 
-  short.remember = function(memory) {
+  short.remember = function (memory) {
+
+  //  return;
 
     if (memory instanceof Array) {
       short.recentThings = short.recentThings.concat(memory);
-    }
-     else
-    {
+    } 
+    else if (memory) {
       short.recentThings.push(memory);
     }
-      
+
   }
 
-  short.recall = function(memory) {
-    
-    var justNow = _.last(short.recentThings,short.capacity);
+  short.recall = function (memory) {
 
-    var contains = _.contains(justNow, memory) || _.find(justNow,function(thought){
-      return _.isEqual(thought,memory)
+    var justNow = _.last(short.recentThings, short.capacity);
+    var contains = _.contains(justNow, memory) || _.find(justNow, function (thought) {
+      return _.isEqual(thought, memory)
     });
     return contains;
   }
 
-  short.scan = function(word) {
+  short.scan = function (word) {
 
-    var justNow = _.last(short.recentThings,short.capacity);
-    var memoryFilter = _.filter(justNow, function(memory){return memory.toString().indexOf(word) != -1});
+    var justNow = _.last(short.recentThings, short.capacity);
+    var memoryFilter = _.filter(justNow, function (memory) {
+      return memory.toString().indexOf(word) != -1
+    });
 
     return memoryFilter.length > 0;
 
@@ -51,7 +53,7 @@ function LongTermMemory(memory) {
   var stories = window._stories;
   var longTerm = this;
 
-  longTerm.getStories = function(seed) {
+  longTerm.getStories = function (seed) {
 
     if (!seed) return {};
     if (typeof seed == 'string') seed = brain.whatIs(seed);
@@ -59,18 +61,16 @@ function LongTermMemory(memory) {
     var word = seed.word;
     var matchingStories = [];
 
-    _.each(stories, function(story){
+    _.each(stories, function (story) {
 
       var ideas = _.extractStory(story);
-      if (_.contains(ideas,word) || _.contains(ideas,seed.plural))   {
+      if (_.contains(ideas, word) || _.contains(ideas, seed.plural)) {
 
         matchingStories.push(story);
-        
-      } 
-      
+
+      }
     })
 
     return matchingStories;
-
   }
 }

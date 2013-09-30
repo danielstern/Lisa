@@ -66,7 +66,7 @@ _.mixin({
   },
 
   fizzle: function(string) {
- //   console.log('*Fizzling*...',string)
+ //   console.log('*fizzle*...',string)
     if (!string) return false;
     if (typeof string != 'string' || string.split(':').length < 2) return string;
     var fizzle = {};
@@ -74,7 +74,7 @@ _.mixin({
       .split(':');
     fizzle.thing = pieces[1];
     fizzle.has = pieces[0];
-    console.log('fizzle returning...',fizzle)
+//  console.log('*pop*',fizzle)
     return fizzle;
 
   },

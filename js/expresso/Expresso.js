@@ -94,7 +94,7 @@ var Expresso = function (brain) {
       var property = _.fizzle(word).has;
       word = _.fizzle(word).thing;
 
-      console.log('fizzle?',word,_.fizzle(word))
+      //console.log('fizzle?',word,_.fizzle(word))
 
       var propertyIdea = brain.whatIs(property);
       var isAdjective = false;
