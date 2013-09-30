@@ -68,7 +68,7 @@ function Conjugator() {
 		var verbIdea = tl[verb];
 		verbIdea.form = 'verb';
 
-		console.log('getidea...',verb,verbIdea)
+//		console.log('getidea...',verb,verbIdea)
 		
     return verbIdea;
 

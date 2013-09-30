@@ -153,10 +153,10 @@ _.mixin({
   getVerbSynonyms: function(verb) {
     var cj = window.cj;
     idea = cj.getIdea(verb);
-    console.log('get verb synonyms...',verb,cj,idea)
+    //console.log('get verb synonyms...',verb,cj,idea)
     if (!idea || !idea.synonyms) return [verb];
     var synonyms = idea.synonyms;
-    console.log('returning synonyms...',synonyms)
+   // console.log('returning synonyms...',synonyms)
     return synonyms;
 
 
