@@ -74,13 +74,19 @@ _.mixin({
   },
 
   oneToMany: function(string, returnQuality) {
+
+    console.log('onetomany...',string)
      if (typeof string != 'string') return string;
      var many;
 
-     if (string.split('&').length > 0) {
-      many = string.replace(/\<|\>/gi,'')
-       .split('&');
-    }
+    if (string.indexOf('<') != -1) {
+
+       if (string.split('&').length > 0) {
+        many = string.replace(/\<|\>/gi,'')
+         .split('&');
+      }
+
+  }
 
     return many || string;
   },

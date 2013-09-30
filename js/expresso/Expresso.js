@@ -6,7 +6,7 @@ var Expresso = function (brain) {
 
   express.conjugate = function (seed, verb, tense, context) {
 
-  //  console.log('Express is Conjugating: ',seed, verb, tense, context);
+   console.log('Express is Conjugating: ',seed, verb, tense, context);
 
     if (_.oneToMany(seed) instanceof Array) {
       context = 'plural';
@@ -76,7 +76,7 @@ var Expresso = function (brain) {
 
        context = context || {};
 
-       console.log('Prepositing:', word, context)
+//       console.log('Prepositing:', word, context)
 
     // if preposit is passed an array, assume the first item in the array is the word
     if (word instanceof Array) word = word[0];
