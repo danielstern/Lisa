@@ -83,7 +83,7 @@ var Expresso = function (brain) {
 
   express.preposit = function (word, context) {
 
-  //  console.log('Prepositing 1', word, context);
+    console.log('Prepositing 1', word, context);
 
        context = context || {};
 
@@ -100,19 +100,30 @@ var Expresso = function (brain) {
     }
 
     // A subject with a property, e.g $new:bike$
+
+    //var things = word.replace(/[$]/gi, '');
     if (_.stringContains(word, '$')) {
       word = word.replace(/[$]/gi, '');
       var property = word.split(':')[0];
       word = word.split(':')[1];
        console.log('whatIs?',property,brain.whatIs(property));
-       var propertyIdea = brain.whatIs(property)
+       var propertyIdea = brain.whatIs(property);
+       var isAdjective = false;
       if ( propertyIdea /*&& brain.whatIs(property).form != adjective*/) {
 
          if (propertyIdea.form != 'adjective') {
-          context.pronoun = 'none';
+           console.log('making noun...')
+           context.pronoun = 'none';
          }
+
+        if (propertyIdea.form == 'adjective') {
+          isAdjective = true;
+          console.log('its an adjective',propertyIdea);
+          if (propertyIdea.noPronoun) context.pronoun = 'none';
+        } 
+
       }
-      word = preposit(property,{pronoun:'referenced'}) + " of " + preposit(word);
+      word = preposit(property,{pronoun:'referenced'}) + (isAdjective ? " " : ' of ') + preposit(word);
       adjective = property;
     }
 
@@ -153,7 +164,7 @@ var Expresso = function (brain) {
     idea = idea || express.brain.whatIs(word, true) || {};
     word = word || idea.word;
 
-  //  console.log('Prepositing 2', word, idea, context);
+    console.log('Prepositing 2', word, idea, context);
 
     // if the word is the plural form of the word, give it a plural pronoun, i.e., "skeletons" automatically get a plural pronoun
     if (word == idea.plural) idea.pronoun = 'plural';

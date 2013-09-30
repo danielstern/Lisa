@@ -166,6 +166,11 @@ var Lexicon = {
       synonyms:[]
     },
     {
+      word:'no',
+      form:'adjective',
+      noPronoun:true,
+    },
+    {
       word:'hurt',
       form:'adjective',
       synonyms:['injured','wounded'],

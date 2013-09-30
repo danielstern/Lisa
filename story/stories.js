@@ -67,6 +67,9 @@ var _stories = [
           },
           {
              subject:'<me&my|mother>',action:'bring', object:'referenced|milk',to:'market'
+          },
+          {
+             rel:'then',subject:'referenced|cow',action:'give', object:'$no:milk$'
           }
         ]
       },
