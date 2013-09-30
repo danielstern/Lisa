@@ -190,6 +190,21 @@ _.mixin({
 
     var ideas = [];
     if (!story) return ideas;
+    if (_.has(story, 'epic')) {
+      console.log('this is an epic...');
+      console.log('seq?',story);
+        _.each(story.epic, function(parable) {
+
+          _.each(parable.sequence, function(moment) {
+
+
+             console.log('extract story',story,ideas,moment)
+            ideas = ideas.concat(_.values(moment));
+       
+            });
+
+        });
+    }
     _.each(story.sequence, function(moment) {
 
        //console.log('extract story',story,ideas,moment)

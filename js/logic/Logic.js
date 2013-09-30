@@ -192,6 +192,23 @@ function Logic(brain) {
     console.log('tell story?',seed,stories);
     if (!story) return response;
 
+      if (_.has(story, 'epic')) {
+      console.log('this is an epic...');
+      console.log('seq?',story);
+        _.each(story.epic, function(parable) {
+
+          _.each(parable.sequence, function(moment) {
+
+             var phrase = tellStoryMoment(moment);
+             response += phrase;
+             response += brain.speech.softPause();
+              var comment = logic.comment(moment);
+
+         });
+
+      });
+      }
+
     _.each(story.sequence, function (moment) {
       var phrase = tellStoryMoment(moment);
       response += phrase;

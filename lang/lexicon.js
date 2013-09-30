@@ -19,6 +19,11 @@ var Lexicon = {
       plural:'fathers'
     },
     {
+      word:'mother',
+      extends:['person'],
+      plural:'mothers'
+    },
+    {
       word:'advice',
       pronoun:'none',
     },
@@ -50,6 +55,10 @@ var Lexicon = {
     {
       word:'water',
       pronoun:'force',
+    },
+    {
+      word:'beanstalk',
+      plural:'beanstalks'
     },
     {
       word:'top',
@@ -128,6 +137,11 @@ var Lexicon = {
       word:'undead',
       form:'adjective',
       synonyms:['hollow']
+    },
+    {
+      word:'poor',
+      form:'adjective',
+      synonyms:[]
     },
     {
       word:'hurt',

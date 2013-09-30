@@ -54,7 +54,7 @@ var _stories = [
         sequence:
         [
           {
-            
+             subject:'my|mother',action:'is', object:'poor'
           },
         ]
       },
