@@ -4,7 +4,6 @@ function Logic(brain) {
   var things = brain.lexicon.things;
   var attributes = brain.lexicon.attributes;
   logic.brain = brain;
-  var think = brain.host.thinks;
   var response = '';
 
   logic.counterpose = counterpose;
@@ -54,7 +53,6 @@ function Logic(brain) {
     })
 
     if (!scopeDownIdea) {
-      think('I cant scope down from ' + seed.word);
       return [response, seed];
     }
 
@@ -66,26 +64,6 @@ function Logic(brain) {
     }
 
     return [response, seed];
-  }
-
-  logic.compare = function (seed) {
-
-    if (!seed.is) return response;
-
-    for (var i = 0; i < brain.mood.inquisitive; i++) {
-      var trait = _.sample(seed.is);
-      var thing = _.sample(things);
-
-      if (_.contains(thing.is, trait) && thing.word != seed.word) {
-        response += brain.speech.express.sharedQuality(seed, thing, trait);
-        response += brain.speech.softPause();
-        return response;
-      }
-    }
-
-    response += brain.speech.softPause();
-
-    return response;
   }
 
   logic.scopeSideways = function (seed) {
@@ -117,8 +95,6 @@ function Logic(brain) {
 
     var response = '';
 
-
-
     var stories = brain.memory.long.getStories(_.crack(seed.word));
     var allComments = [];
 
@@ -130,12 +106,10 @@ function Logic(brain) {
       })
     })
 
-
     var allCommentsAboutSubject = _.filter(allComments,
       function (comment) {
         if (logic.brain.whatIs(comment.subject, true) == seed) return true;
-      })
-
+    })
 
     var conclusion = _.sample(allCommentsAboutSubject) || '';
     if (!conclusion) return '';
@@ -192,7 +166,7 @@ function Logic(brain) {
 
     brain.memory.short.remember(storyIdeas);
 
-    console.log('Telling story...', seed, stories);
+
     if (!story) return response;
 
     if (_.has(story, 'epic')) {
@@ -240,6 +214,8 @@ function Logic(brain) {
       brain.memory.short.remember(moment);
       return phrase;
     }
+
+    console.log('Telling story...', seed, stories, response);
 
     return response;
   }

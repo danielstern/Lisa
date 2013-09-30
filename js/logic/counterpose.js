@@ -1,21 +1,18 @@
-counterpose = function (seed, logic,directive) {
+counterpose = function (seed,logic,directive) {
   var response = '';   
-
- // console.log("Ponder, ", seed)
-
 
   logic = logic || window.logic;
 
-  seed = seed || _.sample(logic.brain.things);
+  //seed = seed || _.sample(logic.brain.things);
+  if (!seed) return [brain.speech.express.incomprehension()];
 
+  // If the seed is a saying, reply appropriately, i.e., << Good morning <:> How do you do? >>.
   if (seed.said !== undefined) {
     response = brain.logic.colloquilize(seed);
     return [response,seed]
   }
 
-  var sequence = _.sample(brain.patterns);
-
-  if (directive) sequence = [directive];
+  var sequence = directive ? [directive] : _.sample(brain.patterns);
 
   _.each(sequence, function(command) {
  

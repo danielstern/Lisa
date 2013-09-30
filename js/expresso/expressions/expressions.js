@@ -3,14 +3,12 @@ var expressions = {
   relationship: function (seed, relationship) {
     var response = '';
 
- //   console.log('express relationship...', seed, relationship)
+    //   console.log('express relationship...', seed, relationship)
 
     if (!relationship) return response;
     response = preposit(seed) + " " + verbalize(seed, relationship) + " " + preposit(relationship.object);
     return response;
   },
-
-
 
   induction: function (seed, idea) {
     var response = '';
@@ -22,7 +20,7 @@ var expressions = {
     return response;
   },
 
-   quality: function (seed, quality) {
+  quality: function (seed, quality) {
     var response = '';
     if (!seed) return response;
     response = window.brain.speech.express.moment({
@@ -35,14 +33,17 @@ var expressions = {
 
   generality: function (seed, quality) {
     var response = '';
-  // console.log('generality?',seed, quality)
+    // console.log('generality?',seed, quality)
     if (typeof seed == 'string') seed = window.brain.whatIs(seed, true);
 
     var prepositedSubjects = '';
     if (seed instanceof Array) {
       var things = [];
-      things = _.map(seed,function(miniSeed){
-        return preposit(miniSeed,{plural:true,pronoun:'plural'});
+      things = _.map(seed, function (miniSeed) {
+        return preposit(miniSeed, {
+          plural: true,
+          pronoun: 'plural'
+        });
       })
 
       prepositedSubjects = _.toSentence(things);
@@ -55,22 +56,28 @@ var expressions = {
     var objectForm = 'plural';
     if (seed.pronoun == 'proper') objectForm = 'singular';
     if (prepositedSubjects) {
-      response = prepositedSubjects + " " + conjugate(seed, 'is', 'present', 'plural') + " " + preposit(quality,{pronoun: 'plural'});
+      response = prepositedSubjects + " " + conjugate(seed, 'is', 'present', 'plural') + " " + preposit(quality, {
+        pronoun: 'plural'
+      });
     } else {
-   
-       response = preposit(seed, {pronoun: 'plural'}) + " " + conjugate(seed, 'is', 'present', context) + " " + preposit(quality,{pronoun: objectForm});
-    
+
+      response = preposit(seed, {
+        pronoun: 'plural'
+      }) + " " + conjugate(seed, 'is', 'present', context) + " " + preposit(quality, {
+        pronoun: objectForm
+      });
+
     }
     return response;
   },
 
   inheritance: function (seed, idea) {
+
     var response = '';
-
     response = window.brain.speech.express.generality(seed, idea);
-
     return response;
   },
+
   perceiveSilence: function () {
     var response = '';
 
@@ -93,6 +100,7 @@ var expressions = {
     return response;
 
   },
+
   pause: function () {
 
     var response = '';
@@ -125,6 +133,7 @@ var expressions = {
 
     return response;
   },
+  
   incomprehension: function () {
     var response = '';
     switch (Math.ceil(Math.random() * 9)) {

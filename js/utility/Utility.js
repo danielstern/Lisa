@@ -33,7 +33,7 @@ _.mixin({
 
     string = strings.join('');
 
-    return "<p>"+string+"</p>";
+    return [string];
 
   },
 
@@ -173,7 +173,7 @@ _.mixin({
 
     var newIdeas = [];
 
-    console.log('sluice...', ideas)
+ //   console.log('sluice...', ideas)
 
     if (ideas instanceof Array) return _.seive(ideas);
 
@@ -233,22 +233,10 @@ _.mixin({
      
     });
 
-    console.log('extract story 1',story,ideas)
     ideas = _.sluice(ideas);
-    console.log('extract story 2',story,ideas)
+    //console.log('Extract Story',story,ideas)
 
     return ideas;
   }
 
 });
-
-function Promise(params) {
-
-  var promise = this;
-  this.then = function(callback){
-    promise.resolve = callback;      
-  }
-
-  this.resolve = this.callback || function(){};
-
-}

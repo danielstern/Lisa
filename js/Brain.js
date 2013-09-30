@@ -2,7 +2,6 @@ function Brain(host) {
 
   var brain = this;
   window.brain = brain; // this allows you to learn about Lisa by inspecting her brain in the console.
-
   brain.host = host;
   brain.lexicon = Lexicon;
 
@@ -10,7 +9,9 @@ function Brain(host) {
   brain.speech = new Speech(brain);
   brain.memory = new Memory(brain);
 
-  brain.patterns = [['tell-story']];
+  brain.patterns = [
+    ['tell-story']
+  ];
 
   brain.process = function (words) {
 
@@ -51,16 +52,13 @@ function Brain(host) {
 
     var idea = extractIdea(_.crack(word));
 
-    // console.log('Brain: what is...', word, idea);
-
-
     var context = brain.analyze(word);
 
     if (context.ideas && context.ideas.length == 1) {
       idea = extractIdea(_.sample(context.ideas));
     }
 
-    console.log('what is', word, context)
+    //console.log('What is: ', word, idea, context);
 
 
     return _.clone(idea);
@@ -83,7 +81,6 @@ function Brain(host) {
     brain.seed = ponder[1];
 
     // console.log('Ponder',idea,response)
-
     if (!response) response = brain.speech.express.pause();
 
     response = brain.speech.prettify(response);

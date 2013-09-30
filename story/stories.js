@@ -57,7 +57,7 @@ var _stories = [
              subject:'my|mother',action:'is', object:'poor',
           },
           {
-            subject:'my|mother',action:'have', object:'cow',
+            subject:'assumed|mother',action:'have', object:'cow',
           },
           {
              subject:'$name:referenced|cow$',action:'is', object:'Milky-White'
