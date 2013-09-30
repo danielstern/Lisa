@@ -79,8 +79,9 @@ _.mixin({
      if (typeof string != 'string') return string;
      var many;
 
-    if (string.indexOf('<') != -1) {
+    if (string.indexOf('<') != -1 && string.indexOf('>') != -1) {
 
+      string = string.split('<')[1].split('>')[0];
        if (string.split('&').length > 0) {
         many = string.replace(/\<|\>/gi,'')
          .split('&');
