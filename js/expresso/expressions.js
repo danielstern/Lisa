@@ -54,6 +54,7 @@ var standardExpressions1 = {
 
     var response = '';
     context = context || {};
+          context.objective = false;
 
 //    console.log('Telling story moment 1,',moment,context)
 
@@ -120,8 +121,10 @@ var standardExpressions1 = {
       response += preposit(moment.subject, subjectContext) + " " + conjugate(moment.subject, moment.action, context.time);
     }
 
+    context.objective = true;
+
     if (moment.object) {
-      context.objective = true;
+      //context.objective = true;
       response += " " + preposit(moment.object, _.clone(context));
     }
 
@@ -157,7 +160,7 @@ var standardExpressions1 = {
 
 
     if (moment.to) {
-      response += " to " + preposit(moment.to);
+      response += " to " + preposit(moment.to, _.clone(context));
     }
 
     if (moment.said) {

@@ -85,6 +85,11 @@ var _stories = [
           {
              subject:'my|mother',action:'wring', object:'her|hands'
           },
+          {
+             subject:'i',action:'say', 
+               said:"Cheer up, mother, I'll go and get work somewhere",
+               to:'assumed|mother'
+          },
         ]
       },
     ]
