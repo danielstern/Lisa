@@ -1,8 +1,8 @@
 function Logic(brain) {
 
   var logic = this;
- // var things = brain.lexicon.things;
-//  var attributes = brain.lexicon.attributes;
+  // var things = brain.lexicon.things;
+  //  var attributes = brain.lexicon.attributes;
   logic.brain = brain;
   var response = '';
 
@@ -11,7 +11,7 @@ function Logic(brain) {
 
   var _lisaPatterns = ['tell-story'];
 
-  
+
   logic.tellStory = function (seed) {
 
     response = '';
@@ -28,45 +28,56 @@ function Logic(brain) {
     if (!story) return response;
 
     if (_.has(story, 'epic')) {
-      _.each(story.epic, function (parable) {
-        _.each(parable.sequence, function (sequence) {
 
-          var phrase = tellStoryMoment(sequence);
+      var nextUntoldParable = _.find(story.epic, function (parable) {
+        if (brain.memory.short.recall(parable)) return false;
+        return parable;
+      });
+
+      brain.memory.short.remember(nextUntoldParable);
+
+      if (!nextUntoldParable) {
+        response += "I've told you all I know about " + seed.word;
+      } else {
+
+        _.each(nextUntoldParable.sequence, function (sequence) {
+
+          var phrase = logic.tellStoryMoment(sequence);
           response += phrase;
           response += brain.speech.softPause();
 
         });
+      }
+    } 
+    else {
+      _.each(story.sequence, function (moment) {
 
-      response += brain.speech.hardPause();
-      });
+        var phrase = logic.tellStoryMoment(moment);
+        response += phrase;
+        response += brain.speech.softPause();
+
+     });
     }
 
 
-
-    _.each(story.sequence, function (moment) {
-      var phrase = tellStoryMoment(moment);
-      response += phrase;
-      response += brain.speech.softPause();
-
-    });
-
-    function tellStoryMoment(moment) {
-
-      var phrase = '';
-      if (!moment) return phrase;
-      //console.log('tellstorymoment...',moment)
-     // if (brain.memory.short.recall(moment)) return phrase;
-      var context = moment.context || {};
-      context.time = context.time || 'past';
-      phrase = brain.speech.express.moment(moment, context);
-      brain.memory.short.remember(moment);
-      return phrase;
-    }
-
-   // console.log('Telling story...', seed, stories, response);
+    // console.log('Telling story...', seed, stories, response);
 
     return response;
   }
+
+  logic.tellStoryMoment = function (moment) {
+
+    var phrase = '';
+    if (!moment) return phrase;
+    //console.log('tellstorymoment...',moment)
+    // if (brain.memory.short.recall(moment)) return phrase;
+    var context = moment.context || {};
+    context.time = context.time || 'past';
+    phrase = brain.speech.express.moment(moment, context);
+    brain.memory.short.remember(moment);
+    return phrase;
+  }
+
 
   logic.expressRelationship = function (seed) {
 
@@ -166,7 +177,7 @@ function Logic(brain) {
     var allCommentsAboutSubject = _.filter(allComments,
       function (comment) {
         if (logic.brain.whatIs(comment.subject, true) == seed) return true;
-    })
+      })
 
     var conclusion = _.sample(allCommentsAboutSubject) || '';
     if (!conclusion) return '';
