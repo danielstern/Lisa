@@ -1,9 +1,5 @@
 Lisa
 ====
-> Hmmm... ... ah hah hah hah hah!
-> Axos Braveheart killed Algoron with the Sword of Light, ser. He hid it.
-(Lisa thought of the day)
-
 ```javascript
 var lisa = new Lisa();
 lisa.thinks('You know nothing, Jon Snow.');
@@ -16,29 +12,6 @@ A neuro-computational matrix is a computer program that attempts to simulate the
 
 Lisa is designed to be the basis of an intelligent conversation simulator that will ultimately allow NPCs in games to say different things, every time - and mean it!
 
-```javascript
-lisa.hears('sword').then(function(reply){
-  $('body').html(reply);
-});
-// Swords are deadly.
-```
-
-Why not give Lisa a try as:
-- the personality of your Raspberry Pi based project
-- the driver of the NPCs in your next RPG
-
-Lisa has many other uses including teaching people to speak new languages, and simulating staff at kiosks.
-
-Lisa is designed with extensibility in mind. The human mind is a complex thing, and it's always growing. Lisa's codebase has a conversational design...
-
-```javascript
-lisa.brain.ponder().then{function(thought)
-    lisa.thinks(thought);
-    // 'Apples are crunchy.'
-}
-```
-
-
 How It Works
 ------------
 ### Brain
@@ -47,23 +20,10 @@ Lisa's modular command center, the brain is the glue which holds Lisa's logic, m
 #### Speech
 Lisa's speech module allows Lisa to translate her ideas into something human beings can understand through `express()`.
 
-```javascript
-Lisa.thinks(Lisa.brain.speech.express.greeting());
-// 'Hey there, sugar.'
-```
 
 #### Logic
 Logic is the controller to speech's view and lexicon's model.  
 
-##### `demystify(idea)`
-Produces a thought about that idea.
-
-```
-var idea = _.sample(brain.things);
-brain.logic.demystify(idea);
-// Pears are healthy.
-
-```
 
 ##### `scopeUp(idea)`
 
@@ -89,10 +49,6 @@ If the idea extends another idea, Lisa thinks about another idea that extends th
 - Prevents Lisa from saying the same thing twice, rambling, etc.
 - When Lisa says something, she stores the thought in her short term memory.
 
-```javascript
-var thought = logic.demystify('cheese');
-brain.memory.short.remember(thought);
-```
 Before Lisa says something, she can see in her short term memory if she's said something.
 
 ```javascript
@@ -143,10 +99,8 @@ var Lexicon = {
   things:[
     {
       word:'orange',
-      is:['sweet','healthy','orange'],
       extends:['fruit'],
       plural:'oranges',
-      associated:['apple'],
     },
   ]
 }
@@ -160,10 +114,6 @@ Things in the lexicon represent nouns and are usually the subject or object in a
       word:'knight',
       gender:'male',
       extends:['warrior'],
-      relationship:[{
-        object:'sword',
-        action:'use'
-      }],
       plural:'knights',
     }
 ```
@@ -179,23 +129,3 @@ Attributes are applied to things in the lexicon.
       synonyms:['heroic','fearless']
     }
 ```
-
-
-#### Psychic
-
-Sometimes, Lisa will be running on a web page where she can tap into the unlimited power of the internet. Lisa can use *psychic* to:
-
-+ Look up words she doesn't understand and associate them with words in her lexicon
-+ Answer any question for you and even interact with web API's to become a personal assistant
-
-
-```javascript
-brain.psychic.syphon('veritas').then(function(idea){
-  brain.ponder(idea).then(function(thought)) {
-    brain.host.thinks(thought);
-    // LISA: Veritas is truth.
-  }
-}
-});
-```
-
