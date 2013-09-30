@@ -173,18 +173,37 @@ _.mixin({
 
     var newIdeas = [];
 
+    if (!ideas instanceof Array) return _.seive(ideas);
+
      _.each(ideas,function(idea){
 
-       idea = _.clone(idea);
-       var ideaParts = _.oneToMany(idea);
-       ideaParts = _.map(ideaParts,function(ideaPart) {
-         return _.crack(ideaPart);
-       });
-       newIdeas = newIdeas.concat(ideaParts);
+       //newIdeas =  newIdeas.concat(_.seive(idea));
+       _.concat(newIdeas, _.seive(idea))
 
     });
 
+
     return newIdeas;
+  },
+
+  concat: function(array, array2) {
+    _.each(array2, function(ari) {
+      array.push(ari);
+    })
+    array = array.concat(array2);
+    return array.concat(array2);
+  },
+
+  seive: function(idea) {
+
+     idea = _.clone(idea);
+     var ideaParts = _.oneToMany(idea);
+       ideaParts = _.map(ideaParts,function(ideaPart) {
+         return _.crack(ideaPart);
+     });
+
+      return ideaParts;
+
   },
 
   extractStory: function (story) {
@@ -192,12 +211,10 @@ _.mixin({
     var ideas = [];
     if (!story) return ideas;
     if (_.has(story, 'epic')) {
-  //    console.log('this is an epic...');
-   //   console.log('seq?',story);
+
         _.each(story.epic, function(parable) {
 
           _.each(parable.sequence, function(moment) {
-
 
      //        console.log('extract story',story,ideas,moment)
             ideas = ideas.concat(_.values(moment));
@@ -206,13 +223,16 @@ _.mixin({
 
         });
     }
+
     _.each(story.sequence, function(moment) {
+
 
       ideas = ideas.concat(_.values(moment));
      
     });
 
     ideas = _.sluice(ideas);
+    console.log('extract story',story,ideas)
 
     return ideas;
   }
