@@ -23,15 +23,38 @@ function Conjugator() {
 
 	cj.getWord = function(verb, tense, context) {
 
-		var verb;
+		if (!verb) return;
+		tense = tense || 'present';
+		context = context || 'singular';
 
-    try {
-      verb = tl[verb][tense][context];
-    } catch (e) {
-      console.error('You are trying to access a verb not in the lexiary: ', verb)
-    }
+		console.log('getword1',verb,tl)
 
-    return verb;
+		if (!_.has(tl,verb)) {
+			console.log('This verb is not in the lexiary',verb);
+			return verb;
+		}
+
+
+		var verbIdea = tl[verb];
+		console.log(verbIdea,tense)
+		var verbeTense;
+
+		if (!_.has(verbIdea, tense)) {
+			console.log('This verb does not have the following tense',verb,tense);
+			return verb;
+		}
+
+		verbeTense = verbIdea[tense];
+
+		if (!_.has(verbeTense, context)) {
+			console.log('This verb does not have a context for following tense',verb,tense,context);
+			return verb;
+		}
+
+
+		var word = verbeTense[context];
+
+    return word;
 
 	}
 }
