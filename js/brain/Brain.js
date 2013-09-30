@@ -55,7 +55,7 @@ function Brain(host) {
 
     var idea = extractIdea(_.crack(word));
 
-  //  console.log('what is...',word,idea)
+   console.log('Brain: what is...', word, idea);
 
     
     var context = brain.analyze(word);
@@ -64,31 +64,21 @@ function Brain(host) {
       idea = extractIdea(context.ideas[0]);
     }
 
-    /*
-      As a last resort, use psychic faculty to consult the internet to demystify the statement
-    */
-    if (brain.psychic && !idea) {
-
-      brain.psychic.syphon(word, function (result) {
-        console.log('brain got wave...', result);
-
-      });
-    }
+   if (idea && idea.see) idea = brain.whatIs(idea.see[0], true);
 
    return _.clone(idea);
   }
 
-  brain.ponder = function (idea, useAsync) {
+  brain.ponder = function (idea) {
 
     var response = '';
     var promise = new Promise();
 
     if (brain.seed && brain.seed.hidden) brain.seed = '';
 
+    // what was passed, or what the brain was thinking about last, or something random
     idea = idea || brain.seed || _.sample(brain.lexicon.things);
-    if (idea.hidden == 'true') _.sample(brain.lexicon.things); // this function prevents Lisa from finding out she is really a robot
-
-    if (idea.see) idea = brain.whatIs(idea.see, true);
+    if (idea.hidden == 'true') _.sample(brain.lexicon.things); 
 
 
     var ponder = brain.logic.ponder(idea)

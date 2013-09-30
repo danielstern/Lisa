@@ -6,7 +6,7 @@ var Expresso = function (brain) {
 
   express.conjugate = function (seed, verb, tense, context) {
 
-    console.log('Express is Conjugating: ',seed, verb, tense, context);
+  //  console.log('Express is Conjugating: ',seed, verb, tense, context);
 
     if (_.oneToMany(seed) instanceof Array) {
       context = 'plural';

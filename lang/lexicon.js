@@ -25,6 +25,13 @@ var Lexicon = {
       plural:'mothers'
     },
     {
+      word:'mom',
+      extends:['person'],
+      gender:['female'],
+      see:['mother'],
+      plural:'moms'
+    },
+    {
       word:'cow',
       extends:['animal'],
       plural:'cows'
