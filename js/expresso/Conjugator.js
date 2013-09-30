@@ -1,6 +1,7 @@
 function Conjugator() {
 	var cj = this;
 	cj.allVerbs = {};
+	var tl = cj.allVerbs;
 
 	cj.learn = function (lexiaryOrWord, verb) {
 		if (verb) var word = lexiaryOrWord;
@@ -21,6 +22,16 @@ function Conjugator() {
   cj.learn(verbs);
 
 	cj.getWord = function(verb, tense, context) {
+
+		var verb;
+
+    try {
+      verb = tl[verb][tense][context];
+    } catch (e) {
+      console.error('You are trying to access a verb not in the lexiary: ', verb)
+    }
+
+    return verb;
 
 	}
 }

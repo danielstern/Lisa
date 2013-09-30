@@ -1,6 +1,7 @@
 var Expresso = function (brain) {
   express = this;
   express.brain = brain;
+  express.conjugator = new Conjugator();
 
   express.conjugate = function (seed, verb, tense, context) {
 
@@ -16,8 +17,6 @@ var Expresso = function (brain) {
 
     tense = tense || 'present';
 
-
-    var tl = verbs;
     if (!context) {
       context = 'plural';
       if (seed.pronoun == 'unique') context = 'singular';
@@ -27,11 +26,8 @@ var Expresso = function (brain) {
     var synonyms = _.getVerbSynonyms(verb);
     if (synonyms && synonyms[0]) verb = _.sample(synonyms);
 
-    try {
-      var verb = tl[verb][tense][context];
-    } catch (e) {
-      console.error('You are trying to access a verb not in the lexiary: ', verb)
-    }
+    verb = express.conjugator.getWord(verb, tense, context)
+
     response = verb;
 
     return response;
