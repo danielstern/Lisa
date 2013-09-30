@@ -34,7 +34,29 @@ var transliterate = {
   },
 
 
+  give:{
+    past:{
+      singular:'gave',
+      plural:'gave'
+    },
+    present:{
+      singular:'gives',
+      plural:'give'
+    }
+  },
 
+
+
+  bring:{
+    past:{
+      singular:'brought',
+      plural:'brought'
+    },
+    present:{
+      singular:'brings',
+      plural:'bring'
+    }
+  },
 
 
 

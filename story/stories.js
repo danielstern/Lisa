@@ -55,13 +55,18 @@ var _stories = [
         [
           {
              subject:'my|mother',action:'is', object:'poor',
-           //  subject:'$name:cow$',action:'is', object:'Milky-White'
           },
           {
             subject:'my|mother',action:'have', object:'cow',
           },
           {
              subject:'$name:referenced|cow$',action:'is', object:'Milky-White'
+          },
+          {
+             subject:'referenced|cow',action:'give', object:'milk'
+          },
+          {
+             subject:'<me&my|mother>',action:'bring', object:'referenced|milk',to:'market'
           }
         ]
       },

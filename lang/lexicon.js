@@ -38,6 +38,14 @@ var Lexicon = {
       pronoun:'proper'
     },
     {
+      word:'milk',
+      pronoun:'none'
+    },
+    {
+      word:'market',
+      pronoun:'force'
+    },
+    {
       word:'advice',
       pronoun:'none',
     },
