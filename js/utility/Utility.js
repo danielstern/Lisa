@@ -12,7 +12,7 @@ _.mixin({
 
   lisaFormat: function(string, filter) {
 
-    string = string.replace('##hp','##sp##hp##sp')
+    string = string.replace(/##hp/gi,'##sp##hp##sp')
 
       var strings = string.split('##sp');
       strings = _.chain(strings)

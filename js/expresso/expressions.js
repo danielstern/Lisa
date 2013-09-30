@@ -166,6 +166,7 @@ var standardExpressions1 = {
     if (moment.said) {
       response += brain.speech.lightPause();
       response += ' "' + moment.said  + '" ';
+      response += brain.speech.hardPause();
     }
 
     if (moment.howMuch) {

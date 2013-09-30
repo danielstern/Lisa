@@ -87,7 +87,17 @@ var _stories = [
           },
           {
              subject:'i',action:'say', 
-               said:"Cheer up, mother, I'll go and get work somewhere",
+               said:"Cheer up, mother, I'll go and get work somewhere.",
+               to:'assumed|mother'
+          },
+          {
+          subject:'my|mother',action:'say', 
+               said:"We've tried that before, and nobody would take you. We must sell Milky-white and with the money start a shop, or something.",
+               to:'me'
+          },
+          {
+             subject:'i',action:'say', 
+               said:"All right, mother. It's market-day today, and I'll soon sell Milky-white, and then we'll see what we can do.",
                to:'assumed|mother'
           },
         ]
