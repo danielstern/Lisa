@@ -80,9 +80,13 @@ function Brain(host) {
 
     if (idea && idea.see) idea = brain.whatIs(idea.see[0], true);
 
-    var ponder = brain.logic.ponder(idea)
+    var ponder = brain.logic.counterpose(idea)
     response = ponder[0];
     brain.seed = ponder[1];
+
+    console.log('Ponder',idea,response)
+
+    if (!response) response = brain.speech.express.pause();
 
     response = brain.speech.prettify(response);
 

@@ -1,4 +1,4 @@
-ponder = function (seed, logic,directive) {
+counterpose = function (seed, logic,directive) {
   var response = '';   
 
   console.log("Ponder, ", seed)

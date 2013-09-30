@@ -82,7 +82,6 @@ var Lexicon = {
     },
     {
       word:'hill',
-      hidden:'true',
       extends:['place'],
       plural:'hills',
     },

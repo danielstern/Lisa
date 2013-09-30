@@ -2,11 +2,9 @@ var Expresso = function (brain) {
   express = this;
   express.brain = brain;
 
-
-
   express.conjugate = function (seed, verb, tense, context) {
 
-   console.log('Express is Conjugating: ',seed, verb, tense, context);
+  // console.log('Expresso is Conjugating: ',seed, verb, tense, context);
 
     if (_.oneToMany(seed) instanceof Array) {
       context = 'plural';
@@ -17,7 +15,6 @@ var Expresso = function (brain) {
     seed = seed || {};
 
     tense = tense || 'present';
-
 
 
     var tl = transliterate;

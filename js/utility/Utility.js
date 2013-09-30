@@ -75,7 +75,7 @@ _.mixin({
 
   oneToMany: function(string, returnQuality) {
 
-    console.log('onetomany...',string)
+ //   console.log('onetomany...',string)
      if (typeof string != 'string') return string;
      var many;
 

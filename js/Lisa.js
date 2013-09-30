@@ -10,7 +10,7 @@
     Lisa.hears = function(words) {
 
     	if (!words) {
-    		  var response = Lisa.brain.logic.ponder(Lisa.brain.seed);
+    		  var response = Lisa.brain.ponder();
     		  response[0] = lisa.brain.speech.prettify(response[0]);
     		return response;
     	}

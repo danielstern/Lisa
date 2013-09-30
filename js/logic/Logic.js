@@ -7,7 +7,7 @@ function Logic(brain) {
   var think = brain.host.thinks;
   var response = '';
 
-  logic.ponder = ponder;
+  logic.counterpose = counterpose;
   window.logic = this;
 
   var _lisaPatterns = ['tell-story'];
