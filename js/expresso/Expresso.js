@@ -90,10 +90,11 @@ var Expresso = function (brain) {
     // A subject with a property, e.g $new:bike$
 
     //var things = word.replace(/[$]/gi, '');
-    if (_.stringContains(word, '$')) {
-      word = word.replace(/[$]/gi, '');
-      var property = word.split(':')[0];
-      word = word.split(':')[1];
+    if (_.fizzle(word) && _.fizzle(word).thing) {
+      var property = _.fizzle(word).has;
+      word = _.fizzle(word).thing;
+
+      console.log('fizzle?',word,_.fizzle(word))
 
       var propertyIdea = brain.whatIs(property);
       var isAdjective = false;

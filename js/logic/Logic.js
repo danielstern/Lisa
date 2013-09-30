@@ -155,7 +155,6 @@ function Logic(brain) {
 
   logic.tellStory = function (seed) {
 
-
     response = '';
     // response += brain.speech.hardPause();
 
@@ -170,22 +169,12 @@ function Logic(brain) {
     if (!story) return response;
 
     if (_.has(story, 'epic')) {
-
-      var epic = story.epic;
-
-      _.each(epic, function (parable) {
-
-      
-
+      _.each(story.epic, function (parable) {
         _.each(parable.sequence, function (sequence) {
 
-
           var phrase = tellStoryMoment(sequence);
-
-        
           response += phrase;
           response += brain.speech.softPause();
-
 
         });
 
@@ -215,7 +204,7 @@ function Logic(brain) {
       return phrase;
     }
 
-    console.log('Telling story...', seed, stories, response);
+   // console.log('Telling story...', seed, stories, response);
 
     return response;
   }

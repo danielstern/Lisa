@@ -59,17 +59,23 @@ _.mixin({
       string = string.split('|')[1];
     }
     if (string.split(':').length > 1) {
-      string = _.fizzle(string);
+      string = _.fizzle(string).thing;
     }
 
     return string;
   },
 
   fizzle: function(string) {
-    string = string.replace(/\$/gi,'')
-      .split(':')[1]
-    ;
-    return string;
+ //   console.log('*Fizzling*...',string)
+    if (!string) return false;
+    if (typeof string != 'string' || string.split(':').length < 2) return string;
+    var fizzle = {};
+    var pieces = string.replace(/\$/gi,'')
+      .split(':');
+    fizzle.thing = pieces[1];
+    fizzle.has = pieces[0];
+    console.log('fizzle returning...',fizzle)
+    return fizzle;
 
   },
 
