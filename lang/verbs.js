@@ -20,6 +20,17 @@ var _verbs = {
     }
   },
 
+  pull:{
+    past:{
+      singular:'pulled',
+      plural:'pulled'
+    },
+    present:{
+      singular:'pulls',
+      plural:'pull'
+    }
+  },
+
 
   go:{
     past:{

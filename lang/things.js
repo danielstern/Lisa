@@ -36,6 +36,15 @@ var _things = [
       plural:'cows'
     },
     {
+      word:'bean',
+      extends:['vegetable'],
+      plural:'beans'
+    },
+    {
+      word:'pocket',
+      plural:'pockets'
+    },
+    {
       word:'hand',
       plural:'hands'
     },

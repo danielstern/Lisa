@@ -11,6 +11,8 @@ function Prepositor() {
       	return pt.prepositBundle(word, context);
     }
 
+ //   console.log('preopositing 1', word,context)
+
     if (_.fizzle(word) && _.fizzle(word).thing) {
       var property = _.fizzle(word).has;
       word = _.fizzle(word).thing;
@@ -63,10 +65,16 @@ function Prepositor() {
       case 'his':
         context.possessive = true;
         context.possessor = 'male';
+        break;
       case 'her':
         context.possessive = true;
         context.possessor = 'female';
+        break
+      case 'possessive':
+        context.possessive = true;
+        break
       case 'referenced':
+      case 'the':
       case 'main':
         context.referenced = true;
         break;
@@ -145,7 +153,7 @@ function Prepositor() {
     var response = preposition + (returnWord ? word : '');
     if (response == 'me' && !context.objective && !context.asBundle) response = 'I'; // English is a hacky language.
 
- //    console.log('Prepositing 2:', word, idea, context, response)
+ //  console.log('Prepositing 2:', word, idea, context, response)
     return response;
 
   }

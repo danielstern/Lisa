@@ -145,6 +145,11 @@ var moment = {
       response += " to " + preposit(moment.to, _.clone(context));
     }
 
+    if (moment.from) {
+      response += " from " + preposit(moment.from, _.clone(context));
+    }
+
+
     if (moment.said) {
       response += brain.speech.lightPause();
       response += ' "' + moment.said  + '" ';

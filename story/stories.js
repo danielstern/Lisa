@@ -112,22 +112,6 @@ var _stories = [
           {
             subject:'I',action:'meet', object:'$old:man$'
           },
-       /*   {
-            subject:'referenced|man',action:'say', to:'me', 
-              said:'Good morning, Jack.',
-          },
-          {
-            subject:'I',action:'say', 
-              said:'Good morning to you.',
-          },
-          {
-            subject:'referenced|man',action:'say',
-              said:'Well, Jack, and where are you off to?',
-          },
-          {
-            subject:'I',action:'say', 
-              said:"I'm going to market to sell our cow there.",
-          },*/
           {
             dialogue:{
               between:{first:'referenced|man',second:'me'},
@@ -136,9 +120,15 @@ var _stories = [
                 'Good morning to you.',
                 'Well, Jack, and where are you off to?',
                 "I'm going to market to sell our cow there.",
+                "Oh, you look the proper sort of chap to sell cows. I wonder if you know how many beans make five.",
+                "Two in each hand and one in your mouth.",
+                "Right you are. And here they are, the very beans themselves.",
               ]
             }
-          }
+          },
+          {
+            subject:'referenced|man',action:'pull', object:'the|beans', from: 'his|pocket'
+          },
         ]
       },
     ]
