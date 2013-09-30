@@ -26,10 +26,10 @@ var _stories = [
     sequence:
     [
       {
-        subject:'i',action:'is', object:"fast"
+        subject:'I',action:'is', object:"fast"
       },
       {
-        subject:'i',action:'jump', over:"candlestick"
+        subject:'I',action:'jump', over:"candlestick"
       },
       {
         rel:'but',subject:'referenced|candlestick',action:'burn', object:'me'

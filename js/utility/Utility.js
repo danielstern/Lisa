@@ -173,8 +173,16 @@ _.mixin({
 
   bare: function(string) {
 
+    if (!string) return string;
     string = string.replace(/[\s,;.:!?'"']+/,'');
+    string = string.toLowerCase();
     return string;
+
+  },
+
+  compare: function(string1, string2) {
+
+    return _.bare(string1) == _.bare(string2);
 
   },
 

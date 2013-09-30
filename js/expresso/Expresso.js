@@ -72,7 +72,7 @@ var Expresso = function (brain) {
 
     context = context || {};
 
-   console.log('Prepositing 1:', word, context)
+ //  console.log('Prepositing 1:', word, context)
 
     // if preposit is passed an array, assume the first item in the array is the word
     if (word instanceof Array) word = word[0];
