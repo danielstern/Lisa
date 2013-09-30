@@ -10,7 +10,7 @@ var moment = {
 
     if (moment.dialogue) {
 
-      console.log('this is a dialogue...');
+     // console.log('this is a dialogue...');
       var dialogue = moment.dialogue;
       var firstSpeaking = true;
 
@@ -24,7 +24,7 @@ var moment = {
         firstSpeaking = !firstSpeaking;
 
         dialogueMoment.said = phrase;
-        console.log('new moment?',dialogueMoment);
+       // console.log('new moment?',dialogueMoment);
 
         response += express.moment(dialogueMoment,context);
         response += brain.speech.hardPause();

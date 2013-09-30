@@ -145,7 +145,7 @@ function Prepositor() {
     var response = preposition + (returnWord ? word : '');
     if (response == 'me' && !context.objective && !context.asBundle) response = 'I'; // English is a hacky language.
 
-     console.log('Prepositing 2:', word, idea, context, response)
+ //    console.log('Prepositing 2:', word, idea, context, response)
     return response;
 
   }
