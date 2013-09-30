@@ -3,23 +3,22 @@ function Conjugator() {
   cj.allVerbs = {};
   var tl = cj.allVerbs;
 
-  cj.learn = function (lexiaryOrWord, verb) {
-    if (verb) var word = lexiaryOrWord;
-    if (verb) {
-      cj.allVerbs[word] = verb;
-      return;
-    }
-
-    var lexiary = lexiaryOrWord;
+  cj.learn = function (lexiary, verb) {
+    
     var verbs = _.pairs(lexiary);
 
     _.each(verbs, function (verb) {
-      cj.learn(verb[0], verb[1]);
+      cj.absorb(verb[0], verb[1]);
     })
 
   }
 
-  cj.learn(verbs);
+  cj.absorb = function (word, verb) {
+    cj.allVerbs[word] = verb;
+    return;
+  }
+
+  cj.learn(_verbs);
 
   cj.getWord = function (verb, tense, context) {
 

@@ -24,8 +24,9 @@ function Lexicator() {
   	lx.things.push(word);	
   }
 
-  lx.learn(Lexicon.things);
-  lx.learn(Lexicon.attributes);
+  lx.learn(_things);
+  lx.learn(_attributes);
+  lx.learn(_sayings);
 
   lx.getWord = function (word) {
   	if (!word) return;

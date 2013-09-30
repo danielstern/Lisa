@@ -1,4 +1,4 @@
-var verbs = {
+var _verbs = {
   is:{
     past:{
       singular:'was',
