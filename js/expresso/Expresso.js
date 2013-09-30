@@ -149,6 +149,12 @@ var Expresso = function (brain) {
         context.possessive = true;
         context.possessor = 'self';
         break;
+      case 'his':
+        context.possessive = true;
+        context.possessor = 'male';
+      case 'her':
+        context.possessive = true;
+        context.possessor = 'female';
       case 'referenced':
       case 'main':
         context.referenced = true;
@@ -230,6 +236,12 @@ var Expresso = function (brain) {
         case 'self':
         case 'I':
           preposition = 'my';
+          break;
+        case 'male':
+          preposition = 'his';
+          break;
+        case 'female':
+          preposition = 'her';
           break;
         default:
           preposition = 'their'

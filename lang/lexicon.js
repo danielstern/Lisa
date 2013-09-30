@@ -21,12 +21,17 @@ var Lexicon = {
     {
       word:'mother',
       extends:['person'],
+      gender:['female'],
       plural:'mothers'
     },
     {
       word:'cow',
       extends:['animal'],
       plural:'cows'
+    },
+    {
+      word:'hand',
+      plural:'hands'
     },
     {
       word:'name',

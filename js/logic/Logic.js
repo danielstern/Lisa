@@ -101,7 +101,7 @@ function Logic(brain) {
 
     var sidewaysIdea = _.sample(relatedThings);
 
-    response += logic.brain.speech.express.inheritance([seed,sidewaysIdea], seed.extends[0]);
+    response += logic.brain.speech.express.inheritance([seed, sidewaysIdea], seed.extends[0]);
 
     if (!sidewaysIdea) return [response, seed];
 
@@ -116,27 +116,28 @@ function Logic(brain) {
     var response = '';
 
 
-  
+
     var stories = brain.memory.long.getStories(_.crack(seed.word));
     var allComments = [];
 
-    _.each(stories,function (story){
-      _.each(story.sequence,function(moment) {
+    _.each(stories, function (story) {
+      _.each(story.sequence, function (moment) {
         var comments = logic.getComments(moment);
         allComments = allComments.concat(comments);
 
-       })
-   })
+      })
+    })
 
 
     var allCommentsAboutSubject = _.filter(allComments,
-      function(comment){
-        if (logic.brain.whatIs(comment.subject,true) == seed) return true;})
+      function (comment) {
+        if (logic.brain.whatIs(comment.subject, true) == seed) return true;
+      })
 
 
     var conclusion = _.sample(allCommentsAboutSubject) || '';
     if (!conclusion) return '';
-     var remark = logic.brain.speech.express.generality(conclusion.subject, conclusion.attribute);
+    var remark = logic.brain.speech.express.generality(conclusion.subject, conclusion.attribute);
     response = remark;
 
     return response || '';
@@ -180,7 +181,7 @@ function Logic(brain) {
 
 
     response = '';
-   // response += brain.speech.hardPause();
+    // response += brain.speech.hardPause();
 
     stories = brain.memory.long.getStories(seed);
     var story = _.sample(stories);
@@ -189,39 +190,34 @@ function Logic(brain) {
 
     brain.memory.short.remember(storyIdeas);
 
-    console.log('tell story?',seed,stories);
+    console.log('tell story?', seed, stories);
     if (!story) return response;
 
-      if (_.has(story, 'epic')) {
+    if (_.has(story, 'epic')) {
 
-        console.log('epic...', story.epic)
-        var epic = story.epic;
-  
-        _.each(epic, function(parable) {
+      console.log('epic...', story.epic)
+      var epic = story.epic;
 
-             console.log('parable..?', parable);               
+      _.each(epic, function (parable) {
 
-             _.each(parable.sequence, function(sequence) {
+        console.log('parable..?', parable);
 
-                      console.log('sequence?', sequence);     
+        _.each(parable.sequence, function (sequence) {
 
+          console.log('sequence?', sequence);
 
-                             var phrase = tellStoryMoment(sequence);
+          var phrase = tellStoryMoment(sequence);
 
-                                console.log('phrase?', phrase);     
-                             response += phrase;
-                             response += brain.speech.softPause();
-
+          console.log('phrase?', phrase);
+          response += phrase;
+          response += brain.speech.softPause();
 
 
-              });
-  
-
-
+        });
 
       });
-         response += brain.speech.hardPause();
-      }
+      response += brain.speech.hardPause();
+    }
 
 
 
@@ -236,7 +232,7 @@ function Logic(brain) {
 
       var phrase = '';
       if (!moment) return phrase;
-     //console.log('tellstorymoment...',moment)
+      //console.log('tellstorymoment...',moment)
       if (brain.memory.short.recall(moment)) return phrase;
       var context = moment.context || {};
       context.time = context.time || 'past';

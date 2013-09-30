@@ -127,8 +127,12 @@ _.mixin({
   stringNeedsClosure: function(string) {
 
     var lastCharOfString = string.toString().charAt(string.length - 1);
+    console.log('string needs closure',string)
+    var pattern = /[.,"']/;
+    var patternMatch = pattern.exec(lastCharOfString);
+    console.log('patternmatch?',patternMatch)
     //console.log('stringNeedsClosure?',string,lastCharOfString,lastCharOfString.indexOf(/[.,"']/),lastCharOfString.indexOf(/[.,"']/) == -1);
-    return lastCharOfString.indexOf(/[.,"']/) == -1;
+    return patternMatch ? false : true;
 
   },
 
