@@ -37,7 +37,7 @@ var _stories = [
     ]
   },
   {
-    name:'3 - the one i heard about the muffin man',
+    name:'3 - the one where i heard about the muffin man',
     sequence:
     [
       {
