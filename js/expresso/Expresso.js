@@ -1,28 +1,28 @@
 var Expresso = function (brain) {
-  express = this;
-  express.brain = brain;
-  express.conjugator = new Conjugator();
-  express.lexicator = new Lexicator();
-  express.prepositor = new Prepositor();
-  window.cj = express.conjugator;
-  window.lx = express.lexicator;
+  var expresso = this;
+  expresso.brain = brain;
+  expresso.conjugator = new Conjugator();
+  expresso.lexicator = new Lexicator();
+  expresso.prepositor = new Prepositor();
+  window.cj = expresso.conjugator;
+  window.lx = expresso.lexicator;
 
   
-  express.learn = function (expression, operation) {
+  expresso.learn = function (expression, operation) {
     if (operation) {
-      express[expression] = operation;
+      expresso[expression] = operation;
       return;
     }
 
     var expressions = _.pairs(expression);
 
     _.each(expressions, function (expression) {
-      express.learn(expression[0], expression[1]);
+      expresso.learn(expression[0], expression[1]);
     })
 
   }
 
-  express.conjugate = function (seed, verb, tense, context) {
+  expresso.conjugate = function (seed, verb, tense, context) {
 
     // console.log('Expresso is Conjugating: ',seed, verb, tense, context);
 
@@ -45,7 +45,7 @@ var Expresso = function (brain) {
     var synonyms = _.getVerbSynonyms(verb);
     if (synonyms && synonyms[0]) verb = _.sample(synonyms);
 
-    verb = express.conjugator.getWord(verb, tense, context)
+    verb = expresso.conjugator.getWord(verb, tense, context)
 
     response = verb;
 
@@ -53,7 +53,7 @@ var Expresso = function (brain) {
   }
 
 
-  express.verbalize = function (seed, relationship) {
+  expresso.verbalize = function (seed, relationship) {
 
     var response = '';
 
@@ -75,7 +75,7 @@ var Expresso = function (brain) {
     return response;
   }
 
-  express.synonomize = function (word) {
+  expresso.synonomize = function (word) {
 
     var idea = brain.whatIs(word, true);
    //  console.log('Synonomize,',word,idea)
@@ -86,14 +86,14 @@ var Expresso = function (brain) {
     return synonym;
   }
 
-  express.preposit = express.prepositor.preposit;
+  expresso.preposit = expresso.prepositor.preposit;
 
-  express.learn(moment);
-  express.learn(expressions);
+  expresso.learn(moment);
+  expresso.learn(expressions);
 
-  window.preposit = express.preposit;
-  window.lexicate = express.lexicate;
-  window.verbalize = express.verbalize;
-  window.conjugate = express.conjugate;
-  window.synonomize = express.synonomize;
+  window.preposit = expresso.preposit;
+  window.lexicate = expresso.lexicate;
+  window.verbalize = expresso.verbalize;
+  window.conjugate = expresso.conjugate;
+  window.synonomize = expresso.synonomize;
 }

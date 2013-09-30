@@ -76,9 +76,9 @@ function Prepositor() {
       }
     }
 
-    if (typeof idea == 'string') idea = express.brain.whatIs(idea, true)
+    if (typeof idea == 'string') idea = brain.whatIs(idea, true)
 
-    idea = idea || express.brain.whatIs(word, true) || {};
+    idea = idea || brain.whatIs(word, true) || {};
     word = word || idea.word;
 
     // if the word is the plural form of the word, give it a plural pronoun, i.e., "skeletons" automatically get a plural pronoun
