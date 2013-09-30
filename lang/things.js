@@ -75,6 +75,11 @@ var _things = [
       pronoun:'none',
     },
     {
+      word:'home',
+      plural:'homes',
+      pronoun:'none',
+    },
+    {
       word:'me',
       see:'self',
       pronoun:'none',

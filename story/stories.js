@@ -129,6 +129,28 @@ var _stories = [
           {
             subject:'referenced|man',action:'pull', object:'the|beans', from: 'his|pocket'
           },
+          {
+            dialogue:{
+              between:{first:'referenced|man',second:'me'},
+              said:[
+                "I don't mind doing a swop with you--your cow for these beans",
+                "Go along. Wouldn't you like it?",
+                "Ah! you don't know what these beans are, if you plant them overnight, by morning they grow right up to the sky.",
+                "Really? You don't say so..",
+                "Yes, that is so, and if it doesn't turn out to be true you can have your cow back.",
+                "Right.",
+              ]
+            }
+          },
+          {
+            subject:'I',action:'give', object:'the|cow', to: 'referenced|man',
+          },
+          {
+            subject:'referenced|man',action:'give', object:'the|beans', to: 'me',
+          },
+          {
+            subject:'I',action:'go', object:'home', 
+          },
         ]
       },
     ]
