@@ -4,9 +4,8 @@ var moment = {
 
     var response = '';
     context = context || {};
-          context.objective = false;
+    context.objective = false;
 
-  // console.log('Telling story moment 1,',moment,context)
 
     // If the moment has relevance, express it...
     switch (moment.rel) {
@@ -135,10 +134,7 @@ var moment = {
       response += " too ";
     }
 
-   
-
     return response;
   },
-
 
 }
