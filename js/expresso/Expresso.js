@@ -62,7 +62,10 @@ var Expresso = function (brain) {
   express.synonomize = function (word) {
 
     var idea = brain.whatIs(word, true);
-    var synonym = _.sample(idea.synonyms || []) || idea.word;
+    console.log('Synonomize,',word,idea)
+    if (_.isEmpty(idea.synonyms)) return word;
+    var synonyms = idea.synonyms;
+    var synonym = _.sample(synonyms.concat([word]));
 
     return synonym;
   }

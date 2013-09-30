@@ -59,7 +59,7 @@ function Brain(host) {
       idea = extractIdea(_.sample(context.ideas));
     }
 
-    console.log('What is: ', word, idea, context);
+    //console.log('What is: ', word, idea, context);
 
 
     return _.clone(idea);
@@ -81,7 +81,8 @@ function Brain(host) {
     response = ponder[0];
     brain.seed = ponder[1];
 
-    console.log('Ponder',idea,response)
+    //console.log('Ponder',idea,response)
+
     if (!response) response = brain.speech.express.pause();
 
     response = brain.speech.prettify(response);
