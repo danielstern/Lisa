@@ -193,18 +193,20 @@ function Logic(brain) {
     if (!story) return response;
 
       if (_.has(story, 'epic')) {
-      console.log('this is an epic...');
-      console.log('seq?',story);
-        _.each(story.epic, function(parable) {
 
-          _.each(parable.sequence, function(moment) {
+        console.log('epic...', story.epic[0].sequence)
+        var epic = story.epic[0].sequence;
+  
+        _.each(epic, function(parable) {
 
-             var phrase = tellStoryMoment(moment);
+                console.log('parable..?', parable)
+               
+
+            console.log('telling parable...', parable)
+
+             var phrase = tellStoryMoment(parable);
              response += phrase;
              response += brain.speech.softPause();
-              var comment = logic.comment(moment);
-
-         });
 
       });
       }
@@ -213,7 +215,6 @@ function Logic(brain) {
       var phrase = tellStoryMoment(moment);
       response += phrase;
       response += brain.speech.softPause();
-      var comment = logic.comment(moment);
 
     });
 

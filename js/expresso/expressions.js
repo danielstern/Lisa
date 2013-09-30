@@ -23,7 +23,6 @@ var standardExpressions1 = {
         return preposit(miniSeed,{plural:true,pronoun:'plural'});
       })
 
-      console.log('Its an array. Things?' , things);
       prepositedSubjects = _.toSentence(things);
 
     }
@@ -36,9 +35,9 @@ var standardExpressions1 = {
     if (prepositedSubjects) {
       response = prepositedSubjects + " " + conjugate(seed, 'is', 'present', 'plural') + " " + preposit(quality,{pronoun: 'plural'});
     } else {
-       console.log('no preposited subjects...',seed,quality)
+   
        response = preposit(seed, {pronoun: 'plural'}) + " " + conjugate(seed, 'is', 'present', context) + " " + preposit(quality,{pronoun: objectForm});
-       console.log('response?',response)
+    
     }
     return response;
   },
@@ -56,7 +55,7 @@ var standardExpressions1 = {
     var response = '';
     context = context || {};
 
-    console.log('Telling story moment 1,',moment,context)
+//    console.log('Telling story moment 1,',moment,context)
 
     // If the moment has relevance, express it...
     switch (moment.rel) {

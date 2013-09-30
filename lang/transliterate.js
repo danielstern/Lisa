@@ -22,6 +22,21 @@ var transliterate = {
   },
 
 
+  have:{
+    past:{
+      singular:'had',
+      plural:'had'
+    },
+    present:{
+      singular:'has',
+      plural:'have'
+    }
+  },
+
+
+
+
+
 
 
   need:{

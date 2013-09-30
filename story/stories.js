@@ -54,8 +54,15 @@ var _stories = [
         sequence:
         [
           {
-             subject:'my|mother',action:'is', object:'poor'
+             subject:'my|mother',action:'is', object:'poor',
+           //  subject:'$name:cow$',action:'is', object:'Milky-White'
           },
+          {
+            subject:'my|mother',action:'have', object:'cow',
+          },
+          {
+             subject:'$name:cow$',action:'is', object:'Milky-White'
+          }
         ]
       },
     ]

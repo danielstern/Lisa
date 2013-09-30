@@ -24,6 +24,20 @@ var Lexicon = {
       plural:'mothers'
     },
     {
+      word:'cow',
+      extends:['animal'],
+      plural:'cows'
+    },
+    {
+      word:'name',
+      plural:'names'
+    },
+    {
+      word:'Milky-White',
+      extends:['cow'],
+      pronoun:'proper'
+    },
+    {
       word:'advice',
       pronoun:'none',
     },
