@@ -23,7 +23,6 @@ function Counterposer (brain) {
 
       if (!command) return;
 
-    console.log('Executing command:' + command);
 
       switch (command) {
 

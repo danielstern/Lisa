@@ -328,6 +328,16 @@ var _verbs = {
     }
   },
 
+  climb:{
+    past:{
+      singular:'climbed',
+      plural:'climbed'
+    },
+    present:{
+      singular:'climbs',
+      plural:'climb'
+    }
+  },
   arrive:{
     past:{
       singular:'arrived',
@@ -336,7 +346,8 @@ var _verbs = {
     present:{
       singular:'arrives',
       plural:'arrive'
-    }
+    },
+    synonyms:[]
   },
 
   buy:{

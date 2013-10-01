@@ -68,7 +68,7 @@ function Brain(host) {
 
   brain.learn = function (package) {
 
-      console.log('learning,',package);
+ //     console.log('learning,',package);
       if (package.packageType == 'verbs') {
         brain.speech.express.conjugator.learn(package)
         return;

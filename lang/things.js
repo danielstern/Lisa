@@ -23,6 +23,12 @@ var _things = [
       pronoun:'force'
     },
     {
+      word:'sky',
+      plural:'skies',
+      extends:['place'],
+      pronoun:'none'
+    },
+    {
       word:'mother',
       extends:['person'],
       gender:['female'],

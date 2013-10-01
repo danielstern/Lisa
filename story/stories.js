@@ -200,6 +200,24 @@ var _stories = [
           {
             subject:'$big:beanstalk$',action:'is', in:'the|garden', 
           },
+          {
+            subject:'the|beanstalk',action:'is', object:'near', to:'my|window' 
+          },
+          {
+            subject:'I',action:'jump', to:'the|beanstalk' 
+          },
+          {
+            subject:'I',action:'climb', object:'the|beanstalk' 
+          },
+        ]
+      },
+      {
+        name:'I-6 - the one where i get to the sky',
+        sequence:
+        [
+          {
+            subject:'I',action:'arrive', at:'the|sky' 
+          },
         ]
       }
     ]
