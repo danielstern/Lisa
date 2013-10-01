@@ -57,51 +57,10 @@
           <button class='btn btn-block'>Keep Talking</button>
         </form>
       </div>
-       <div class='span3'>
-   <!--      <table class='table'>
-            <tr>
-              <th>Thinking About</th>
-              <td>{{thought}}</td>
-            </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th>
-                  Recently
-                </th>
-                <td>
-                  <p ng-repeat="thing in recentThings|limitTo:3">
-                    {{thing.word}}
-                 </p>
-                </td>
-              </tr>
-               
-              <tr>
-                <td colspan='2'>
-                  
-                </td>
-              </tr>
-            </tbody>
-         </table>
-      </div>
       <div class='span3'>
-        <img src='../misc/nick.jpg' width='200px' height='auto'>
-        <table class='table'>
-          <tr>
-            <th>
-              Random Things
-            </th>
-            <td>
-              <p ng-repeat="thing in randomThings|limitTo:3">
-                {{thing.word}}
-             </p>
-            </td>
-          </tr>
-        </table>-->
+        <img src='../misc/lisa.jpg' width='200px' height='auto'>
       </div>
-      
     </div>
-
   </div>
 </body>
 
@@ -116,13 +75,9 @@
       $Lisa.learn(_sayings);
       $Lisa.learn(_verbs);
 
-      $scope.thought = 'Unknown';
-
       $scope.saying = '...'
-      $scope.randomThings = _.sample(brain.lexicon.things, 3)
 
       $scope.sayTo = 'mother';
-      $scope.recentThings = [];
 
       $scope.reply = function() {
 
@@ -130,15 +85,8 @@
         $scope.saying = reply[0];
         if (!reply[1])    return;
         $scope.thought = reply[1].word;
-        $scope.recentThings.push(reply[1] || '?');
-
-        $scope.recentThings = _.last($scope.recentThings, 3);
-              $scope.sayTo = '';
-
-      }
-
+     }
   }])
-  
 
 </script>
 <style>

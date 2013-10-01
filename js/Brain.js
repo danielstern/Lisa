@@ -19,6 +19,8 @@ function Brain(host) {
     var response = '';
 
     var idea = brain.whatIs(words, true);
+
+    console.log('processing...',words,idea)
     response = brain.ponder(idea, true);
 
     return [response, idea];
@@ -51,12 +53,19 @@ function Brain(host) {
 
   brain.whatIs = function (word) {
 
-    var idea = brain.extractIdea(_.crack(word));
+    if (!word) return;
 
+    var idea = brain.extractIdea(_.crack(word));
     var context = brain.analyze(word);
 
-    if (context.ideas && context.ideas.length == 1) {
-      idea = brain.extractIdea(_.sample(context.ideas));
+    if (context.ideas && !idea) {
+      var embeddedWord = _.find(context.ideas,
+      function(word) {
+        console.log('what is...',word)
+         if (brain.extractIdea(word)) return true;
+      })
+
+      idea = brain.extractIdea(embeddedWord);
     }
 
     //console.log('What is: ', word, idea, context);
