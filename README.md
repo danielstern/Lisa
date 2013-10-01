@@ -1,10 +1,5 @@
 Lisa
 ====
-```javascript
-var lisa = new Lisa();
-lisa.thinks('You know nothing, Jon Snow.');
-// LISA: You know nothing, Jon Snow.
-```
 
 About
 --------------------------

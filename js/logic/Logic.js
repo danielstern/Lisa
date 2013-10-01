@@ -21,7 +21,7 @@ function Logic(brain) {
     stories = brain.memory.long.getStories(seed);
     var story = _.sample(stories);
 
-    var storyIdeas = _.shuffle(_.extractStory(story));
+    var storyIdeas = _.shuffle(ex.extractStory(story));
 
     brain.memory.short.remember(storyIdeas);
 

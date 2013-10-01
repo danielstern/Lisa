@@ -1,9 +1,10 @@
 var Expresso = function (brain) {
   var expresso = this;
   expresso.brain = brain;
-  expresso.conjugator = new Conjugator();
-  expresso.lexicator = new Lexicator();
-  expresso.prepositor = new Prepositor();
+  expresso.conjugator = new Conjugator(brain);
+  expresso.lexicator = new Lexicator(brain);
+  expresso.prepositor = new Prepositor(brain);
+  expresso.extractor = new Extractor(brain);
   window.cj = expresso.conjugator;
   window.lx = expresso.lexicator;
 
@@ -96,5 +97,6 @@ var Expresso = function (brain) {
   window.verbalize = expresso.verbalize;
   window.conjugate = expresso.conjugate;
   window.synonomize = expresso.synonomize;
+  window.extractor = expresso.extractor;
   window.express = expresso;
 }
