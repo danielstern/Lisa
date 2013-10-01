@@ -6,14 +6,14 @@ function Logic(brain) {
   logic.brain = brain;
   var response = '';
 
-  logic.counterpose = counterpose;
-  window.logic = this;
+  logic.counterposer = new Counterposer(brain);
 
   var _lisaPatterns = ['tell-story'];
 
   logic.storyteller = new Storyteller(brain);
   logic.tellStory = logic.storyteller.tellStory;
 
+  logic.counterpose = logic.counterposer.counterpose;
 
 
   logic.scopeUp = function (seed) {
