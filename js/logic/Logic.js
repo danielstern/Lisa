@@ -63,8 +63,11 @@ function Logic(brain) {
 
     var excerpt = _.sample(excerpts);
 
-    var remark = brain.speech.express.moment(excerpt);
-    console.log('getting story excerpt...',seed, stories, excerpt,remark);
+    var context = {};
+    context.time = 'past';
+    context.once = true;
+    var remark = brain.speech.express.moment(excerpt,context);
+   // console.log('getting story excerpt...',seed, stories, excerpt,remark);
     //console.log('get story excerpt')
 
     return remark;

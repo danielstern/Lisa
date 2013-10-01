@@ -42,7 +42,7 @@ function Momento(brain) {
 
 
     // If the moment has relevance, express it...
-    switch (moment.rel) {
+    switch (context.once || moment.rel) {
 
     case 'but':
       switch (Math.ceil(Math.random() * 2)) {
@@ -177,10 +177,17 @@ function Momento(brain) {
       response += " during " + preposit(moment.during);
     }
 
+    if (context.once) {
+      response += brain.speech.lightPause();
+      response += "once";
+    }
+
     if (moment.too) {
           response += brain.speech.lightPause();
       response += " too ";
     }
+
+    console.log("Story moment",moment,context);
 
     return response;
   }
