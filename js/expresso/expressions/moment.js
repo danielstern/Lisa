@@ -5,6 +5,9 @@ var moment = {
     var response = '';
     context = context || {};
     context.objective = false;
+    var preposit = express.preposit;
+    var synonomize = express.synonomize;
+    var conjugate = express.conjugate;
 
   //  console.log('tell story moment...',moment,context);
 
@@ -87,14 +90,14 @@ var moment = {
       var generalContext;
       if (!logic.brain.whatIs(moment.subject)) generalContext = 'plural';
       generalContext = generalContext || (logic.brain.whatIs(moment.subject) && logic.brain.whatIs(moment.subject).plural) ? 'plural' : 'singular';
-      response += preposit(moment.subject,{pronoun:'plural'}) + " " + conjugate(moment.subject, moment.action, 'present', generalContext);
+      response += express.preposit(moment.subject,{pronoun:'plural'}) + " " + express.conjugate(moment.subject, moment.action, 'present', generalContext);
     } 
     else {
 
       var subjectContext = _.clone(context);
       var subjectIdea = logic.brain.whatIs(_.crack(moment.subject, true)) || {};
       subjectContext.pronoun = subjectIdea.pronoun;
-      response += preposit(moment.subject, subjectContext) + " " + conjugate(moment.subject, moment.action, context.time,'singular');
+      response += express.preposit(moment.subject, subjectContext) + " " + express.conjugate(moment.subject, moment.action, context.time,'singular');
     }
 
     context.objective = true;

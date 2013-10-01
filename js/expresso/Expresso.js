@@ -104,11 +104,6 @@ var Expresso = function (brain) {
   expresso.learn(moment);
   expresso.learn(expressions);
 
-  window.preposit = expresso.preposit;
-  window.lexicate = expresso.lexicate;
-  window.verbalize = expresso.verbalize;
-  window.conjugate = expresso.conjugate;
-  window.synonomize = expresso.synonomize;
-  window.extractor = expresso.extractor;
   window.express = expresso;
+
 }

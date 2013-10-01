@@ -2,6 +2,7 @@ function Prepositor() {
 
 	var pt = this;
 
+
 	pt.preposit = function (word, context) {
 
     context = context || {};
@@ -105,7 +106,7 @@ function Prepositor() {
     // if the idea is an adjective, give it no pronoun and grab a synonym of it, for fun
     if (idea.form == "adjective") {
       idea.pronoun = 'none'
-      word = synonomize(idea.word);
+      word = express.synonomize(idea.word);
     }
    // console.log('Prepositing 2:', word, idea, context)
 
@@ -218,6 +219,8 @@ function Prepositor() {
     return prep;
 
   }
+
+  window.preposit = pt.preposit;
 
 
 }
