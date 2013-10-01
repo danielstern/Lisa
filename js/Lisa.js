@@ -26,6 +26,9 @@
 
     }
 
+
     Lisa.brain = new Brain(Lisa);
     Lisa.ponder = Lisa.brain.ponder;
+    
+    Lisa.learn = lisa.brain.learn;
   }

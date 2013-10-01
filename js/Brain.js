@@ -51,12 +51,12 @@ function Brain(host) {
 
   brain.whatIs = function (word) {
 
-    var idea = extractIdea(_.crack(word));
+    var idea = brain.extractIdea(_.crack(word));
 
     var context = brain.analyze(word);
 
     if (context.ideas && context.ideas.length == 1) {
-      idea = extractIdea(_.sample(context.ideas));
+      idea = brain.extractIdea(_.sample(context.ideas));
     }
 
     //console.log('What is: ', word, idea, context);
@@ -64,6 +64,14 @@ function Brain(host) {
 
     return _.clone(idea);
   }
+
+
+  brain.learn = function (package) {
+
+      console.log('learning,',package);
+      brain.speech.express.lexicator.learn(package);
+  }
+
 
   brain.ponder = function (idea) {
 
@@ -90,13 +98,14 @@ function Brain(host) {
     return response;
   }
 
+  brain.extractIdea= function(word) {
+
+    var idea;
+
+    idea = brain.lexicon.getWord(word); 
+
+    return idea;
+  }
+
 }
 
-function extractIdea(word) {
-
-  var idea;
-
-  idea = brain.lexicon.getWord(word); 
-
-  return idea;
-}
