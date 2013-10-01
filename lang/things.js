@@ -50,13 +50,29 @@ var _things = [
       plural:'beds'
     },
     {
+      word:'sleep',
+      pronoun:'force'
+    },
+    {
       word:'bean',
       extends:['vegetable'],
       plural:'beans'
     },
     {
+      word:'beanstalk',
+      plural:'beanstalks'
+    },
+    {
+      word:'garden',
+      plural:'gardens'
+    },
+    {
       word:'pocket',
       plural:'pockets'
+    },
+    {
+      word:'garden',
+      plural:'gardens'
     },
     {
       word:'hand',

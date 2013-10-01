@@ -94,7 +94,7 @@ var moment = {
       var subjectContext = _.clone(context);
       var subjectIdea = logic.brain.whatIs(_.crack(moment.subject, true)) || {};
       subjectContext.pronoun = subjectIdea.pronoun;
-      response += preposit(moment.subject, subjectContext) + " " + conjugate(moment.subject, moment.action, context.time);
+      response += preposit(moment.subject, subjectContext) + " " + conjugate(moment.subject, moment.action, context.time,'singular');
     }
 
     context.objective = true;

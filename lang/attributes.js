@@ -27,6 +27,11 @@ var _attributes = [
       synonyms:['wizened','ancient']
     },
     {
+      word:'big',
+      form:'adjective',
+      synonyms:['large','giant','huge','immense']
+    },
+    {
       word:'dark',
       form:'adjective',
       synonyms:['dim','shadowy']

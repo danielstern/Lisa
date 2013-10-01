@@ -194,6 +194,12 @@ var _stories = [
           {
             subject:'i',action:'jump', out:'force|bed', 
           },
+          {
+            subject:'i',action:'go', to:'the|window', 
+          },
+          {
+            subject:'$big:beanstalk$',action:'is', in:'the|garden', 
+          },
         ]
       }
     ]

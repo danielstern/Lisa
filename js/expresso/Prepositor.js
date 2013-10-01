@@ -35,6 +35,7 @@ function Prepositor() {
       }
 
       var newWordContext = {};
+      if (!propertyIdea) propertyIdea = {};
       if (propertyIdea.form == 'adjective') newWordContext.pronoun = 'none';
       
       word = preposit(property, {
