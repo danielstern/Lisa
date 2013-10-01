@@ -99,15 +99,7 @@ _.mixin({
   },
 
 
-  extractIdeas: function(statement) {
 
-    statement = statement || '';
-    ideas = statement.split(/[\s,;.:!?'"']+/);
-    ideas = _.map(ideas,function(idea){return idea.toString().toLowerCase()});
-    ideas = _.without(ideas, '','are','is','and','of','me','with','what','without','not','generally','who','as','from','well','an','but','after','he','she','although','after','before','it','would','on','a','an','then','the','to','by','be','need','so','you','through','that','more','that’s','his','her','there','their','was','in');
-    return ideas;
-
-  },
 
   stringContains: function(string, characters) {
 
@@ -150,17 +142,6 @@ _.mixin({
 
   },
 
-  getVerbSynonyms: function(verb) {
-    var cj = window.cj;
-    idea = cj.getIdea(verb);
-    //console.log('get verb synonyms...',verb,cj,idea)
-    if (!idea || !idea.synonyms) return [verb];
-    var synonyms = idea.synonyms;
-   // console.log('returning synonyms...',synonyms)
-    return synonyms;
-
-
-  },
 
   probably: function(string1, string2, variance) {
 

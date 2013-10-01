@@ -23,6 +23,18 @@ var Expresso = function (brain) {
 
   }
 
+  expresso.getVerbSynonyms = function(verb) {
+    var cj = expresso.conjugator;
+    idea = cj.getIdea(verb);
+    if (!idea || !idea.synonyms) return [verb];
+    var synonyms = idea.synonyms;
+   // console.log('returning synonyms...',synonyms)
+    return synonyms;
+
+
+  },
+
+
   expresso.conjugate = function (seed, verb, tense, context) {
 
     // console.log('Expresso is Conjugating: ',seed, verb, tense, context);
@@ -43,7 +55,7 @@ var Expresso = function (brain) {
       if (!seed.plural) context = 'singular';
     }
 
-    var synonyms = _.getVerbSynonyms(verb);
+    var synonyms = express.getVerbSynonyms(verb);
     if (synonyms && synonyms[0]) verb = _.sample(synonyms);
 
     verb = expresso.conjugator.getWord(verb, tense, context)

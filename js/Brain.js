@@ -41,7 +41,7 @@ function Brain(host) {
     }
     if (_.stringContains(statement, ['who', 'what', 'which', 'why', 'when'])) context.request = +1;
 
-    var ideas = _.extractIdeas(statement);
+    var ideas = ex.extractIdeas(statement);
 
     context.ideas = ideas;
 
