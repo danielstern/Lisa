@@ -47,6 +47,39 @@ var Extractor = function(brain) {
     return ideas;
   }
 
+  ex.getRelevantMoments = function (stories, seed) {
+
+    var ideas = ex.extractStory(stories[0])
+    var story = stories[0];
+    console.log('get relevant moments...',story,seed);
+
+    var storyMoments = ex.storyToMoments(story)
+    var relevantMoments = _.filter(storyMoments,function(moment){
+      console.log('is this a relevant moment?',moment);
+    });
+  }
+
+  ex.storyToMoments = function(story) {
+//    console.log('storyMoments...',story);
+    var moments = [];
+
+    if (_.has(story, 'epic')) {
+        _.each(story.epic, function(parable) {
+          _.each(parable.sequence, function(moment) {
+              moments.push(moment);     
+            });
+
+        });
+    }
+
+    _.each(story.sequence, function(moment) {
+      moments.push(moment);
+    });
+
+    return moments;
+
+  }
+
   ex.sluice = function(ideas){
 
     var newIdeas = [];

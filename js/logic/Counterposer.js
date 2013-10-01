@@ -32,6 +32,11 @@ function Counterposer (brain) {
           thought = brain.speech.express.formalGreeting();
           break;
 
+        case 'story-excerpt':
+          thought = logic.getStoryExcerpt(seed);
+          break;
+
+
         case 'draw-conclusion':
           thought = logic.drawConclusion(seed);
           break;

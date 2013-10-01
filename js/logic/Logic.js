@@ -55,6 +55,16 @@ function Logic(brain) {
     return [response, seed];
   }
 
+  logic.getStoryExcerpt = function (seed) {
+
+    var stories = brain.memory.long.getStories(seed);
+    //console.log('getting story excerpt...',seed, stories);
+    var excerpt = brain.speech.express.extractor.getRelevantMoments(stories,seed);
+    console.log('getting story excerpt...',seed, stories, excerpt);
+
+    
+  }
+
   logic.scopeSideways = function (seed) {
 
     var response = '';

@@ -12,8 +12,8 @@ function Brain(host) {
 
   brain.patterns = [
     //['tell-story'],
-    //['demystify'],
-    ['draw-conclusion'],
+    //['draw-conclusion'],
+    ['story-excerpt'],
   ];
 
   brain.process = function (words) {
