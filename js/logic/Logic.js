@@ -95,13 +95,13 @@ function Logic(brain) {
       })
     })
 
-    /*var allCommentsAboutSubject = _.filter(allComments,
+    var allCommentsAboutSubject = _.filter(allComments,
      function (comment) {
-        if (logic.brain.whatIs(comment.subject, true) == seed) return true;
-      })*/
+        if (logic.brain.whatIs(comment.subject).word == seed.word) return true;
+    })
 
-    var conclusion = _.sample(allComments) || '';
-    //console.log('expressing conclusion...',conclusion,allCommentsAboutSubject)
+    var conclusion = _.sample(allCommentsAboutSubject) || '';
+    //console.log('expressing conclusion...',conclusion,allComments,allCommentsAboutSubject)
     if (!conclusion) return "I can't draw any conclusions.";
     var remark = logic.brain.speech.express.generality(conclusion.subject, conclusion.attribute);
     response = remark;

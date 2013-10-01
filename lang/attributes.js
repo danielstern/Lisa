@@ -64,6 +64,13 @@ var _attributes = [
       form:'adjective',
     },
     {
+      word:'fun',
+      when:[
+        {action:'climb',applies:'object'},
+      ],
+      form:'adjective',
+    },
+    {
       word:'fierce',
       form:'adjective',
     },
