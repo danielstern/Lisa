@@ -15,8 +15,6 @@ function Logic(brain) {
   logic.tellStory = function (seed) {
 
     response = '';
-    // response += brain.speech.hardPause();
-
 
     stories = brain.memory.long.getStories(seed);
     var story = _.sample(stories);
@@ -62,9 +60,6 @@ function Logic(brain) {
      });
     }
 
-
-    // console.log('Telling story...', seed, stories, response);
-
     return response;
   }
 
@@ -79,22 +74,6 @@ function Logic(brain) {
     phrase = brain.speech.express.moment(moment, context);
     brain.memory.short.remember(moment);
     return phrase;
-  }
-
-
-  logic.expressRelationship = function (seed) {
-
-    if (!seed.relationship || !seed.relationship[0]) {
-      return response;
-    }
-
-    var relationship = _.sample(seed.relationship);
-
-    response = brain.speech.express.relationship(seed, relationship);
-    response += brain.speech.softPause();
-
-    return response;
-
   }
 
 
