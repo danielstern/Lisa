@@ -20,55 +20,63 @@ var Extractor = function(brain) {
 
     var ideas = [];
     if (!story) return ideas;
-    if (_.has(story, 'epic')) {
-
-        _.each(story.epic, function(parable) {
-
-          _.each(parable.sequence, function(moment) {
-
-     //        console.log('extract story',story,ideas,moment)
-            ideas = ideas.concat(_.values(moment));
-       
-            });
-
-        });
-    }
-
-    _.each(story.sequence, function(moment) {
-
-
-      ideas = ideas.concat(_.values(moment));
-     
+    var moments = ex.storyToMoments(story);
+    _.each(moments,function(moment){
+      ideas = ideas.concat(ex.ideasFromMoment(moment));
     });
 
     ideas = ex.sluice(ideas);
     //console.log('Extract Story',story,ideas)
 
+   // console.log('extractStory,',story,ideas)
+
     return ideas;
+  }
+
+  ex.ideasFromMoment = function (moment) {
+
+    var ideas = [];
+    ideas = ideas.concat(_.values(moment));
+    ideas = _.map(ideas,function(idea){
+      return _.crack(idea);
+    })
+    return ideas;
+
   }
 
   ex.getRelevantMoments = function (stories, seed) {
 
     var ideas = ex.extractStory(stories[0])
     var story = stories[0];
-    console.log('get relevant moments...',story,seed);
+    //console.log('get relevant moments...',story,seed);
 
     var storyMoments = ex.storyToMoments(story)
     var relevantMoments = _.filter(storyMoments,function(moment){
-      console.log('is this a relevant moment?',moment);
+      var ideas = ex.ideasFromMoment(moment);
+      var seedProperties = _.flatten(_.values(seed))
+      var intersects = _.intersection(ideas,seedProperties);
+     // console.log('finding intersections',ideas,seedProperties,intersects);
+      if (intersects[0]) {
+        //console.log('')
+        return true;
+      }
     });
+
+    return relevantMoments;
+
   }
 
   ex.storyToMoments = function(story) {
 //    console.log('storyMoments...',story);
     var moments = [];
 
+    if (!story) return moments;
+
     if (_.has(story, 'epic')) {
         _.each(story.epic, function(parable) {
           _.each(parable.sequence, function(moment) {
               moments.push(moment);     
             });
-
         });
     }
 

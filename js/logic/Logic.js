@@ -59,8 +59,15 @@ function Logic(brain) {
 
     var stories = brain.memory.long.getStories(seed);
     //console.log('getting story excerpt...',seed, stories);
-    var excerpt = brain.speech.express.extractor.getRelevantMoments(stories,seed);
-    console.log('getting story excerpt...',seed, stories, excerpt);
+    var excerpts = brain.speech.express.extractor.getRelevantMoments(stories,seed);
+
+    var excerpt = _.sample(excerpts);
+
+    var remark = brain.speech.express.moment(excerpt);
+    console.log('getting story excerpt...',seed, stories, excerpt,remark);
+    //console.log('get story excerpt')
+
+    return remark;
 
     
   }
