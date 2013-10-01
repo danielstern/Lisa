@@ -18,7 +18,7 @@ function Conjugator() {
     return;
   }
 
-  cj.learn(_verbs);
+
 
   cj.getWord = function (verb, tense, context) {
 

@@ -1,4 +1,6 @@
 var _verbs = {
+  packageType:'verbs',
+  
   is:{
     past:{
       singular:'was',
