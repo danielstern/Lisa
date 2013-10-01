@@ -1,10 +1,12 @@
-function Prepositor() {
+function Prepositor(brain) {
 
 	var pt = this;
+  console.log("brain?",brain)
 
 
-	pt.preposit = function (word, context) {
+  pt.preposit = function (word, context) {
 
+    var express = brain.speech.express;
     context = context || {};
     if (word instanceof Array) word = word[0];
 

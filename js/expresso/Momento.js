@@ -5,6 +5,7 @@ function Momento(brain) {
     var response = '';
     context = context || {};
     context.objective = false;
+    var express = brain.speech.express;
     var preposit = express.preposit;
     var synonomize = express.synonomize;
     var conjugate = express.conjugate;

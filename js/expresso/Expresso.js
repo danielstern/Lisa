@@ -106,7 +106,4 @@ var Expresso = function (brain) {
   expresso.preposit = expresso.prepositor.preposit;
 
   expresso.learn(expressions);
-
-  window.express = expresso;
-
 }
