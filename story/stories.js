@@ -154,7 +154,7 @@ var _stories = [
         ]
       },
       {
-        name:'I-2 - the one where mother and I talk',
+        name:'I-4 - the one where my mother tells me off',
         sequence:
         [
            {
@@ -169,13 +169,25 @@ var _stories = [
               ]
             },
           },
-            {
-              subject:'I',action:'go', to:'my|room', 
-            },
-            {
-              subject:'I',action:'feel', object:'sad', 
-            }
+          {
+            subject:'I',action:'go', to:'my|room', 
+          },
+          {
+            subject:'I',action:'feel', object:'sad', 
+          },
+          {
+            subject:'I',action:'go', to:'sleep', 
+          }
         
+        ]
+      },
+      {
+        name:'I-5 - the one where i awaken',
+        sequence:
+        [
+          {
+            subject:'sun',action:'is', object:'shining', 
+          },
         ]
       }
     ]

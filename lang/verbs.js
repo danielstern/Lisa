@@ -20,6 +20,17 @@ var _verbs = {
     }
   },
 
+  shine:{
+    past:{
+      singular:'shined',
+      plural:'shined'
+    },
+    present:{
+      singular:'shines',
+      plural:'shine'
+    }
+  },
+
   pull:{
     past:{
       singular:'pulled',

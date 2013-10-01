@@ -34,7 +34,7 @@ function Lexicator() {
 
   lx.getRandomWord = function () {
 
-  	var idea = _.sample(words);
+  	var idea = _.sample(lx.things);
   	return idea;
 
   }

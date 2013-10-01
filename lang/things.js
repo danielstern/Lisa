@@ -24,6 +24,11 @@ var _things = [
       plural:'mothers'
     },
     {
+      word:'sun',
+      pronoun:'unique',
+      plural:'suns'
+    },
+    {
       word:'mom',
       extends:['person'],
       gender:['female'],
