@@ -29,6 +29,21 @@ var _things = [
       pronoun:'none'
     },
     {
+      word:'houses',
+      plural:'houses',
+      extends:['building','place'],
+    },
+    {
+      word:'doorstep',
+      plural:'doorsteps',
+      extends:['place'],
+    },
+    {
+      word:'there',
+      pronoun:'force',
+      extends:['place','idea'],
+    },
+    {
       word:'mother',
       extends:['person'],
       gender:['female'],

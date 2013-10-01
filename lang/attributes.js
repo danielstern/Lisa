@@ -32,6 +32,11 @@ var _attributes = [
       synonyms:['large','giant','huge','immense']
     },
     {
+      word:'straight',
+      form:'adjective',
+      synonyms:[]
+    },
+    {
       word:'near',
       form:'adjective',
       synonyms:['close']

@@ -218,8 +218,27 @@ var _stories = [
           {
             subject:'I',action:'arrive', at:'the|sky' 
           },
+          {
+            subject:'I',action:'walk', down:'$straight:road$' 
+          },
+          {
+            subject:'there',action:'is', object:'$big:house$' 
+          },
+          {
+            subject:'$big:woman$',action:'is', on:'$doorstep:house$' 
+          },
+          {
+            dialogue:{
+              between:{first:'me',second:'the|woman'},
+              said:[
+                "Good morning, mum, could you be so kind as to give me some breakfast?",
+                "It's breakfast you want, is it? It's breakfast you'll be if you don't move off from here. My man is an ogre and there's nothing he likes better than boys broiled on toast. You'd better be moving on or he'll be coming.",
+                "Oh! please, mum, do give me something to eat, mum. I've had nothing to eat since yesterday morning, really and truly, mum, I may as well be broiled as die of hunger.",
+              ]
+            },
+          },
         ]
-      }
+      },
     ]
   },
 ]

@@ -449,6 +449,17 @@ var _verbs = {
     }
   },
 
+  walk:{
+    past:{
+      singular:'walked',
+      plural:'walked'
+    },
+    present:{
+      singular:'walks',
+      plural:'walk'
+    }
+  },
+
   use:{
     past:{
       singular:'used',

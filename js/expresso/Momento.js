@@ -140,6 +140,10 @@ function Momento(brain) {
       response += " in " + preposit(moment.in, _.clone(context));
     }
 
+    if (moment.on) {
+      response += " on " + preposit(moment.on, _.clone(context));
+    }
+
     if (moment.against) {
       var pronoun = (isGeneral) ? 'plural':'singular'
       var againstContext = _.clone(context);
