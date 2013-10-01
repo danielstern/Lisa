@@ -34,9 +34,9 @@ var _stories = [
       {
         rel:'but',subject:'referenced|candlestick',action:'burn', object:'me'
       },
-       {
+   /*    {
             subject:'I',action:'climb', object:'the|beanstalk' 
-      },
+      },*/
     ]
   },
   {

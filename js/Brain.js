@@ -91,7 +91,7 @@ function Brain(host) {
   brain.ponder = function (idea) {
 
     var response = '';
-    if (!idea) return ["No input."];
+    if (!idea) return ["No ideas about that."];
 
 
     // what was passed, or what the brain was thinking about last, or something random
