@@ -11,70 +11,9 @@ function Logic(brain) {
 
   var _lisaPatterns = ['tell-story'];
 
+  logic.storyteller = new Storyteller(brain);
+  logic.tellStory = logic.storyteller.tellStory;
 
-  logic.tellStory = function (seed) {
-
-    response = '';
-
-    stories = brain.memory.long.getStories(seed);
-    var story = _.sample(stories);
-
-    var storyIdeas = _.shuffle(ex.extractStory(story));
-
-    brain.memory.short.remember(storyIdeas);
-
-//    console.log('tell story', seed)
-    if (!story) return response;
-
-    if (_.has(story, 'epic')) {
-
-      var nextUntoldParable = _.find(story.epic, function (parable) {
-        if (brain.memory.short.recall(parable)) return false;
-        return parable;
-      });
-
-  //    console.log('next parable?',nextUntoldParable);
-
-
-      if (!nextUntoldParable) {
-        response += "I've told you all I know about " + seed.word;
-      } else {
-
-        brain.memory.short.remember(nextUntoldParable);
-        _.each(nextUntoldParable.sequence, function (sequence) {
-
-          var phrase = logic.tellStoryMoment(sequence);
-          response += phrase;
-          response += brain.speech.softPause();
-
-        });
-      }
-    } 
-    else {
-      _.each(story.sequence, function (moment) {
-
-        var phrase = logic.tellStoryMoment(moment);
-        response += phrase;
-        response += brain.speech.softPause();
-
-     });
-    }
-
-    return response;
-  }
-
-  logic.tellStoryMoment = function (moment) {
-
-    var phrase = '';
-    if (!moment) return phrase;
-    //console.log('tellstorymoment...',moment)
-    // if (brain.memory.short.recall(moment)) return phrase;
-    var context = moment.context || {};
-    context.time = context.time || 'past';
-    phrase = brain.speech.express.moment(moment, context);
-    brain.memory.short.remember(moment);
-    return phrase;
-  }
 
 
   logic.scopeUp = function (seed) {
