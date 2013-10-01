@@ -63,8 +63,6 @@ function LongTermMemory(memory) {
 
     _.each(stories, function (story) {
 
-      console.log('brain?',brain)
-
       var ideas = brain.speech.express.extractor.extractStory(story);
       if (_.contains(ideas, word) || _.contains(ideas, seed.plural)) {
 

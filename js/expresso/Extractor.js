@@ -1,5 +1,5 @@
 var Extractor = function(brain) {
-	console.log("extractor initialized", brain);
+  
 	var ex = this;
 	window.ex = this;
 

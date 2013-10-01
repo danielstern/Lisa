@@ -25,7 +25,6 @@ var Storyteller = function(brain) {
 
      // console.log('next parable?',nextUntoldParable);
 
-
       if (!nextUntoldParable) {
         response += "I've told you all I know about " + seed.word;
       } else {
