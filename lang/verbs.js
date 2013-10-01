@@ -28,7 +28,8 @@ var _verbs = {
     present:{
       singular:'shines',
       plural:'shine'
-    }
+    },
+    jugend:'shining'
   },
 
   pull:{

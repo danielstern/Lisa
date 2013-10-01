@@ -186,7 +186,13 @@ var _stories = [
         sequence:
         [
           {
-            subject:'sun',action:'is', object:'shining', 
+            subject:'sun',action:'is', what:'shining', 
+          },
+          {
+            rel:'but',subject:'$part:my|room$',action:'is', what:'dark', 
+          },
+          {
+            subject:'i',action:'jump', out:'force|bed', 
           },
         ]
       }

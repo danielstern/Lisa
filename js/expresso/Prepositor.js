@@ -81,6 +81,9 @@ function Prepositor() {
       case 'assumed':
         context.assumed = true;
         break;
+      case 'force':
+        context.pronoun = 'force';
+        break;
       }
     }
 

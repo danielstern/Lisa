@@ -127,6 +127,11 @@ var moment = {
       response += " at " + preposit(moment.at, _.clone(context));
     }
 
+    if (moment.out) {
+      response += " out of " + preposit(moment.out, _.clone(context));
+    }
+
+
     if (moment.in) {
       response += " in " + preposit(moment.in, _.clone(context));
     }

@@ -27,6 +27,11 @@ var _attributes = [
       synonyms:['wizened','ancient']
     },
     {
+      word:'dark',
+      form:'adjective',
+      synonyms:['dim','shadowy']
+    },
+    {
       word:'sad',
       form:'adjective',
       synonyms:['disheartened','upset','woebegotten']

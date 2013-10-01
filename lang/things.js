@@ -18,6 +18,11 @@ var _things = [
       plural:'fathers'
     },
     {
+      word:'part',
+      plural:'parts',
+      pronoun:'force'
+    },
+    {
       word:'mother',
       extends:['person'],
       gender:['female'],
@@ -39,6 +44,10 @@ var _things = [
       word:'cow',
       extends:['animal'],
       plural:'cows'
+    },
+    {
+      word:'bed',
+      plural:'beds'
     },
     {
       word:'bean',
