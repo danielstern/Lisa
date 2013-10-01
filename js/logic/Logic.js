@@ -95,28 +95,18 @@ function Logic(brain) {
       })
     })
 
-    var allCommentsAboutSubject = _.filter(allComments,
-      function (comment) {
+    /*var allCommentsAboutSubject = _.filter(allComments,
+     function (comment) {
         if (logic.brain.whatIs(comment.subject, true) == seed) return true;
-      })
+      })*/
 
-    var conclusion = _.sample(allCommentsAboutSubject) || '';
-    if (!conclusion) return '';
+    var conclusion = _.sample(allComments) || '';
+    //console.log('expressing conclusion...',conclusion,allCommentsAboutSubject)
+    if (!conclusion) return "I can't draw any conclusions.";
     var remark = logic.brain.speech.express.generality(conclusion.subject, conclusion.attribute);
     response = remark;
 
-    return response || '';
-  }
-
-  logic.comment = function (moment, context) {
-
-    var response = '';
-    var applicableComments = logic.getComments(moment);
-    var comment = _.sample(applicableComments);
-    if (!comment) return '';
-
-    var remark = logic.brain.speech.express.quality(comment.subject, comment.attribute);
-    return remark || '';
+    return response;
   }
 
   logic.getComments = function (moment) {
@@ -124,12 +114,19 @@ function Logic(brain) {
 
     var applicableComments = [];
 
+    var attributes = brain.speech.express.lexicator.getAllAttributes();
+
+   // console.log('Get comments,',moment,attributes)
+
     _.each(attributes, function (attribute) {
       _.each(attribute.when, function (occasion) {
 
+       // console.log('Getting intersection,',attribute,occasion);
 
         var intersects = _.occasionInvokesAttribute(moment, occasion);
         if (intersects) {
+
+        console.log('Found intersection,',attribute,occasion);
           applicableComments.push({
             subject: _.crack(moment[occasion.applies || 'subject']),
             attribute: _.crack(attribute.word)
@@ -138,6 +135,8 @@ function Logic(brain) {
 
       })
     })
+
+    console.log('Get comments?',applicableComments);
 
     return applicableComments;
   }

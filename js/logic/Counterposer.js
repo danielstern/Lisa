@@ -21,31 +21,12 @@ function Counterposer (brain) {
    
       var thought;
 
+      console.log('Executing command...',command)
+
       if (!command) return;
 
 
       switch (command) {
-
-        case 'scopeUp': 
-        case 'scope-up':
-          brainwave = logic.scopeUp(seed);
-          console.log('doing scopeup',brainwave);
-
-           thought = brainwave[0];
-          seed = brainwave[1];
-          break;
-
-        case 'scopeSideways':
-          brainwave = logic.scopeSideways(seed); 
-          thought = brainwave[0];
-          seed = brainwave[1];
-          break;
-
-        case 'scopeDown':
-          brainwave = logic.scopeDown(seed);
-          thought = brainwave[0];
-          seed = brainwave[1];
-          break;
 
         case 'greet':
           thought = brain.speech.express.formalGreeting();
@@ -56,6 +37,10 @@ function Counterposer (brain) {
           break;
 
         case 'tell-story':
+          thought = logic.tellStory(seed);
+          break;
+
+        case 'demystify':
           thought = logic.tellStory(seed);
           break;
       }

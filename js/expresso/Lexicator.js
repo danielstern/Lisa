@@ -30,6 +30,16 @@ function Lexicator() {
 
   }
 
+   lx.getAllAttributes = function () {
+    var allAttributes = [];
+    allAttributes = _.filter(lx.things,function(wordIdea){
+      if (wordIdea.form == 'adjective') return true;
+    });
+
+    return allAttributes;
+
+  }
+
   lx.getRandomWord = function () {
 
   	var idea = _.sample(lx.things);

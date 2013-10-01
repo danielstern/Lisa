@@ -59,6 +59,7 @@ var _attributes = [
       word:'dangerous',
       when:[
         {action:'kill',applies:'with'},
+        {action:'burn',applies:'subject'},
       ],
       form:'adjective',
     },
@@ -74,6 +75,7 @@ var _attributes = [
       form:'adjective',
       synonyms:['craven','yellow']
     },
+
     {
       word:'undead',
       form:'adjective',

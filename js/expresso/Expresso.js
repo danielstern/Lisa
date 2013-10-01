@@ -7,8 +7,8 @@ var Expresso = function (brain) {
   expresso.prepositor = new Prepositor(brain);
   expresso.extractor = new Extractor(brain);
   expresso.momento = new Momento(brain);
-  window.cj = expresso.conjugator;
-  window.lx = expresso.lexicator;
+  var cj = expresso.conjugator;
+  var lx = expresso.lexicator;
 
   
   expresso.learn = function (expression, operation) {
@@ -101,6 +101,47 @@ var Expresso = function (brain) {
     var synonym = _.sample(synonyms.concat([word]));
 
     return synonym;
+  }
+
+  expresso.generality = function (seed, quality) {
+    var response = '';
+    // console.log('generality?',seed, quality)
+        var conjugate = expresso.conjugator.getWord;
+    if (typeof seed == 'string') seed = window.brain.whatIs(seed, true);
+
+    var prepositedSubjects = '';
+    if (seed instanceof Array) {
+      var things = [];
+      things = _.map(seed, function (miniSeed) {
+        return preposit(miniSeed, {
+          plural: true,
+          pronoun: 'plural'
+        });
+      })
+
+      prepositedSubjects = _.toSentence(things);
+
+    }
+
+    var context = 'singular';
+    if (!seed || seed.plural) context = 'plural';
+
+    var objectForm = 'plural';
+    if (seed.pronoun == 'proper') objectForm = 'singular';
+    if (prepositedSubjects) {
+      response = prepositedSubjects + " " + conjugate('is', 'present', 'plural') + " " + preposit(quality, {
+        pronoun: 'plural'
+      });
+    } else {
+
+      response = preposit(seed, {
+        pronoun: 'plural'
+      }) + " " + conjugate('is', 'present', context) + " " + preposit(quality, {
+        pronoun: objectForm
+      });
+
+    }
+    return response;
   }
 
   expresso.preposit = expresso.prepositor.preposit;

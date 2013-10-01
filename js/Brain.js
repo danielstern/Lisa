@@ -11,7 +11,9 @@ function Brain(host) {
   brain.lexicon = brain.speech.express.lexicator;
 
   brain.patterns = [
-    ['tell-story']
+    //['tell-story'],
+    //['demystify'],
+    ['draw-conclusion'],
   ];
 
   brain.process = function (words) {
@@ -61,7 +63,7 @@ function Brain(host) {
     if (context.ideas && !idea) {
       var embeddedWord = _.find(context.ideas,
       function(word) {
-        console.log('what is...',word)
+       //console.log('what is...',word)
          if (brain.extractIdea(word)) return true;
       })
 
@@ -89,8 +91,8 @@ function Brain(host) {
   brain.ponder = function (idea) {
 
     var response = '';
+    if (!idea) return ["No input."];
 
-    if (brain.seed && brain.seed.hidden) brain.seed = '';
 
     // what was passed, or what the brain was thinking about last, or something random
     idea = idea || brain.seed || brain.lexicon.getRandomWord();
@@ -100,7 +102,6 @@ function Brain(host) {
 
     var ponder = brain.logic.counterpose(idea)
     response = ponder[0];
-    brain.seed = ponder[1];
 
     //console.log('Ponder',idea,response)
 

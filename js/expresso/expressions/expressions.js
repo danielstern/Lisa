@@ -31,45 +31,6 @@ var expressions = {
     return response;
   },
 
-  generality: function (seed, quality) {
-    var response = '';
-    // console.log('generality?',seed, quality)
-    if (typeof seed == 'string') seed = window.brain.whatIs(seed, true);
-
-    var prepositedSubjects = '';
-    if (seed instanceof Array) {
-      var things = [];
-      things = _.map(seed, function (miniSeed) {
-        return preposit(miniSeed, {
-          plural: true,
-          pronoun: 'plural'
-        });
-      })
-
-      prepositedSubjects = _.toSentence(things);
-
-    }
-
-    var context;
-    if (!seed || seed.plural) context = 'plural';
-
-    var objectForm = 'plural';
-    if (seed.pronoun == 'proper') objectForm = 'singular';
-    if (prepositedSubjects) {
-      response = prepositedSubjects + " " + conjugate(seed, 'is', 'present', 'plural') + " " + preposit(quality, {
-        pronoun: 'plural'
-      });
-    } else {
-
-      response = preposit(seed, {
-        pronoun: 'plural'
-      }) + " " + conjugate(seed, 'is', 'present', context) + " " + preposit(quality, {
-        pronoun: objectForm
-      });
-
-    }
-    return response;
-  },
 
   inheritance: function (seed, idea) {
 
