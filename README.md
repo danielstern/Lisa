@@ -1,5 +1,8 @@
 Lisa
 ====
+## A Simple Lisa Example
+Here a Lisa is programmed to think she is Jack from various fairy tales.
+[http://www.danielstern.ca/lisa]
 
 ## Short Term Memory
 

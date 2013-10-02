@@ -67,11 +67,11 @@ var _stories = [
     ]
   },
   {
-    name:'I - the one with the beanstalk',
+    name:'the one with the beanstalk',
     epic:
     [
       {
-        name:'I-1 - the one where the cow stops giving milk',
+        name:'the one where the cow stops giving milk',
         sequence:
         [
           {
@@ -95,7 +95,7 @@ var _stories = [
         ]
       },
       {
-        name:'I-2 - the one where mother and I talk',
+        name:'the one where mother and I talk',
         sequence:
         [
           {
@@ -124,7 +124,7 @@ var _stories = [
         ]
       },
       {
-        name:'I-3 - the one where we meet the old man',
+        name:'the one where we meet the old man',
         sequence:
         [
           {
@@ -175,7 +175,7 @@ var _stories = [
         ]
       },
       {
-        name:'I-4 - the one where my mother tells me off',
+        name:'the one where my mother tells me off',
         sequence:
         [
            {
@@ -203,7 +203,7 @@ var _stories = [
         ]
       },
       {
-        name:'I-5 - the one where i awaken',
+        name:'the one where i awaken',
         sequence:
         [
           {
@@ -233,7 +233,7 @@ var _stories = [
         ]
       },
       {
-        name:'I-6 - the one where i get to the sky',
+        name:'the one where i get to the sky',
         sequence:
         [
           {
