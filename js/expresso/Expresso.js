@@ -49,15 +49,16 @@ var Expresso = function (brain) {
 
     seed = seed || {};
     if (typeof seed == 'string') seed = brain.whatIs(seed);
-    seed = seed || {};
+    //seed = seed || {};
 
     tense = tense || 'present';
-
+    if (seed) {
     if (!context) {
       context = 'plural';
       if (seed.pronoun == 'unique') context = 'singular';
       if (!seed.plural) context = 'singular';
     }
+  }
 
     var synonyms = express.getVerbSynonyms(verb);
     if (synonyms && synonyms[0]) verb = _.sample(synonyms);

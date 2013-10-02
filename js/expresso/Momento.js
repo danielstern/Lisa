@@ -83,7 +83,7 @@ function Momento(brain) {
     context.objective = true;
 
     if (moment.object) {
-      //context.objective = true;
+      
       response += " " + preposit(moment.object, _.clone(context));
     }
 
@@ -139,7 +139,14 @@ function Momento(brain) {
 
 
     if (moment.to) {
-      response += " to " + preposit(moment.to, _.clone(context));
+    response += " to ";
+     if (typeof moment != 'string') {
+        console.log('this is an object.');
+        var remark = mm.generateSentenceFragment(moment.to, _.clone(context));
+        response += " " + remark + " ";
+      } else {
+       response += preposit(moment.to, _.clone(context));
+     }
     }
 
     if (moment.from) {
@@ -170,5 +177,26 @@ function Momento(brain) {
   //  console.log("Story moment",moment,context);
 
     return response;
+  }
+
+  mm.generateSentenceFragment = function(momentFragment, context) {
+
+    var express = brain.speech.express;
+    var preposit = express.preposit;
+    var conjugate = express.conjugate;
+
+    context.time = 'present';
+    context.plural = context.plural || true;
+   // context.action = momentFragment.action;
+
+    var action = momentFragment.action;
+    console.log('generating sentence fragment...',momentFragment,context);
+    var response = '';
+    if (momentFragment.subject) response += preposit(momentFragment.subject) + " ";
+    if (momentFragment.action) response += conjugate('', momentFragment.action, context) + " ";
+    if (momentFragment.object) response += preposit(momentFragment.object) + " ";
+
+    return response;
+
   }
 }

@@ -22,6 +22,16 @@ function Conjugator() {
 
   cj.getWord = function (verb, tense, context) {
 
+    console.log('get word 1',verb, tense, context);
+    if (tense.time) {
+      console.log('got context object');
+      var contextObject = tense;
+      tense = contextObject.tense;
+      context = contextObject.plural ? 'plural' : 'singular';
+    }
+
+    console.log('Get word 2',verb,tense,context)
+
     if (!verb) return;
     tense = tense || 'present';
     context = context || 'singular';
