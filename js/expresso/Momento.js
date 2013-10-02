@@ -29,8 +29,8 @@ function Momento(brain) {
 
         dialogueMoment.said = phrase;
        // console.log('new moment?',dialogueMoment);
-
-        response += express.moment(dialogueMoment,context);
+        response += _.sample([express.moment(dialogueMoment,context),'"' + phrase + '"'])
+      //  response += express.moment(dialogueMoment,context);
         response += brain.speech.hardPause();
 
 
@@ -140,7 +140,7 @@ function Momento(brain) {
 
     if (moment.to) {
     response += " to ";
-     if (typeof moment != 'string') {
+     if (typeof moment.to != 'string') {
         console.log('this is an object.');
         var remark = mm.generateSentenceFragment(moment.to, _.clone(context));
         response += " " + remark + " ";

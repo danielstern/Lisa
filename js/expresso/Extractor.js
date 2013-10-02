@@ -75,11 +75,12 @@ var Extractor = function(brain) {
       var seedProperties = _.flatten(_.values(seed))
       var intersects = _.intersection(ideas,seedProperties);
      // console.log('finding intersections',ideas,seedProperties,intersects);
-     /* if (intersects[0]) {
+      if (intersects[0]) {
         //console.log('')
         return true;
-      }*/
-      return true;
+      }
+
+      //return true;
     });
 
     return relevantMoments;
