@@ -79,10 +79,12 @@
    .controller('LisaController', ['$scope', function($scope) {
 
       var $Lisa = new Lisa();
-   /*   $Lisa.learn(_things);
+   _.defer(function learn(){
+      $Lisa.learn(_things);
       $Lisa.learn(_attributes);
       $Lisa.learn(_sayings);
-      $Lisa.learn(_verbs);*/
+      $Lisa.learn(_verbs);
+    })
 
       $scope.handleMenuClick = function(thing) {
 
