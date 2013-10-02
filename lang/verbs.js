@@ -34,6 +34,57 @@ var _verbs = {
     jugend:'shining'
   },
 
+
+  try:{
+    past:{
+      singular:'tried',
+      plural:'tried'
+    },
+    present:{
+      singular:'tries',
+      plural:'try'
+    },
+    jugend:'trying',
+    synonyms:['attempt']
+  },
+
+  attempt:{
+    past:{
+      singular:'attempted',
+      plural:'attempted'
+    },
+    present:{
+      singular:'attempts',
+      plural:'attempt'
+    },
+    jugend:'attempting',
+    synonyms:['trying']
+  },
+
+  sit:{
+    past:{
+      singular:'sat',
+      plural:'sat'
+    },
+    present:{
+      singular:'sits',
+      plural:'sit'
+    },
+    jugend:'shining'
+  },
+
+  fix:{
+    past:{
+      singular:'fixed',
+      plural:'fixed'
+    },
+    present:{
+      singular:'fixes',
+      plural:'fix'
+    },
+    jugend:'shining'
+  },
+
   pull:{
     past:{
       singular:'pulled',

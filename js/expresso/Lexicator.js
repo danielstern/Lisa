@@ -21,12 +21,13 @@ function Lexicator() {
 
   lx.getWord = function (word) {
   	if (!word) return;
-  	var ideas = _.filter(lx.things,function(wordIdea){
-  		if (_.compare(wordIdea.word, word)) return true;
-  		if (_.compare(wordIdea.plural, word)) return true;
-  		if (_.compare(wordIdea.said, word)) return true;
-  	});
-  	return ideas[0];
+    var ideas = _.filter(lx.things,function(wordIdea){
+      if (_.compare(wordIdea.word, word)) return true;
+      if (_.compare(wordIdea.plural, word)) return true;
+      if (_.compare(wordIdea.said, word)) return true;
+    });
+ // console.log('getting word...',word,ideas)
+    return ideas[0];
 
   }
 

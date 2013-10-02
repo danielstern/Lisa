@@ -23,6 +23,22 @@ var _things = [
       pronoun:'force'
     },
     {
+      word:'Humpty-Dumpty',
+      pronoun:'proper',
+      extends:['person','egg'],
+    },
+    {
+      word:'wall',
+      plural:'walls',
+      extends:['place'],
+    },
+    {
+      word:'king',
+      plural:'kings',
+      pronoun:'the',
+    },
+
+    {
       word:'sky',
       plural:'skies',
       extends:['place'],

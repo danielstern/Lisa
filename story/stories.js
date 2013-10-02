@@ -40,7 +40,22 @@ var _stories = [
     ]
   },
   {
-    name:'3 - the one where i heard about the muffin man',
+    name:'another egg on the wall',
+    sequence:
+    [
+      {
+        subject:'Humpty-Dumpty',action:'sit', on:"wall"
+      },
+      {
+        rel:'then',subject:'main|Humpty-Dumpty',action:'fall', off:"the|wall"
+      },
+      {
+        subject:'$men:king$',action:'try', to:{action:'fix',object:'Humpty-Dumpty'}
+      },
+    ]
+  },
+  {
+    name:'the one where i heard about the muffin man',
     sequence:
     [
       {

@@ -64,7 +64,7 @@ function Brain(host) {
       var embeddedWord = _.find(context.ideas,
       function(word) {
        //console.log('what is...',word)
-         if (brain.extractIdea(word)) return true;
+  //       if (brain.extractIdea(word)) return true;
       })
 
       idea = brain.extractIdea(embeddedWord);

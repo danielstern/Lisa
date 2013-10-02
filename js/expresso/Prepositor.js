@@ -161,7 +161,7 @@ function Prepositor(brain) {
     if (response == 'me' && !context.objective && !context.asBundle) response = 'I'; // English is a hacky language.
     if (response == 'i') response = 'I';
 
- //  console.log('Prepositing 2:', word, idea, context, response)
+   // console.log('Prepositing 2:', word, idea, context, response)
     return response;
 
   }
