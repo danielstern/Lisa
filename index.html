@@ -52,11 +52,14 @@
       <div class='span5'>
         <h3>Jack</h3>
            <div id='saying' ng-bind-html-unsafe='saying' style='margin-bottom:10px' ></div>
-        <form id='conversation-form' ng-submit='reply()'>
+        <form id='conversation-form' ng-submit="reply('tell-story')">
           <input  ng-model='sayTo' class='input input-block-level' type='text'>
-          <button class='btn'>"Riff on my input."</button>
+          <button class='btn btn-block'>"Tell Story."</button>
         </form>
-          <button class='btn'>"Tell me something else."</button>
+        <div class="btn-group btn-block">
+          <button ng-click="reply('story-excerpt')" class='btn btn-block'>"Tell me a little something about it."</button>
+          <button ng-click="reply('draw-conclusion')" class='btn btn-block'>"Draw conclusion."</button>
+        </div>
       </div>
       <div class='span3'>
         <img src='../misc/jack.jpg' width='400px' height='auto'>
@@ -80,9 +83,12 @@
 
       $scope.sayTo = 'beanstalk';
 
-      $scope.reply = function() {
 
-        var reply = $Lisa.hears($scope.sayTo);
+
+      $scope.reply = function(directive) {
+
+     //   console.log('Reply',$scope.sayTo,directive);
+        var reply = $Lisa.hears($scope.sayTo, directive);
         $scope.saying = reply[0];
         if (!reply[1])    return;
         $scope.thought = reply[1].word;

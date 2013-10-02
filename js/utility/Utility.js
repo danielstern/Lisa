@@ -37,24 +37,6 @@ _.mixin({
 
   },
 
-  occasionInvokesAttribute: function(moment, occasion) {
-
-    var invoked = true;
-
-      if (occasion.action) {
-
-         if(occasion.action != moment.action) invoked = false;
-      }
-      if (occasion.object) {
-         if(occasion.object != _.crack(moment.object)) invoked = false;
-      }
-
-      if (occasion.subject) {
-         if(occasion.subject != _.crack(moment.subject)) invoked = false;
-      }
-
-    return invoked;
-  },
 
   crack: function(string, returnQuality) {
     if (typeof string != 'string') return string;
@@ -99,9 +81,6 @@ _.mixin({
 
     return many || string;
   },
-
-
-
 
   stringContains: function(string, characters) {
 

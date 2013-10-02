@@ -1,6 +1,6 @@
 function Counterposer (brain) {
   var cp = this;
-  cp.counterpose = function (seed,logic,directive) {
+  cp.counterpose = function (seed,directive) {
     
     var logic = brain.logic;
     var response = '';   
@@ -15,13 +15,15 @@ function Counterposer (brain) {
       return [response,seed]
     }
 
+  //  console.log('Counterposing...',seed,directive)
+
     var sequence = directive ? [directive] : _.sample(brain.patterns);
 
     _.each(sequence, function(command) {
    
       var thought;
 
-      console.log('Executing command...',command)
+    //  console.log('Executing command...',command)
 
       if (!command) return;
 

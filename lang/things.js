@@ -39,6 +39,11 @@ var _things = [
       extends:['place'],
     },
     {
+      word:'road',
+      plural:'roads',
+      extends:['place'],
+    },
+    {
       word:'there',
       pronoun:'force',
       extends:['place','idea'],

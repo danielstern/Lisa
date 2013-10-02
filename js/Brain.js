@@ -9,21 +9,21 @@ function Brain(host) {
   brain.memory = new Memory(brain);
 
   brain.lexicon = brain.speech.express.lexicator;
-
+/*
   brain.patterns = [
-    //['tell-story'],
-    //['draw-conclusion'],
-    ['story-excerpt'],
+  //  ['tell-story'],
+ //   ['story-excerpt'],
+  //  ['draw-conclusion'],
   ];
-
-  brain.process = function (words) {
+*/
+  brain.process = function (words, directive) {
 
     var response = '';
 
-    var idea = brain.whatIs(words, true);
+    var idea = brain.whatIs(words);
 
-    console.log('processing...',words,idea)
-    response = brain.ponder(idea, true);
+    console.log('processing...',words,idea,directive)
+    response = brain.ponder(idea, directive);
 
     return [response, idea];
 
@@ -88,7 +88,7 @@ function Brain(host) {
   }
 
 
-  brain.ponder = function (idea) {
+  brain.ponder = function (idea, directive) {
 
     var response = '';
     if (!idea) return ["No ideas about that."];
@@ -100,10 +100,10 @@ function Brain(host) {
 
     if (idea && idea.see) idea = brain.whatIs(idea.see[0], true);
 
-    var ponder = brain.logic.counterpose(idea)
+    var ponder = brain.logic.counterpose(idea,directive)
     response = ponder[0];
 
-    //console.log('Ponder',idea,response)
+    console.log('Ponder',idea,directive,response)
 
     if (!response) response = brain.speech.express.pause();
 

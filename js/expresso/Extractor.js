@@ -16,6 +16,25 @@ var Extractor = function(brain) {
 
   }
 
+    ex.occasionInvokesAttribute = function(moment, occasion) {
+
+    var invoked = true;
+
+      if (occasion.action) {
+
+         if(occasion.action != moment.action) invoked = false;
+      }
+      if (occasion.object) {
+         if(occasion.object != _.crack(moment.object)) invoked = false;
+      }
+
+      if (occasion.subject) {
+         if(occasion.subject != _.crack(moment.subject)) invoked = false;
+      }
+
+    return invoked;
+  },
+
   ex.extractStory = function (story) {
 
     var ideas = [];
@@ -67,7 +86,6 @@ var Extractor = function(brain) {
   }
 
   ex.storyToMoments = function(story) {
-//    console.log('storyMoments...',story);
     var moments = [];
 
     if (!story) return moments;
@@ -83,6 +101,7 @@ var Extractor = function(brain) {
     _.each(story.sequence, function(moment) {
       moments.push(moment);
     });
+    //console.log('storyMoments...',story,moments);
 
     return moments;
 

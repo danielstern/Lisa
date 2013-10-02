@@ -162,7 +162,7 @@ function Momento(brain) {
       response += " too ";
     }
 
-    console.log("Story moment",moment,context);
+  //  console.log("Story moment",moment,context);
 
     return response;
   }
