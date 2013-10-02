@@ -55,7 +55,6 @@ _.mixin({
     return _.chain(array)
             .map(filter)
             .flatten()
-            .value();
   },
 
   fizzle: function(string) {

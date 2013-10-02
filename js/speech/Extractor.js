@@ -60,15 +60,23 @@ var Extractor = function(brain) {
     var lx = brain.speech.lexicator;
     var attributes = lx.getAllAttributes();
     var occasions = [];
-    _.each(moments,function(moment){
-    occasions.concat(_.filter(attributes, function(attribute) {
+
+    occasions =  _.chain(moments)
+                 _.whomp(function(){return moment})
+                  .value();
+
+    console.log('occasion form moments...',moments,occasions);
+    return;
+       
+
+/*
+    _.filter(attributes, function(attribute) {
       _.each(attribute.when, function (occasion) {
         occasion.applies = occasion.applies || 'subject';
         if(ex.occasionInvokesAttribute(moment, occasion)) return true;
-
       })
-    }));
-  })
+    })*/
+
     return occasions;
   }
 

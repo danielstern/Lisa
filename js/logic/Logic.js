@@ -27,7 +27,6 @@ function Logic(brain) {
        .value();
 
 
-
     var conclusion = _.sample(allCommentsAboutSubject) || '';
     if(!conclusion) return "I can't draw any conclusions.";
     var remark = logic.brain.speech.express.generality(conclusion.subject, conclusion.attribute);
