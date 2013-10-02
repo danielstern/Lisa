@@ -4,7 +4,7 @@ var Storyteller = function(brain) {
 
 	st.tellStory = function (seed) {
 
-    	var response = '';
+   	var response = '';
 
     stories = brain.memory.long.getStories(seed);
     var story = _.sample(stories);
@@ -59,6 +59,7 @@ var Storyteller = function(brain) {
 
     var stories = brain.memory.long.getStories(seed);
     var excerpts = brain.speech.express.extractor.getRelevantMoments(stories,seed);
+    console.log('getting story excerpt...',seed, stories,excerpts);
 
     var excerpt = _.sample(excerpts);
 
@@ -66,7 +67,6 @@ var Storyteller = function(brain) {
     context.time = 'past';
     context.rel = 'once';
     var remark = brain.speech.express.moment(excerpt,context);
-    console.log('getting story excerpt...',seed, stories);
 
     return remark;
 

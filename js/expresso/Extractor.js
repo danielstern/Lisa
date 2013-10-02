@@ -38,7 +38,7 @@ var Extractor = function(brain) {
   ex.extractStory = function (story) {
 
     var ideas = [];
-    if (!story) return ideas;
+    if (!story) return;
     var moments = ex.storyToMoments(story);
     _.each(moments,function(moment){
       ideas = ideas.concat(ex.ideasFromMoment(moment));
@@ -67,7 +67,9 @@ var Extractor = function(brain) {
 
     var ideas = ex.extractStory(stories[0])
     var story = stories[0];
-    //console.log('get relevant moments...',story,seed);
+    console.log('get relevant moments...',story,seed);
+
+    if (!story) console.error("Get relevant moments error")
 
     var storyMoments = ex.storyToMoments(story)
     var relevantMoments = _.filter(storyMoments,function(moment){
@@ -82,6 +84,8 @@ var Extractor = function(brain) {
 
       //return true;
     });
+
+    console.log('get relevant moments returning...',relevantMoments);
 
     return relevantMoments;
 

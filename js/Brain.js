@@ -95,8 +95,7 @@ function Brain(host) {
 
 
     // what was passed, or what the brain was thinking about last, or something random
-    idea = idea || brain.seed || brain.lexicon.getRandomWord();
-    if (idea.hidden == 'true') brain.lexicon.getRandomWord();
+    //if (idea.hidden == 'true') brain.lexicon.getRandomWord();
 
     if (idea && idea.see) idea = brain.whatIs(idea.see[0], true);
 

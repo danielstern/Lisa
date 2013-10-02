@@ -5,9 +5,7 @@ function Counterposer (brain) {
     var logic = brain.logic;
     var response = '';   
 
-    logic = logic || window.logic;
-
-    if (!seed) return [brain.speech.express.incomprehension()];
+    if (!seed) return ["No seed"];
 
     // If the seed is a saying, reply appropriately, i.e., << Good morning <:> How do you do? >>.
     if (seed.said !== undefined) {
@@ -15,9 +13,10 @@ function Counterposer (brain) {
       return [response,seed]
     }
 
-  //  console.log('Counterposing...',seed,directive)
+    console.log('Counterposing...',seed,directive)
 
-    var sequence = directive ? [directive] : _.sample(brain.patterns);
+//    var sequence = directive ? [directive] : _.sample(brain.patterns);
+    var sequence = [directive];
 
     _.each(sequence, function(command) {
    
@@ -53,9 +52,12 @@ function Counterposer (brain) {
       }
 
       var shortTerm = brain.memory.short;
-      var alreadySaidIt = false;
 
-      if (!shortTerm.recall(thought)) {
+              response += thought;
+        response += brain.speech.softPause();
+        shortTerm.remember(thought);
+
+    /*  if (!shortTerm.recall(thought)) {
         response += thought;
         response += brain.speech.softPause();
         shortTerm.remember(thought);
@@ -63,11 +65,14 @@ function Counterposer (brain) {
       else {
         response += brain.speech.express.pause();
         response += brain.speech.softPause();
-      }
+      }*/
      
     })
 
     if (!response)   response = brain.speech.softPause();     
-    return [response,seed];
+
+
+    console.log('Counterpose retunring...',response)
+    return [response];
   }
 }
