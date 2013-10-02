@@ -50,7 +50,8 @@ function ShortTermMemory(memory) {
 }
 
 function LongTermMemory(memory) {
-  var stories = window._stories;
+  stories = window._EmilyStories;
+  this.stories = stories;
   var longTerm = this;
 
   longTerm.getStories = function (seed) {

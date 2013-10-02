@@ -157,6 +157,15 @@ function Prepositor(brain) {
     // add a space after the preposition, if it exists
     if (preposition) preposition += " ";
 
+    var regex = /\d{1,2}:\d{2}/;    // NICE
+    if (regex.exec(word)) {
+      console.log('this is a time');
+      preposition = '';
+    }
+    else {
+    //  console.log('this is not a time...')
+    }
+
     var response = preposition + (returnWord ? word : '');
     if (response == 'me' && !context.objective && !context.asBundle) response = 'I'; // English is a hacky language.
     if (response == 'i') response = 'I';

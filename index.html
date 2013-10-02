@@ -49,7 +49,7 @@
   <div class='container' ng-controller='LisaController'  style='padding:60px;'>
     <div class="row">
       <div class='span5'>
-        <h3>Jack</h3>
+        <h3>Emily</h3>
            <div id='saying' ng-bind-html-unsafe='saying' style='margin-bottom:10px' ></div>
         <form id='conversation-form' ng-submit="reply('tell-story')">
           <input  ng-model='sayTo' class='input input-block-level' type='text'>
@@ -61,7 +61,7 @@
         </div>
       </div>
       <div class='span3'>
-        <img src='../misc/jack.jpg' width='400px' height='auto'>
+        <img src='../misc/lisa.jpg' width='200px' height='auto'>
       <form class='form'>
         <div class='controls'>
           <button ng-click='handleMenuClick(thing)' class='btn' ng-repeat="thing in things">
@@ -88,20 +88,21 @@
 
       $scope.handleMenuClick = function(thing) {
 
-    //  console.log('menu click...',thing);
-      $scope.sayTo = thing;
-      $scope.reply('story-excerpt');
+      //  console.log('menu click...',thing);
+        $scope.sayTo = thing;
+        $scope.reply('story-excerpt');
 
       }
 
 
       $scope.saying = '...';
       $scope.things = [
-        'Beanstalk','Candlesticks','Muffin Man','Hill','Jill','Humpty-Dumpty',
-        'Mother'
+        'Money',
+        'John',
+        'Lisa',
       ]
 
-      $scope.sayTo = 'beanstalk';
+      $scope.sayTo = 'money';
 
       $scope.reply = function(directive) {
 

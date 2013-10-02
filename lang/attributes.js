@@ -30,6 +30,11 @@ var _attributes = [
       synonyms:['kind'],
     },
     {
+      word:'missing',
+      form:'adjective',
+      synonyms:['gone','vanished'],
+    },
+    {
       word:'old',
       form:'adjective',
       synonyms:['wizened','ancient']
@@ -86,6 +91,7 @@ var _attributes = [
         {action:'jump',applies:'over'},
       ],
       form:'adjective',
+      synonyms:['enjoyable','amusing']
     },
     {
       word:'fierce',

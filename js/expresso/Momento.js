@@ -12,6 +12,8 @@ function Momento(brain) {
 
   //  console.log('tell story moment...',moment,context);
 
+  if (!moment) return "I can hardly think of anything.";
+
     if (moment.dialogue) {
 
      // console.log('this is a dialogue...');
@@ -172,6 +174,10 @@ function Momento(brain) {
     if (moment.too) {
           response += brain.speech.lightPause();
       response += " too ";
+    }
+
+    if (moment.when) {
+      response += preposit(moment.off, _.clone(context));
     }
 
   //  console.log("Story moment",moment,context);

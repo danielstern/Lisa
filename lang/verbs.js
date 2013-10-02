@@ -34,6 +34,31 @@ var _verbs = {
     jugend:'shining'
   },
 
+  shine:{
+    past:{
+      singular:'shined',
+      plural:'shined'
+    },
+    present:{
+      singular:'shines',
+      plural:'shine'
+    },
+    jugend:'shining'
+  },
+
+
+  look:{
+    past:{
+      singular:'looked',
+      plural:'looked'
+    },
+    present:{
+      singular:'looks',
+      plural:'look'
+    },
+    jugend:'looking'
+  },
+
 
   try:{
     past:{

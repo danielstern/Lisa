@@ -54,6 +54,7 @@ _.mixin({
   fizzle: function(string) {
     if (!string) return false;
     if (typeof string != 'string' || string.split(':').length < 2) return string;
+    if (!_.stringContains(string, '$')) return string;
     var fizzle = {};
     var pieces = string.replace(/\$/gi,'')
       .split(':');
