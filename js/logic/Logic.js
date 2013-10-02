@@ -124,6 +124,7 @@ function Logic(brain) {
         if (logic.brain.whatIs(comment.subject).word == seed.word) return true;
     })
 
+   // var conclusion = _.sample(allCommentsAboutSubject) || '';
     var conclusion = _.sample(allCommentsAboutSubject) || '';
    // console.log('expressing conclusion...',seed,stories,conclusion,allComments,allCommentsAboutSubject)
     if (!conclusion) return "I can't draw any conclusions.";
