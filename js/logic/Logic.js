@@ -65,7 +65,7 @@ function Logic(brain) {
 
     var context = {};
     context.time = 'past';
-    context.once = true;
+    context.rel = 'once';
     var remark = brain.speech.express.moment(excerpt,context);
    // console.log('getting story excerpt...',seed, stories, excerpt,remark);
     //console.log('get story excerpt')

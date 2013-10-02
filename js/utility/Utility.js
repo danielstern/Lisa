@@ -70,7 +70,6 @@ _.mixin({
   },
 
   fizzle: function(string) {
- //   console.log('*fizzle*...',string)
     if (!string) return false;
     if (typeof string != 'string' || string.split(':').length < 2) return string;
     var fizzle = {};
@@ -78,9 +77,8 @@ _.mixin({
       .split(':');
     fizzle.thing = pieces[1];
     fizzle.has = pieces[0];
-//  console.log('*pop*',fizzle)
-    return fizzle;
 
+    return fizzle;
   },
 
   oneToMany: function(string, returnQuality) {
@@ -159,7 +157,7 @@ _.mixin({
   bare: function(string) {
 
     if (!string) return string;
-    string = string.replace(/[\s,;.:!?'"']+/,'');
+    string = string.replace(/[\s,;.<>:!?'"']+/gi,'');
     string = string.toLowerCase();
     return string;
 

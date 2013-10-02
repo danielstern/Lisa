@@ -42,47 +42,26 @@ function Momento(brain) {
 
 
     // If the moment has relevance, express it...
-    switch (context.once || moment.rel) {
+
+
+    switch (context.rel || moment.rel) {
 
     case 'but':
-      switch (Math.ceil(Math.random() * 2)) {
-      case 1:
-        response += 'but'
-        break;
-      case 2:
-        response += 'however'
-        break;
-      }
+      response += _.sample(['but','however']);
       break;
-
     case 'so':
-      switch (Math.ceil(Math.random() * 3)) {
-      case 1:
-        response += 'so'
-        break;
-      case 2:
-        response += 'thus'
-        break;
-      case 3:
-        response += 'as a result'
-        break;
-      }
-      break;
-
+      response += _.sample(['so','then','thus']);
+      break
     case 'then':
-      switch (Math.ceil(Math.random() * 3)) {
-      case 1:
-        response += 'after that'
-        break;
-      case 2:
-        response += 'then'
-        break;
-      }
+      response += _.sample(['then']);
+      break;
+    case 'once':
+      response += _.sample(['once','']);
       break;
     }
 
     // add a soft pause of necessary
-    if (moment.rel) response += "##lp";
+    if ((context.rel || moment.rel) && response) response += "##lp";
 
     // if the moment's context suggests it is a general moment, express it generally
     var isGeneral = (moment.context && moment.context.general);
@@ -177,10 +156,6 @@ function Momento(brain) {
       response += " during " + preposit(moment.during);
     }
 
-    if (context.once) {
-      response += brain.speech.lightPause();
-      response += "once";
-    }
 
     if (moment.too) {
           response += brain.speech.lightPause();
