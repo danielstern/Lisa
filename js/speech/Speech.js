@@ -6,10 +6,13 @@ function Speech(brain) {
   speech.conjugator = new Conjugator(brain);
   speech.lexicator = new Lexicator(brain);
   speech.prepositor = new Prepositor(brain);
-  speech.extractor = new Extractor(brain);
-  speech.momento = new Momento(brain);
 
-  var response = '';
+  speech.momento = new Momento(brain);
+  speech.express = speech.momento;
+
+  speech.preposit = speech.prepositor.preposit;
+  speech.conjugate = speech.conjugator.conjugate;
+  speech.synonomize = speech.conjugator.conjugate;
 
   speech.softPause = function () {
     return "##sp";

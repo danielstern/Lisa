@@ -51,6 +51,8 @@ function ShortTermMemory(memory) {
 
 function LongTermMemory(memory) {
   stories = window._EmilyStories;
+
+  var brain = memory.brain;
   this.stories = stories;
   var longTerm = this;
 
@@ -67,7 +69,7 @@ function LongTermMemory(memory) {
 
     _.each(stories, function (story) {
 
-      var ideas = brain.speech.express.extractor.extractStory(story);
+      var ideas = brain.extractor.extractStory(story);
       if (_.contains(ideas, word) || _.contains(ideas, seed.plural)) {
 
         matchingStories.push(story);

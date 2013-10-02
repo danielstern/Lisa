@@ -6,7 +6,7 @@ function Prepositor(brain) {
 
     var preposit = pt.preposit;
 
-    var express = brain.speech.express;
+    var speech = brain.speech;
     context = context || {};
     if (word instanceof Array) word = word[0];
 
@@ -14,7 +14,6 @@ function Prepositor(brain) {
       	return pt.prepositBundle(word, context);
     }
 
- //   console.log('preopositing 1', word,context)
 
     if (_.fizzle(word) && _.fizzle(word).thing) {
       var property = _.fizzle(word).has;
@@ -108,7 +107,7 @@ function Prepositor(brain) {
     // if the idea is an adjective, give it no pronoun and grab a synonym of it, for fun
     if (idea.form == "adjective") {
       idea.pronoun = 'none'
-      word = express.synonomize(idea.word);
+      word = speech.synonomize(idea.word);
     }
    // console.log('Prepositing 2:', word, idea, context)
 

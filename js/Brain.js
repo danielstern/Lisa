@@ -1,16 +1,14 @@
 function Brain(host) {
 
-  _.defer(init);
-  var brain = this;;
+  var brain = this;
 
-  function init() {
-    console.log('initializing....');
+
     brain.logic = new Logic(brain);
     brain.speech = new Speech(brain);
     brain.memory = new Memory(brain);
+    brain.extractor = new Extractor(brain);
     brain.lexicon = brain.speech.lexicator;
-    console.log('brain',brain);
-  }
+
 
   brain.process = function (words, directive) {
 
@@ -76,7 +74,7 @@ function Brain(host) {
   brain.learn = function (package) {
 
  //     console.log('learning,',package);
- 
+
       if (package.packageType == 'verbs') {
         brain.speech.conjugator.learn(package)
         return;

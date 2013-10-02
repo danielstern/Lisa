@@ -1,6 +1,5 @@
-function Lexicator(speech) {
+function Lexicator(brain) {
   var lx = this;
-  var brain = speech.brain;
   lx.things = [];
   //lx.attributes = [];
 
@@ -19,12 +18,12 @@ function Lexicator(speech) {
   }
 
 
-  lx.getVerbSynonyms = function(verb) {
-    var cj = speech.conjugator;
+  this.getVerbSynonyms = function(verb) {
+    var cj = brain.speech.conjugator;
+
     idea = cj.getIdea(verb);
     if (!idea || !idea.synonyms) return [verb];
     var synonyms = idea.synonyms;
-   // console.log('returning synonyms...',synonyms)
     return synonyms;
 
   }

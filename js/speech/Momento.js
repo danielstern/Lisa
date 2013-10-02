@@ -1,14 +1,22 @@
 function Momento(brain) {
+
   var mm = this;
+
+
   mm.moment = function(moment, context) {
 
     var response = '';
     context = context || {};
     context.objective = false;
-    var express = brain.speech.express;
-    var preposit = express.preposit;
-    var synonomize = express.synonomize;
-    var conjugate = express.conjugate;
+
+    var speech = brain.speech;
+    var preposit = speech.preposit;
+    var conjugate = speech.conjugate;
+
+    var whatIs = brain.whatIs;
+
+
+
 
   //  console.log('tell story moment...',moment,context);
 
@@ -42,10 +50,6 @@ function Momento(brain) {
     };
 
 
-
-    // If the moment has relevance, express it...
-
-
     switch (context.rel || moment.rel) {
 
     case 'but':
@@ -70,16 +74,16 @@ function Momento(brain) {
     if (isGeneral) {
 
       var generalContext;
-      if (!brain.whatIs(moment.subject)) generalContext = 'plural';
-      generalContext = generalContext || (brain.whatIs(moment.subject) && brain.whatIs(moment.subject).plural) ? 'plural' : 'singular';
-      response += express.preposit(moment.subject,{pronoun:'plural'}) + " " + express.conjugate(moment.subject, moment.action, 'present', generalContext);
+      if (!whatIs(moment.subject)) generalContext = 'plural';
+      generalContext = generalContext || (whatIs(moment.subject) && whatIs(moment.subject).plural) ? 'plural' : 'singular';
+      response += preposit(moment.subject,{pronoun:'plural'}) + " " + conjugate(moment.subject, moment.action, 'present', generalContext);
     } 
     else {
 
       var subjectContext = _.clone(context);
-      var subjectIdea = brain.whatIs(_.crack(moment.subject, true)) || {};
+      var subjectIdea = whatIs(_.crack(moment.subject, true)) || {};
       subjectContext.pronoun = subjectIdea.pronoun;
-      response += express.preposit(moment.subject, subjectContext) + " " + express.conjugate(moment.subject, moment.action, context.time,'singular');
+      response += preposit(moment.subject, subjectContext) + " " + conjugate(moment.subject, moment.action, context.time,'singular');
     }
 
     context.objective = true;
@@ -187,10 +191,6 @@ function Momento(brain) {
 
   mm.generateSentenceFragment = function(momentFragment, context) {
 
-    var express = brain.speech.express;
-    var preposit = express.preposit;
-    var conjugate = express.conjugate;
-
     context.time = 'present';
     context.plural = context.plural || true;
    // context.action = momentFragment.action;
@@ -212,7 +212,6 @@ function Momento(brain) {
         var conjugate = expresso.conjugator.getWord;
     if (typeof seed == 'string') seed = window.brain.whatIs(seed, true);
 
-    var preposit = expresso.prepositor.preposit;
 
     var prepositedSubjects = '';
     if (seed instanceof Array) {

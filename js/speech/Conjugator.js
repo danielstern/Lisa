@@ -1,7 +1,9 @@
-function Conjugator() {
+function Conjugator(brain) {
   var cj = this;
   cj.allVerbs = {};
   var tl = cj.allVerbs;
+
+  console.log('conjugator initialize..., brain?',brain,brain)
 
   cj.learn = function (lexiary, verb) {
     
@@ -21,6 +23,7 @@ function Conjugator() {
   cj.conjugate = function (seed, verb, tense, context) {
 
     // console.log('Expresso is Conjugating: ',seed, verb, tense, context);
+    var lx = brain.speech.lexicator;
     if (_.oneToMany(seed) instanceof Array) {
       context = 'plural';
     }
@@ -38,7 +41,7 @@ function Conjugator() {
     }
   }
 
-    var synonyms = express.getVerbSynonyms(verb);
+    var synonyms = lx.getVerbSynonyms(verb);
     if (synonyms && synonyms[0]) verb = _.sample(synonyms);
 
     verb = cj.getWord(verb, tense, context)
