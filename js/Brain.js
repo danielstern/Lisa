@@ -1,21 +1,17 @@
 function Brain(host) {
 
-  var brain = this;
-  window.brain = brain; // this allows you to learn about Lisa by inspecting her brain in the console.
-  brain.host = host;
+  _.defer(init);
+  var brain = this;;
 
-  brain.logic = new Logic(brain);
-  brain.speech = new Speech(brain);
-  brain.memory = new Memory(brain);
+  function init() {
+    console.log('initializing....');
+    brain.logic = new Logic(brain);
+    brain.speech = new Speech(brain);
+    brain.memory = new Memory(brain);
+    brain.lexicon = brain.speech.lexicator;
+    console.log('brain',brain);
+  }
 
-  brain.lexicon = brain.speech.express.lexicator;
-/*
-  brain.patterns = [
-  //  ['tell-story'],
- //   ['story-excerpt'],
-  //  ['draw-conclusion'],
-  ];
-*/
   brain.process = function (words, directive) {
 
     var response = '';
@@ -80,11 +76,12 @@ function Brain(host) {
   brain.learn = function (package) {
 
  //     console.log('learning,',package);
+ 
       if (package.packageType == 'verbs') {
-        brain.speech.express.conjugator.learn(package)
+        brain.speech.conjugator.learn(package)
         return;
       }
-      brain.speech.express.lexicator.learn(package);
+      brain.speech.lexicator.learn(package);
   }
 
 
@@ -104,7 +101,7 @@ function Brain(host) {
 
     console.log('Ponder',idea,directive,response)
 
-    if (!response) response = brain.speech.express.pause();
+    if (!response) response = brain.speech.pause();
 
     response = brain.speech.prettify(response);
 

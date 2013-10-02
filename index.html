@@ -28,15 +28,15 @@
   <script src="lang/attributes.js"></script>
   <script src="lang/things.js"></script>
   
-  <script src="js/expresso/Conjugator.js"></script>
-  <script src="js/expresso/Lexicator.js"></script>
-  <script src="js/expresso/Prepositor.js"></script>
-  <script src="js/expresso/Extractor.js"></script>
-  <script src="js/expresso/Momento.js"></script>
+  <script src="js/speech/Conjugator.js"></script>
+  <script src="js/speech/Lexicator.js"></script>
+  <script src="js/speech/Prepositor.js"></script>
+  <script src="js/speech/Extractor.js"></script>
+  <script src="js/speech/Momento.js"></script>
 
-  <script src="js/expresso/expressions/expressions.js"></script>
-  <script src="js/expresso/Expresso.js"></script>
-  <script src="js/expresso/Speech.js"></script>
+  <script src="js/speech/expressions/expressions.js"></script>
+  <script src="js/speech/Expressor.js"></script>
+  <script src="js/speech/Speech.js"></script>
   <script src="story/stories.js"></script>
 
   <script src="js/utility/Utility.js"></script>
@@ -79,10 +79,10 @@
    .controller('LisaController', ['$scope', function($scope) {
 
       var $Lisa = new Lisa();
-      $Lisa.learn(_things);
+   /*   $Lisa.learn(_things);
       $Lisa.learn(_attributes);
       $Lisa.learn(_sayings);
-      $Lisa.learn(_verbs);
+      $Lisa.learn(_verbs);*/
 
       $scope.handleMenuClick = function(thing) {
 
