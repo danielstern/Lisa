@@ -8,6 +8,7 @@ function Brain(host) {
     brain.memory = new Memory(brain);
     brain.extractor = new Extractor(brain);
     brain.lexicon = brain.speech.lexicator;
+    var lx = brain.lexicon;
 
 
   brain.process = function (words, directive) {
@@ -51,21 +52,8 @@ function Brain(host) {
 
     if (!word) return;
 
-    var idea = brain.extractIdea(_.crack(word));
+    var idea = lx.getWord(_.crack(word));
     var context = brain.analyze(word);
-
-    if (context.ideas && !idea) {
-      var embeddedWord = _.find(context.ideas,
-      function(word) {
-       //console.log('what is...',word)
-  //       if (brain.extractIdea(word)) return true;
-      })
-
-      idea = brain.extractIdea(embeddedWord);
-    }
-
-    //console.log('What is: ', word, idea, context);
-
 
     return _.clone(idea);
   }
@@ -73,9 +61,7 @@ function Brain(host) {
 
   brain.learn = function (package) {
 
- //     console.log('learning,',package);
-
-      if (package.packageType == 'verbs') {
+    if (package.packageType == 'verbs') {
         brain.speech.conjugator.learn(package)
         return;
       }
@@ -85,30 +71,15 @@ function Brain(host) {
 
   brain.ponder = function (idea, directive) {
 
-    var response = '';
     if (!idea) return ["No ideas about that."];
 
+    if (idea.see) idea = brain.whatIs(idea.see[0], true);
 
-    if (idea && idea.see) idea = brain.whatIs(idea.see[0], true);
-
-    var ponder = brain.logic.counterpose(idea,directive)
-    response = ponder[0];
-
-    if (!response) response = brain.speech.pause();
+    var response = brain.logic.counterpose(idea,directive);
 
     response = brain.speech.prettify(response);
 
     return response;
   }
-
-  brain.extractIdea= function(word) {
-
-    var idea;
-
-    idea = brain.lexicon.getWord(word); 
-
-    return idea;
-  }
-
 }
 
