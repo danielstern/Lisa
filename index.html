@@ -1,5 +1,5 @@
 <!doctype HTML>
-<!-- Copyright 2013 danielstern.ca - feel free to examine, learn and apply -->
+<!-- Lisa by Daniel Stern -->
 
 <html ng-app='lisaApp'> 
 <head>
@@ -63,6 +63,14 @@
       </div>
       <div class='span3'>
         <img src='../misc/jack.jpg' width='400px' height='auto'>
+      <form class='form'>
+        <div class='controls'>
+          <button class='btn' ng-repeat="thing in things">
+             <span ng-click='handleMenuClick(thing)'>{{thing}}</span>
+          </button>
+        </div>
+        </ul>
+      </form>
       </div>
     </div>
   </div>
@@ -79,7 +87,16 @@
       $Lisa.learn(_sayings);
       $Lisa.learn(_verbs);
 
-      $scope.saying = '...'
+      $scope.handleMenuClick = function(thing) {
+
+      console.log('menu click...',thing);
+      $scope.sayTo = thing;
+
+      }
+
+
+      $scope.saying = '...';
+      $scope.things = ['Beanstalk','Candlesticks','Muffin Man']
 
       $scope.sayTo = 'beanstalk';
 
