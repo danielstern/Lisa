@@ -10,32 +10,6 @@ function Logic(brain) {
 
   logic.getStoryExcerpt = logic.storyteller.getStoryExcerpt;
 
-  logic.drawConclusion = function (seed) {
-
-    var response = '';
-    var longTerm = brain.memory.long;
-
-    var ex = brain.extractor;
-
-    var stories = longTerm.getStories(_.crack(seed.word));
-    var moments = ex.storiesToMoments(stories);
-    var allCommentsAboutSubject = _.chain(moments)
-       .map(function(moments){return logic.getComments(moments)})
-       .flatten()
-       .tap(function(comments){console.log('comments?',comments)})
-       .filter(function(comment){if(comment && comment.subject && brain.whatIs(comment.subject).word == seed.word) return true;})
-       .value();
-
-
-    var conclusion = _.sample(allCommentsAboutSubject) || '';
-    if(!conclusion) return "I can't draw any conclusions.";
-    var remark = logic.brain.speech.express.generality(conclusion.subject, conclusion.attribute);
-    response = remark;
-
-    return response;
-  }
-
-
   logic.getComments = function (moment) {
 
     var lx = brain.speech.lexicator;
@@ -44,7 +18,7 @@ function Logic(brain) {
     var applicableOccasions = ex.occasionsFromMoment(moment); 
 
     var comments = _.map(applicableOccasions, function(occasion) {
-      var comment = new logic.comment(moment[occasion.applies],attribute.word);
+      var comment = new Comment(moment[occasion.applies],attribute.word);
       return comment;
     })
 
@@ -52,7 +26,7 @@ function Logic(brain) {
   }
 
 
-  logic.comment = function (subject, attribute) {
+  var Comment = function (subject, attribute) {
 
     subject = _.crack(subject);
     attribute = _.crack(attribute);

@@ -45,53 +45,10 @@ var Extractor = function(brain) {
     });
 
     ideas = ex.sluice(ideas);
-    //console.log('Extract Story',story,ideas)
-
-   // console.log('extractStory,',story,ideas)
 
     return ideas;
   }
 
-  ex.occasionsFromMoments = function (moments) {
-
-
-    if (!moments instanceof Array) moments = [moments];
-
-    var lx = brain.speech.lexicator;
-    var attributes = lx.getAllAttributes();
-    var occasions = [];
-
-    occasions =  _.chain(moments)
-                 .tap(function(moment){console.log('moment',moment)})
-                 .map(function(moment){
-                    /*var returny = _.filter(attributes, function(attribute) {
-                      _.each(attribute.when, function (occasion) {
-                        occasion.applies = occasion.applies || 'subject';
-                        if(ex.occasionInvokesAttribute(moment, occasion)) return true;
-                      })
-                    })*/
-                    var returny = _.chain(attributes)
-                                  .value();
-                    return returny;
-                  })
-                 .value();
-
-    console.log('occasion form moments...',occasions);
-    return;
-       
-
-/*
-    _.filter(attributes, function(attribute) {
-      _.each(attribute.when, function (occasion) {
-        occasion.applies = occasion.applies || 'subject';
-        if(ex.occasionInvokesAttribute(moment, occasion)) return true;
-      })
-    })*/
-
-    return occasions;
-  }
-
-  ex.occasionsFromMoment = ex.occasionsFromMoments;
 
   ex.ideasFromMoment = function (moment) {
 
@@ -147,7 +104,6 @@ var Extractor = function(brain) {
     _.each(story.sequence, function(moment) {
       moments.push(moment);
     });
-    //console.log('storyMoments...',story,moments);
 
     return moments;
 
