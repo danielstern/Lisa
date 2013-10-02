@@ -51,14 +51,12 @@
       <div class='span5'>
         <h3>Emily</h3>
            <div id='saying' ng-bind-html-unsafe='saying' style='margin-bottom:10px' ></div>
-        <form id='conversation-form' ng-submit="reply('tell-story')">
+        <form id='conversation-form' ng-submit="reply('story-excerpt')">
           <input  ng-model='sayTo' class='input input-block-level' type='text'>
-          <button class='btn btn-block'>"Tell Story."</button>
         </form>
-        <div class="btn-group btn-block">
-          <button ng-click="reply('story-excerpt')" class='btn btn-block'>"Tell me a little something about it."</button>
-          <button ng-click="reply('draw-conclusion')" class='btn btn-block'>"Draw conclusion."</button>
-        </div>
+          <button ng-click="reply('tell-story')" class='btn'>"Tell Me More."</button>
+          <button ng-click="reply('story-excerpt')" class='btn'>"Tell me a little something about it."</button>
+          <button ng-click="reply('draw-conclusion')" class='btn'>"Draw conclusion."</button>
       </div>
       <div class='span3'>
         <img src='../misc/lisa.jpg' width='200px' height='auto'>

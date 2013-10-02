@@ -22,6 +22,10 @@ var _attributes = [
 
     },
     {
+      word:'sunny',
+      form:'adjective',
+    },
+    {
       word:'nice',
       when:[
         {action:'give',to:'me', applies:'subject'},
@@ -33,6 +37,11 @@ var _attributes = [
       word:'missing',
       form:'adjective',
       synonyms:['gone','vanished'],
+    },
+    {
+      word:'few',
+      form:'adjective',
+      synonyms:['scarcely any','not many'],
     },
     {
       word:'old',
