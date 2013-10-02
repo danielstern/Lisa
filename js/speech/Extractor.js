@@ -62,10 +62,21 @@ var Extractor = function(brain) {
     var occasions = [];
 
     occasions =  _.chain(moments)
-                 _.whomp(function(){return moment})
-                  .value();
+                 .tap(function(moment){console.log('moment',moment)})
+                 .map(function(moment){
+                    /*var returny = _.filter(attributes, function(attribute) {
+                      _.each(attribute.when, function (occasion) {
+                        occasion.applies = occasion.applies || 'subject';
+                        if(ex.occasionInvokesAttribute(moment, occasion)) return true;
+                      })
+                    })*/
+                    var returny = _.chain(attributes)
+                                  .value();
+                    return returny;
+                  })
+                 .value();
 
-    console.log('occasion form moments...',moments,occasions);
+    console.log('occasion form moments...',occasions);
     return;
        
 

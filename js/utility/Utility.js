@@ -51,10 +51,11 @@ _.mixin({
     return string;
   },
 
-  whomp: function(array, filter) {
+  whomp: function(filter,array) {
     return _.chain(array)
             .map(filter)
             .flatten()
+            .value();
   },
 
   fizzle: function(string) {

@@ -19,9 +19,9 @@ function Logic(brain) {
 
     var stories = longTerm.getStories(_.crack(seed.word));
     var moments = ex.storiesToMoments(stories);
-    console.log("moments?",moments);
     var allCommentsAboutSubject = _.chain(moments)
-       .whomp(function(){return logic.getComments(moments)})
+       .map(function(moments){return logic.getComments(moments)})
+       .flatten()
        .tap(function(comments){console.log('comments?',comments)})
        .filter(function(comment){if(comment && comment.subject && brain.whatIs(comment.subject).word == seed.word) return true;})
        .value();
