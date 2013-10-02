@@ -51,6 +51,13 @@ _.mixin({
     return string;
   },
 
+  whomp: function(array, filter) {
+    return _.chain(array)
+            .map(filter)
+            .flatten()
+            .value();
+  },
+
   fizzle: function(string) {
     if (!string) return false;
     if (typeof string != 'string' || string.split(':').length < 2) return string;

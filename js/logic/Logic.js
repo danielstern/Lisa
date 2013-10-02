@@ -21,9 +21,8 @@ function Logic(brain) {
     var moments = ex.storiesToMoments(stories);
     console.log("moments?",moments);
     var allCommentsAboutSubject = _.chain(moments)
-       .map(function(moment){return logic.getComments(moments)})
+       .whomp(function(){return logic.getComments(moments)})
        .tap(function(comments){console.log('comments?',comments)})
-       .flatten()
        .filter(function(comment){if(comment && comment.subject && brain.whatIs(comment.subject).word == seed.word) return true;})
        .value();
 

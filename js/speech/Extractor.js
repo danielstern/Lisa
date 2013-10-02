@@ -60,7 +60,7 @@ var Extractor = function(brain) {
     var lx = brain.speech.lexicator;
     var attributes = lx.getAllAttributes();
     var occasions = [];
- _.each(moments,function(moment){
+    _.each(moments,function(moment){
     occasions.concat(_.filter(attributes, function(attribute) {
       _.each(attribute.when, function (occasion) {
         occasion.applies = occasion.applies || 'subject';
