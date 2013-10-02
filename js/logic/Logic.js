@@ -15,24 +15,19 @@ function Logic(brain) {
     var response = '';
     var longTerm = brain.memory.long;
 
+    var ex = brain.extractor;
+
     var stories = longTerm.getStories(_.crack(seed.word));
-    var allComments = [];
-    var extractor = brain.extractor;
+    var moments = ex.storiesToMoments(stories);
+    console.log("moments?",moments);
+    var allCommentsAboutSubject = _.chain(moments)
+       .map(function(moment){return logic.getComments(moments)})
+       .tap(function(comments){console.log('comments?',comments)})
+       .flatten()
+       .filter(function(comment){if(comment && comment.subject && brain.whatIs(comment.subject).word == seed.word) return true;})
+       .value();
 
-    _.each(stories, function (story) {
-      var sequences = extractor.storyToMoments(story);
-      _.each(sequences, function (moment) {
-        var comments = logic.getComments(moment);
-        allComments = allComments.concat(comments);
 
-      })
-    })
-
-    var allCommentsAboutSubject = _.filter(allComments,
-      function (comment) {
-        if(!comment || !comment.subject) return false;
-        if(logic.brain.whatIs(comment.subject).word == seed.word) return true;
-      })
 
     var conclusion = _.sample(allCommentsAboutSubject) || '';
     if(!conclusion) return "I can't draw any conclusions.";
@@ -41,6 +36,7 @@ function Logic(brain) {
 
     return response;
   }
+
 
   logic.getComments = function (moment) {
 
@@ -56,6 +52,7 @@ function Logic(brain) {
 
     return comments;
   }
+
 
   logic.comment = function (subject, attribute) {
 

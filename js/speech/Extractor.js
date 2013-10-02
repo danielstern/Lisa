@@ -52,20 +52,27 @@ var Extractor = function(brain) {
     return ideas;
   }
 
-  ex.occasionsFromMoment = function (moment) {
+  ex.occasionsFromMoments = function (moments) {
+
+
+    if (!moments instanceof Array) moments = [moments];
 
     var lx = brain.speech.lexicator;
     var attributes = lx.getAllAttributes();
-
-    var occasions = _.filter(attributes, function(attribute) {
+    var occasions = [];
+ _.each(moments,function(moment){
+    occasions.concat(_.filter(attributes, function(attribute) {
       _.each(attribute.when, function (occasion) {
         occasion.applies = occasion.applies || 'subject';
         if(ex.occasionInvokesAttribute(moment, occasion)) return true;
-      })
-    })
 
+      })
+    }));
+  })
     return occasions;
   }
+
+  ex.occasionsFromMoment = ex.occasionsFromMoments;
 
   ex.ideasFromMoment = function (moment) {
 
@@ -94,7 +101,7 @@ var Extractor = function(brain) {
       var seedProperties = _.flatten(_.values(seed))
       var intersects = _.intersection(ideas,seedProperties);
       if (intersects[0]) {
-        
+
         return true;
       }
 
@@ -125,6 +132,15 @@ var Extractor = function(brain) {
 
     return moments;
 
+  }
+
+  _.mixin();
+
+  ex.storiesToMoments = function(stories) {
+    return _.chain(stories)
+     .map(function(story){return ex.storyToMoments(story)})
+     .flatten()
+     .value();
   }
 
   ex.sluice = function(ideas){

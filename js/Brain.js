@@ -89,15 +89,10 @@ function Brain(host) {
     if (!idea) return ["No ideas about that."];
 
 
-    // what was passed, or what the brain was thinking about last, or something random
-    //if (idea.hidden == 'true') brain.lexicon.getRandomWord();
-
     if (idea && idea.see) idea = brain.whatIs(idea.see[0], true);
 
     var ponder = brain.logic.counterpose(idea,directive)
     response = ponder[0];
-
-    console.log('Ponder',idea,directive,response)
 
     if (!response) response = brain.speech.pause();
 

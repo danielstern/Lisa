@@ -38,6 +38,7 @@ var _attributes = [
       form:'adjective',
       synonyms:['kind'],
     },
+
     {
       word:'missing',
       form:'adjective',
@@ -47,6 +48,10 @@ var _attributes = [
       word:'few',
       form:'adjective',
       synonyms:['scarcely any','not many'],
+    },
+    {
+      word:'pretty',
+      form:'adjective',
     },
     {
       word:'old',
@@ -87,6 +92,13 @@ var _attributes = [
       when:[
         {action:'kill',applies:'with'},
         {action:'burn',applies:'subject'},
+      ],
+      form:'adjective',
+    },
+    {
+      word:'good',
+      when:[
+        {action:'is',object:'pretty',applies:'subject'},
       ],
       form:'adjective',
     },

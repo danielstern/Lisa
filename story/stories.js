@@ -24,6 +24,9 @@ var _EmilyStories = [
     },
     {
       subject:"assumed|Lexy's", action:'is', object:"Shoe Store"
+    },
+    {
+       subject:"shoes", action:'is', object:"pretty"
     }
   ],
   },  
@@ -45,7 +48,8 @@ var _EmilyStories = [
     },
     {
       subject:'the|money', action:'is', object:'missing',
-    }
+    },
+
 
     ],
   },
