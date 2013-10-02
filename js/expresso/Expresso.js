@@ -109,11 +109,13 @@ var Expresso = function (brain) {
         var conjugate = expresso.conjugator.getWord;
     if (typeof seed == 'string') seed = window.brain.whatIs(seed, true);
 
+    var preposit = expresso.prepositor.preposit;
+
     var prepositedSubjects = '';
     if (seed instanceof Array) {
       var things = [];
       things = _.map(seed, function (miniSeed) {
-        return preposit(miniSeed, {
+        return expresso.prepositor.preposit(miniSeed, {
           plural: true,
           pronoun: 'plural'
         });

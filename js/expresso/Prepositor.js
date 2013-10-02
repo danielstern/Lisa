@@ -6,6 +6,8 @@ function Prepositor(brain) {
 
   pt.preposit = function (word, context) {
 
+    var preposit = pt.preposit;
+
     var express = brain.speech.express;
     context = context || {};
     if (word instanceof Array) word = word[0];
@@ -172,7 +174,7 @@ function Prepositor(brain) {
     var propositedWords = _.map(words, function (word) {
         var prepositContext = _.clone(context);
         prepositContext.asBundle = true;
-        return preposit(word, prepositContext)
+        return pt.preposit(word, prepositContext)
     });
 
     propositedWords = _.toSentence(propositedWords);
@@ -224,7 +226,7 @@ function Prepositor(brain) {
 
   }
 
-  window.preposit = pt.preposit;
+//  window.preposit = pt.preposit;
 
 
 }
