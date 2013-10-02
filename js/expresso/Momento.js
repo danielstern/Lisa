@@ -68,8 +68,8 @@ function Momento(brain) {
     if (isGeneral) {
 
       var generalContext;
-      if (!logic.brain.whatIs(moment.subject)) generalContext = 'plural';
-      generalContext = generalContext || (logic.brain.whatIs(moment.subject) && logic.brain.whatIs(moment.subject).plural) ? 'plural' : 'singular';
+      if (!brain.whatIs(moment.subject)) generalContext = 'plural';
+      generalContext = generalContext || (brain.whatIs(moment.subject) && brain.whatIs(moment.subject).plural) ? 'plural' : 'singular';
       response += express.preposit(moment.subject,{pronoun:'plural'}) + " " + express.conjugate(moment.subject, moment.action, 'present', generalContext);
     } 
     else {

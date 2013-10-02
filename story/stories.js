@@ -46,6 +46,9 @@ var _stories = [
       {
         subject:'Muffin Man',action:'reside', in:"Drury Lane",context:{time:'present'}
       },
+      {
+        subject:'person',action:'know',object:'Muffin Man',context:{general:true,time:'present'}
+      },
     ]
   },
   {

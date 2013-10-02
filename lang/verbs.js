@@ -45,6 +45,17 @@ var _verbs = {
     }
   },
 
+  know:{
+    past:{
+      singular:'knew',
+      plural:'knew'
+    },
+    present:{
+      singular:'knows',
+      plural:'know'
+    }
+  },
+
 
   feel:{
     past:{
