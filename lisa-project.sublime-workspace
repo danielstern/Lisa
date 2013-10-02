@@ -4,24 +4,220 @@
 		"selected_items":
 		[
 			[
+				"stor",
+				"storyteller"
+			],
+			[
+				"getStor",
+				"getStoryExcerpt"
+			],
+			[
+				"pre",
+				"preposition"
+			],
+			[
+				"st",
+				"stringContains"
+			],
+			[
+				"conte",
+				"contextObject"
+			],
+			[
+				"mome",
+				"momentFragment"
+			],
+			[
+				"su",
+				"subject"
+			],
+			[
+				"mom",
+				"momentFragment"
+			],
+			[
+				"inte",
+				"intersection"
+			],
+			[
+				"int",
+				"intersects"
+			],
+			[
+				"inters",
+				"intersects"
+			],
+			[
+				"seed",
+				"seedProperties"
+			],
+			[
+				"inter",
+				"intersections"
+			],
+			[
+				"ideas",
+				"ideasFromMoment"
+			],
+			[
+				"story",
+				"storyToMoments"
+			],
+			[
+				"rel",
+				"relevantMoments"
+			],
+			[
+				"relevant",
+				"getRelevantMoments"
+			],
+			[
+				"ext",
+				"extractStory"
+			],
+			[
+				"momen",
+				"momentFromSeed"
+			],
+			[
 				"con",
-				"container"
+				"conjugate"
+			],
+			[
+				"conju",
+				"conjugate"
+			],
+			[
+				"ex",
+				"extractIdea"
+			],
+			[
+				"lexi",
+				"lexicator"
+			],
+			[
+				"count",
+				"counterposer"
+			],
+			[
+				"co",
+				"counterposer"
+			],
+			[
+				"prep",
+				"preposit"
+			],
+			[
+				"nex",
+				"nextUntoldParable"
+			],
+			[
+				"exp",
+				"expresso"
+			],
+			[
+				"dialo",
+				"dialogueMoment"
+			],
+			[
+				"first",
+				"firstSpeaking"
+			],
+			[
+				"fi",
+				"firstSpeaking"
+			],
+			[
+				"retr",
+				"returnWord"
+			],
+			[
+				"ret",
+				"returnWord"
+			],
+			[
+				"pres",
+				"prepositor"
+			],
+			[
+				"Synon",
+				"synonomize"
+			],
+			[
+				"new",
+				"newWordContext"
+			],
+			[
+				"verb",
+				"verbIdea"
+			],
+			[
+				"ver",
+				"verbeTense"
+			],
+			[
+				"idaPar",
+				"ideaParts"
+			],
+			[
+				"inste",
+				"instanceof"
+			],
+			[
+				"se",
+				"sequence"
+			],
+			[
+				"propert",
+				"propertyIdea"
+			],
+			[
+				"idea",
+				"ideaPart"
+			],
+			[
+				"pos",
+				"possessor"
+			],
+			[
+				"poss",
+				"possessive"
+			],
+			[
+				"again",
+				"againstContext"
+			],
+			[
+				"return",
+				"returnQuality"
+			],
+			[
+				"subjec",
+				"subjectContext"
+			],
+			[
+				"scope",
+				"scopeDown"
+			],
+			[
+				"lis",
+				"lisaDirective"
+			],
+			[
+				"recen",
+				"recentThings"
+			],
+			[
+				"pr",
+				"pronoun"
 			],
 			[
 				"use",
 				"useAsync"
 			],
 			[
-				"pre",
-				"preposit"
-			],
-			[
 				"get",
 				"getComments"
-			],
-			[
-				"co",
-				"console"
 			],
 			[
 				"re",
@@ -36,19 +232,7 @@
 				"invoked"
 			],
 			[
-				"scope",
-				"scopeUp"
-			],
-			[
 				"express",
-				"expression"
-			],
-			[
-				"exp",
-				"expreession"
-			],
-			[
-				"ex",
 				"expression"
 			],
 			[
@@ -66,10 +250,6 @@
 			[
 				"string",
 				"string2"
-			],
-			[
-				"verb",
-				"verbalize"
 			],
 			[
 				"relat",
@@ -102,10 +282,6 @@
 			[
 				"pa",
 				"patternsReturned"
-			],
-			[
-				"rel",
-				"relationship"
 			],
 			[
 				"retur",
@@ -160,10 +336,42 @@
 	"buffers":
 	[
 		{
-			"file": "js/Lisa.js",
+			"file": "lang/things.js",
 			"settings":
 			{
-				"buffer_size": 282,
+				"buffer_size": 3872,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "lang/attributes.js",
+			"settings":
+			{
+				"buffer_size": 2818,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/Brain.js",
+			"settings":
+			{
+				"buffer_size": 2879,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/logic/Logic.js",
+			"settings":
+			{
+				"buffer_size": 4609,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/logic/Storyteller.js",
+			"settings":
+			{
+				"buffer_size": 2160,
 				"line_ending": "Windows"
 			}
 		}
@@ -179,7 +387,7 @@
 	},
 	"console":
 	{
-		"height": 0.0
+		"height": 125.0
 	},
 	"distraction_free":
 	{
@@ -192,26 +400,61 @@
 	},
 	"file_history":
 	[
+		"/C/wamp/www/lisa/js/memory/Memory.js",
+		"/C/wamp/www/lisa/index.html",
+		"/C/wamp/www/lisa/lang/verbs.js",
+		"/C/wamp/www/lisa/lang/attributes.js",
+		"/C/wamp/www/lisa/story/stories.js",
+		"/C/wamp/www/lisa/lang/things.js",
+		"/C/wamp/www/lisa/js/logic/Storyteller.js",
+		"/C/wamp/www/lisa/js/expresso/Prepositor.js",
+		"/C/wamp/www/lisa/js/utility/Utility.js",
+		"/C/wamp/www/lisa/js/expresso/Momento.js",
+		"/C/wamp/www/lisa/js/expresso/Conjugator.js",
+		"/C/wamp/www/lisa/README.md",
+		"/C/wamp/www/lisa/js/expresso/Extractor.js",
+		"/C/wamp/www/lisa/js/logic/Logic.js",
+		"/C/wamp/www/lisa/js/expresso/Expresso.js",
+		"/C/Users/New Owner/Documents/more notes",
+		"/C/wamp/www/lisa/js/Brain.js",
+		"/C/wamp/www/lisa/js/expresso/Lexicator.js",
+		"/C/wamp/www/old/stories_rpg.js",
+		"/C/wamp/www/lisa/js/logic/Counterposer.js",
+		"/C/wamp/www/lisa/js/Lisa.js",
+		"/C/wamp/www/lisa/js/expresso/expressions/expressions.js",
+		"/C/Users/New Owner/Documents/BlueJays Way",
+		"/C/Users/New Owner/Documents/portfoliolinks",
+		"/C/wamp/www/lisa/js/expresso/expressions/moment.js",
+		"/C/wamp/www/lisa/js/logic/counterpose.js",
+		"/C/wamp/www/lisa/lang/lexicon.js",
+		"/C/wamp/www/lisa/lang/sayings.js",
+		"/C/Users/New Owner/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/C/wamp/www/lisa/lang/transliterate.js",
+		"/C/Users/New Owner/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/C/wamp/www/lisa/js/brain/Brain.js",
+		"/C/wamp/www/lisa/js/logic/ponder.js",
+		"/C/wamp/www/lisa/js/personality/Personality.js",
+		"/C/wamp/www/lisa/js/brain/Speech.js",
+		"/C/wamp/www/lisa/js/expresso/moment.js",
+		"/C/wamp/www/lisa/js/expresso/expressions.js",
+		"/C/wamp/www/lisa/story/stories_gatsby.js",
+		"/C/wamp/www/lisa/js/personality/Patterns.js",
+		"/C/wamp/www/lisa/js/stories.js",
+		"/C/wamp/www/lisa/js/expressions.js",
+		"/C/wamp/www/lisa/js/Expresso.js",
+		"/C/wamp/www/lisa/js/Memory.js",
+		"/C/wamp/www/lisa/js/ponder.js",
+		"/C/wamp/www/lisa/js/Utility.js",
+		"/C/wamp/www/lisa/js/casualExpressions.js",
+		"/C/wamp/www/lisa/js/Patterns.js",
+		"/C/wamp/www/lisa/js/Logic.js",
 		"/C/wamp/www/lisa/js/patterns.js",
 		"/C/wamp/www/lisa/js/Personality.js",
-		"/C/wamp/www/lisa/js/Expresso.js",
-		"/C/wamp/www/lisa/js/Logic.js",
-		"/C/wamp/www/lisa/js/expressions.js",
-		"/C/wamp/www/lisa/js/Brain.js",
+		"/C/wamp/www/lisa/js/transliterate.js",
 		"/C/wamp/www/lisa/js/filter.js",
 		"/C/wamp/www/lisa/js/formalExpressions.js",
-		"/C/wamp/www/lisa/index.html",
-		"/C/wamp/www/lisa/js/casualExpressions.js",
-		"/C/wamp/www/lisa/js/Utility.js",
-		"/C/wamp/www/lisa/js/ponder.js",
-		"/C/wamp/www/lisa/js/Lisa.js",
-		"/C/wamp/www/lisa/lang/lexicon.js",
-		"/C/wamp/www/lisa/js/transliterate.js",
 		"/C/wamp/www/assassin/js/calculator.js",
-		"/C/wamp/www/lisa/js/stories.js",
-		"/C/wamp/www/lisa/README.md",
 		"/C/wamp/www/lisa/js/Speech.js",
-		"/C/wamp/www/lisa/js/Memory.js",
 		"/C/node/my-angular-project/.travis.yml",
 		"/C/node/myangular2/package.json",
 		"/C/node/my-angular-project/.gitignore",
@@ -221,11 +464,8 @@
 		"/C/node/mynodeapp/package.json",
 		"/C/node/mynodeapp/app.js",
 		"/C/wamp/www/lisa/js/frasier.js",
-		"/C/Users/New Owner/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
 		"/C/wamp/www/lisa/lib/underscore/underscore.string.js",
-		"/C/Users/New Owner/Documents/portfoliolinks",
 		"/C/wamp/www/lisa/js/Psychic.js",
-		"/C/wamp/www/lisa/js/Patterns.js",
 		"/C/wamp/www/lisa/lang/lexicon-fruits.js",
 		"/C/wamp/www/lisa/lang/dictionary.js",
 		"/C/wamp/www/lisa/writeLex.php",
@@ -248,134 +488,134 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"colloqu",
-			".qual",
-			"quality",
-			"conjuga",
-			"drawConc",
-			"comment",
-			"relations",
-			"express",
-			"monsters",
-			"monster",
-			"is",
-			"tellst",
-			"omnoth",
-			"sword",
-			"dorceress",
-			"go'",
-			"go",
-			"'go'",
-			"go",
-			"concl",
-			"comment",
-			"retreat",
-			"lexica",
-			"monster",
-			"tellsto",
-			"comment",
-			"willas",
-			"moment",
+			"safe",
+			");\n",
+			"road",
+			"king",
+			"wall",
+			"nice",
+			"give",
+			"useful",
+			"logic",
+			"road",
+			"occasio",
+			"occasion",
+			"fun",
+			"//['",
+			"dangero",
+			"on",
+			"house",
+			"climb",
+			"arrive",
+			"extractId",
 			"preposit",
-			"axos",
-			"console",
-			"dragon",
-			"dragons",
-			"plural",
-			"moment",
-			"magic",
-			"kind of",
-			"relationsh",
-			"relations",
-			"thus",
-			"comparin",
-			"applies",
-			"comment",
-			"},\n",
-			"comment",
-			"tellstor",
-			"emeraldia",
-			"emerald",
-			"tellsto",
-			"tellstory",
-			"i'm",
-			"I'm",
-			"I'",
-			"moment",
-			"dark",
-			"console",
-			"moment",
-			"found m",
-			"tellsto",
-			"tellst",
-			"sword",
-			"club",
-			"sword",
-			"club",
-			"= function",
-			"express.",
-			"= function",
-			"express.",
-			"whati",
-			"}",
-			"trans",
-			"transliter",
-			"demysti",
-			"gree",
-			"demys",
-			"name",
-			"my name",
-			"my name is",
+			"logic",
+			"synon",
+			"synony",
+			"extract",
+			"what",
 			"whatis",
-			"gree",
-			"logic.gree",
-			"scopeDown",
-			"console.log",
-			"got",
-			"scopeSidewa",
-			"ponder",
-			"algoro",
-			"conjugate",
-			"conjug",
-			"verbali",
-			"moment",
-			"conjugate",
-			"conjug",
-			"moment",
+			"whati",
+			"sleep",
+			"in",
+			"beansta",
+			"bed",
+			"out",
+			"bed",
+			"going",
+			"console",
+			"feel",
+			"express",
+			"s",
+			"express",
+			"prepositionObj",
+			"getPrep",
+			"synonymi",
+			"synonyi",
+			"synony",
+			"_sayings",
 			"tellsto",
-			"whatIs",
-			"Emeraldia",
-			"zombie",
-			"verbalize",
-			"warrior",
-			"conjugate",
-			"verbalize",
-			"verbaliz",
-			"verbalize",
-			"scopeSide",
-			"a kind of",
-			"scopeUp",
-			"scopeDown",
-			"demysti",
-			"log",
-			"scopeDown",
-			"host?",
-			"think",
-			"scopeUp",
-			"brain.seed",
-			"seed",
+			"whatis",
+			"bare",
+			"lexicon",
+			"g75",
+			"lexicon",
+			"me",
+			"verbs",
+			"tl",
+			"conju",
+			"tellsto",
+			"fizzle",
+			"console",
+			"false",
+			"statement",
+			"extractIde",
 			"things",
-			"hon",
-			"lexicate",
-			".greeting",
-			"brain.pattern",
-			"food",
-			"candy",
-			"callback",
-			"preposit",
-			"quality",
-			"		{",
-			"whatis"
+			"brain.lexicon.things",
+			"things",
+			"hill",
+			"psych",
+			"filter",
+			"pers",
+			"host",
+			"personali",
+			"oneToMany",
+			"conjuga",
+			"console",
+			"console.log",
+			"console",
+			"It",
+			"objectiv",
+			"objecti",
+			"objective",
+			"she",
+			"          {\n             subject:'my|mother',action:'wring', object:'her|hands'\n          },",
+			"clos",
+			"tellSto",
+			"milk",
+			"console",
+			"beanstalk",
+			"extractst",
+			"tell",
+			"log",
+			"tellstor",
+			"conjugate",
+			"extractSto",
+			"sluice",
+			"console",
+			"tellsto",
+			"oneTo",
+			"jump",
+			"sayto",
+			"conjug",
+			"posses",
+			"my",
+			"stringnee",
+			"fathe",
+			"ting ",
+			"ting.",
+			"crack",
+			"moment",
+			"oneto",
+			"break",
+			"oneToMany",
+			"':",
+			"$",
+			"skele",
+			"die",
+			"var contex",
+			"story",
+			"console.",
+			"wand",
+			"warrior",
+			"then",
+			"sword of l",
+			"brave",
+			"scopeUp",
+			"scope",
+			"against",
+			"algoron",
+			"holy"
 		],
 		"highlight": false,
 		"in_selection": false,
@@ -383,6 +623,8 @@
 		"regex": false,
 		"replace_history":
 		[
+			"expresso",
+			"things",
 			":function",
 			"",
 			":function",
@@ -397,23 +639,23 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 4,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "js/Lisa.js",
+					"file": "lang/things.js",
 					"settings":
 					{
-						"buffer_size": 282,
+						"buffer_size": 3872,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								83,
-								83
+								735,
+								735
 							]
 						],
 						"settings":
@@ -427,6 +669,118 @@
 						"zoom_level": 1.0
 					},
 					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "lang/attributes.js",
+					"settings":
+					{
+						"buffer_size": 2818,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								426,
+								426
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "js/Brain.js",
+					"settings":
+					{
+						"buffer_size": 2879,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2573,
+								2573
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 900.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "js/logic/Logic.js",
+					"settings":
+					{
+						"buffer_size": 4609,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1478,
+								1478
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 540.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "js/logic/Storyteller.js",
+					"settings":
+					{
+						"buffer_size": 2160,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1713,
+								1713
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 179.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
 				}
 			]
 		}
@@ -437,7 +791,7 @@
 	},
 	"input":
 	{
-		"height": 0.0
+		"height": 31.0
 	},
 	"layout":
 	{
@@ -487,7 +841,7 @@
 		],
 		"width": 380.0
 	},
-	"show_minimap": false,
+	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,

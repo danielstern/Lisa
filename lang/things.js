@@ -33,6 +33,16 @@ var _things = [
       extends:['place'],
     },
     {
+      word:'shoe',
+      plural:'shoes',
+      extends:['clothing'],
+    },
+    {
+      word:'shoe store',
+      plural:'shoe stores',
+      extends:['store'],
+    },
+    {
       word:'mall',
       plural:'malls',
       extends:['place'],

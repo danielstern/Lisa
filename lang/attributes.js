@@ -26,6 +26,11 @@ var _attributes = [
       form:'adjective',
     },
     {
+      word:'many',
+      form:'adjective',
+      synonyms:['lots of','tons of']
+    },
+    {
       word:'nice',
       when:[
         {action:'give',to:'me', applies:'subject'},
@@ -36,7 +41,7 @@ var _attributes = [
     {
       word:'missing',
       form:'adjective',
-      synonyms:['gone','vanished'],
+      synonyms:['gone','not there'],
     },
     {
       word:'few',

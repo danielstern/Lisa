@@ -103,7 +103,7 @@ function Brain(host) {
     var ponder = brain.logic.counterpose(idea,directive)
     response = ponder[0];
 
-  //  console.log('Ponder',idea,directive,response)
+    console.log('Ponder',idea,directive,response)
 
     if (!response) response = brain.speech.express.pause();
 

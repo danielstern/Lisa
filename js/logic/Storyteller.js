@@ -54,11 +54,30 @@ var Storyteller = function(brain) {
     return response;
   }
 
+
+  st.getStoryExcerpt = function (seed) {
+
+    var stories = brain.memory.long.getStories(seed);
+    var excerpts = brain.speech.express.extractor.getRelevantMoments(stories,seed);
+
+    var excerpt = _.sample(excerpts);
+
+    var context = {};
+    context.time = 'past';
+    context.rel = 'once';
+    var remark = brain.speech.express.moment(excerpt,context);
+    console.log('getting story excerpt...',seed, stories);
+
+    return remark;
+
+    
+  }
+
   st.tellStoryMoment = function (moment) {
 
     var phrase = '';
     if (!moment) return phrase;
-    console.log('tellstorymoment...',moment)
+    //console.log('tellstorymoment...',moment)
     // if (brain.memory.short.recall(moment)) return phrase;
     var context = moment.context || {};
     context.time = context.time || 'past';
