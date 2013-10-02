@@ -1,8 +1,6 @@
 function Prepositor(brain) {
 
 	var pt = this;
-  console.log("brain?",brain)
-
 
   pt.preposit = function (word, context) {
 
