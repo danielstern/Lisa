@@ -30,7 +30,6 @@ function Counterposer(brain) {
       response += thought;
       response += brain.speech.softPause();
 
-
     return response;
   }
 }

@@ -7,49 +7,28 @@ var Storyteller = function(brain) {
    	var response = '';
 
     stories = brain.memory.long.getStories(seed);
+    
     var story = _.sample(stories);
+    var shortTerm = brain.memory.short;
+    if (!story) return "No stories about that.";
 
-    var storyIdeas = _.shuffle(ex.extractStory(story));
-
-    brain.memory.short.remember(storyIdeas);
-
-   // console.log('tell story', seed)
-    if (!story) return response;
+    var parable; 
 
     if (_.has(story, 'epic')) {
 
-      var nextUntoldParable = _.find(story.epic, function (parable) {
-        if (brain.memory.short.recall(parable)) return false;
-        return parable;
-      });
+      parable = _.find(story.epic, function (parable) {return !shortTerm.recall(parable)});    
 
-     // console.log('next parable?',nextUntoldParable);
-
-      if (!nextUntoldParable) {
-        response += "I've told you all I know about " + seed.word;
-      } else {
-
-        brain.memory.short.remember(nextUntoldParable);
-        _.each(nextUntoldParable.sequence, function (sequence) {
-
-          var phrase = st.tellStoryMoment(sequence);
-          response += phrase;
-          response += brain.speech.softPause();
-
-        });
-      }
-    } 
-    else {
-      _.each(story.sequence, function (moment) {
-
-        var phrase = st.tellStoryMoment(moment);
-        response += phrase;
-        response += brain.speech.softPause();
-
-     });
     }
 
- //   console.log('response,',response);
+    parable = parable || story;
+    
+    _.each(parable.sequence, function (moment) {
+
+      var phrase = st.tellStoryMoment(moment);
+      response += phrase;
+      response += brain.speech.softPause();
+
+     });
 
     return response;
   }
@@ -58,7 +37,6 @@ var Storyteller = function(brain) {
   st.getStoryExcerpt = function (seed) {
 
     var excerpts = brain.extractor.momentsFromSeed(seed);
-    console.log('getting story excerpt...',seed, stories,excerpts);
 
     var excerpt = _.sample(excerpts);
 
@@ -76,8 +54,6 @@ var Storyteller = function(brain) {
 
     var phrase = '';
     if (!moment) return phrase;
-    //console.log('tellstorymoment...',moment)
-    // if (brain.memory.short.recall(moment)) return phrase;
     var context = moment.context || {};
     context.time = context.time || 'past';
     phrase = brain.speech.momento.moment(moment, context);

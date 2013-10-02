@@ -17,7 +17,6 @@ function Brain(host) {
 
     var idea = brain.whatIs(words);
 
-  //  console.log('processing...',words,idea,directive)
     response = brain.ponder(idea, directive);
 
     return [response, idea];
@@ -28,17 +27,6 @@ function Brain(host) {
 
     var context = {};
     if (!statement) return context;
-
-    context.question = 0;
-    context.request = 0;
-
-    if (_.stringContains(statement, '?')) context.question = +1;
-    if (_.stringContains(statement, ' ')) context.multiword = true;
-    if (_.stringContains(statement, ['would you', 'could you', 'can you', 'will you'])) {
-      context.request += 1;
-      context.question += 1;
-    }
-    if (_.stringContains(statement, ['who', 'what', 'which', 'why', 'when'])) context.request = +1;
 
     var ideas = ex.extractIdeas(statement);
 

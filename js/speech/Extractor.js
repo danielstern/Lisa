@@ -35,7 +35,7 @@ var Extractor = function(brain) {
     return invoked;
   },
 
-  ex.extractStory = function (story) {
+  ex.getStoryIdeas = function (story) {
 
     var ideas = [];
     if (!story) return;
@@ -66,7 +66,7 @@ var Extractor = function(brain) {
 
     var stories = brain.memory.long.getStories(seed);
 
-    var ideas = ex.extractStory(stories[0])
+    var ideas = ex.getStoryIdeas(stories[0])
     var story = _.sample(stories);
 
     if (!story) console.error("Get relevant moments error")
