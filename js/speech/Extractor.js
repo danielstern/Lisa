@@ -52,6 +52,21 @@ var Extractor = function(brain) {
     return ideas;
   }
 
+  ex.occasionsFromMoment = function (moment) {
+
+    var lx = brain.speech.lexicator;
+    var attributes = lx.getAllAttributes();
+
+    var occasions = _.filter(attributes, function(attribute) {
+      _.each(attribute.when, function (occasion) {
+        occasion.applies = occasion.applies || 'subject';
+        if(ex.occasionInvokesAttribute(moment, occasion)) return true;
+      })
+    })
+
+    return occasions;
+  }
+
   ex.ideasFromMoment = function (moment) {
 
     var ideas = [];
@@ -63,11 +78,13 @@ var Extractor = function(brain) {
 
   }
 
-  ex.getRelevantMoments = function (stories, seed) {
+  ex.momentsFromSeed = function (seed) {
+
+
+    var stories = brain.memory.long.getStories(seed);
 
     var ideas = ex.extractStory(stories[0])
-    var story = stories[0];
-   // console.log('get relevant moments...',story,seed);
+    var story = _.sample(stories);
 
     if (!story) console.error("Get relevant moments error")
 
@@ -76,16 +93,13 @@ var Extractor = function(brain) {
       var ideas = ex.ideasFromMoment(moment);
       var seedProperties = _.flatten(_.values(seed))
       var intersects = _.intersection(ideas,seedProperties);
-     // console.log('finding intersections',ideas,seedProperties,intersects);
       if (intersects[0]) {
-        //console.log('')
+        
         return true;
       }
 
       //return true;
     });
-
- //   console.log('get relevant moments returning...',relevantMoments);
 
     return relevantMoments;
 

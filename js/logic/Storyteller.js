@@ -57,8 +57,7 @@ var Storyteller = function(brain) {
 
   st.getStoryExcerpt = function (seed) {
 
-    var stories = brain.memory.long.getStories(seed);
-    var excerpts = brain.extractor.getRelevantMoments(stories,seed);
+    var excerpts = brain.extractor.momentsFromSeed(seed);
     console.log('getting story excerpt...',seed, stories,excerpts);
 
     var excerpt = _.sample(excerpts);
