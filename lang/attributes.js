@@ -22,6 +22,14 @@ var _attributes = [
 
     },
     {
+      word:'nice',
+      when:[
+        {action:'give',to:'me', applies:'subject'},
+      ],
+      form:'adjective',
+      synonyms:['kind'],
+    },
+    {
       word:'old',
       form:'adjective',
       synonyms:['wizened','ancient']
@@ -64,9 +72,18 @@ var _attributes = [
       form:'adjective',
     },
     {
+      word:'useful',
+      when:[
+        {action:'give',object:'milk',applies:'subject'},
+      ],
+      form:'adjective',
+      synonyms:['handy']
+    },
+    {
       word:'fun',
       when:[
         {action:'climb',applies:'object'},
+        {action:'jump',applies:'over'},
       ],
       form:'adjective',
     },
@@ -90,8 +107,11 @@ var _attributes = [
     },
     {
       word:'poor',
+      when:[
+        {action:'have',applies:'$no:money$'},
+      ],
       form:'adjective',
-      synonyms:[]
+      synonyms:['broke','down and out']
     },
     {
       word:'no',

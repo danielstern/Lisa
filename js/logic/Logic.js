@@ -120,6 +120,7 @@ function Logic(brain) {
 
     var allCommentsAboutSubject = _.filter(allComments,
      function (comment) {
+      if (!comment || !comment.subject) return false;
         if (logic.brain.whatIs(comment.subject).word == seed.word) return true;
     })
 

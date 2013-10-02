@@ -65,8 +65,8 @@
         <img src='../misc/jack.jpg' width='400px' height='auto'>
       <form class='form'>
         <div class='controls'>
-          <button class='btn' ng-repeat="thing in things">
-             <span ng-click='handleMenuClick(thing)'>{{thing}}</span>
+          <button ng-click='handleMenuClick(thing)' class='btn' ng-repeat="thing in things">
+             <span >{{thing}}</span>
           </button>
         </div>
         </ul>
@@ -89,14 +89,15 @@
 
       $scope.handleMenuClick = function(thing) {
 
-      console.log('menu click...',thing);
+    //  console.log('menu click...',thing);
       $scope.sayTo = thing;
+      $scope.reply('story-excerpt');
 
       }
 
 
       $scope.saying = '...';
-      $scope.things = ['Beanstalk','Candlesticks','Muffin Man']
+      $scope.things = ['Beanstalk','Candlesticks','Muffin Man','Hill','Jill']
 
       $scope.sayTo = 'beanstalk';
 
