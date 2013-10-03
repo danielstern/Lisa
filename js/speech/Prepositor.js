@@ -26,13 +26,12 @@ function Prepositor(brain) {
     var speech = brain.speech;
     var response = '';
 
-    if (pt.isBundle(seed.word)) return pt.prepositBundle(seed.word, context);
-    if (pt.isCompound(seed.word)) response = pt.splitAndCombine(seed.word,context); 
+  //  if (pt.isBundle(seed.word)) return pt.prepositBundle(seed.word, context);
+   // if (pt.isCompound(seed.word)) response = pt.splitAndCombine(seed.word,context); 
     if (pt.hasPrefix(seed.word)) response = pt.handlePrefix(seed.word,context);
-
-
     if (origSeed == seed.plural) context.pronoun = 'plural';
     if (context.pronoun == 'plural') response = response || seed.plural || seed.word;
+    
     if (seed.form == "adjective")   context.pronoun = 'none'
     response = response || seed.word;
 
