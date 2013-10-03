@@ -123,19 +123,19 @@ var Extractor = function(brain) {
 
     console.error('sluice dunno whats goin on');
 
-    return _.map(ideas,function(idea){
+  /*  return _.map(ideas,function(idea){
 
        return (ex.seive(idea))
 
-    });
+    });*/
 
 
   }
 
-  ex.extractIdeas = function(statement) {
+  ex.keywordsFromStatement = function(statement) {
 
     if (!statement) return console.warn('no statement here to extract')
-    ideas = statement.split(/[\s,;.:!?'"']+/);
+    ideas = statement.split(/[\s,;.:!?'"']+/gi);
     ideas = _.map(ideas,function(idea){return idea.toString().toLowerCase()});
     ideas = _.without(ideas, '','are','is','and','of','me','with','what','without','not','generally','who','as','from','well','an','but','after','he','she','although','after','before','it','would','on','a','an','then','the','to','by','be','need','so','you','through','that','more','that’s','his','her','there','their','was','in');
     return ideas;

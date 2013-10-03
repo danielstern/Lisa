@@ -63,4 +63,11 @@ function LongTermMemory(memory) {
 
     return matchingStories;
   }
+
+  longTerm.getRandomStory = function (seed) {
+    
+    var stories = longTerm.getStories(seed);
+    var story = _.sample(stories);
+    return story;
+  }
 }

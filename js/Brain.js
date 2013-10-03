@@ -28,9 +28,9 @@ function Brain(host) {
     var context = {};
     if (!statement) return context;
 
-    var ideas = ex.extractIdeas(statement);
+    var keywords = ex.keywordsFromStatement(statement);
 
-    context.ideas = ideas;
+    context.ideas = keywords;
 
     return context;
 

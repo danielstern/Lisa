@@ -5,24 +5,15 @@ var Storyteller = function(brain) {
 	st.tellStory = function (seed) {
 
    	var response = '';
+    var longTerm = brain.memory.long;
 
-    stories = brain.memory.long.getStories(seed);
-    
-    var story = _.sample(stories);
-    var shortTerm = brain.memory.short;
+    story = longTerm.getRandomStory(seed);
+
     if (!story) return "No stories about that.";
 
-    var parable; 
-
-    if (_.has(story, 'epic')) {
-
-      parable = _.find(story.epic, function (parable) {return !shortTerm.recall(parable)});    
-
-    }
-
-    parable = parable || story;
+    var sequence = ex.storyToMoments(story)
     
-    _.each(parable.sequence, function (moment) {
+    _.each(sequence, function (moment) {
 
       var phrase = st.tellStoryMoment(moment);
       response += phrase;
@@ -33,7 +24,7 @@ var Storyteller = function(brain) {
     return response;
   }
 
-  
+
   st.tellStoryMoment = function (moment) {
 
     var phrase = '';
@@ -59,8 +50,5 @@ var Storyteller = function(brain) {
 
     return remark;
 
-    
   }
-
-
 }
