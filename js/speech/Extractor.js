@@ -1,7 +1,7 @@
 var Extractor = function(brain) {
   
-	var ex = this;
-	window.ex = this;
+  var ex = this;
+  window.ex = this;
 
 
   ex.seive = function(idea) {
@@ -66,8 +66,20 @@ var Extractor = function(brain) {
 
   }
 
-  ex.momentsFromSeed = function (seed) {
+  ex.getSeedProperties = function(seed) {
+    return _.chain(seed).values(seed).flatten(seed).value();
+  }
 
+  ex.momentIntersectsKeywords = function (moment,keywords) {
+
+    var ideas = _.ideasFromMoment(moment);
+    var intersection = _.intersection(ideas,keywords);
+    if (intersection[0]) return true;
+
+  }
+
+
+  ex.momentsFromSeed = function (seed) {
 
     var stories = brain.memory.long.getStories(seed);
 
@@ -75,16 +87,30 @@ var Extractor = function(brain) {
     var story = _.sample(stories);
 
     if (!story) console.error("Get relevant moments error")
+    var relevantMoments;
+    var _story;
+    var moments;
+    var intersection;
 
+    var seedProperties = ex.getSeedProperties(seed);
+
+    var relevantMoments = _.chain(story)
+                           .storyToMoments(story)
+                           .filter(function(story){ return ex.momentIntersectsKeywords(story,seedProperties) })
+                           .value();
+
+
+    console.log('mmoments from seed has so far...', relevantMoments)
+    return relevantMoments;
+
+  /*
     var storyMoments = ex.storyToMoments(story)
     var relevantMoments = _.filter(storyMoments,function(moment){
       var ideas = ex.ideasFromMoment(moment);
       var seedProperties = _.flatten(_.values(seed))
       var intersects = _.intersection(ideas,seedProperties);
       if (intersects[0])  return true
-
-      //return true;
-    });
+    });*/
 
     return relevantMoments;
 
@@ -105,7 +131,10 @@ var Extractor = function(brain) {
     return moments;
   }
 
-  _.mixin();
+  _.mixin({
+    storyToMoments:ex.storyToMoments,
+    ideasFromMoment:ex.ideasFromMoment
+  });
 
   ex.storiesToMoments = function(stories) {
     return _.chain(stories)
