@@ -59,7 +59,7 @@ _.mixin({
 
   whomp: function(filter,array) {
     return _.chain(array)
-            .map(filter)
+            .map(filter(array))
             .flatten()
             .value();
   },
@@ -79,7 +79,6 @@ _.mixin({
 
   oneToMany: function(string, returnQuality) {
 
- //   console.log('onetomany...',string)
      if (typeof string != 'string') return string;
      var many;
 
@@ -122,7 +121,7 @@ _.mixin({
   stringNeedsClosure: function(string) {
 
     var lastCharOfString = string.toString().charAt(string.length - 1);
-    var pattern = /[.,"']/;
+    var pattern = /[.,?!:"']/;
     var patternMatch = pattern.exec(lastCharOfString);
 
     return patternMatch ? false : true;
@@ -160,15 +159,6 @@ _.mixin({
 
     return _.bare(string1) == _.bare(string2);
 
-  },
-
-
-  concat: function(array, array2) {
-    _.each(array2, function(ari) {
-      array.push(ari);
-    })
-    array = array.concat(array2);
-    return array.concat(array2);
   },
 
 

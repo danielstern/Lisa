@@ -94,23 +94,12 @@ var Extractor = function(brain) {
 
     var seedProperties = ex.getSeedProperties(seed);
 
-    var relevantMoments = _.chain(story)
-                           .storyToMoments(story)
-                           .filter(function(story){ return ex.momentIntersectsKeywords(story,seedProperties) })
-                           .value();
+    var relevantMoments = 
+      _.chain(story)
+       .storyToMoments(story)
+       .filter(function(story){ return ex.momentIntersectsKeywords(story,seedProperties) })
+       .value();
 
-
-    console.log('mmoments from seed has so far...', relevantMoments)
-    return relevantMoments;
-
-  /*
-    var storyMoments = ex.storyToMoments(story)
-    var relevantMoments = _.filter(storyMoments,function(moment){
-      var ideas = ex.ideasFromMoment(moment);
-      var seedProperties = _.flatten(_.values(seed))
-      var intersects = _.intersection(ideas,seedProperties);
-      if (intersects[0])  return true
-    });*/
 
     return relevantMoments;
 
@@ -131,10 +120,6 @@ var Extractor = function(brain) {
     return moments;
   }
 
-  _.mixin({
-    storyToMoments:ex.storyToMoments,
-    ideasFromMoment:ex.ideasFromMoment
-  });
 
   ex.storiesToMoments = function(stories) {
     return _.chain(stories)
@@ -160,5 +145,11 @@ var Extractor = function(brain) {
     return ideas;
 
   }
+
+
+  _.mixin({
+    storyToMoments:ex.storyToMoments,
+    ideasFromMoment:ex.ideasFromMoment
+  });
 
 }
