@@ -20,12 +20,7 @@ function Lexicator(brain) {
 
   this.getVerbSynonyms = function(verb) {
     var cj = brain.speech.conjugator;
-
-    idea = cj.getIdea(verb);
-    if (!idea || !idea.synonyms) return [verb];
-    var synonyms = idea.synonyms;
-    return synonyms;
-
+    return cj.getVerbSynonyms(verb);
   }
 
   lx.synonomize = function (word) {
@@ -38,8 +33,6 @@ function Lexicator(brain) {
 
     return synonym;
   }
-
- 
   
 
   lx.getWord = function (word) {

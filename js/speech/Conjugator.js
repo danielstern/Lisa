@@ -38,13 +38,13 @@ function Conjugator(brain) {
       context = 'plural';
       if (seed.pronoun == 'unique') context = 'singular';
       if (!seed.plural) context = 'singular';
+      }
     }
-  }
 
     var synonyms = lx.getVerbSynonyms(verb);
     if (synonyms && synonyms[0]) verb = _.sample(synonyms);
 
-    verb = cj.getWord(verb, tense, context)
+    verb = cj.getConjugatedVerb(verb, tense, context)
 
     response = verb;
 
@@ -52,9 +52,7 @@ function Conjugator(brain) {
   }
 
 
-
-
-  cj.getWord = function (verb, tense, context) {
+  cj.getConjugatedVerb = function (verb, tense, context) {
 
     //console.log('get word 1',verb, tense, context);
     if (tense.time) {
@@ -99,12 +97,11 @@ function Conjugator(brain) {
   }
 
 
-  cj.getIdea = function (verb) {
+  cj.getVerbIdea = function (verb) {
 
     if (!verb) return;
 
     if (!_.has(tl, verb)) {
-      console.error('IDEA: This verb is not in the lexiary', verb);
       return verb;
     }
 
@@ -114,6 +111,16 @@ function Conjugator(brain) {
     //		console.log('getidea...',verb,verbIdea)
 
     return verbIdea;
+
+  }
+
+  cj.getVerbSynonyms = function(verb) {
+    var cj = brain.speech.conjugator;
+
+    idea = cj.getIdea(verb);
+    if (!idea || !idea.synonyms) return [verb];
+    var synonyms = idea.synonyms;
+    return synonyms;
 
   }
 }
