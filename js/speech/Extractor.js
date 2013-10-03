@@ -94,21 +94,18 @@ var Extractor = function(brain) {
   }
 
   ex.storyToMoments = function(story) {
-    var moments = [];
 
-    if (!story) return moments;
+    if (!story) return console.error('no story');
 
-    if (_.has(story, 'epic')) {
-        _.each(story.epic, function(parable) {
-          _.each(parable.sequence, function(moment) {
-              moments.push(moment);     
-            });
-        });
-    }
+    story.epic = story.epic = [];
+    if (story.sequence) story.epic.push(story.sequence);
 
-    _.each(story.sequence, function(moment) {
-      moments.push(moment);
-    });
+    
+    var moments = _.chain(story.epic)
+                   .flatten()
+                   .value();
+
+    //console.log('Story to moments,',moments);
 
     return moments;
 
