@@ -105,19 +105,16 @@ var Extractor = function(brain) {
                    .flatten()
                    .value();
 
-    //console.log('Story to moments,',moments);
-
     return moments;
-
   }
 
   _.mixin();
 
   ex.storiesToMoments = function(stories) {
     return _.chain(stories)
-     .map(function(story){return ex.storyToMoments(story)})
-     .flatten()
-     .value();
+             .map(function(story){return ex.storyToMoments(story)})
+             .flatten()
+             .value();
   }
 
   ex.sluice = function(ideas){
@@ -137,7 +134,7 @@ var Extractor = function(brain) {
 
   ex.extractIdeas = function(statement) {
 
-    statement = statement || '';
+    if (!statement) return console.warn('no statement here to extract')
     ideas = statement.split(/[\s,;.:!?'"']+/);
     ideas = _.map(ideas,function(idea){return idea.toString().toLowerCase()});
     ideas = _.without(ideas, '','are','is','and','of','me','with','what','without','not','generally','who','as','from','well','an','but','after','he','she','although','after','before','it','would','on','a','an','then','the','to','by','be','need','so','you','through','that','more','that’s','his','her','there','their','was','in');
