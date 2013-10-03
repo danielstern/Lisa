@@ -158,7 +158,7 @@ function Prepositor(brain) {
 
     var regex = /\d{1,2}:\d{2}/;    // NICE
     if (regex.exec(word)) {
-      console.log('this is a time');
+     // console.log('this is a time');
       preposition = '';
     }
     else {

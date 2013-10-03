@@ -49,10 +49,6 @@ function Brain(host) {
 
   brain.learn = function (package) {
 
-    if (package.packageType == 'verbs') {
-        brain.speech.conjugator.learn(package)
-        return;
-      }
       brain.speech.lexicator.learn(package);
   }
 

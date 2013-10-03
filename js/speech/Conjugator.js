@@ -22,7 +22,7 @@ function Conjugator(brain) {
 
   cj.conjugate = function (seed, verb, tense, context) {
 
-    // console.log('Expresso is Conjugating: ',seed, verb, tense, context);
+     console.log('Expresso is Conjugating: ',seed, verb, tense, context);
     var lx = brain.speech.lexicator;
     if (_.oneToMany(seed) instanceof Array) {
       context = 'plural';
@@ -56,25 +56,27 @@ function Conjugator(brain) {
 
     //console.log('get word 1',verb, tense, context);
     if (tense.time) {
-      console.log('got context object');
+//      console.log('got context object');
       var contextObject = tense;
       tense = contextObject.tense;
       context = contextObject.plural ? 'plural' : 'singular';
     }
 
-   // console.log('Get word 2',verb,tense,context)
+
+   var lx = brain.speech.lexicator;
 
     if (!verb) return;
     tense = tense || 'present';
     context = context || 'singular';
 
-    if (!_.has(tl, verb)) {
+    var verbIdea = lx.getVerbIdea(verb);
+   // console.log('Get word 2',verb,tense,context)
+
+    if (!verbIdea) {
       console.error('This verb is not in the lexiary', verb);
       return verb;
     }
 
-
-    var verbIdea = tl[verb];
     var verbeTense;
 
     if (!_.has(verbIdea, tense)) {
@@ -97,30 +99,5 @@ function Conjugator(brain) {
   }
 
 
-  cj.getVerbIdea = function (verb) {
 
-    if (!verb) return;
-
-    if (!_.has(tl, verb)) {
-      return verb;
-    }
-
-    var verbIdea = tl[verb];
-    verbIdea.form = 'verb';
-
-    //		console.log('getidea...',verb,verbIdea)
-
-    return verbIdea;
-
-  }
-
-  cj.getVerbSynonyms = function(verb) {
-    var cj = brain.speech.conjugator;
-
-    idea = cj.getIdea(verb);
-    if (!idea || !idea.synonyms) return [verb];
-    var synonyms = idea.synonyms;
-    return synonyms;
-
-  }
 }
