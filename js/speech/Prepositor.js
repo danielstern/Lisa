@@ -2,24 +2,23 @@ function Prepositor(brain) {
 
 	var pt = this;
 
+  pt.isBundle = function (string ) {
+    return _.str.include(string, '<')
+  }
+
   pt.preposit = function (word, context) {
 
-
-    
     context = context || {};
 
-    var idea;
     var preposit = pt.preposit;
     var speech = brain.speech;
+
     var returnSubject = '';
+    var idea;
 
-    if (word instanceof Array) word = word[0];
+    if (pt.isBundle(word)) return pt.prepositBundle(word, context);
+    if (pt.isCompound(word)) word = pt.splitAndCombine(word,context)
 
-    if (_.str.include(word, '<')) {
-        return pt.prepositBundle(word, context);
-    }
-
-    word = pt.splitAndCombine(word,context)
     // if preposit is passed an object instead of a string (works on either)
     if (_.isObject(word)) {
       idea = word;
@@ -138,12 +137,15 @@ function Prepositor(brain) {
     return word;
   }
 
+  pt.isCompound = function(string) {
+    if (!_.fizzle(string) || !_.fizzle(string).thing) return false;
+    return true;
+  }
+
   pt.splitAndCombine = function(string, context) {
 
     var preposit = pt.preposit;
     var objectContext = _.clone(context);
-    
-    if (!_.fizzle(string) || !_.fizzle(string).thing) return string;
 
     var property = _.fizzle(string).has;
     var word = _.fizzle(string).thing;
@@ -163,7 +165,6 @@ function Prepositor(brain) {
     
     word = preposit(property, { pronoun:'referenced' }) + (propertyIdea.isAdjective ? " " : ' of ') + preposit(word,objectContext);
 
-    context.pronoun = none;
   
     return word;
   }    
