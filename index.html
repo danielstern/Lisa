@@ -21,6 +21,7 @@
 
   <script src="js/logic/Logic.js"></script>
   <script src="js/logic/Storyteller.js"></script>
+  <script src="js/logic/Emotionalizer.js"></script>
   <script src="js/logic/Counterposer.js"></script>
   
   <script src="lang/verbs.js"></script>
@@ -50,8 +51,9 @@
         <form id='conversation-form' ng-submit="reply('story-excerpt')">
           <input  ng-model='sayTo' class='input input-block-level' type='text'>
         </form>
-          <button ng-click="reply('tell-story')" class='btn'>"Tell Me More."</button>
-          <button ng-click="reply('story-excerpt')" class='btn'>"Tell me a little something about it."</button>
+          <button ng-click="reply('tell-story')" class='btn'>"Tell me a story about _."</button>
+          <button ng-click="reply('story-excerpt')" class='btn'>"What do you know about _?"</button>
+          <button ng-click="reply('emote')" class='btn'>"How do you feel about _?"</button>
      <!--     <button ng-click="reply('draw-conclusion')" class='btn'>"Draw conclusion."</button>  -->
       </div>
       <div class='span3'>

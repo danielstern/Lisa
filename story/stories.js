@@ -1,6 +1,7 @@
 var _EmilyStories = [
   {
     name:'the one where I buy things',
+    emotions:{pleasure:6},
     sequence:[
     {
       subject:'the|time',action:'is', object:'3:00',
@@ -32,6 +33,7 @@ var _EmilyStories = [
   },  
   {
     name:'the one where I look in the safe',
+    emotions:{fear:3,anxiety:6},
     sequence:[
     {
       subject:'the|time',action:'is', object:'4:30',

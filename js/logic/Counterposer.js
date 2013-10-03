@@ -24,6 +24,11 @@ function Counterposer(brain) {
       thought = logic.tellStory(seed);
       break;
 
+    case 'emote':
+      thought = logic.emote(seed);
+      break;
+
+
     }
 
     response += thought;

@@ -78,6 +78,12 @@ var Extractor = function(brain) {
 
   }
 
+  ex.storiesFromSeed = function (seed) {
+
+    return brain.memory.long.getStories(seed);
+    
+  }
+
 
   ex.momentsFromSeed = function (seed) {
 
