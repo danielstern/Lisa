@@ -6,78 +6,60 @@ function Prepositor(brain) {
     return _.str.include(string, '<')
   }
 
+  pt.wordToSeed = function (word) {
+    var seed = brain.whatIs(word) || {};
+    seed.word = word;
+    return seed;
+  }
+
   pt.preposit = function (seed, context) {
 
     context = context || {};
 
+    var origSeed = seed;
+    if (!_.isObject(seed)) seed = pt.wordToSeed(seed); 
+
     var preposit = pt.preposit;
     var speech = brain.speech;
-    var word;
-    var compoundIdea
+    var response = '';
 
-    var idea;
+    if (pt.isBundle(seed.word)) return pt.prepositBundle(seed.word, context);
+    if (pt.isCompound(seed.word)) response = pt.splitAndCombine(seed.word,context); 
+    if (pt.hasPrefix(seed.word)) response = pt.handlePrefix(seed.word,context);
 
-    if (_.isObject(seed)) {
-      idea = seed;
-      word = idea.word;
-    } else {
-      word = seed;
-    }
 
-    if (pt.isBundle(word)) return pt.prepositBundle(word, context);
-    if (pt.isCompound(word)) {
-       var compoundTarget = pt.compoundToTarget(word);
-       console.log('componud target?',compoundTarget);
-       compoundIdea = brain.whatIs(compoundTarget);
-       word = pt.splitAndCombine(word,context);
-    } 
-    if (pt.hasPrefix(word)) word = pt.handlePrefix(word,context);
+    if (origSeed = seed.plural) context.pronoun = 'plural';
+    if (context.pronoun == 'plural') response = response || seed.plural || seed.word;
 
-    // if preposit is passed an object instead of a string (works on either)
-
-    idea = idea || brain.whatIs(word);
-    word = word || idea.word;
-
-    if (idea && word == idea.plural) context.pronoun = 'plural';
-
-    if (context.pronoun == 'plural' && idea && idea.plural) word = idea.plural;
-
-    if (idea && idea.form == "adjective")   context.pronoun = 'none'
+    if (seed.form == "adjective")   context.pronoun = 'none'
   
 
-    // based on the idea object, choose a preposition
-    var returnWord = true;
-    var returnSubject = '';
-    var preposition = '';
+    var po = pt.ideaToPrepositionObject(seed,context);
+    preposition = po.preposition;
 
-    var prepositionObj = pt.ideaToPrepositionObject(idea || compoundIdea,context);
-    preposition = prepositionObj.preposition;
-    returnWord = prepositionObj.returnWord;
-    returnSubject = prepositionObj.word || word;
-
-    if (preposition) preposition += " ";
+    preposition += " ";
 
     var regex = /\d{1,2}:\d{2}/;    // NICE
-    if (regex.exec(word)) {
+    if (regex.exec(seed.word)) {
       preposition = '';
     }
 
-    var response = preposition + (returnWord ? returnSubject : '');
+    var response = preposition + (po.returnWord ? response : '');
 
-    response = pt.hack(response,context,idea);
+    response = pt.hack(response,context,seed);
 
     return response;
 
   }
 
-  pt.hack = function(fragment,context,idea) {
+  pt.hack = function(fragment,context,seed) {
 
     if (context.assumed) {
       var objective = context.objective;
-      if (idea.gender) {
-        if (idea.gender == 'male') return objective ? 'him' : 'he';
-        if (idea.gender == 'female') return objective ? 'her' : 'she';
-        if (idea.gender == 'mixed') return objective ? 'them' : 'they';
+      if (seed.gender) {
+        if (seed.gender == 'male') return objective ? 'him' : 'he';
+        if (seed.gender == 'female') return objective ? 'her' : 'she';
+        if (seed.gender == 'mixed') return objective ? 'them' : 'they';
       }
       return 'it';
     }
@@ -183,21 +165,25 @@ function Prepositor(brain) {
     return propositedWords;
 	}
 
+  var PrepositionObject = function() {
+    this.returnWord = true;
+    this.preposition = '';
+    this.word = 'no word use'
+  }
+
   pt.ideaToPrepositionObject = function(idea, context) {
 
     console.log('idea to po,',idea,context)
 
-  	var prepositionObject = {};
-    var po = prepositionObject;
+  	var po = new PrepositionObject();
 
-    idea = idea || {};
+    //idea = idea || {};
+    if (!idea) return po;
 
-
-    if (idea) po.word = idea.word || undefined;
     if (context.referenced) context.pronoun = 'referenced';
 
     var pronoun;
-    if (idea && idea.pronoun == 'proper' || idea && idea.pronoun == 'force'){
+    if (idea.pronoun == 'proper' || idea.pronoun == 'force'){
       pronoun = idea.pronoun;
     } else {
       pronoun = context.pronoun;
@@ -262,6 +248,6 @@ function Prepositor(brain) {
       }
     }
 
-    return prepositionObject;
+    return po;
   }
 }
