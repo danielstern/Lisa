@@ -22,7 +22,7 @@ function Conjugator(brain) {
 
     var synonyms = lx.getVerbSynonyms(verb);
 //    if (synonyms) verb = _.sample(synonyms);
-    if (synonyms) verb = _.sample(synonyms);
+    if (synonyms[0]) verb = _.sample(synonyms);
 
     verb = cj.getConjugatedVerb(verb, tense, context)
 
