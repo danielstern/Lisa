@@ -16,6 +16,11 @@ var Extractor = function(brain) {
 
   }
 
+  ex.storyMentionsSeed = function(story, seed) {
+    var storyIdeas = brain.extractor.getStoryIdeas(story);
+    return _.contains(storyIdeas, seed.word) || _.contains(storyIdeas, seed.plural);
+  }
+
     ex.occasionInvokesAttribute = function(moment, occasion) {
 
     var invoked = true;

@@ -17,55 +17,49 @@ function ShortTermMemory(memory) {
 
   short.remember = function (memory) {
 
-    if (memory instanceof Array) {
-      short.recentThings = short.recentThings.concat(memory);
-    } 
-    else if (memory) {
-      short.recentThings.push(memory);
-    }
+    if (!memory instanceof Array) memory = [memory]
+    short.recentThings = short.recentThings.concat(memory);
 
   }
 
-  short.recall = function (memory) {
+  short.recall = function (idea) {
 
-    var justNow = _.last(short.recentThings, short.capacity);
-    var contains = _.contains(justNow, memory) || _.find(justNow, function (thought) {
-      return _.isEqual(thought, memory)
+    var recentThoughts = short.getRecentThoughts;
+    var recalledMemories = _.filter(recentThoughts, function (thought) {
+      return _.isEqual(thought, idea)
     });
-    return contains;
+    return recalledMemories;
   }
 
   short.scan = function (word) {
 
-    var justNow = _.last(short.recentThings, short.capacity);
-    var memoryFilter = _.filter(justNow, function (memory) {
-      return memory.toString().indexOf(word) != -1
-    });
+    var recentThoughts = short.getRecentThoughts;
+    var relatedMemories = _.filter(recentThoughts, function (memory) { return _.stringContains(memory ,word)  });
+    return relatedMemories;
 
-    return memoryFilter.length > 0;
+  }
 
+  short.getRecentThoughts = function() {
+    return _.last(short.recentThings, short.capacity);
   }
 }
 
 function LongTermMemory(memory) {
-  stories = window._EmilyStories;
+  var stories = window._EmilyStories;
 
   var brain = memory.brain;
+
   this.stories = stories;
   var longTerm = this;
 
   longTerm.getStories = function (seed) {
+    
+    var ex = brain.extractor;
 
-    if (!seed) {
-      console.error('no seed provided')
-      return {};
-    }
     if (typeof seed == 'string') seed = brain.whatIs(seed);
+    if (!seed) return console.warn('No seed.')
 
-    var matchingStories = _.filter(stories, function (story) {
-      var storyIdeas = brain.extractor.getStoryIdeas(story);
-      if (_.contains(storyIdeas, seed.word) || _.contains(storyIdeas, seed.plural)) return true;
-    })
+    var matchingStories = _.filter(stories, function (story) { return ex.storyMentionsSeed(story,seed);  })
 
     return matchingStories;
   }
