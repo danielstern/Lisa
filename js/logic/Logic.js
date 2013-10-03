@@ -14,7 +14,7 @@ function Logic(brain) {
   logic.emote = logic.emotionalizer.getEmotionalRemark;
 
   logic.expressInheritance = function(seed) {
-  	console.log("Expressing inheritance",seed);
+
   	if (_.isEmpty(seed.extends)) return "Nothing, as far as I know."
   	var parentWord = _.sample(seed.extends);
   	var parent = brain.whatIs(parentWord);

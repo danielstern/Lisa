@@ -195,12 +195,19 @@ function Momento(brain) {
     context.time = context.time || 'present';
     context.plural = context.plural || 'plural';
 
+    var subjectIdea = brain.whatIs(momentFragment.subject);
+    var singularity = false;
+
+    if (!subjectIdea) console.warn("No subjectIdea",context);
+    if (!subjectIdea.plural || subjectIdea.pronoun == 'proper') {
+      context.pronoun = 'singular';
+    }
+
     var action = momentFragment.action;
-    console.log('generating sentence fragment...',momentFragment,context);
     var response = '';
-    if (momentFragment.subject) response += preposit(momentFragment.subject) + " ";
+    if (momentFragment.subject) response += preposit(momentFragment.subject, context) + " ";
     if (momentFragment.action) response += getConjugatedVerb(momentFragment.action, context.time, context.plural) + " ";
-    if (momentFragment.object) response += preposit(momentFragment.object) + " ";
+    if (momentFragment.object) response += preposit(momentFragment.object, context) + " ";
 
     return response;
 
@@ -209,10 +216,13 @@ function Momento(brain) {
    mm.generality = function (seed, quality, usePast) {
     var response = '';
 
-    if (!seed || !quality) return console.error('No seed');
+    if (!seed || !quality) {
+      return "I'm not so sure..."
+      console.error('No seed or quality', seed, quality);
+    }
 
     var context = {};
-    context.time = usePast ? 'present' : 'past';
+    context.time = 'present';
     context.plural = 'plural';
 
     var preposit = brain.speech.preposit;

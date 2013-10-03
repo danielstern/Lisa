@@ -23,6 +23,11 @@ var _things = [
       pronoun:'force'
     },
     {
+      word:'clothing',
+      plural:'clothes',
+      pronoun:'force'
+    },
+    {
       word:'wall',
       plural:'walls',
       extends:['place'],
