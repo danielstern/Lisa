@@ -81,10 +81,7 @@ var Extractor = function(brain) {
       var ideas = ex.ideasFromMoment(moment);
       var seedProperties = _.flatten(_.values(seed))
       var intersects = _.intersection(ideas,seedProperties);
-      if (intersects[0]) {
-
-        return true;
-      }
+      if (intersects[0])  return true
 
       //return true;
     });
@@ -121,14 +118,7 @@ var Extractor = function(brain) {
 
     if (ideas instanceof Array) return ex.seive(ideas) 
 
-    console.error('sluice dunno whats goin on');
-
-  /*  return _.map(ideas,function(idea){
-
-       return (ex.seive(idea))
-
-    });*/
-
+    return console.error('sluice dunno whats goin on');
 
   }
 

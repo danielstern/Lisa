@@ -12,23 +12,22 @@ function Counterposer(brain) {
       return [response, seed]
     }
 
-    var command = directive;
-//    if(!command) return;
+    if(!directive) return console.error('No directive');
 
-      switch(command) {
+    switch(directive) {
 
-      case 'story-excerpt':
-        thought = logic.getStoryExcerpt(seed);
-        break;;
+    case 'story-excerpt':
+      thought = logic.getStoryExcerpt(seed);
+      break;;
 
-      case 'tell-story':
-        thought = logic.tellStory(seed);
-        break;
+    case 'tell-story':
+      thought = logic.tellStory(seed);
+      break;
 
-      }
+    }
 
-      response += thought;
-      response += brain.speech.softPause();
+    response += thought;
+    response += brain.speech.softPause();
 
     return response;
   }

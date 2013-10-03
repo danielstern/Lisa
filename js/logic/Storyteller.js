@@ -1,7 +1,6 @@
 var Storyteller = function(brain) {
 	var st = this;
 
-
 	st.tellStory = function (seed) {
 
    	var response = '';
@@ -23,7 +22,6 @@ var Storyteller = function(brain) {
 
     return response;
   }
-
 
   st.tellStoryMoment = function (moment) {
 
