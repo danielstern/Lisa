@@ -7,7 +7,8 @@ function Prepositor(brain) {
   }
 
   pt.wordToSeed = function (word) {
-    var seed = brain.whatIs(word) || {};
+    if (brain.whatIs(word)) return brain.whatIs(word);
+    var seed = {};
     seed.word = word;
     return seed;
   }
@@ -15,6 +16,8 @@ function Prepositor(brain) {
   pt.preposit = function (seed, context) {
 
     context = context || {};
+
+    //if (!seed) console.error('You cant preposit that',seed)
 
     var origSeed = seed;
     if (!_.isObject(seed)) seed = pt.wordToSeed(seed); 
@@ -28,23 +31,15 @@ function Prepositor(brain) {
     if (pt.hasPrefix(seed.word)) response = pt.handlePrefix(seed.word,context);
 
 
-    if (origSeed = seed.plural) context.pronoun = 'plural';
+    if (origSeed == seed.plural) context.pronoun = 'plural';
     if (context.pronoun == 'plural') response = response || seed.plural || seed.word;
-
     if (seed.form == "adjective")   context.pronoun = 'none'
-  
+    response = response || seed.word;
 
     var po = pt.ideaToPrepositionObject(seed,context);
-    preposition = po.preposition;
+    if (!po.returnWord) response = '';
 
-    preposition += " ";
-
-    var regex = /\d{1,2}:\d{2}/;    // NICE
-    if (regex.exec(seed.word)) {
-      preposition = '';
-    }
-
-    var response = preposition + (po.returnWord ? response : '');
+    if (po.preposition) response = po.preposition + " " + response;
 
     response = pt.hack(response,context,seed);
 
@@ -151,7 +146,6 @@ function Prepositor(brain) {
     return word;
   }    
 
-
   
 	pt.prepositBundle = function(bundle, context) {
 		var words = bundle.replace(/[<>]/gi, '').split('&');
@@ -173,7 +167,7 @@ function Prepositor(brain) {
 
   pt.ideaToPrepositionObject = function(idea, context) {
 
-    console.log('idea to po,',idea,context)
+  //  console.log('idea to po,',idea,context)
 
   	var po = new PrepositionObject();
 
@@ -194,7 +188,6 @@ function Prepositor(brain) {
     case 'unique':
     case 'referenced':
       po.preposition = 'the';
-      po.returnWord = true;
       break;
     case 'proper':
     case 'none':
@@ -203,16 +196,13 @@ function Prepositor(brain) {
     case 'plural':
     case 'concept':
       po.preposition = '';
-      po.word = idea.plural || idea.word;
-      po.returnWord = true;
       break;
     case 'self':
     case 'me':
       po.preposition = 'I';
-      po.returnWord = false;
       break;
     default:
-      switch (_.bare(_.first(idea.word || ''))) {
+      switch (_.bare(_.first(idea.word))) {
       case 'a':
       case 'e':
       case 'i':
@@ -246,6 +236,11 @@ function Prepositor(brain) {
         po.preposition = 'their'
         break;
       }
+    }
+
+    var regex = /\d{1,2}:\d{2}/;    // NICE
+    if (regex.exec(idea.word)) {
+      preposition = '';
     }
 
     return po;
