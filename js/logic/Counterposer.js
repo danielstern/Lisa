@@ -28,6 +28,10 @@ function Counterposer(brain) {
       thought = logic.emote(seed);
       break;
 
+    case 'express-inheritance':
+      thought = logic.expressInheritance(seed);
+      break;
+
 
     }
 

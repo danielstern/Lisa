@@ -48,13 +48,13 @@
       <div class='span5'>
         <h3>Emily</h3>
            <div id='saying' ng-bind-html-unsafe='saying' style='margin-bottom:10px' ></div>
-        <form id='conversation-form' ng-submit="reply('story-excerpt')">
+        <form id='conversation-form' ng-submit="reply('emote')">
           <input  ng-model='sayTo' class='input input-block-level' type='text'>
         </form>
           <button ng-click="reply('tell-story')" class='btn'>"Tell me a story about _."</button>
           <button ng-click="reply('story-excerpt')" class='btn'>"What do you know about _?"</button>
           <button ng-click="reply('emote')" class='btn'>"How do you feel about _?"</button>
-     <!--     <button ng-click="reply('draw-conclusion')" class='btn'>"Draw conclusion."</button>  -->
+          <button ng-click="reply('express-inheritance')" class='btn'>"What is _?"</button> 
       </div>
       <div class='span3'>
         <img src='../misc/lisa.jpg' width='200px' height='auto'>

@@ -188,33 +188,50 @@ function Momento(brain) {
 
   mm.generateSentenceFragment = function(momentFragment, context) {
 
-    context.time = 'present';
-    context.plural = context.plural || true;
-   // context.action = momentFragment.action;
+  var preposit = brain.speech.preposit;
+  var conjugate = brain.speech.conjugate;
+  var getConjugatedVerb = brain.speech.conjugator.getConjugatedVerb;
+
+    context.time = context.time || 'present';
+    context.plural = context.plural || 'plural';
 
     var action = momentFragment.action;
     console.log('generating sentence fragment...',momentFragment,context);
     var response = '';
     if (momentFragment.subject) response += preposit(momentFragment.subject) + " ";
-    if (momentFragment.action) response += conjugate('', momentFragment.action, context) + " ";
+    if (momentFragment.action) response += getConjugatedVerb(momentFragment.action, context.time, context.plural) + " ";
     if (momentFragment.object) response += preposit(momentFragment.object) + " ";
 
     return response;
 
   }
 
-   mm.generality = function (seed, quality) {
+   mm.generality = function (seed, quality, usePast) {
     var response = '';
-    // console.log('generality?',seed, quality)
-        var conjugate = expresso.conjugator.getWord;
-    if (typeof seed == 'string') seed = window.brain.whatIs(seed, true);
 
+    if (!seed || !quality) return console.error('No seed');
+
+    var context = {};
+    context.time = usePast ? 'present' : 'past';
+    context.plural = 'plural';
+
+    var preposit = brain.speech.preposit;
+    var conjugate = brain.speech.conjugate;
+
+    var subjectWord = seed.plural || seed.word;
+    var objectWord = quality.plural || quality.word;
+
+    var remark = mm.generateSentenceFragment({subject:subjectWord, action:'is',object:objectWord},context)
+    return remark;
+    
+/*
+    if (typeof seed == 'string') seed = window.brain.whatIs(seed, true);
 
     var prepositedSubjects = '';
     if (seed instanceof Array) {
       var things = [];
       things = _.map(seed, function (miniSeed) {
-        return expresso.prepositor.preposit(miniSeed, {
+        return preposit(miniSeed, {
           plural: true,
           pronoun: 'plural'
         });
@@ -241,7 +258,8 @@ function Momento(brain) {
         pronoun: objectForm
       });
 
-    }
+    }*/
+
     return response;
   }
 }

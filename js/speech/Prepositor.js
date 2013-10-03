@@ -3,6 +3,8 @@ function Prepositor(brain) {
 	var pt = this;
 
   pt.preposit = function (word, context) {
+
+
     
     context = context || {};
 
@@ -23,6 +25,8 @@ function Prepositor(brain) {
       idea = word;
       word = idea.word;
     }
+
+    if (!word) return console.warn('No word.')
 
     word = pt.analythwack(word,context);
 
