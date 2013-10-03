@@ -125,18 +125,17 @@ var Extractor = function(brain) {
 
   ex.sluice = function(ideas){
 
-    var newIdeas = [];
+    if (ideas instanceof Array) return ex.seive(ideas) 
 
-    if (ideas instanceof Array) return ex.seive(ideas);
+    console.error('sluice dunno whats goin on');
 
-     _.each(ideas,function(idea){
+    return _.map(ideas,function(idea){
 
-       _.concat(newIdeas, ex.seive(idea))
+       return (ex.seive(idea))
 
     });
 
 
-    return newIdeas;
   }
 
   ex.extractIdeas = function(statement) {
