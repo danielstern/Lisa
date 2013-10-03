@@ -33,6 +33,18 @@ var Storyteller = function(brain) {
     return response;
   }
 
+  
+  st.tellStoryMoment = function (moment) {
+
+    var phrase = '';
+    if (!moment) return phrase;
+    var context = moment.context || {};
+    context.time = context.time || 'past';
+    phrase = brain.speech.momento.moment(moment, context);
+    brain.memory.short.remember(moment);
+    return phrase;
+  }
+
 
   st.getStoryExcerpt = function (seed) {
 
@@ -50,15 +62,5 @@ var Storyteller = function(brain) {
     
   }
 
-  st.tellStoryMoment = function (moment) {
-
-    var phrase = '';
-    if (!moment) return phrase;
-    var context = moment.context || {};
-    context.time = context.time || 'past';
-    phrase = brain.speech.momento.moment(moment, context);
-    brain.memory.short.remember(moment);
-    return phrase;
-  }
 
 }

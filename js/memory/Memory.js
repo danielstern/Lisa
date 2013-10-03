@@ -17,8 +17,6 @@ function ShortTermMemory(memory) {
 
   short.remember = function (memory) {
 
-  //  return;
-
     if (memory instanceof Array) {
       short.recentThings = short.recentThings.concat(memory);
     } 
@@ -64,17 +62,9 @@ function LongTermMemory(memory) {
     }
     if (typeof seed == 'string') seed = brain.whatIs(seed);
 
-    var word = seed.word;
-    var matchingStories = [];
-
-    _.each(stories, function (story) {
-
-      var ideas = brain.extractor.getStoryIdeas(story);
-      if (_.contains(ideas, word) || _.contains(ideas, seed.plural)) {
-
-        matchingStories.push(story);
-
-      }
+    var matchingStories = _.filter(stories, function (story) {
+      var storyIdeas = brain.extractor.getStoryIdeas(story);
+      if (_.contains(storyIdeas, seed.word) || _.contains(storyIdeas, seed.plural)) return true;
     })
 
     return matchingStories;
