@@ -6,63 +6,34 @@ function Prepositor(brain) {
     
     context = context || {};
 
+    var idea;
     var preposit = pt.preposit;
     var speech = brain.speech;
+    var returnSubject = '';
 
     if (word instanceof Array) word = word[0];
 
     if (_.str.include(word, '<')) {
-      	return pt.prepositBundle(word, context);
+        return pt.prepositBundle(word, context);
     }
 
     word = pt.splitAndCombine(word,context)
     // if preposit is passed an object instead of a string (works on either)
-    var idea;
-    if (word && typeof word == 'object') {
+    if (_.isObject(word)) {
       idea = word;
       word = idea.word;
     }
 
-    word = word || '';
+    word = pt.analythwack(word,context);
 
-    if (word.split('|').length > 1) {
-      var directive = word.split('|')[0];
-      word = word.split('|')[1];
-
-      switch (directive) {
-      case 'my':
-        context.possessive = true;
-        context.possessor = 'self';
-        break;
-      case 'his':
-        context.possessive = true;
-        context.possessor = 'male';
-        break;
-      case 'her':
-        context.possessive = true;
-        context.possessor = 'female';
-        break
-      case 'possessive':
-        context.possessive = true;
-        break
-      case 'referenced':
-      case 'the':
-      case 'main':
-        context.referenced = true;
-        break;
-      case 'assumed':
-        context.assumed = true;
-        break;
-      case 'force':
-        context.pronoun = 'force';
-        break;
-      }
-    }
+    
 
     if (typeof idea == 'string') idea = brain.whatIs(idea, true)
 
-    idea = idea || brain.whatIs(word, true) || {};
+    idea = idea || brain.whatIs(word) || {isUnknown:true};
     word = word || idea.word;
+
+//    if (!idea) console.warn('No idea here.',word,context)
 
     // if the word is the plural form of the word, give it a plural pronoun, i.e., "skeletons" automatically get a plural pronoun
     if (word == idea.plural) idea.pronoun = 'plural';
@@ -75,10 +46,9 @@ function Prepositor(brain) {
 
     // if the idea is an adjective, give it no pronoun and grab a synonym of it, for fun
     if (idea.form == "adjective") {
-      idea.pronoun = 'none'
+      idea.pronoun = 'none' // context overrides idea
       word = speech.synonomize(idea.word);
     }
-   // console.log('Prepositing 2:', word, idea, context)
 
     // if the context suggests the word is referenced, and it is not a proper word, give it a referenced pronoun (it will conjugate with "the")
     if (context.referenced && idea.pronoun != 'proper' && idea.pronoun != 'force') idea.pronoun = 'referenced';
@@ -88,9 +58,10 @@ function Prepositor(brain) {
     var returnWord = true;
     var preposition = '';
 
-    prepositionObj = pt.getPreposition(idea);
+    prepositionObj = pt.ideaToDefaultPrepositionObject(idea);
     preposition = prepositionObj.preposition;
     returnWord = prepositionObj.returnWord;
+    returnSubject = prepositionObj.word || word;
 
     if (context.possessive) {
       switch (context.possessor) {
@@ -127,20 +98,54 @@ function Prepositor(brain) {
 
     var regex = /\d{1,2}:\d{2}/;    // NICE
     if (regex.exec(word)) {
-     // console.log('this is a time');
       preposition = '';
     }
-    else {
-    //  console.log('this is not a time...')
-    }
 
-    var response = preposition + (returnWord ? word : '');
+    var response = preposition + (returnWord ? returnSubject : '');
     if (response == 'me' && !context.objective && !context.asBundle) response = 'I'; // English is a hacky language.
     if (response == 'i') response = 'I';
 
-   // console.log('Prepositing 2:', word, idea, context, response)
     return response;
 
+  }
+
+  pt.analythwack = function(word,context) {
+
+    if (word.split('|').length < 2) return word;
+
+    var object = word.split('|')[1];
+    var directive = word.split('|')[0];
+
+    switch (directive) {
+    case 'my':
+      context.possessive = true;
+      context.possessor = 'self';
+      break;
+    case 'his':
+      context.possessive = true;
+      context.possessor = 'male';
+      break;
+    case 'her':
+      context.possessive = true;
+      context.possessor = 'female';
+      break
+    case 'possessive':
+      context.possessive = true;
+      break
+    case 'referenced':
+    case 'the':
+    case 'main':
+      context.referenced = true;
+      break;
+    case 'assumed':
+      context.assumed = true;
+      break;
+    case 'force':
+      context.pronoun = 'force';
+      break;
+    }
+
+    return word;
   }
 
   pt.splitAndCombine = function(string, context) {
@@ -185,18 +190,20 @@ function Prepositor(brain) {
     return propositedWords;
 	}
 
-  pt.getPreposition = function(idea) {
+  pt.ideaToDefaultPrepositionObject = function(idea) {
 
-  	var prep = {};
-  	prep.returnWord = true;
+  	var prepositionObject = {};
+    var prep = prepositionObject;
 
-  	idea = _.clone(idea);
-  	idea.word = idea.word || '';
+    prep.word = idea.word || undefined;
+
+  //  if (!idea.word) return console.error('No idea word...',idea)
    
     switch (idea.pronoun) {
     case 'unique':
     case 'referenced':
       prep.preposition = 'the';
+      prep.returnWord = true;
       break;
     case 'proper':
     case 'none':
@@ -205,28 +212,32 @@ function Prepositor(brain) {
     case 'plural':
     case 'concept':
       prep.preposition = '';
+      prep.word = idea.plural || idea.word;
+      prep.returnWord = true;
       break;
     case 'self':
     case 'me':
-      preposition = 'I';
+      prep.preposition = 'I';
       prep.returnWord = false;
       break;
     default:
-      switch (idea.word.toLowerCase().charAt(0)) {
+      switch (_.bare(_.first(idea.word || ''))) {
       case 'a':
       case 'e':
       case 'i':
       case 'u':
       case 'o':
         prep.preposition = 'an';
+        prep.returnWord = true;
         break;
       default:
         prep.preposition = 'a';
+        prep.returnWord = true;
       }
       break;
     }
 
-    return prep;
+    return prepositionObject;
 
   }
 
