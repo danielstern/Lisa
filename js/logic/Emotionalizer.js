@@ -5,13 +5,13 @@ function Emotionalizer(brain) {
 		if (!seed) return;
 
 		var stories = ex.storiesFromSeed(seed);
-		console.log('Get Emotional remark...',seed,stories);
 		var allFeelings = _.map(stories, function(story) {
 			var emotions = em.emotionsFromStory(story);
 			return emotions;
 		});
 		var fo = em.objectFromFeelings(allFeelings);
-		console.log('got emotions...',fo);
+		console.log('Get emotional remark...',stories,fo);
+		return fo.toString();
 
 
 	}
