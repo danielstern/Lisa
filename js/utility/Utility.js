@@ -37,6 +37,12 @@ _.mixin({
 
   },
 
+  log:function(){
+  if(console){
+      return console.log.apply(console, arguments);
+    }
+  },
+
 
   crack: function(string, returnQuality) {
     if (typeof string != 'string') return string;

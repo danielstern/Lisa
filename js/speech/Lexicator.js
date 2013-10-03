@@ -9,26 +9,27 @@ function Lexicator(brain) {
   	if (typeof words == 'string') words = [words];
     if (words.packageType == 'verbs') var isVerbs = true;
 
-    console.log('learning',words)
 
     if (isVerbs) {
-      var verbs = _.pairs(words);
-
-    _.each(verbs, function (verb) {
-        lx.absorbVerb(verb[0], verb[1]);
-      })
-
+      lx.absorbVerbs(words)
       return;
     }
 
     _.each(words, function (word) {
-      lx.absorb(word);
+        lx.absorbThing(word);
     })
 
   }
 
-  lx.absorb = function (word) {
-  	lx.things.push(word);	
+  lx.absorbVerbs = function (verbs) {
+    var verbPairs = _.pairs(verbs);
+    _.each(verbPairs, function (verb) {
+      lx.absorbVerb(verb[0], verb[1]);
+    })
+  }
+
+  lx.absorbThing = function (word) {
+    lx.things.push(word); 
   }
 
   lx.absorbVerb = function (word, verb) {
