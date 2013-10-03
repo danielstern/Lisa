@@ -3,49 +3,19 @@ function Prepositor(brain) {
 	var pt = this;
 
   pt.preposit = function (word, context) {
+    
+    context = context || {};
 
     var preposit = pt.preposit;
-
     var speech = brain.speech;
-    context = context || {};
+
     if (word instanceof Array) word = word[0];
 
     if (_.stringContains(word, '<')) {
       	return pt.prepositBundle(word, context);
     }
 
-
-    if (_.fizzle(word) && _.fizzle(word).thing) {
-      var property = _.fizzle(word).has;
-      word = _.fizzle(word).thing;
-
-      //console.log('fizzle?',word,_.fizzle(word))
-
-      var propertyIdea = brain.whatIs(property);
-
-      if (propertyIdea) {
-
-        if (propertyIdea.form != 'adjective') {
-          context.pronoun = 'none';
-        }
-
-        if (propertyIdea.form == 'adjective') {
-        	propertyIdea.isAdjective = true;
-          if (propertyIdea.noPronoun) context.pronoun = 'none';
-        }
-
-      }
-
-      var newWordContext = {};
-      if (!propertyIdea) propertyIdea = {};
-      if (propertyIdea.form == 'adjective') newWordContext.pronoun = 'none';
-      
-      word = preposit(property, {
-        pronoun: 'referenced'
-      }) + (propertyIdea.isAdjective ? " " : ' of ') + preposit(word,newWordContext);
-      adjective = property;
-    }
-
+    word = pt.splitAndCombine(word,context)
     // if preposit is passed an object instead of a string (works on either)
     var idea;
     if (word && typeof word == 'object') {
@@ -53,7 +23,6 @@ function Prepositor(brain) {
       word = idea.word;
     }
 
-    var adjective = '';
     word = word || '';
 
     if (word.split('|').length > 1) {
@@ -171,6 +140,41 @@ function Prepositor(brain) {
 
    // console.log('Prepositing 2:', word, idea, context, response)
     return response;
+
+  }
+
+  pt.splitAndCombine = function(word, context) {
+
+    var preposit = pt.preposit;
+
+    if (_.fizzle(word) && _.fizzle(word).thing) {
+      var property = _.fizzle(word).has;
+      
+      word = _.fizzle(word).thing;
+
+      var propertyIdea = brain.whatIs(property);
+
+      if (propertyIdea) {
+
+        if (propertyIdea.form != 'adjective') {
+          context.pronoun = 'none';
+        }
+
+        if (propertyIdea.form == 'adjective') {
+          propertyIdea.isAdjective = true;
+          if (propertyIdea.noPronoun) context.pronoun = 'none';
+        }
+
+      }
+
+      var newWordContext = {};
+      if (!propertyIdea) propertyIdea = {};
+      if (propertyIdea.form == 'adjective') newWordContext.pronoun = 'none';
+      
+      word = preposit(property, { pronoun:'referenced' }) + (propertyIdea.isAdjective ? " " : ' of ') + preposit(word,newWordContext);
+    }
+
+    return word;
 
   }
 
