@@ -11,7 +11,7 @@ function Prepositor(brain) {
 
     if (word instanceof Array) word = word[0];
 
-    if (_.stringContains(word, '<')) {
+    if (_.str.include(word, '<')) {
       	return pt.prepositBundle(word, context);
     }
 
@@ -143,40 +143,36 @@ function Prepositor(brain) {
 
   }
 
-  pt.splitAndCombine = function(word, context) {
+  pt.splitAndCombine = function(string, context) {
 
     var preposit = pt.preposit;
+    
+    if (!_.fizzle(string) || !_.fizzle(string).thing) return string;
 
-    if (_.fizzle(word) && _.fizzle(word).thing) {
-      var property = _.fizzle(word).has;
-      
-      word = _.fizzle(word).thing;
+    var property = _.fizzle(string).has;
+    var word = _.fizzle(string).thing;
 
-      var propertyIdea = brain.whatIs(property);
+    var propertyIdea = brain.whatIs(property);
+    if (!propertyIdea) return console.warn("Can't get idea about.." , property);
 
-      if (propertyIdea) {
-
-        if (propertyIdea.form != 'adjective') {
-          context.pronoun = 'none';
-        }
-
-        if (propertyIdea.form == 'adjective') {
-          propertyIdea.isAdjective = true;
-          if (propertyIdea.noPronoun) context.pronoun = 'none';
-        }
-
-      }
-
-      var newWordContext = {};
-      if (!propertyIdea) propertyIdea = {};
-      if (propertyIdea.form == 'adjective') newWordContext.pronoun = 'none';
-      
-      word = preposit(property, { pronoun:'referenced' }) + (propertyIdea.isAdjective ? " " : ' of ') + preposit(word,newWordContext);
+    if (propertyIdea.form != 'adjective') {
+      context.pronoun = 'none';
     }
 
-    return word;
+    if (propertyIdea.form == 'adjective') {
+      propertyIdea.isAdjective = true;
+      if (propertyIdea.noPronoun) context.pronoun = 'none';
+    }
 
-  }
+    var newWordContext = {};
+    if (!propertyIdea) propertyIdea = {};
+    if (propertyIdea.form == 'adjective') newWordContext.pronoun = 'none';
+    
+    word = preposit(property, { pronoun:'referenced' }) + (propertyIdea.isAdjective ? " " : ' of ') + preposit(word,newWordContext);
+  
+    return word;
+  }    
+
 
   
 	pt.prepositBundle = function(bundle, context) {

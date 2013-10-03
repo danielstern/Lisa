@@ -65,14 +65,14 @@ _.mixin({
   },
 
   fizzle: function(string) {
-    if (!string) return false;
-    if (typeof string != 'string' || string.split(':').length < 2) return string;
-    if (!_.stringContains(string, '$')) return string;
+    if (!string || !_.isString(string)) return console.warn("Can't fizzle this.",string);
+    if (string.split(':').length < 2) return string;
+    if (!_.str.include(string, '$')) return string;
     var fizzle = {};
-    var pieces = string.replace(/\$/gi,'')
-      .split(':');
-    fizzle.thing = pieces[1];
-    fizzle.has = pieces[0];
+    var pieces = string.split(':');
+
+    fizzle.thing = _.bare(pieces[1]);
+    fizzle.has = _.bare(pieces[0]);
 
     return fizzle;
   },
@@ -95,21 +95,6 @@ _.mixin({
     return many || string;
   },
 
-  stringContains: function(string, characters) {
-
-    string = string || '';
-
-    if (typeof characters == 'string') characters = [characters];
-
-    var inString = _.find(characters,function(character){
-      if (string.toString().indexOf(character) != -1) {
-        return character;
-      }
-    })
-
-    return inString;
-
-  },
 
   endsWith: function(string, character) {
 
@@ -149,7 +134,7 @@ _.mixin({
   bare: function(string) {
 
     if (!string) return string;
-    string = string.replace(/[\s,;.<>:!?'"']+/gi,'');
+    string = string.replace(/[\s,;.<$&>:!?'"']+/gi,'');
     string = string.toLowerCase();
     return string;
 
