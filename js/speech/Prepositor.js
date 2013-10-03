@@ -6,61 +6,54 @@ function Prepositor(brain) {
     return _.str.include(string, '<')
   }
 
-  pt.preposit = function (word, context) {
+  pt.preposit = function (seed, context) {
 
     context = context || {};
 
     var preposit = pt.preposit;
     var speech = brain.speech;
+    var word;
+    var compoundIdea
 
-    var returnSubject = '';
     var idea;
 
+    if (_.isObject(seed)) {
+      idea = seed;
+      word = idea.word;
+    } else {
+      word = seed;
+    }
+
     if (pt.isBundle(word)) return pt.prepositBundle(word, context);
-    if (pt.isCompound(word)) word = pt.splitAndCombine(word,context)
+    if (pt.isCompound(word)) {
+       var compoundTarget = pt.compoundToTarget(word);
+       console.log('componud target?',compoundTarget);
+       compoundIdea = brain.whatIs(compoundTarget);
+       word = pt.splitAndCombine(word,context);
+    } 
+    if (pt.hasPrefix(word)) word = pt.handlePrefix(word,context);
 
     // if preposit is passed an object instead of a string (works on either)
-    if (_.isObject(word)) {
-      idea = word;
-      word = idea.word;
-    }
 
-    if (!word) return console.warn('No word.')
-
-    word = pt.analythwack(word,context);
-
-    
-
-    if (typeof idea == 'string') idea = brain.whatIs(idea, true)
-
-    idea = idea || brain.whatIs(word) || {isUnknown:true};
+    idea = idea || brain.whatIs(word);
     word = word || idea.word;
 
-    if (word == idea.plural) idea.pronoun = 'plural';
+    if (idea && word == idea.plural) context.pronoun = 'plural';
 
-    if (context.pronoun && idea.pronoun != 'proper' && idea.pronoun != 'force') idea.pronoun = context.pronoun;
+    if (context.pronoun == 'plural' && idea && idea.plural) word = idea.plural;
 
-    if (context.pronoun == 'plural' && idea.plural) word = idea.plural;
-
-    // if the idea is an adjective, give it no pronoun and grab a synonym of it, for fun
-    if (idea.form == "adjective") {
-      idea.pronoun = 'none' // context overrides idea
-      word = speech.synonomize(idea.word);
-    }
-
-    // if the context suggests the word is referenced, and it is not a proper word, give it a referenced pronoun (it will conjugate with "the")
-    if (context.referenced && idea.pronoun != 'proper' && idea.pronoun != 'force') idea.pronoun = 'referenced';
-    if (idea.pronoun == 'proper') idea.word = _.capitalize(idea.word);
+    if (idea && idea.form == "adjective")   context.pronoun = 'none'
+  
 
     // based on the idea object, choose a preposition
     var returnWord = true;
+    var returnSubject = '';
     var preposition = '';
 
-    prepositionObj = pt.ideaToDefaultPrepositionObject(idea,context);
+    var prepositionObj = pt.ideaToPrepositionObject(idea || compoundIdea,context);
     preposition = prepositionObj.preposition;
     returnWord = prepositionObj.returnWord;
     returnSubject = prepositionObj.word || word;
-
 
     if (preposition) preposition += " ";
 
@@ -79,8 +72,6 @@ function Prepositor(brain) {
 
   pt.hack = function(fragment,context,idea) {
 
-    console.log('hacking',fragment,context,idea)
-
     if (context.assumed) {
       var objective = context.objective;
       if (idea.gender) {
@@ -98,9 +89,12 @@ function Prepositor(brain) {
 
   }
 
-  pt.analythwack = function(word,context) {
+  pt.hasPrefix = function(string) {
+    return (string.split('|').length > 1)    
+  }
 
-    if (word.split('|').length < 2) return word;
+  pt.handlePrefix = function(word,context) {
+   // console.log('handleprefix',word,context)
 
     var object = word.split('|')[1];
     var directive = word.split('|')[0];
@@ -134,13 +128,19 @@ function Prepositor(brain) {
       break;
     }
 
-    return word;
+    return object;
   }
 
   pt.isCompound = function(string) {
     if (!_.fizzle(string) || !_.fizzle(string).thing) return false;
     return true;
   }
+
+  pt.compoundToTarget = function(string) {
+    if (!_.fizzle(string) || !_.fizzle(string).thing) return string;
+    return _.fizzle(string).thing;
+  }
+
 
   pt.splitAndCombine = function(string, context) {
 
@@ -183,18 +183,32 @@ function Prepositor(brain) {
     return propositedWords;
 	}
 
-  pt.ideaToDefaultPrepositionObject = function(idea, context) {
+  pt.ideaToPrepositionObject = function(idea, context) {
+
+    console.log('idea to po,',idea,context)
 
   	var prepositionObject = {};
-    var prep = prepositionObject;
+    var po = prepositionObject;
 
-    prep.word = idea.word || undefined;
+    idea = idea || {};
+
+
+    if (idea) po.word = idea.word || undefined;
+    if (context.referenced) context.pronoun = 'referenced';
+
+    var pronoun;
+    if (idea && idea.pronoun == 'proper' || idea && idea.pronoun == 'force'){
+      pronoun = idea.pronoun;
+    } else {
+      pronoun = context.pronoun;
+    }
+
    
-    switch (idea.pronoun) {
+    switch (pronoun) {
     case 'unique':
     case 'referenced':
-      prep.preposition = 'the';
-      prep.returnWord = true;
+      po.preposition = 'the';
+      po.returnWord = true;
       break;
     case 'proper':
     case 'none':
@@ -202,14 +216,14 @@ function Prepositor(brain) {
     case 'pluralize':
     case 'plural':
     case 'concept':
-      prep.preposition = '';
-      prep.word = idea.plural || idea.word;
-      prep.returnWord = true;
+      po.preposition = '';
+      po.word = idea.plural || idea.word;
+      po.returnWord = true;
       break;
     case 'self':
     case 'me':
-      prep.preposition = 'I';
-      prep.returnWord = false;
+      po.preposition = 'I';
+      po.returnWord = false;
       break;
     default:
       switch (_.bare(_.first(idea.word || ''))) {
@@ -218,12 +232,12 @@ function Prepositor(brain) {
       case 'i':
       case 'u':
       case 'o':
-        prep.preposition = 'an';
-        prep.returnWord = true;
+        po.preposition = 'an';
+        po.returnWord = true;
         break;
       default:
-        prep.preposition = 'a';
-        prep.returnWord = true;
+        po.preposition = 'a';
+        po.returnWord = true;
       }
       break;
     }
@@ -234,16 +248,16 @@ function Prepositor(brain) {
       case 'me':
       case 'self':
       case 'I':
-        prep.preposition = 'my';
+        po.preposition = 'my';
         break;
       case 'male':
-        prep.preposition = 'his';
+        po.preposition = 'his';
         break;
       case 'female':
-        prep.preposition = 'her';
+        po.preposition = 'her';
         break;
       default:
-        prep.preposition = 'their'
+        po.preposition = 'their'
         break;
       }
     }

@@ -54,12 +54,16 @@ var _things = [
       extends:['store'],
     },
     {
+      word:'I',
+      pronoun:'proper'
+    },
+    {
       word:'mall',
       plural:'malls',
       extends:['place'],
     },
     {
-      word:'time',
+      word:'tIme',
       plural:'times',
       extends:['concept'],
     },
