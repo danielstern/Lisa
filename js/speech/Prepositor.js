@@ -146,6 +146,7 @@ function Prepositor(brain) {
   pt.splitAndCombine = function(string, context) {
 
     var preposit = pt.preposit;
+    var objectContext = _.clone(context);
     
     if (!_.fizzle(string) || !_.fizzle(string).thing) return string;
 
@@ -162,13 +163,10 @@ function Prepositor(brain) {
     if (propertyIdea.form == 'adjective') {
       propertyIdea.isAdjective = true;
       if (propertyIdea.noPronoun) context.pronoun = 'none';
+      objectContext.pronoun = 'none';
     }
-
-    var newWordContext = {};
-    if (!propertyIdea) propertyIdea = {};
-    if (propertyIdea.form == 'adjective') newWordContext.pronoun = 'none';
     
-    word = preposit(property, { pronoun:'referenced' }) + (propertyIdea.isAdjective ? " " : ' of ') + preposit(word,newWordContext);
+    word = preposit(property, { pronoun:'referenced' }) + (propertyIdea.isAdjective ? " " : ' of ') + preposit(word,objectContext);
   
     return word;
   }    
