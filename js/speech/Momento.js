@@ -61,9 +61,6 @@ function Momento(brain) {
     case 'then':
       response += _.sample(['then']);
       break;
-    case 'once':
-      response += _.sample(['once','']);
-      break;
     }
 
     // add a soft pause of necessary

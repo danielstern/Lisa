@@ -22,8 +22,14 @@ var _attributes = [
 
     },
     {
+
       word:'sunny',
       form:'adjective',
+    },
+    {
+      word:'the',
+      form:'preposition',
+      pronoun:'none'
     },
     {
       word:'many',

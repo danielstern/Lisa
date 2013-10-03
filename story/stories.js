@@ -20,13 +20,13 @@ var _EmilyStories = [
     name:'the one about Lexys',
     sequence:[
     {
-      subject:'$many:shoes$', action:'is', at:"Lexy's"
+      subject:'$many:shoes$', action:'is', at:"Lexy's",context:{general:true}
     },
     {
-      subject:"assumed|Lexy's", action:'is', object:"Shoe Store"
+      subject:"assumed|Lexy's", action:'is', object:"Shoe Store",context:{time:'present'}
     },
     {
-       subject:"shoe", action:'is', object:"pretty"
+       subject:"shoes", action:'is', object:"pretty",context:{general:true}
     }
   ],
   },  

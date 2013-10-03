@@ -33,15 +33,10 @@ function Prepositor(brain) {
     idea = idea || brain.whatIs(word) || {isUnknown:true};
     word = word || idea.word;
 
-//    if (!idea) console.warn('No idea here.',word,context)
-
-    // if the word is the plural form of the word, give it a plural pronoun, i.e., "skeletons" automatically get a plural pronoun
     if (word == idea.plural) idea.pronoun = 'plural';
 
-    // if the context suggest a pronoun, override the existing one if it is not 'proper' or 'force';
     if (context.pronoun && idea.pronoun != 'proper' && idea.pronoun != 'force') idea.pronoun = context.pronoun;
 
-    // if the context suggest a plural pronoun, use the words plural in place of the word, if it has one
     if (context.pronoun == 'plural' && idea.plural) word = idea.plural;
 
     // if the idea is an adjective, give it no pronoun and grab a synonym of it, for fun
@@ -58,31 +53,29 @@ function Prepositor(brain) {
     var returnWord = true;
     var preposition = '';
 
-    prepositionObj = pt.ideaToDefaultPrepositionObject(idea);
+    prepositionObj = pt.ideaToDefaultPrepositionObject(idea,context);
     preposition = prepositionObj.preposition;
     returnWord = prepositionObj.returnWord;
     returnSubject = prepositionObj.word || word;
 
-    if (context.possessive) {
-      switch (context.possessor) {
-      case 'me':
-      case 'self':
-      case 'I':
-        preposition = 'my';
-        break;
-      case 'male':
-        preposition = 'his';
-        break;
-      case 'female':
-        preposition = 'her';
-        break;
-      default:
-        preposition = 'their'
-        break;
-      }
+
+    if (preposition) preposition += " ";
+
+    var regex = /\d{1,2}:\d{2}/;    // NICE
+    if (regex.exec(word)) {
+      preposition = '';
     }
 
-    // if the context suggests this words identity is assumed, replace it with the appropriate pronoun
+    var response = preposition + (returnWord ? returnSubject : '');
+
+    response = pt.hack(response,context);
+
+    return response;
+
+  }
+
+  pt.hack = function(fragment,context) {
+
     if (context.assumed) {
       var objective = context.objective;
       if (idea.gender) {
@@ -93,19 +86,10 @@ function Prepositor(brain) {
       return 'it';
     }
 
-    // add a space after the preposition, if it exists
-    if (preposition) preposition += " ";
+    if (fragment == 'me' && !context.objective && !context.asBundle) return 'I'; // English is a hacky language.
+    if (fragment == 'i') return 'I';
 
-    var regex = /\d{1,2}:\d{2}/;    // NICE
-    if (regex.exec(word)) {
-      preposition = '';
-    }
-
-    var response = preposition + (returnWord ? returnSubject : '');
-    if (response == 'me' && !context.objective && !context.asBundle) response = 'I'; // English is a hacky language.
-    if (response == 'i') response = 'I';
-
-    return response;
+    return fragment;
 
   }
 
@@ -190,14 +174,12 @@ function Prepositor(brain) {
     return propositedWords;
 	}
 
-  pt.ideaToDefaultPrepositionObject = function(idea) {
+  pt.ideaToDefaultPrepositionObject = function(idea, context) {
 
   	var prepositionObject = {};
     var prep = prepositionObject;
 
     prep.word = idea.word || undefined;
-
-  //  if (!idea.word) return console.error('No idea word...',idea)
    
     switch (idea.pronoun) {
     case 'unique':
@@ -237,11 +219,26 @@ function Prepositor(brain) {
       break;
     }
 
+
+    if (context.possessive) {
+      switch (context.possessor) {
+      case 'me':
+      case 'self':
+      case 'I':
+        prep.preposition = 'my';
+        break;
+      case 'male':
+        prep.preposition = 'his';
+        break;
+      case 'female':
+        prep.preposition = 'her';
+        break;
+      default:
+        prep.preposition = 'their'
+        break;
+      }
+    }
+
     return prepositionObject;
-
   }
-
-//  window.preposit = pt.preposit;
-
-
 }

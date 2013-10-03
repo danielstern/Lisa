@@ -75,8 +75,6 @@ function Lexicator(brain) {
     return verbIdea;
 
   }
-
- 
   
 
   lx.getWord = function (word) {
@@ -86,7 +84,8 @@ function Lexicator(brain) {
       if (_.compare(wordIdea.plural, word)) return true;
       if (_.compare(wordIdea.said, word)) return true;
     });
- // console.log('getting word...',word,ideas)
+ // console.log('getting word...',word,ideas);
+ //   if (!ideas[0]) console.warn('This word is not in the lexiary',word);
     return ideas[0];
 
   }

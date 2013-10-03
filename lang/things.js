@@ -32,10 +32,16 @@ var _things = [
       plural:'walls',
       extends:['place'],
     },
+
     {
       word:'shoe',
       plural:'shoes',
       extends:['clothing'],
+    },
+    {
+      word:"Lexy's",
+      pronoun:'proper',
+      extends:['store'],
     },
     {
       word:'shoe store',
