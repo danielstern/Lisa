@@ -13,7 +13,7 @@ var _EmilyStories = [
       subject:'I',action:'arrive', at:"Lexy's",
     },
     {
-      subject:'I',action:'look', at:"$red|shoes$",
+      subject:'I',action:'look', at:"$red:shoes$",
     },
     ],
   },

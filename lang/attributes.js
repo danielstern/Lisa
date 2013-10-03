@@ -26,6 +26,10 @@ var _attributes = [
       word:'sunny',
       form:'adjective',
     },
+     {
+      word:'red',
+      form:'adjective',
+    },
     {
       word:'the',
       form:'preposition',

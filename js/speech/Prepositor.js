@@ -80,6 +80,8 @@ function Prepositor(brain) {
 
   pt.hack = function(fragment,context,idea) {
 
+    console.log('hacking',fragment,context,idea)
+
     if (context.assumed) {
       var objective = context.objective;
       if (idea.gender) {
@@ -160,6 +162,8 @@ function Prepositor(brain) {
     }
     
     word = preposit(property, { pronoun:'referenced' }) + (propertyIdea.isAdjective ? " " : ' of ') + preposit(word,objectContext);
+
+    context.pronoun = none;
   
     return word;
   }    

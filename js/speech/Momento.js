@@ -181,7 +181,6 @@ function Momento(brain) {
       response += preposit(moment.off, _.clone(context));
     }
 
-  //  console.log("Story moment",moment,context);
 
     return response;
   }
@@ -193,7 +192,7 @@ function Momento(brain) {
   var getConjugatedVerb = brain.speech.conjugator.getConjugatedVerb;
 
     context.time = context.time || 'present';
-    context.plural = context.plural || 'plural';
+   // context.plural = context.plural || 'plural';
 
     var subjectIdea = brain.whatIs(momentFragment.subject);
     var singularity = false;
@@ -224,6 +223,7 @@ function Momento(brain) {
     var context = {};
     context.time = 'present';
     context.plural = 'plural';
+    if (!seed.plural) context.plural = false;
 
     var preposit = brain.speech.preposit;
     var conjugate = brain.speech.conjugate;
