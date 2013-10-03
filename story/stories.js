@@ -40,7 +40,7 @@ var _EmilyStories = [
       subject:'the|time',action:'is', object:'4:30',
     },
     {
-      subject:'I',action:'arrive', at:'the|store',
+      subject:'I',action:'arrive', at:"Emily's Convenience",
     },
     {
       subject:'I', action:'look', in:'the|safe',

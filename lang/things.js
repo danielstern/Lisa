@@ -42,6 +42,11 @@ var _things = [
       word:"Lexy's",
       pronoun:'proper',
       extends:['store'],
+    }, 
+    {
+      word:"Emily's Convenience",
+      pronoun:'proper',
+      extends:['store'],
     },
     {
       word:'shoe store',

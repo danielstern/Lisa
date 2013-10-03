@@ -64,6 +64,19 @@ _.mixin({
             .value();
   },
 
+  between: function(number,min,max) {
+    return (number >= min && number <= max);
+  },
+
+  below: function(number,max) {
+    return number <= max;
+  },
+
+
+  above: function(number,min) {
+    return number >= min;
+  },
+
   fizzle: function(string) {
     if (!string || !_.isString(string)) return console.warn("Can't fizzle this.",string);
     if (string.split(':').length < 2) return string;

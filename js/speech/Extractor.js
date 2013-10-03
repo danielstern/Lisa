@@ -93,7 +93,8 @@ var Extractor = function(brain) {
     var ideas = ex.getStoryIdeas(stories[0])
     var story = _.sample(stories);
 
-    if (!story) console.error("Get relevant moments error")
+    if (!story) return;
+    
     var relevantMoments;
     var _story;
     var moments;
@@ -114,7 +115,7 @@ var Extractor = function(brain) {
 
   ex.storyToMoments = function(story) {
 
-    if (!story) return console.error('no story');
+    if (!story) return console.warn('no story');
 
     story.epic = story.epic = [];
     if (story.sequence) story.epic.push(story.sequence);

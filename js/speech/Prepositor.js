@@ -68,13 +68,13 @@ function Prepositor(brain) {
 
     var response = preposition + (returnWord ? returnSubject : '');
 
-    response = pt.hack(response,context);
+    response = pt.hack(response,context,idea);
 
     return response;
 
   }
 
-  pt.hack = function(fragment,context) {
+  pt.hack = function(fragment,context,idea) {
 
     if (context.assumed) {
       var objective = context.objective;

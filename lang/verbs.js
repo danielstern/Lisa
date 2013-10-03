@@ -34,6 +34,18 @@ var _verbs = {
     jugend:'shining'
   },
 
+  work:{
+    past:{
+      singular:'worked',
+      plural:'worked'
+    },
+    present:{
+      singular:'works',
+      plural:'work'
+    },
+    jugend:'shining'
+  },
+
   shine:{
     past:{
       singular:'shined',
