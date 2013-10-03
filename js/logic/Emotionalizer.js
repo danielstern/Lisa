@@ -17,16 +17,9 @@ function Emotionalizer(brain) {
 	}
 
 	em.objectFromFeelings = function(feelings) {
-		var fo = new em.FeelingsObject();
-		_.each(feelings, function(feeling){
+		var fo = new FeelingsObject();
+		fo.absorb(feelings);
 
-			var feelingNames = _.keys(feeling);
-			_.each(feelingNames,function(feelingName) {
-				fo[feelingName] = fo[feelingName] || 0;
-				fo[feelingName] += feeling[feelingName];
-			});
-
-	})
 		return fo;
 	}
 
@@ -36,11 +29,30 @@ function Emotionalizer(brain) {
 
 	}	
 
-	em.FeelingsObject = function() {
+	var FeelingsObject = function() {
 		var fo = this;
 		fo.pleasure = 0;
 		fo.excitement = 0;
 		fo.pain = 0;
 		fo.fear = 0;
+
+		fo.combine = function(feeling) {
+			var feelingNames = _.keys(feeling);
+			_.each(feelingNames,function(feelingName) {
+				fo[feelingName] = fo[feelingName] || 0;
+				fo[feelingName] += feeling[feelingName];
+			});
+		}
+
+		fo.absorb = function(feelings) {
+			if (!feelings) return;
+			if (!_.isArray(feelings)) feelings = [feelings];
+
+			_.each(feelings, function(feeling){
+
+					fo.combine(feeling);			
+
+			})			
+		}
 	}
 }

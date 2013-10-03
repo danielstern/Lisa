@@ -99,9 +99,10 @@
         'Store',
         'Shoe',
         'Mall',
+        "Lexy's",
       ]
 
-      $scope.sayTo = 'money';
+      $scope.sayTo = _.sample($scope.things);
 
       $scope.reply = function(directive) {
 

@@ -19,6 +19,7 @@ var _EmilyStories = [
   },
   {
     name:'the one about Lexys',
+    emotions:{pleasure:1,excitement:1},
     sequence:[
     {
       subject:'$many:shoes$', action:'is', at:"Lexy's",context:{general:true}
@@ -51,12 +52,11 @@ var _EmilyStories = [
     {
       subject:'the|money', action:'is', object:'missing',
     },
-
-
     ],
   },
   {
   name:'the one where I get to mall',
+  emotions:{please:2,anxiety:1},
   sequence:[
   {
     subject:'the|time',action:'is', object:'2:30', relevance:'context'
