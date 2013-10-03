@@ -39,6 +39,7 @@ var Storyteller = function(brain) {
 
     var excerpts = brain.extractor.momentsFromSeed(seed);
 
+    if(_.isEmpty(excerpts)) return "I don't know anything about that."
     var excerpt = _.sample(excerpts);
 
     var context = {};

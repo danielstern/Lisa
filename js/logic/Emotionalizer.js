@@ -20,7 +20,7 @@ function Emotionalizer(brain) {
 	em.expressFeelingsObject = function(fo,seed) {
 
 		var overallFeelings = fo.getOverallFeeling();
-		console.log('expressing feelings',seed,fo, overallFeelings);;
+	//	console.log('expressing feelings',seed,fo, overallFeelings);;
 
 		if (_.between(overallFeelings,-10,10)) return "I don't feel strongly about " + (seed.plural || seed.word);
 		if (_.below(overallFeelings,-10)) return "I don't like " + (seed.plural || seed.word);

@@ -23,11 +23,6 @@ var _things = [
       pronoun:'force'
     },
     {
-      word:'Humpty-Dumpty',
-      pronoun:'proper',
-      extends:['person','egg'],
-    },
-    {
       word:'wall',
       plural:'walls',
       extends:['place'],
@@ -148,10 +143,6 @@ var _things = [
       word:'bean',
       extends:['vegetable'],
       plural:'beans'
-    },
-    {
-      word:'beanstalk',
-      plural:'beanstalks'
     },
     {
       word:'garden',
