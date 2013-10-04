@@ -1,4 +1,6 @@
-function Conjugator(brain) {
+define("speech/Conjugator", [], function () {
+
+return function Conjugator(brain) {
   var cj = this;
   cj.allVerbs = {};
   var tl = cj.allVerbs;
@@ -50,3 +52,4 @@ function Conjugator(brain) {
   function warnOut(phrase,verb) {console.warn(phrase);return verb};
 
 }
+});

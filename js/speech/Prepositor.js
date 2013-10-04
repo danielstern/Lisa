@@ -1,4 +1,6 @@
-function Prepositor(brain) {
+define("speech/Prepositor", [], function() {
+
+return function Prepositor(brain) {
 
 	var pt = this;
 
@@ -249,3 +251,4 @@ function Prepositor(brain) {
     return po;
   }
 }
+})

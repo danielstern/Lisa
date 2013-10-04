@@ -1,4 +1,5 @@
-var Storyteller = function(brain) {
+define("Storyteller",[],  function Storyteller (brain) {
+  console.log('defining storyteller...')
 	var st = this;
 
 	st.tellStory = function (seed) {
@@ -53,4 +54,4 @@ var Storyteller = function(brain) {
     return remark;
 
   }
-}
+});

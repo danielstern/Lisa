@@ -1,11 +1,16 @@
-function Speech(brain) {
+define("speech/Speech", ["speech/Prepositor","speech/Conjugator"], function Speech(Prepositor, Conjugator) {
+
+ return function Speech(brain) {
 
   var speech = this;
   speech.brain = brain;
-
-  speech.conjugator = new Conjugator(brain);
-  speech.lexicator = new Lexicator(brain);
   speech.prepositor = new Prepositor(brain);
+  speech.conjugator = new Conjugator(brain);
+
+  console.log("Speech?",speech,arguments);
+  return;
+
+  speech.lexicator = new Lexicator(brain);
 
   speech.momento = new Momento(brain);
   speech.express = speech.momento;
@@ -37,3 +42,4 @@ function Speech(brain) {
     return phrase;
   }
 }
+});

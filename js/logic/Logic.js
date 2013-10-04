@@ -1,6 +1,8 @@
-function Logic(brain) {
+define("Logic",["Counterposer","Storyteller","Emotionalizer"], function Logic(brain, Counterposer, Storyteller, Emotionalizer) {
 
   var logic = this;
+
+  console.log('logic initializing...');
 
   logic.counterposer = new Counterposer(brain);
   logic.storyteller = new Storyteller(brain);
@@ -28,4 +30,4 @@ function Logic(brain) {
   	return generality;
   }
 
-}
+});

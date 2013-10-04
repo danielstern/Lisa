@@ -1,4 +1,4 @@
-function MomentObject(moment) {
+define("MomentObject",[],  function MomentObject(moment) {
 
   moment = moment || {};
   var mo = this;
@@ -34,3 +34,4 @@ function MomentObject(moment) {
   }
   
 }
+);
