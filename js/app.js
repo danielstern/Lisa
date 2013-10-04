@@ -22,9 +22,10 @@ define(['angular','Lisa','lang/things','lang/attributes','lang/verbs'] , functio
       $scope.saying = '...';
       $scope.things = [
         'Money',
-        'Store',
+        'Biker',
         'Shoe',
         'Mall',
+        'Tattoo',
         "Emily's Convenience",
         "Lexy's",
       ]

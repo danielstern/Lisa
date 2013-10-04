@@ -52,7 +52,7 @@ define("story/stories", [], function() {
   },
   {
   name:'the one where I get to mall',
-  emotions:{please:2,anxiety:1},
+  emotions:{pleasure:2,anxiety:1},
   sequence:[
   {
     subject:'the|time',action:'is', object:'2:30', relevance:'context'
@@ -65,6 +65,60 @@ define("story/stories", [], function() {
   },
   {
     subject:'there',action:'is', object:'$few:people$',
+  },
+  ],
+},
+  {
+  name:'the one where I eat lunch',
+  emotions:{pleasure:3,anxiety:1},
+  sequence:[
+  {
+    subject:'the|time',action:'is', object:'3:30', relevance:'context'
+  },
+  {
+    subject:'I',action:'is', at:'the|mall', relevance:'context'
+  },
+  {
+    subject:'I',action:'eat', object:'lunch',
+  },
+  {
+    subject:'I',action:'read', object:'novel',
+  },
+  {
+    subject:'man',action:'run', past:'me',
+  },
+  {
+    subject:'assumed|man',action:'look', like:'biker',
+  },
+  ],
+},
+  {
+  name:'the one about the biker',
+  emotions:{fear:1,anxiety:2},
+  sequence:[
+  {
+    subject:'the|biker,' action:'is', object: 'white'
+  },
+  {
+    subject:'assumed|biker', action:'is', object: 'tall'
+  },
+  {
+    subject:'assumed|biker', action:'have', object: 'tattoo'
+  },
+  ],
+},
+{
+  name:'the one about the tattoo',
+  emotions:{curiosity:2},
+  sequence:[
+  {
+    subject:'the|biker', action:'have', object: 'tattoo' on:'his|arm'
+  },
+  {
+    subject:'assumed|tattoo', action:'is', object: 'blue'
+  },
+  {
+    subject:'assumed|biker', action:'have', object: '$smiling:mermaid$'
   },
   ],
 },
