@@ -7,6 +7,7 @@ function Prepositor(brain) {
   }
 
   pt.wordToSeed = function (word) {
+    if (_.isObject(word)) return word;
     if (brain.whatIs(word) && !pt.isSpecial(word)) return brain.whatIs(word);
     var seed = new brain.Seed();
     seed.word = word;
@@ -41,7 +42,6 @@ function Prepositor(brain) {
       targetWord = pt.specialToTarget(seed.word);
       targetIdea = pt.wordToSeed(targetWord);
     }
-
 
     if (targetWord == targetIdea.plural) context.pronoun = 'plural';
     if (context.pronoun == 'plural' || context.plural) response = response || targetIdea.plural || targetIdea.word;
@@ -142,17 +142,18 @@ function Prepositor(brain) {
   pt.splitAndCombine = function(string, context) {
 
     var preposit = pt.preposit;
+
+    var response;
     var objectContext = _.clone(context);
+    var subjectContext = new brain.ContextObject();
+      subjectContext.pronoun = 'referenced';
+
 
     var property = _.fizzle(string).has;
     var word = _.fizzle(string).thing;
     var targetWord = word;
 
-
-    var response;
-
     var propertyIdea = brain.whatIs(property);
-  //  console.log('split and comine...',string,property,targetWord, propertyIdea)
     if (!propertyIdea) return console.warn("Can't get idea about.." , property);
 
     if (propertyIdea.form != 'adjective') {
@@ -166,9 +167,8 @@ function Prepositor(brain) {
     }
 
     
-    response = preposit(property, { pronoun:'referenced' }) + (propertyIdea.isAdjective ? " " : ' of ') + preposit(targetWord,objectContext);
+    response = preposit(property, subjectContext) + (propertyIdea.isAdjective ? " " : ' of ') + preposit(targetWord,objectContext);
 
-  
     return response;
   }    
 

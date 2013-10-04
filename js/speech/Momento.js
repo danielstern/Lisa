@@ -2,6 +2,10 @@ function Momento(brain) {
 
   var mm = this;
 
+  mm.wordToSeed = function(word) {
+    return speech.prepositor.wordToSeed(word)
+  }
+
 
   mm.moment = function(moment, context) {
 
@@ -66,22 +70,12 @@ function Momento(brain) {
     // add a soft pause of necessary
     if ((context.rel || moment.rel) && response) response += "##lp";
 
-    // if the moment's context suggests it is a general moment, express it generally
-    var isGeneral = (moment.context && moment.context.general);
-    if (isGeneral) {
-
-      var generalContext = new brain.ContextObject();
-      if (!whatIs(moment.subject)) generalContext = 'plural';
-      generalContext = generalContext || (whatIs(moment.subject) && whatIs(moment.subject).plural) ? 'plural' : 'singular';
-      response += preposit(moment.subject,{pronoun:'plural'}) + " " + conjugate(moment.subject, moment.action, 'present', generalContext);
-    } 
-    else {
 
       var subjectContext = _.clone(context);
       var subjectIdea = whatIs(_.crack(moment.subject, true)) || new brain.Seed();
       subjectContext.pronoun = subjectIdea.pronoun;
       response += preposit(moment.subject, subjectContext) + " " + conjugate(moment.subject, moment.action, context.time,'singular');
-    }
+ 
 
     context.objective = true;
 
@@ -187,17 +181,19 @@ function Momento(brain) {
 
   mm.generateSentenceFragment = function(momentFragment, context) {
 
-  var preposit = brain.speech.preposit;
-  var conjugate = brain.speech.conjugate;
-  var getConjugatedVerb = brain.speech.conjugator.getConjugatedVerb;
+    console.log('generate sentance framgent...',momentFragment,context)
+
+    var preposit = brain.speech.preposit;
+    var conjugate = brain.speech.conjugate;
+    var getConjugatedVerb = brain.speech.conjugator.getConjugatedVerb;
 
     context.time = context.time || 'present';
    // context.plural = context.plural || 'plural';
 
-    var subjectIdea = brain.whatIs(momentFragment.subject);
+    var subjectIdea = brain.whatIs(momentFragment.subject) || new brain.Seed();
     var singularity = false;
 
-    if (!subjectIdea) console.warn("No subjectIdea",context);
+    if (!subjectIdea) console.warn("No subjectIdea",momentFragment,context);
     if (!subjectIdea.plural || subjectIdea.pronoun == 'proper') {
       context.pronoun = 'singular';
     }
@@ -212,18 +208,32 @@ function Momento(brain) {
 
   }
 
-   mm.generality = function (seed, quality, usePast) {
+   mm.generality = function (moment, context) {
+   // console.error('!',arguments)
     var response = '';
+    var wordToSeed = brain.speech.prepositor.wordToSeed;
+
+    var seed = moment.subject;
+    var quality = "NEED MM OBJECT";
+
+    seed = wordToSeed(seed);
+    quality = wordToSeed(quality);
 
     if (!seed || !quality) {
       return "I'm not so sure..."
       console.error('No seed or quality', seed, quality);
     }
 
-    var context = new brain.ContextObject();;
+    console.log('generality,', seed, quality, context);
+
+    context = context || new brain.ContextObject();;
     context.time = 'present';
-    context.plural = 'plural';
+    context.referenced = false;
     if (!seed.plural) context.plural = false;
+
+    var objectContext = new brain.ContextObject(context);
+    objectContext
+
 
     var preposit = brain.speech.preposit;
     var conjugate = brain.speech.conjugate;

@@ -37,6 +37,7 @@ function Brain(host) {
   }
 
   brain.Seed = function () {
+    var word = 'undefined_word';
 
   }
 
