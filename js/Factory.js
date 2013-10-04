@@ -2,7 +2,7 @@ define("Factory",["logic/MomentObject"], function(MomentObject) {
 return function Factory(brain) {
 
   this.MomentObject = function(moment) {
-    return MomentObject(moment,brain);
+    return new MomentObject(moment,brain);
   }
 
 

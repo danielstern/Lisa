@@ -1,6 +1,8 @@
 define("logic/MomentObject",[],  function() {
   return function MomentObject(moment, brain) {
 
+    console.log("moment object...",moment,brain)
+
   moment = moment || {};
   var mo = this;
   this.isMoment = true;

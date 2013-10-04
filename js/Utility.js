@@ -63,7 +63,7 @@ _.mixin({
   },
 
   isBundle:function (string ) {
-    return _.str.include(string, '<');
+    return _str.include(string, '<');
   },
 
 
