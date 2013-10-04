@@ -217,7 +217,7 @@ function Momento(brain) {
     var wordToSeed = brain.speech.prepositor.wordToSeed;
 
 
-    console.log('generality,', moment, context);
+  // console.log('generality,', moment, context);
 
     var seed = moment.subject;
     var quality = moment.getObjectiveWord();
@@ -225,7 +225,7 @@ function Momento(brain) {
     seed = wordToSeed(seed);
     quality = brain.whatIs(quality);
 
-    console.log('generality,', seed, quality );
+    //console.log('generality,', seed, quality );
 
     if (!seed || !quality) return "I'm not so sure..."
 
