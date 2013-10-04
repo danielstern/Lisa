@@ -15,26 +15,23 @@ define("logic/MomentObject", [], function () {
     }
 
     this.getNextObjectPair = function() {
-      console.log('getnextobjectpair...',moment);
+   //   console.log('getnextobjectpair...',moment);
       var no = {};
       var keys = _.chain(moment)
                   .keys()
                   .without('subject','action','general')
                   .value();
 
-      console.log('keys...',keys,moment);
-      console.log('usedKEys?...',usedKeys);
       var nextKey = _.chain(keys)
                      .difference(usedKeys)
                      .first()
                      .value();
 
-     console.log('nextKey?...',nextKey);
      no.key = nextKey;
      usedKeys.push(nextKey);
 
      no.object = moment[nextKey];
-     console.log('no?',no)
+    // console.log('no?',no)
 
       return no;
 
