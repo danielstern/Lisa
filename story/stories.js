@@ -25,9 +25,6 @@ var _EmilyStories = [
       subject:'$many:shoes$', action:'is', at:"Lexy's",general:true
     },
     {
-      subject:"assumed|Lexy's", action:'is', object:"Shoe Store",general:true
-    },
-    {
        subject:"shoes", action:'is', object:"pretty",general:true
     }
   ],

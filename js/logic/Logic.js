@@ -19,6 +19,7 @@ function Logic(brain) {
   	var parentWord = _.sample(seed.extends);
   	var parent = brain.whatIs(parentWord);
     var moment = new brain.speech.express.MomentObject();
+    
     moment.object = parentWord;
     moment.action = 'is;'
     moment.subject = seed.word;

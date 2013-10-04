@@ -71,11 +71,11 @@ function Momento(brain) {
     if ((context.rel || moment.rel) && response) response += "##lp";
 
 
-      var subjectContext = _.clone(context);
-      var subjectIdea = whatIs(_.crack(moment.subject, true)) || new brain.Seed();
-      subjectContext.pronoun = subjectIdea.pronoun;
-      response += preposit(moment.subject, subjectContext) + " " + conjugate(moment.subject, moment.action, context.time,'singular');
- 
+    var subjectContext = _.clone(context);
+    var subjectIdea = whatIs(_.crack(moment.subject, true)) || new brain.Seed();
+    subjectContext.pronoun = subjectIdea.pronoun;
+    response += preposit(moment.subject, subjectContext) + " " + conjugate(moment.subject, moment.action, context.time,'singular');
+
 
     context.objective = true;
 
@@ -186,16 +186,24 @@ function Momento(brain) {
 
     _.extend(this,moment);
 
-    this.getObjective = function() {
-      return this.object || 
-      " at " + this.at;
+    this.getObjectiveWord = function() {
+      return this.object || this.at;
     }
 
+    this.getObjectiveKey = function() {
+      if (this.at) return 'at';
+      if (this.to) return 'to';
+      if (this.object) return '';
+    }
+
+    this.hasObjective = function() {
+      if (this.getObjectiveWord) return true;
+    }
   }
 
   mm.generateSentenceFragment = function(moment, context) {
 
-    console.log('generate sentance framgent...',moment,context)
+    //console.log('generate sentance framgent...',moment,context)
 
     var preposit = brain.speech.preposit;
     var conjugate = brain.speech.conjugate;
@@ -216,8 +224,11 @@ function Momento(brain) {
     var action = moment.action;
     var response = '';
     if (moment.subject) response += preposit(moment.subject, context) + " ";
-    if (moment.action) response += getConjugatedVerb(moment.action, context.time, context.plural) + " ";
-    if (moment.object) response += preposit(moment.object, context) + " ";
+    
+    response += getConjugatedVerb(action, context.time, context.plural) + " ";
+
+    if (moment.hasObjective()) response += moment.getObjectiveKey() + " ";
+    if (moment.hasObjective()) response += preposit(moment.getObjectiveWord(), context) + " ";
 
     return response;
 
@@ -227,13 +238,16 @@ function Momento(brain) {
 
     var wordToSeed = brain.speech.prepositor.wordToSeed;
 
+
+    console.log('generality,', moment, context);
+
     var seed = moment.subject;
-    var quality = moment.getObjective();
+    var quality = moment.getObjectiveWord();
 
     seed = wordToSeed(seed);
-    quality = wordToSeed(quality);
+    quality = brain.whatIs(quality);
 
-    //console.log('generality,', seed, context);
+    console.log('generality,', seed, quality );
 
     if (!seed || !quality) return "I'm not so sure..."
 

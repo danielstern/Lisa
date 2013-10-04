@@ -58,6 +58,7 @@ function Brain(host) {
   brain.whatIs = function (word) {
 
     if (!word) return;
+    if (_.isObject(word)) return word;
 
     var idea = lx.getWord(_.crack(word));
     var analysis = brain.analyze(word);
