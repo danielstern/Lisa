@@ -6,13 +6,22 @@ require.config({
   paths: {
     jquery: '../lib/jquery/jquery-2.0.3.min',
     underscore: '../lib/underscore/underscore-min',
-    underscore_string: '../lib/underscore/underscore.string.min',
+    'underscore.string': '../lib/underscore/underscore.string.min',
     angular: '../lib/angular/angular.min',
     bootstrap: '../lib/bootstrap/bootstrap.min'
   },
   shim: {
+  	 'underscore.string': {
+	    exports: '_.str',
+	  },
 	  'underscore': {
-	      exports: '_'
+	  	deps: ['underscore.string'],
+	    exports: '_',
+	    init: function(_str) {
+	    	console.log('mixing in...',_,_str);
+	    	_.mixin(_str.exports());
+	    	console.log('mixed in...',_,_str);
+	    }
 	  },
 	  'angular': {
 	      exports: 'angular'
@@ -32,6 +41,7 @@ require([
 	"Memory",
 	"Brain",
 	"logic/Emotionalizer",
+	"Utility",
 	"logic/Storyteller",
 	"logic/MomentObject",
 	"logic/Counterposer",

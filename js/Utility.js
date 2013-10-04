@@ -1,3 +1,4 @@
+define("Utility", ['underscore'], function(_) {
 _.mixin({
   stringWithout: function(string, characters) {
 
@@ -192,4 +193,5 @@ _.mixin({
     return _.bare(string1) == _.bare(string2);
 
   },
+});
 });
