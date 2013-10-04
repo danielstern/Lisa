@@ -7,6 +7,7 @@ function Brain(host) {
     brain.speech = new Speech(brain);
     brain.memory = new Memory(brain);
     brain.extractor = new Extractor(brain);
+    brain.factory = new Factory(brain)
     brain.lexicon = brain.speech.lexicator;
     var lx = brain.lexicon;
 
@@ -36,24 +37,24 @@ function Brain(host) {
 
   }
 
-  brain.Seed = function () {
-    var word = 'undefined_word';
+  brain.getMomentObject = function(moment) {
+    return new brain.factory.MomentObject(moment)
+  }
+  brain.mo = brain.getMomentObject;
+  brain.MomentObject = brain.getMomentObject;
 
+  brain.getSeed = function(seed) {
+    return new brain.factory.Seed(seed)
+  }
+  brain.Seed = brain.getSeed
+
+  brain.getContextObject = function(context) {
+    return new brain.factory.ContextObject(context)
   }
 
-  brain.ContextObject = function(context) {
+  brain.ContextObject = brain.getContextObject;
 
-   // console.log('new context object')
-    context = context || {};
-    this.pronoun = context.pronoun;
-    this.time = context.time;
 
-    this.pronoun = undefined;
-    this.time = undefined;
-    this.referenced = undefined;
-
-    _.bind(function(thing){console.log('changed pronoun')},this.pronoun)
-  }
 
   brain.whatIs = function (word) {
 

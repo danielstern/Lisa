@@ -179,28 +179,6 @@ function Momento(brain) {
     return response;
   }
 
-  mm.MomentObject = function(moment) {
-
-    moment = moment || {};
-    var mo = this;
-
-    _.extend(this,moment);
-
-    this.getObjectiveWord = function() {
-      return this.object || this.at;
-    }
-
-    this.getObjectiveKey = function() {
-      if (this.at) return 'at';
-      if (this.to) return 'to';
-      if (this.object) return '';
-    }
-
-    this.hasObjective = function() {
-      if (this.getObjectiveWord) return true;
-    }
-  }
-
   mm.generateSentenceFragment = function(moment, context) {
 
     //console.log('generate sentance framgent...',moment,context)
@@ -260,7 +238,7 @@ function Momento(brain) {
     var subjectWord = seed.plural || seed.word;
     var objectWord = quality.plural || quality.word;
 
-    var generalMoment = new mm.MomentObject();
+    var generalMoment = new brain.mo();
     var gm = generalMoment;
     gm.subject = subjectWord;
     gm.object = objectWord;
