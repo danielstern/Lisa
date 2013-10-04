@@ -27,7 +27,7 @@ var Storyteller = function(brain) {
 
     var phrase = '';
     if (!moment) return phrase;
-    var context = moment.context || {};
+    var context = new brain.ContextObject(moment.context);
     context.time = context.time || 'past';
     phrase = brain.speech.express.moment(moment, context);
     brain.memory.short.remember(moment);
@@ -42,7 +42,7 @@ var Storyteller = function(brain) {
     if(_.isEmpty(excerpts)) return "I don't know anything about that."
     var excerpt = _.sample(excerpts);
 
-    var context = {};
+    var context = new brain.ContextObject();
     context.time = 'past';
     context.rel = 'once';
     var remark = brain.speech.express.moment(excerpt,context);

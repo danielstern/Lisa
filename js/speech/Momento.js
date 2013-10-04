@@ -6,7 +6,7 @@ function Momento(brain) {
   mm.moment = function(moment, context) {
 
     var response = '';
-    context = context || {};
+    context = context || new brain.ContextObject();
     context.objective = false;
 
     var speech = brain.speech;
@@ -70,7 +70,7 @@ function Momento(brain) {
     var isGeneral = (moment.context && moment.context.general);
     if (isGeneral) {
 
-      var generalContext;
+      var generalContext = new brain.ContextObject();
       if (!whatIs(moment.subject)) generalContext = 'plural';
       generalContext = generalContext || (whatIs(moment.subject) && whatIs(moment.subject).plural) ? 'plural' : 'singular';
       response += preposit(moment.subject,{pronoun:'plural'}) + " " + conjugate(moment.subject, moment.action, 'present', generalContext);
@@ -78,7 +78,7 @@ function Momento(brain) {
     else {
 
       var subjectContext = _.clone(context);
-      var subjectIdea = whatIs(_.crack(moment.subject, true)) || {};
+      var subjectIdea = whatIs(_.crack(moment.subject, true)) || new brain.Seed();
       subjectContext.pronoun = subjectIdea.pronoun;
       response += preposit(moment.subject, subjectContext) + " " + conjugate(moment.subject, moment.action, context.time,'singular');
     }
@@ -220,7 +220,7 @@ function Momento(brain) {
       console.error('No seed or quality', seed, quality);
     }
 
-    var context = {};
+    var context = new brain.ContextObject();;
     context.time = 'present';
     context.plural = 'plural';
     if (!seed.plural) context.plural = false;

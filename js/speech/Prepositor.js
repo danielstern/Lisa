@@ -8,7 +8,7 @@ function Prepositor(brain) {
 
   pt.wordToSeed = function (word) {
     if (brain.whatIs(word) && !pt.isSpecial(word)) return brain.whatIs(word);
-    var seed = {};
+    var seed = new brain.Seed();
     seed.word = word;
     return seed;
   }
@@ -19,10 +19,10 @@ function Prepositor(brain) {
 
   pt.preposit = function (seed, context) {
 
-    context = context || {};
+    context = context || new brain.ContextObject();
 
     //if (!seed) console.error('You cant preposit that',seed);
-    console.log('prepositing',seed,context);
+  //  console.log('prepositing',seed,context);
 
     if (!_.isObject(seed)) seed = pt.wordToSeed(seed); 
     var targetIdea = seed;
@@ -37,11 +37,11 @@ function Prepositor(brain) {
     if (pt.hasPrefix(seed.word)) response = pt.handlePrefix(seed.word,context);
 
     if (pt.isSpecial(seed.word)) {
-      console.log('dealing with special word...',seed.word);
+    //  console.log('dealing with special word...',seed.word);
       targetWord = pt.specialToTarget(seed.word);
-      console.log('targetWord...',targetWord);
+    //  console.log('targetWord...',targetWord);
       targetIdea = pt.wordToSeed(targetWord);
-      console.log('targetIdea..',targetIdea);
+    //  console.log('targetIdea..',targetIdea);
     }
 
 
@@ -154,7 +154,7 @@ function Prepositor(brain) {
     var response;
 
     var propertyIdea = brain.whatIs(property);
-    console.log('split and comine...',string,property,targetWord, propertyIdea)
+  //  console.log('split and comine...',string,property,targetWord, propertyIdea)
     if (!propertyIdea) return console.warn("Can't get idea about.." , property);
 
     if (propertyIdea.form != 'adjective') {
@@ -199,7 +199,6 @@ function Prepositor(brain) {
 
   	var po = new PrepositionObject();
 
-    //idea = idea || {};
     if (!idea) return po;
 
     if (context.referenced) context.pronoun = 'referenced';

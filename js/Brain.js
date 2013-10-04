@@ -25,15 +25,33 @@ function Brain(host) {
 
   brain.analyze = function (statement, noAsync) {
 
-    var context = {};
-    if (!statement) return context;
+    var analysis = {};
+    if (!statement) return analysis;
 
     var keywords = ex.keywordsFromStatement(statement);
 
-    context.ideas = keywords;
+    analysis.ideas = keywords;
 
-    return context;
+    return analysis;
 
+  }
+
+  brain.Seed = function () {
+
+  }
+
+  brain.ContextObject = function(context) {
+
+   // console.log('new context object')
+    context = context || {};
+    this.pronoun = context.pronoun;
+    this.time = context.time;
+
+    this.pronoun = undefined;
+    this.time = undefined;
+    this.referenced = undefined;
+
+    _.bind(function(thing){console.log('changed pronoun')},this.pronoun)
   }
 
   brain.whatIs = function (word) {
@@ -41,7 +59,7 @@ function Brain(host) {
     if (!word) return;
 
     var idea = lx.getWord(_.crack(word));
-    var context = brain.analyze(word);
+    var analysis = brain.analyze(word);
 
     return _.clone(idea);
   }
