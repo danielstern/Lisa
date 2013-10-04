@@ -49,7 +49,6 @@ define("Brain", ["Memory","speech/Speech","logic/Logic","Extractor","Factory"], 
 
         brain.speech.lexicator.learn(package);
     }
-  console.log("Init Brain?",arguments)
 
 
     brain.ponder = function (idea, directive) {

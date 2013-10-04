@@ -1,5 +1,4 @@
 define("story/stories", [], function() {
-  console.log("Defining stories...");
   return [  {    name:'the one where I buy things',
     emotions:{pleasure:6},
     sequence:[

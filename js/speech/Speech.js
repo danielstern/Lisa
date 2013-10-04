@@ -12,7 +12,6 @@ define("speech/Speech", ["speech/Prepositor","speech/Conjugator","speech/Lexicat
   speech.conjugate = speech.conjugator.conjugate;
   speech.synonomize = speech.conjugator.conjugate;
 
-  console.log("Speech?",speech,arguments);
 
   speech.express = speech.momento;
 

@@ -16,7 +16,6 @@ define("Lisa",["Brain"], function Lisa(Brain) {
     lisa.ponder = lisa.brain.ponder;
     lisa.learn = lisa.brain.learn;
 
-    console.log('LISA V0.01:',lisa.brain);
 
     }
 }

@@ -5,7 +5,6 @@ define(['angular','Lisa','lang/things','lang/attributes','lang/verbs'] , functio
 
 
       var lisa = new Lisa();
-  	 	console.log("Initilaized app...")
    
         lisa.learn(things);
         lisa.learn(attributes);

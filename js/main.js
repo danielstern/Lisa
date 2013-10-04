@@ -18,10 +18,9 @@ require.config({
 	  	deps: ['underscore.string'],
 	    exports: '_',
 	    init: function(_str) {
-	   // 	console.log('mixing in...',_,_str);
+
 	    	_.mixin(_str.exports());
-	    	//_.strInclude = _str.include;
-	   	console.log('mixed in...',_,_str);
+
 	    }
 	  },
 	  'angular': {
@@ -66,8 +65,6 @@ require([
    //		console.log('its bootstrap time.');
    	 angular.bootstrap(document , ['lisaApp']);
 		
-
- 		 console.log('Hi there??.');
 	
 })
 
