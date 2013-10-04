@@ -81,12 +81,12 @@
    .controller('LisaController', ['$scope', function($scope) {
 
       var $Lisa = new Lisa();
-   _.defer(function learn(){
-      $Lisa.learn(_things);
-      $Lisa.learn(_attributes);
-      $Lisa.learn(_sayings);
-      $Lisa.learn(_verbs);
-    })
+     _.defer(function learn(){
+        $Lisa.learn(_things);
+        $Lisa.learn(_attributes);
+        $Lisa.learn(_sayings);
+        $Lisa.learn(_verbs);
+      })
 
       $scope.handleMenuClick = function(thing) {
 
@@ -95,7 +95,6 @@
         $scope.reply('story-excerpt');
 
       }
-
 
       $scope.saying = '...';
       $scope.things = [
@@ -120,8 +119,3 @@
   }])
 
 </script>
-<style>
- .word_split span:hover {
-    font-weight:bold;
-}
-</style>
