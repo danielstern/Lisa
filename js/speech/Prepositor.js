@@ -22,10 +22,12 @@ function Prepositor(brain) {
 
     if (!seed) return console.error('You cant preposit that',seed);
 
+ //   console.log('prepositing',seed,context);
     context = context || new brain.ContextObject();
     if (!_.isObject(seed)) seed = pt.wordToSeed(seed); 
 
-  //  console.log('prepositing',seed,context);
+    //console.log('prepositing',seed,context);
+
 
     var targetIdea = seed;
     var targetWord = seed.word;
@@ -140,6 +142,8 @@ function Prepositor(brain) {
 
 
   pt.splitAndCombine = function(string, context) {
+
+    console.log('split and combine...',string,context)
 
     var preposit = pt.preposit;
 

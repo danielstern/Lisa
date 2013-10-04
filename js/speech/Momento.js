@@ -6,6 +6,47 @@ function Momento(brain) {
     return speech.prepositor.wordToSeed(word)
   }
 
+
+  mm.moment = function(moment, context) {
+
+    if (!moment.isMoment) moment = brain.mo(moment);
+    var response = '';
+    context = context || new brain.ContextObject();
+    context.objective = false;
+
+    var speech = brain.speech;
+    var preposit = speech.preposit;
+    var conjugate = speech.conjugate;
+
+    var whatIs = brain.whatIs;
+
+
+  if (!moment) return "I can hardly think of anything.";
+
+  if (moment.dialogue)  return mm.toDialogue(moment); 
+
+
+    response += (context.rel || moment.rel || '') + " ";
+
+    // add a soft pause of necessary
+    if ((context.rel || moment.rel) && response) response += "##lp";
+
+
+    var subjectContext = _.clone(context);
+    var subjectIdea = whatIs(_.crack(moment.subject, true)) || new brain.Seed();
+    subjectContext.pronoun = subjectIdea.pronoun;
+
+    response += preposit(moment.subject, subjectContext) + " " + conjugate(moment.subject, moment.action, context.time,'singular');
+
+
+    context.objective = true;
+
+    response += moment.getObjectiveKey() + " " + preposit(moment.getObjectiveWord(),context);
+
+
+    return response;
+  }
+
   mm.toDialogue = function(moment) {
 
      // console.log('this is a dialogue...');
@@ -34,49 +75,6 @@ function Momento(brain) {
   }
 
 
-  mm.moment = function(moment, context) {
-
-    if (!moment.isMoment) moment = brain.mo(moment);
-    var response = '';
-    context = context || new brain.ContextObject();
-    context.objective = false;
-
-    var speech = brain.speech;
-    var preposit = speech.preposit;
-    var conjugate = speech.conjugate;
-
-    var whatIs = brain.whatIs;
-
-
-  //  console.log('tell story moment...',moment,context);
-
-  if (!moment) return "I can hardly think of anything.";
-
-  if (moment.dialogue)  return mm.toDialogue(moment); 
-
-
-    response += (context.rel || moment.rel || '') + " ";
-
-    // add a soft pause of necessary
-    if ((context.rel || moment.rel) && response) response += "##lp";
-
-
-    var subjectContext = _.clone(context);
-    var subjectIdea = whatIs(_.crack(moment.subject, true)) || new brain.Seed();
-    subjectContext.pronoun = subjectIdea.pronoun;
-
-    response += preposit(moment.subject, subjectContext) + " " + conjugate(moment.subject, moment.action, context.time,'singular');
-
-
-    context.objective = true;
-
-    //return console.error(moment);
-
-    response += moment.getObjectiveKey() + " " + moment.getObjectiveWord();
-
-
-    return response;
-  }
 
   mm.generateSentenceFragment = function(moment, context) {
 
@@ -100,12 +98,8 @@ function Momento(brain) {
 
     var action = moment.action;
     var response = '';
-    if (moment.subject) response += preposit(moment.subject, context) + " ";
-    
-    response += getConjugatedVerb(action, context.time, context.plural) + " ";
 
-    if (moment.hasObjective()) response += moment.getObjectiveKey() + " ";
-    if (moment.hasObjective()) response += preposit(moment.getObjectiveWord(), context) + " ";
+    response += mm.moment(moment,context)
 
     return response;
 
