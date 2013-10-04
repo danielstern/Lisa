@@ -22,6 +22,20 @@ define("logic/MomentObject", [], function () {
       return moment.subject;
     }
 
+    this.setObjectPair = function (key,value) {
+      moment[key] = value;
+    }
+
+
+    this.setSubject = function (thing) {
+      moment.subject = thing;
+    }
+
+    this.setAction = function (verb) {
+      moment.action = verb;
+    }
+
+
     this.getAction = function () {
       return moment.action;
     }

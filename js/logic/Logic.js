@@ -27,9 +27,9 @@ define("logic/Logic", ["logic/Counterposer", "logic/Storyteller", "logic/Emotion
       var parent = brain.whatIs(parentWord);
       var moment = brain.mo();
 
-      moment.object = parentWord;
-      moment.action = 'is'
-      moment.subject = seed.word;
+      moment.setObjectPair('object',parentWord);
+      moment.setAction('is');
+      moment.setSubject(seed.word);
 
       var generality = brain.speech.express.generality(moment);
       return generality;

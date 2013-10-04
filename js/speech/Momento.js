@@ -86,6 +86,8 @@ return function Momento(brain) {
 
    mm.generality = function (moment, context) {
 
+    console.log("Generality:",moment,context)
+
     var wordToSeed = brain.speech.prepositor.wordToSeed;
 
     context = context || new brain.ContextObject();;
