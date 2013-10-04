@@ -29,7 +29,7 @@ var Storyteller = function(brain) {
 
     var phrase = '';
     var momentObject = brain.getMomentObject(moment);
- //   console.log('tell story moment',momentObject)
+    
     var context = new brain.ContextObject(momentObject.context);
     context.time = context.time || 'past';
     if (momentObject.general) phrase = brain.speech.express.generality(momentObject, context);
