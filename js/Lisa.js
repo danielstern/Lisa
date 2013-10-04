@@ -1,21 +1,22 @@
 define("Lisa",["Brain"], function Lisa(Brain) {
 
-    console.log("Lisa loaded.")
+   // console.log("Lisa loaded.")
 
     return function (Lisa) {
 
-    var Lisa = this;
-    var lisa = Lisa;
+    var lisa = this;
 
-    Lisa.hears = function(words,directive) {
+    lisa.hears = function(words,directive) {
 
        if (!words) return 'Hello?';
-        return Lisa.brain.process(words, directive);
+        return lisa.brain.process(words, directive);
     }
 
-    Lisa.brain = new Brain(Lisa);
-    Lisa.ponder = Lisa.brain.ponder;
-    Lisa.learn = lisa.brain.learn;
+    lisa.brain = new Brain();
+    lisa.ponder = lisa.brain.ponder;
+    lisa.learn = lisa.brain.learn;
+
+    console.log('LISA V0.01:',lisa.brain);
 
     }
 }

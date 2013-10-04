@@ -1,5 +1,5 @@
 define("logic/MomentObject",[],  function() {
-  return function MomentObject(moment) {
+  return function MomentObject(moment, brain) {
 
   moment = moment || {};
   var mo = this;

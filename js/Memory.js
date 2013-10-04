@@ -1,4 +1,4 @@
-define("Memory", [], function Memory() {
+define("Memory", ["story/stories"], function Memory(stories) {
 
   return function Memory(brain) {
 
@@ -47,7 +47,6 @@ define("Memory", [], function Memory() {
   }
 
   function LongTermMemory(memory) {
-    var stories = window._EmilyStories;
 
     var brain = memory.brain;
 

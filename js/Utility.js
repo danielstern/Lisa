@@ -1,4 +1,4 @@
-define("Utility", ['underscore'], function(_) {
+define("Utility", ['underscore','underscore.string'], function(_, _str) {
 _.mixin({
   stringWithout: function(string, characters) {
 
@@ -115,7 +115,7 @@ _.mixin({
   fizzle: function(string) {
     if (!string || !_.isString(string)) return console.warn("Can't fizzle this.",string);
     if (string.split(':').length < 2) return string;
-    if (!_.str.include(string, '$')) return string;
+    if (!_str.include(string, '$')) return string;
     var fizzle = {};
     var pieces = string.split(':');
 

@@ -18,9 +18,10 @@ require.config({
 	  	deps: ['underscore.string'],
 	    exports: '_',
 	    init: function(_str) {
-	    	console.log('mixing in...',_,_str);
+	   // 	console.log('mixing in...',_,_str);
 	    	_.mixin(_str.exports());
-	    	console.log('mixed in...',_,_str);
+	    	//_.strInclude = _str.include;
+	   	console.log('mixed in...',_,_str);
 	    }
 	  },
 	  'angular': {
@@ -49,6 +50,7 @@ require([
 	"lang/attributes",
 	"lang/things",
 	"lang/verbs",
+	"story/stories",
 	"speech/Speech",
 	"speech/Prepositor",
 	"speech/Conjugator",
@@ -61,7 +63,7 @@ require([
 	*/
 	], function($, app, angular) {
 
-   		console.log('its bootstrap time.');
+   //		console.log('its bootstrap time.');
    	 angular.bootstrap(document , ['lisaApp']);
 		
 

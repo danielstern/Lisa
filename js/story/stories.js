@@ -1,6 +1,6 @@
-var _EmilyStories = [
-  {
-    name:'the one where I buy things',
+define("story/stories", [], function() {
+  console.log("Defining stories...");
+  return [  {    name:'the one where I buy things',
     emotions:{pleasure:6},
     sequence:[
     {
@@ -70,3 +70,4 @@ var _EmilyStories = [
   ],
 },
 ]
+})
