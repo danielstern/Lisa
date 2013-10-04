@@ -127,8 +127,8 @@ function Prepositor(brain) {
   }
 
   pt.specialToTarget = function(string) {
-    if (_.fizzle(string) && !_.fizzle(string).thing) return _.fizzle(string).thing;
-    return _.fizzle(string).thing;
+    if (!string) return;
+    return _.specialToObject(string);
   }
 
   pt.compoundToIdea = function(string) {

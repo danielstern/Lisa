@@ -46,12 +46,12 @@ _.mixin({
 
   crack: function(string, returnQuality) {
     if (!string) return;
-    var obj = _.compoundToObject(string);
+    var obj = _.specialToObject(string);
    // console.log('crack',string,obj)
     return obj.target;
   },
 
-  compoundToObject: function(string) {
+  specialToObject: function(string) {
     var returnObj = {};
 
     if (typeof string != 'string') return string;
