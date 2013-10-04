@@ -11,6 +11,8 @@ function Brain(host) {
     brain.lexicon = brain.speech.lexicator;
     var lx = brain.lexicon;
 
+    window.brain = brain;
+
 
   brain.process = function (words, directive) {
 

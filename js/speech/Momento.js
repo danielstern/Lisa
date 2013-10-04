@@ -25,21 +25,15 @@ function Momento(brain) {
     response += (context.rel || moment.rel || '') + " ";
     if (response) response += "##lp";
 
-    console.error('express moment',moment,context)
+    console.log('express moment',moment,context)
 
-    var pejorative = 'singular';
+    var pejorative = moment.getPejorative();
     
-    var trueSubject = pt.specialToTarget(moment.subject);
-    var trueSubjectIdea = brain.whatIs(trueSubject);
-    if (trueSubject == trueSubjectIdea.plural) pejorative = 'plural';
-    console.log('true subject?',trueSubject)
-
-
     var subjectContext = _.clone(context);
     var subjectIdea = whatIs(_.crack(moment.subject)) || new brain.Seed();
     subjectContext.pronoun = subjectIdea.pronoun;
 
-    response += preposit(moment.subject, subjectContext) + " " + conjugate(moment.subject, moment.action, context.time,'plural');
+    response += preposit(moment.subject, subjectContext) + " " + conjugate(moment.subject, moment.action, context.time,pejorative);
 
     response += moment.getObjectiveKey() + " " + preposit(moment.getObjectiveWord(),context);
 

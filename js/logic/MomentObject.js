@@ -19,4 +19,16 @@ function MomentObject(moment) {
     this.hasObjective = function() {
       if (this.getObjectiveWord) return true;
     }
+
+    this.getTrueSubject = function() {
+    	return brain.speech.prepositor.specialToTarget(this.subject)
+    }
+
+    this.getTrueSubjectIdea = function() {
+    	return brain.whatIs(mo.getTrueSubject());
+    }
+
+    this.getPejorative = function() {
+    	return (mo.getTrueSubject() == mo.getTrueSubjectIdea().plural) ? 'plural' : 'singular';
+    }
 }
