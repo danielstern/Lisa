@@ -18,7 +18,12 @@ function Logic(brain) {
   	if (_.isEmpty(seed.extends)) return "Nothing, as far as I know."
   	var parentWord = _.sample(seed.extends);
   	var parent = brain.whatIs(parentWord);
-  	var generality = brain.speech.express.generality(seed,parent);
+    var moment = new brain.speech.express.MomentObject();
+    moment.object = parentWord;
+    moment.action = 'is;'
+    moment.subject = seed.word;
+
+  	var generality = brain.speech.express.generality(moment);
   	return generality;
   }
 

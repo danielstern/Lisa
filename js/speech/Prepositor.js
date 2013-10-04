@@ -63,7 +63,7 @@ function Prepositor(brain) {
 
   pt.hack = function(fragment,context,seed) {
 
-    if (context.assumed) {
+    if (context.assumed && !context.noAssume) {
       var objective = context.objective;
       if (seed.gender) {
         if (seed.gender == 'male') return objective ? 'him' : 'he';
