@@ -1,6 +1,5 @@
-define("Emotionalizer",[],  function Emotionalizer(brain) {
-
-	console.log('defining emotionalizer...')
+define("logic/Emotionalizer",[],  function() {
+	return function Emotionalizer(brain) {
 
 	var em = this;
 	em.getEmotionalRemark = function(seed) {
@@ -80,4 +79,5 @@ define("Emotionalizer",[],  function Emotionalizer(brain) {
 			return feeling;
 		}
 	}
+}
 })

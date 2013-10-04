@@ -1,4 +1,7 @@
-define("Counterposer",[],  function Counterposer(brain) {
+define("logic/Counterposer",[], function() {
+
+  return function Counterposer(brain) {
+
     console.log('defining counterposer...')
     var cp = this;
     cp.counterpose = function (seed, directive) {
@@ -41,5 +44,5 @@ define("Counterposer",[],  function Counterposer(brain) {
 
       return response;
     }
-  }
+  }}
 )

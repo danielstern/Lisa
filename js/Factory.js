@@ -1,4 +1,5 @@
-var Factory = function(brain) {
+define("Factory",["logic/MomentObject"], function(MomentObject) {
+return function Factory(brain) {
 
   this.MomentObject = MomentObject;
 
@@ -27,3 +28,4 @@ var Factory = function(brain) {
 
 
 }
+});

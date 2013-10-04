@@ -7,7 +7,7 @@ require.config({
     jquery: '../lib/jquery/jquery-2.0.3.min',
     underscore: '../lib/underscore/underscore-min',
     underscore_string: '../lib/underscore/underscore.string.min',
-    angular: '../lib/angular/min',
+    angular: '../lib/angular/angular.min',
     bootstrap: '../lib/bootstrap/bootstrap.min'
   },
   shim: {
@@ -19,24 +19,40 @@ require.config({
 	  },
 	},
 	urlArgs: "bust=" + new Date().getTime(),
+	priority: [
+		'angular'
+	],
 });
 
 require([
+	"jquery",
+	"app",
+	"angular",
 	"Lisa",
 	"Memory",
 	"Brain",
+	"logic/Emotionalizer",
+	"logic/Storyteller",
+	"logic/MomentObject",
+	"logic/Counterposer",
+	"logic/Logic",
 	"speech/Speech",
 	"speech/Prepositor",
 	"speech/Conjugator",
+	"speech/Lexicator",
+	"Extractor",
+	"Factory",
+	"speech/Momento",
 	/*
 	"underscore",
-	"logic/MomentObject",
-	"logic/Counterposer",
-	"logic/Emotionalizer",
-	"logic/Logic",
-	"logic/Storyteller",*/
-	], function(Lisa) {
-	console.log('Hi there.');
-	var Lisa = new Lisa();
+	*/
+	], function($, app, angular) {
+
+   		console.log('its bootstrap time.');
+   	 angular.bootstrap(document , ['lisaApp']);
+		
+
+ 		 console.log('Hi there??.');
+	
 })
 

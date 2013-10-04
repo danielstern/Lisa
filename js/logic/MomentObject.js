@@ -1,4 +1,5 @@
-define("MomentObject",[],  function MomentObject(moment) {
+define("logic/MomentObject",[],  function() {
+  return function MomentObject(moment) {
 
   moment = moment || {};
   var mo = this;
@@ -33,5 +34,5 @@ define("MomentObject",[],  function MomentObject(moment) {
   	return (mo.getTrueSubject() == mo.getTrueSubjectIdea().plural) ? 'plural' : 'singular';
   }
   
-}
+}}
 );

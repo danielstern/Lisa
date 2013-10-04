@@ -1,5 +1,6 @@
-define("Storyteller",[],  function Storyteller (brain) {
-  console.log('defining storyteller...')
+define("logic/Storyteller",[],  function() {
+ 
+  return function Storyteller (brain) {
 	var st = this;
 
 	st.tellStory = function (seed) {
@@ -54,4 +55,5 @@ define("Storyteller",[],  function Storyteller (brain) {
     return remark;
 
   }
+}
 });

@@ -1,4 +1,5 @@
-function Lexicator(brain) {
+define("speech/Lexicator", [], function() {
+return function Lexicator(brain) {
   var lx = this;
   lx.things = [];
   lx.allVerbs = {};
@@ -108,3 +109,4 @@ function Lexicator(brain) {
   }
 
 }
+})

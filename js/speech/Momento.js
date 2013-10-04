@@ -1,4 +1,5 @@
-function Momento(brain) {
+define("speech/Momento", [], function() {
+return function Momento(brain) {
 
   var mm = this;
 
@@ -100,3 +101,4 @@ function Momento(brain) {
     return remark;
   }
 }
+});

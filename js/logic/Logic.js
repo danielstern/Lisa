@@ -1,4 +1,6 @@
-define("Logic",["Counterposer","Storyteller","Emotionalizer"], function Logic(brain, Counterposer, Storyteller, Emotionalizer) {
+define("logic/Logic",["logic/Counterposer","logic/Storyteller","logic/Emotionalizer"], function(Counterposer,Storyteller,Emotionalizer) {
+
+  return function Logic(brain) {
 
   var logic = this;
 
@@ -29,5 +31,5 @@ define("Logic",["Counterposer","Storyteller","Emotionalizer"], function Logic(br
   	var generality = brain.speech.express.generality(moment);
   	return generality;
   }
-
+}
 });

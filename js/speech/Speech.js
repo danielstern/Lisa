@@ -1,4 +1,4 @@
-define("speech/Speech", ["speech/Prepositor","speech/Conjugator"], function Speech(Prepositor, Conjugator) {
+define("speech/Speech", ["speech/Prepositor","speech/Conjugator","speech/Lexicator","speech/Momento"], function Speech(Prepositor, Conjugator, Lexicator, Momento) {
 
  return function Speech(brain) {
 
@@ -6,18 +6,16 @@ define("speech/Speech", ["speech/Prepositor","speech/Conjugator"], function Spee
   speech.brain = brain;
   speech.prepositor = new Prepositor(brain);
   speech.conjugator = new Conjugator(brain);
-
-  console.log("Speech?",speech,arguments);
-  return;
-
   speech.lexicator = new Lexicator(brain);
-
   speech.momento = new Momento(brain);
-  speech.express = speech.momento;
-
   speech.preposit = speech.prepositor.preposit;
   speech.conjugate = speech.conjugator.conjugate;
   speech.synonomize = speech.conjugator.conjugate;
+
+  console.log("Speech?",speech,arguments);
+
+  speech.express = speech.momento;
+
 
   speech.softPause = function () {
     return "##sp";

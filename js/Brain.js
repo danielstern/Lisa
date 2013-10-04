@@ -1,4 +1,4 @@
-define("Brain", ["Memory","speech/Speech"], function Brain(Memory, Speech) {
+define("Brain", ["Memory","speech/Speech","logic/Logic","Extractor","Factory"], function Brain(Memory, Speech, Logic, Extractor, Factory) {
 
   return function Brain() {
     
@@ -6,16 +6,14 @@ define("Brain", ["Memory","speech/Speech"], function Brain(Memory, Speech) {
     var brain = this;
     brain.memory = new Memory(brain);
     brain.speech = new Speech(brain);
-    return;
-
-
     brain.logic = new Logic(brain);
     brain.extractor = new Extractor(brain);
     brain.factory = new Factory(brain)
+    return;
+
+
     brain.lexicon = brain.speech.lexicator;
     var lx = brain.lexicon;
-
-    window.brain = brain;
 
     brain.process = function (words, directive) {
 
