@@ -20,10 +20,6 @@ define("speech/Speech", ["speech/Prepositor","speech/Conjugator","speech/Lexicat
     return "##sp";
   }
 
- speech.pause = function () {
-    return "... ( a pause )";
-  }
-
 
   speech.hardPause = function () {
     return "##hp";

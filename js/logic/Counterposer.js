@@ -1,4 +1,4 @@
-define("logic/Counterposer",[], function() {
+define("logic/Counterposer", [], function () {
 
   return function Counterposer(brain) {
 
@@ -42,5 +42,5 @@ define("logic/Counterposer",[], function() {
 
       return response;
     }
-  }}
-)
+  }
+})

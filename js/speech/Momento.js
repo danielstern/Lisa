@@ -15,23 +15,19 @@ return function Momento(brain) {
     context = context || new brain.ContextObject();
     
     var response = '';
-    var whatIs = brain.whatIs;
     var speech = brain.speech;
     var preposit = speech.preposit;
     var conjugate = speech.conjugate;
-    var pt = brain.speech.prepositor;
 
     if (moment.dialogue)  return mm.toDialogue(moment); 
 
     response += (context.rel || moment.rel || '') + " ";
     if (response) response += "##lp";
 
-    //console.log('express moment',moment,context)
-
     var pejorative = moment.getPejorative();
     
     var subjectContext = _.clone(context);
-    var subjectIdea = whatIs(_.crack(moment.subject)) || new brain.Seed();
+    var subjectIdea = brain.whatIs(_.crack(moment.subject)) || new brain.Seed();
     subjectContext.pronoun = subjectIdea.pronoun;
 
     response += preposit(moment.subject, subjectContext) + " " + conjugate(moment.subject, moment.action, context.time,pejorative);

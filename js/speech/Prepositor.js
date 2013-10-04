@@ -173,8 +173,6 @@ return function Prepositor(brain) {
 
   pt.ideaToPrepositionObject = function(idea, context) {
 
-  //  console.log('idea to po,',idea,context)
-
   	var po = new brain.PrepositionObject();
 
     if (!idea) return po;
