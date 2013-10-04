@@ -29,7 +29,12 @@ define("logic/MomentObject", [], function () {
                      .first()
                      .value();
 
-     console.log('nextkey?...',nextKey);
+     console.log('nextKey?...',nextKey);
+     no.key = nextKey;
+     usedKeys.push(nextKey);
+
+     no.object = moment[nextKey];
+     console.log('no?',no)
 
       return no;
 

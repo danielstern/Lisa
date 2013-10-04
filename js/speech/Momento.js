@@ -33,7 +33,10 @@ return function Momento(brain) {
     response += preposit(moment.getSubject(), subjectContext) + " " + conjugate(moment.getSubject(), moment.getAction(), context.time,pejorative);
 
     var objectivePair = moment.getNextObjectPair();
-   // response += moment.getObjectiveKey() + " " + preposit(moment.getObjectiveWord(),context);
+    console.log('no?',objectivePair);
+    if (objectivePair.key != 'object') response += " " + objectivePair.key ; 
+    response += " ";
+     response += preposit(objectivePair.object,context);
 
 
     return response;
