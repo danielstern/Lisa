@@ -61,7 +61,7 @@ _.mixin({
     }
     if (string.split(':').length > 1) {
       returnObj.target = _.fizzle(string).thing;
-      returnObj.attribute = _.fizzle(string).thing;
+      returnObj.attribute = _.fizzle(string).attribue;
     }
 
     returnObj.target = returnObj.target || string;

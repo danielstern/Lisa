@@ -158,7 +158,8 @@ var _attributes = [
     {
       word:'no',
       form:'adjective',
-      noPronoun:true,
+      //noPronoun:true,
+      pronoun:'none'
     },
     {
       word:'hurt',

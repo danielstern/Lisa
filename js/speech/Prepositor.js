@@ -21,11 +21,12 @@ function Prepositor(brain) {
 
     context = context || {};
 
-    //if (!seed) console.error('You cant preposit that',seed)
+    //if (!seed) console.error('You cant preposit that',seed);
+    console.log('prepositing',seed,context);
 
-    var origSeed = seed;
     if (!_.isObject(seed)) seed = pt.wordToSeed(seed); 
     var targetIdea = seed;
+    var targetWord = seed.word;
 
     var preposit = pt.preposit;
     var speech = brain.speech;
@@ -38,16 +39,18 @@ function Prepositor(brain) {
     if (pt.isSpecial(seed.word)) {
       console.log('dealing with special word...',seed.word);
       targetWord = pt.specialToTarget(seed.word);
-      console.log('targetidea...',seed.word);
+      console.log('targetWord...',targetWord);
+      targetIdea = pt.wordToSeed(targetWord);
+      console.log('targetIdea..',targetIdea);
     }
 
 
-    if (origSeed == targetIdea.plural) context.pronoun = 'plural';
-    if (context.pronoun == 'plural') response = response || targetIdea.plural || targetIdea.word;
+    if (targetWord == targetIdea.plural) context.pronoun = 'plural';
+    if (context.pronoun == 'plural' || context.plural) response = response || targetIdea.plural || targetIdea.word;
  
 
     if (targetIdea.form == "adjective")   context.pronoun = 'none'
-    response = response || targetIdea.word;
+    response = response || targetWord;
 
     var po = pt.ideaToPrepositionObject(targetIdea,context);
     if (!po.returnWord) response = '';
@@ -128,7 +131,7 @@ function Prepositor(brain) {
 
   pt.specialToTarget = function(string) {
     if (!string) return;
-    return _.specialToObject(string);
+    return _.specialToObject(string).target;
   }
 
   pt.compoundToIdea = function(string) {
@@ -145,8 +148,13 @@ function Prepositor(brain) {
 
     var property = _.fizzle(string).has;
     var word = _.fizzle(string).thing;
+    var targetWord = word;
+
+
+    var response;
 
     var propertyIdea = brain.whatIs(property);
+    console.log('split and comine...',string,property,targetWord, propertyIdea)
     if (!propertyIdea) return console.warn("Can't get idea about.." , property);
 
     if (propertyIdea.form != 'adjective') {
@@ -155,14 +163,15 @@ function Prepositor(brain) {
 
     if (propertyIdea.form == 'adjective') {
       propertyIdea.isAdjective = true;
-      if (propertyIdea.noPronoun) context.pronoun = 'none';
       objectContext.pronoun = 'none';
+      objectContext.plural = true;
     }
+
     
-    word = preposit(property, { pronoun:'referenced' }) + (propertyIdea.isAdjective ? " " : ' of ') + preposit(word,objectContext);
+    response = preposit(property, { pronoun:'referenced' }) + (propertyIdea.isAdjective ? " " : ' of ') + preposit(targetWord,objectContext);
 
   
-    return word;
+    return response;
   }    
 
   
