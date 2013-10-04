@@ -7,10 +7,14 @@ function Prepositor(brain) {
   }
 
   pt.wordToSeed = function (word) {
-    if (brain.whatIs(word)) return brain.whatIs(word);
+    if (brain.whatIs(word) && !pt.isSpecial(word)) return brain.whatIs(word);
     var seed = {};
     seed.word = word;
     return seed;
+  }
+
+  pt.isSpecial = function(string) {
+    if (pt.isBundle(string) || pt.isCompound(string) || pt.hasPrefix(string)) return true;
   }
 
   pt.preposit = function (seed, context) {
@@ -21,26 +25,36 @@ function Prepositor(brain) {
 
     var origSeed = seed;
     if (!_.isObject(seed)) seed = pt.wordToSeed(seed); 
+    var targetIdea = seed;
 
     var preposit = pt.preposit;
     var speech = brain.speech;
     var response = '';
 
-  //  if (pt.isBundle(seed.word)) return pt.prepositBundle(seed.word, context);
-   // if (pt.isCompound(seed.word)) response = pt.splitAndCombine(seed.word,context); 
+    if (pt.isBundle(seed.word)) return pt.prepositBundle(seed.word, context);
+    if (pt.isCompound(seed.word)) response = pt.splitAndCombine(seed.word,context); 
     if (pt.hasPrefix(seed.word)) response = pt.handlePrefix(seed.word,context);
-    if (origSeed == seed.plural) context.pronoun = 'plural';
-    if (context.pronoun == 'plural') response = response || seed.plural || seed.word;
-    
-    if (seed.form == "adjective")   context.pronoun = 'none'
-    response = response || seed.word;
 
-    var po = pt.ideaToPrepositionObject(seed,context);
+    if (pt.isSpecial(seed.word)) {
+      console.log('dealing with special word...',seed.word);
+      targetWord = pt.specialToTarget(seed.word);
+      console.log('targetidea...',seed.word);
+    }
+
+
+    if (origSeed == targetIdea.plural) context.pronoun = 'plural';
+    if (context.pronoun == 'plural') response = response || targetIdea.plural || targetIdea.word;
+ 
+
+    if (targetIdea.form == "adjective")   context.pronoun = 'none'
+    response = response || targetIdea.word;
+
+    var po = pt.ideaToPrepositionObject(targetIdea,context);
     if (!po.returnWord) response = '';
 
     if (po.preposition) response = po.preposition + " " + response;
 
-    response = pt.hack(response,context,seed);
+    response = pt.hack(response,context,targetIdea);
 
     return response;
 
@@ -112,9 +126,15 @@ function Prepositor(brain) {
     return true;
   }
 
-  pt.compoundToTarget = function(string) {
-    if (!_.fizzle(string) || !_.fizzle(string).thing) return string;
+  pt.specialToTarget = function(string) {
+    if (_.fizzle(string) && !_.fizzle(string).thing) return _.fizzle(string).thing;
     return _.fizzle(string).thing;
+  }
+
+  pt.compoundToIdea = function(string) {
+    var target = pt.compoundToTarget(string);
+    var idea = brain.whatIs(target);
+    return idea;
   }
 
 

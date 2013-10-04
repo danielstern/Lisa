@@ -45,16 +45,28 @@ _.mixin({
 
 
   crack: function(string, returnQuality) {
+    if (!string) return;
+    var obj = _.compoundToObject(string);
+   // console.log('crack',string,obj)
+    return obj.target;
+  },
+
+  compoundToObject: function(string) {
+    var returnObj = {};
+
     if (typeof string != 'string') return string;
-    if (returnQuality) return string.split('|')[0];
     if (string.split('|').length > 1) {
-      string = string.split('|')[1];
+      returnObj.target = string.split('|')[1];
+      returnObj.prefix = string.split('|')[0];
     }
     if (string.split(':').length > 1) {
-      string = _.fizzle(string).thing;
+      returnObj.target = _.fizzle(string).thing;
+      returnObj.attribute = _.fizzle(string).thing;
     }
 
-    return string;
+    returnObj.target = returnObj.target || string;
+
+    return returnObj;
   },
 
   whomp: function(filter,array) {
