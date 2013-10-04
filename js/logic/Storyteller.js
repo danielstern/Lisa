@@ -25,17 +25,17 @@ var Storyteller = function(brain) {
 
   st.tellStoryMoment = function (moment) {
 
-    if (!moment) return "No moment.";
 
-    var phrase = '';
     var momentObject = brain.getMomentObject(moment);
     
     var context = new brain.ContextObject(momentObject.context);
     context.time = context.time || 'past';
-    if (momentObject.general) phrase = brain.speech.express.generality(momentObject, context);
-    phrase = phrase || brain.speech.express.moment(momentObject, context);
+
     brain.memory.short.remember(momentObject);
-    return phrase;
+    
+    if (momentObject.general) return brain.speech.express.generality(momentObject, context);
+    return brain.speech.express.moment(momentObject, context);
+
   }
 
 
@@ -48,7 +48,7 @@ var Storyteller = function(brain) {
 
     var context = brain.getContextObject();
     context.time = 'past';
-    context.rel = 'once';
+  //  context.rel = 'once';
     var remark = brain.speech.express.moment(excerpt,context);
 
     return remark;

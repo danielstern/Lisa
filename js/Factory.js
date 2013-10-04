@@ -5,7 +5,6 @@ var Factory = function(brain) {
 
   this.ContextObject = function(context) {
 
-   // console.log('new context object')
     context = context || {};
     this.pronoun = context.pronoun;
     this.time = context.time;
@@ -17,7 +16,7 @@ var Factory = function(brain) {
   }
 
   this.Seed = function () {
-    var word = 'undefined_word';
+    this.isSeed = true;
   }
 
 

@@ -20,52 +20,33 @@ function Conjugator(brain) {
     if (seedIdea.pronoun == 'unique') context = context || 'singular';
     if (!seedIdea.plural) context = context || 'singular';
 
-    var synonyms = lx.getVerbSynonyms(verb);
-//    if (synonyms) verb = _.sample(synonyms);
-    if (synonyms[0]) verb = _.sample(synonyms);
+    return cj.getConjugatedVerb(verb, tense, context);
 
-    verb = cj.getConjugatedVerb(verb, tense, context)
-
-    response = verb;
-
-    return response;
   }
 
 
   cj.getConjugatedVerb = function (verb, tense, context) {
 
-    if (!verb) return;
+    verb = verb || 'is';
     tense = tense || 'present';
     context = context || 'singular';
 
     var lx = brain.speech.lexicator;
-    var verbIdea = lx.getVerbIdea(verb);
-    if (!verbIdea) {
-      console.warn('This verb is not in the lexiary', verb);
-      return verb;
-    }
-
     var verbeTense;
 
-    if (!_.has(verbIdea, tense)) {
-      console.warn('This verb does not have the following tense', verb, tense);
-      return verb;
-    }
-
+    var verbIdea = lx.getVerbIdea(verb);
+    if (!verbIdea) return warnOut('This verb is not in the lexiary: ' + verb , verb);
+    if (!_.has(verbIdea, tense)) return warnOut('This verb does not have the following tense' + tense, verb);
+      
     verbeTense = verbIdea[tense];
 
-    if (!_.has(verbeTense, context)) {
-      console.warn('This verb does not have a context for following tense', verb, tense, context);
-      return verb;
-    }
+    if (!_.has(verbeTense, context)) return warnout('This verb does not have a context for following tense ' + context + " " + tense, verb);
 
 
     var word = verbeTense[context];
-
     return word;
-
   }
-
-
+  
+  function warnOut(phrase,verb) {console.warn(phrase);return verb};
 
 }

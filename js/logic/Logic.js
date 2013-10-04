@@ -21,7 +21,7 @@ function Logic(brain) {
     var moment = brain.mo();
     
     moment.object = parentWord;
-    moment.action = 'is;'
+    moment.action = 'is'
     moment.subject = seed.word;
 
   	var generality = brain.speech.express.generality(moment);

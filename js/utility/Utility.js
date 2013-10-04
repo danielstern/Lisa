@@ -43,6 +43,28 @@ _.mixin({
     }
   },
 
+  isSpecial:function(string) {
+    if (_.isBundle(string) || _.isCompound(string) || _.hasPrefix(string)) return true;
+  },
+
+  isCompound:function(string) {
+    if (!_.fizzle(string) || !_.fizzle(string).thing) return false;
+    return true;
+  },
+
+  specialToTarget:function(string) {
+    if (!string) return;
+    return _.specialToObject(string).target;
+  },
+
+  hasPrefix:function(string) {
+    return (string.split('|').length > 1);
+  },
+
+  isBundle:function (string ) {
+    return _.str.include(string, '<');
+  },
+
 
   crack: function(string, returnQuality) {
     if (!string) return;
@@ -170,6 +192,4 @@ _.mixin({
     return _.bare(string1) == _.bare(string2);
 
   },
-
-
 });

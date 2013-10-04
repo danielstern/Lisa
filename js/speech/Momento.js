@@ -25,7 +25,7 @@ function Momento(brain) {
     response += (context.rel || moment.rel || '') + " ";
     if (response) response += "##lp";
 
-    console.log('express moment',moment,context)
+    //console.log('express moment',moment,context)
 
     var pejorative = moment.getPejorative();
     
@@ -76,7 +76,6 @@ function Momento(brain) {
     context.time = context.time || 'present';
     context.rel = undefined;
 
-
     var subjectIdea = brain.whatIs(moment.subject) || new brain.Seed();
     var singularity = false;
     
@@ -90,14 +89,12 @@ function Momento(brain) {
 
    mm.generality = function (moment, context) {
 
-//   console.error('generality,', moment, context);
-
     var wordToSeed = brain.speech.prepositor.wordToSeed;
 
     context = context || new brain.ContextObject();;
     context.time = 'present';
     context.referenced = false;
-    
+  
 
     var remark = mm.generateSentenceFragment(moment,context)
     return remark;

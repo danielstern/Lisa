@@ -2,31 +2,28 @@ function Prepositor(brain) {
 
 	var pt = this;
 
-  pt.isBundle = function (string ) {
-    return _.str.include(string, '<')
-  }
 
   pt.wordToSeed = function (word) {
     if (_.isObject(word)) return word;
-    if (brain.whatIs(word) && !pt.isSpecial(word)) return brain.whatIs(word);
+    if (brain.whatIs(word) && !_.isSpecial(word)) return brain.whatIs(word);
     var seed = new brain.Seed();
     seed.word = word;
     return seed;
   }
 
-  pt.isSpecial = function(string) {
-    if (pt.isBundle(string) || pt.isCompound(string) || pt.hasPrefix(string)) return true;
-  }
+  pt.compoundToIdea = function(string) {
+    var target = _.compoundToTarget(string);
+    var idea = brain.whatIs(target);
+    return idea;
+  },
+
 
   pt.preposit = function (seed, context) {
 
     if (!seed) return console.error('You cant preposit that',seed);
 
- //   console.log('prepositing',seed,context);
     context = context || new brain.ContextObject();
-    if (!_.isObject(seed)) seed = pt.wordToSeed(seed); 
-
-    //console.log('prepositing',seed,context);
+    if (!seed.isSeed) seed = pt.wordToSeed(seed); 
 
 
     var targetIdea = seed;
@@ -36,12 +33,12 @@ function Prepositor(brain) {
     var speech = brain.speech;
     var response = '';
 
-    if (pt.isBundle(seed.word)) return pt.prepositBundle(seed.word, context);
-    if (pt.isCompound(seed.word)) response = pt.splitAndCombine(seed.word,context); 
-    if (pt.hasPrefix(seed.word)) response = pt.handlePrefix(seed.word,context);
+    if (_.isBundle(seed.word)) return pt.prepositBundle(seed.word, context);
+    if (_.isCompound(seed.word)) response = pt.splitAndCombine(seed.word,context); 
+    if (_.hasPrefix(seed.word)) response = pt.handlePrefix(seed.word,context);
 
-    if (pt.isSpecial(seed.word)) {
-      targetWord = pt.specialToTarget(seed.word);
+    if (_.isSpecial(seed.word)) {
+      targetWord = _.specialToTarget(seed.word);
       targetIdea = pt.wordToSeed(targetWord);
     }
 
@@ -82,9 +79,6 @@ function Prepositor(brain) {
 
   }
 
-  pt.hasPrefix = function(string) {
-    return (string.split('|').length > 1)    
-  }
 
   pt.handlePrefix = function(word,context) {
    // console.log('handleprefix',word,context)
@@ -122,22 +116,6 @@ function Prepositor(brain) {
     }
 
     return object;
-  }
-
-  pt.isCompound = function(string) {
-    if (!_.fizzle(string) || !_.fizzle(string).thing) return false;
-    return true;
-  }
-
-  pt.specialToTarget = function(string) {
-    if (!string) return;
-    return _.specialToObject(string).target;
-  }
-
-  pt.compoundToIdea = function(string) {
-    var target = pt.compoundToTarget(string);
-    var idea = brain.whatIs(target);
-    return idea;
   }
 
 

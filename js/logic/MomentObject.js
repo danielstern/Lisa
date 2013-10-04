@@ -1,34 +1,36 @@
 function MomentObject(moment) {
-	    moment = moment || {};
-    var mo = this;
-    this.isMoment = true;
 
-    _.extend(this,moment);
+  moment = moment || {};
+  var mo = this;
+  this.isMoment = true;
 
-    this.getObjectiveWord = function() {
-      return this.object || this.at || this.in;
-    }
+  _.extend(this,moment);
 
-    this.getObjectiveKey = function() {
-      if (this.at) return ' at ';
-      if (this.to) return ' to ';
-      if (this.in) return ' in ';
-      if (this.object) return '';
-    }
+  this.getObjectiveWord = function() {
+    return this.object || this.at || this.in;
+  }
 
-    this.hasObjective = function() {
-      if (this.getObjectiveWord) return true;
-    }
+  this.getObjectiveKey = function() {
+    if (this.at) return ' at ';
+    if (this.to) return ' to ';
+    if (this.in) return ' in ';
+    if (this.object) return '';
+  }
 
-    this.getTrueSubject = function() {
-    	return brain.speech.prepositor.specialToTarget(this.subject)
-    }
+  this.hasObjective = function() {
+    if (this.getObjectiveWord) return true;
+  }
 
-    this.getTrueSubjectIdea = function() {
-    	return brain.whatIs(mo.getTrueSubject());
-    }
+  this.getTrueSubject = function() {
+  	return _.specialToTarget(this.subject)
+  }
 
-    this.getPejorative = function() {
-    	return (mo.getTrueSubject() == mo.getTrueSubjectIdea().plural) ? 'plural' : 'singular';
-    }
+  this.getTrueSubjectIdea = function() {
+  	return brain.whatIs(mo.getTrueSubject());
+  }
+
+  this.getPejorative = function() {
+  	return (mo.getTrueSubject() == mo.getTrueSubjectIdea().plural) ? 'plural' : 'singular';
+  }
+  
 }
