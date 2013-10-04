@@ -19,12 +19,13 @@ function Prepositor(brain) {
 
   pt.preposit = function (seed, context) {
 
-    context = context || new brain.ContextObject();
+    if (!seed) return console.error('You cant preposit that',seed);
 
-    //if (!seed) console.error('You cant preposit that',seed);
+    context = context || new brain.ContextObject();
+    if (!_.isObject(seed)) seed = pt.wordToSeed(seed); 
+
   //  console.log('prepositing',seed,context);
 
-    if (!_.isObject(seed)) seed = pt.wordToSeed(seed); 
     var targetIdea = seed;
     var targetWord = seed.word;
 
@@ -37,11 +38,8 @@ function Prepositor(brain) {
     if (pt.hasPrefix(seed.word)) response = pt.handlePrefix(seed.word,context);
 
     if (pt.isSpecial(seed.word)) {
-    //  console.log('dealing with special word...',seed.word);
       targetWord = pt.specialToTarget(seed.word);
-    //  console.log('targetWord...',targetWord);
       targetIdea = pt.wordToSeed(targetWord);
-    //  console.log('targetIdea..',targetIdea);
     }
 
 
@@ -267,7 +265,7 @@ function Prepositor(brain) {
 
     var regex = /\d{1,2}:\d{2}/;    // NICE
     if (regex.exec(idea.word)) {
-      preposition = '';
+      po.preposition = '';
     }
 
     return po;
