@@ -25,7 +25,6 @@ var Storyteller = function(brain) {
 
   st.tellStoryMoment = function (moment) {
 
-
     var momentObject = brain.getMomentObject(moment);
     
     var context = new brain.ContextObject(momentObject.context);

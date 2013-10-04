@@ -19,5 +19,11 @@ var Factory = function(brain) {
     this.isSeed = true;
   }
 
+  this.PrepositionObject = function() {
+    this.returnWord = true;
+    this.preposition = '';
+    this.word = 'no word use'
+  }
+
 
 }

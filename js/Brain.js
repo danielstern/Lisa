@@ -2,27 +2,21 @@ function Brain(host) {
 
   var brain = this;
 
+  brain.logic = new Logic(brain);
+  brain.speech = new Speech(brain);
+  brain.memory = new Memory(brain);
+  brain.extractor = new Extractor(brain);
+  brain.factory = new Factory(brain)
+  brain.lexicon = brain.speech.lexicator;
+  var lx = brain.lexicon;
 
-    brain.logic = new Logic(brain);
-    brain.speech = new Speech(brain);
-    brain.memory = new Memory(brain);
-    brain.extractor = new Extractor(brain);
-    brain.factory = new Factory(brain)
-    brain.lexicon = brain.speech.lexicator;
-    var lx = brain.lexicon;
-
-    window.brain = brain;
-
+  window.brain = brain;
 
   brain.process = function (words, directive) {
 
-    var response = '';
-
     var idea = brain.whatIs(words);
-
-    response = brain.ponder(idea, directive);
-
-    return [response, idea];
+    var response = brain.ponder(idea, directive);
+    return response;
 
   }
 
@@ -32,31 +26,11 @@ function Brain(host) {
     if (!statement) return analysis;
 
     var keywords = ex.keywordsFromStatement(statement);
-
     analysis.ideas = keywords;
 
     return analysis;
 
   }
-
-  brain.getMomentObject = function(moment) {
-    return new brain.factory.MomentObject(moment)
-  }
-  brain.mo = brain.getMomentObject;
-  brain.MomentObject = brain.getMomentObject;
-
-  brain.getSeed = function(seed) {
-    return new brain.factory.Seed(seed)
-  }
-  brain.Seed = brain.getSeed
-
-  brain.getContextObject = function(context) {
-    return new brain.factory.ContextObject(context)
-  }
-
-  brain.ContextObject = brain.getContextObject;
-
-
 
   brain.whatIs = function (word) {
 
@@ -78,7 +52,7 @@ function Brain(host) {
 
   brain.ponder = function (idea, directive) {
 
-    if (!idea) return ["No ideas about that."];
+    if (!idea) return "No ideas about that.";
 
     if (idea.see) idea = brain.whatIs(idea.see[0], true);
 
@@ -88,5 +62,25 @@ function Brain(host) {
 
     return response;
   }
+
+  // shortcuts
+  brain.getMomentObject = function(moment) {
+    return new brain.factory.MomentObject(moment)
+  }
+
+
+  brain.getSeed = function(seed) {
+    return new brain.factory.Seed(seed)
+  }
+
+  brain.getContextObject = function(context) {
+    return new brain.factory.ContextObject(context)
+  }
+
+  brain.mo = brain.getMomentObject;
+  brain.MomentObject = brain.getMomentObject;
+  brain.ContextObject = brain.getContextObject;
+  brain.PrepositionObject = brain.factory.PrepositionObject;
+  brain.Seed = brain.getSeed
 }
 

@@ -167,17 +167,13 @@ function Prepositor(brain) {
     return propositedWords;
 	}
 
-  var PrepositionObject = function() {
-    this.returnWord = true;
-    this.preposition = '';
-    this.word = 'no word use'
-  }
+
 
   pt.ideaToPrepositionObject = function(idea, context) {
 
   //  console.log('idea to po,',idea,context)
 
-  	var po = new PrepositionObject();
+  	var po = new brain.PrepositionObject();
 
     if (!idea) return po;
 
