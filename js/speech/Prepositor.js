@@ -143,7 +143,7 @@ function Prepositor(brain) {
 
   pt.splitAndCombine = function(string, context) {
 
-    console.log('split and combine...',string,context)
+    //console.log('split and combine...',string,context)
 
     var preposit = pt.preposit;
 

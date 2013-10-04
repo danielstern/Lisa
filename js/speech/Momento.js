@@ -78,28 +78,19 @@ function Momento(brain) {
 
   mm.generateSentenceFragment = function(moment, context) {
 
-    //console.log('generate sentance framgent...',moment,context)
-
     var preposit = brain.speech.preposit;
     var conjugate = brain.speech.conjugate;
     var getConjugatedVerb = brain.speech.conjugator.getConjugatedVerb;
 
     context.time = context.time || 'present';
-   // context.plural = context.plural || 'plural';
+
 
     var subjectIdea = brain.whatIs(moment.subject) || new brain.Seed();
     var singularity = false;
-
-    if (!subjectIdea) console.warn("No subjectIdea",moment,context);
-    if (!subjectIdea.plural || subjectIdea.pronoun == 'proper') {
-      context.pronoun = 'singular';
-    }
+    
     context.noAssume = true;
 
-    var action = moment.action;
-    var response = '';
-
-    response += mm.moment(moment,context)
+    var response = mm.moment(moment,context)
 
     return response;
 
