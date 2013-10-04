@@ -52,6 +52,12 @@ return [{   word:'self',
       extends:['store'],
     },
     {
+      word:'biker',
+      plural:'bikers',
+      gender:'male',
+      extends:['person'],
+    },
+    {
       word:'I',
       pronoun:'proper'
     },

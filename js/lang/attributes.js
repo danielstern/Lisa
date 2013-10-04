@@ -31,6 +31,14 @@ define("lang/attributes", [], function ()
     form: 'adjective',
   },
   {
+    word: 'white',
+    form: 'adjective',
+  },
+  {
+    word: 'tall',
+    form: 'adjective',
+  },
+  {
     word: 'the',
     form: 'preposition',
     pronoun: 'none'

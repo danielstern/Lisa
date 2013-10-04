@@ -27,10 +27,10 @@ return function Momento(brain) {
     var pejorative = moment.getPejorative();
     
     var subjectContext = _.clone(context);
-    var subjectIdea = brain.whatIs(_.crack(moment.subject)) || new brain.Seed();
+    var subjectIdea = brain.whatIs(_.crack(moment.getSubject())) || new brain.Seed();
     subjectContext.pronoun = subjectIdea.pronoun;
 
-    response += preposit(moment.subject, subjectContext) + " " + conjugate(moment.subject, moment.action, context.time,pejorative);
+    response += preposit(moment.getSubject(), subjectContext) + " " + conjugate(moment.getSubject(), moment.getAction(), context.time,pejorative);
 
     response += moment.getObjectiveKey() + " " + preposit(moment.getObjectiveWord(),context);
 

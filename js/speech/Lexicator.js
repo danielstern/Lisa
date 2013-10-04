@@ -80,7 +80,7 @@ define("speech/Lexicator", [], function () {
         if(_.compare(wordIdea.said, word)) return true;
       });
 
-      if (_.isEmpty(ideas)) console.warn("Can't access word not in lexicon",word);
+      if (_.isEmpty(ideas)) console.warn("Can't access word not in lexicon",word);  
 
       return ideas[0];
 
