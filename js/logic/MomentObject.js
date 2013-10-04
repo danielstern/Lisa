@@ -4,15 +4,32 @@ define("logic/MomentObject", [], function () {
     moment = moment || {};
     this.isMoment = true;
 
+    var usedKeys =[];
+    this.resetUsedKeys = function() {
+      usedKeys = [];
+    }
+
   
     this.getObjectiveWord = function () {
       return moment.object || moment.at || moment.in ;
     }
 
-    this.getNextObject = function() {
+    this.getNextObjectPair = function() {
+      console.log('getnextobjectpair...',moment);
       var no = {};
-      no.key = '???';
-      no.value = '???';
+      var keys = _.chain(moment)
+                  .keys()
+                  .without('subject','action','general')
+                  .value();
+
+      console.log('keys...',keys,moment);
+      console.log('usedKEys?...',usedKeys);
+      var nextKey = _.chain(keys)
+                     .difference(usedKeys)
+                     .first()
+                     .value();
+
+     console.log('nextkey?...',nextKey);
 
       return no;
 
