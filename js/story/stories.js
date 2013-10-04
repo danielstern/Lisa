@@ -97,7 +97,7 @@ define("story/stories", [], function() {
   emotions:{fear:1,anxiety:2},
   sequence:[
   {
-    subject:'the|biker,' action:'is', object: 'white'
+    subject:'the|biker', action:'is', object: 'white'
   },
   {
     subject:'assumed|biker', action:'is', object: 'tall'
@@ -112,7 +112,7 @@ define("story/stories", [], function() {
   emotions:{curiosity:2},
   sequence:[
   {
-    subject:'the|biker', action:'have', object: 'tattoo' on:'his|arm'
+    subject:'the|biker', action:'have', object: 'tattoo', on:'his|arm'
   },
   {
     subject:'assumed|tattoo', action:'is', object: 'blue'

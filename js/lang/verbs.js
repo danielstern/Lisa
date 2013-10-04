@@ -30,6 +30,50 @@ define("lang/verbs", [], function ()
       }
     },
 
+    eat:
+    {
+      past:
+      {
+        singular: 'ate',
+        plural: 'ate'
+      },
+      present:
+      {
+        singular: 'eats',
+        plural: 'eat'
+      }
+    },
+
+
+    read:
+    {
+      past:
+      {
+        singular: 'read',
+        plural: 'read'
+      },
+      present:
+      {
+        singular: 'reads',
+        plural: 'read'
+      }
+    },
+
+
+    ran:
+    {
+      past:
+      {
+        singular: 'ran',
+        plural: 'ran'
+      },
+      present:
+      {
+        singular: 'runs',
+        plural: 'runs'
+      }
+    },
+
     shine:
     {
       past:
