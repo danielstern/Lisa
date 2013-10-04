@@ -1,17 +1,16 @@
-define(['angular','Lisa'] , function (angular, Lisa) {
-	console.log('returning module...')
+define(['angular','Lisa','lang/things','lang/attributes','lang/verbs'] , function (angular, Lisa, things, attributes, verbs) {
+
   return angular.module('lisaApp' , [])
    .controller('LisaController', ['$scope', function($scope) {
 
-  	 	console.log("Initilaized app...")
 
-      var $Lisa = new Lisa();
-     _.defer(function learn(){
-        $Lisa.learn(_things);
-        $Lisa.learn(_attributes);
-        $Lisa.learn(_sayings);
-        $Lisa.learn(_verbs);
-      })
+      var lisa = new Lisa();
+  	 	console.log("Initilaized app...")
+   
+        lisa.learn(things);
+        lisa.learn(attributes);
+        lisa.learn(verbs);
+
 
       $scope.handleMenuClick = function(thing) {
 
@@ -35,8 +34,7 @@ define(['angular','Lisa'] , function (angular, Lisa) {
 
       $scope.reply = function(directive) {
 
-     //   console.log('Reply',$scope.sayTo,directive);
-        var reply = $Lisa.hears($scope.sayTo, directive);
+        var reply = lisa.hears($scope.sayTo, directive);
         $scope.saying = reply;
    
      }

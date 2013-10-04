@@ -1,5 +1,5 @@
-var _attributes = [ 
-    {
+define("lang/attributes", [], function() {
+return [   {
       word:'powerful',
       form:'adjective',
     },
@@ -177,3 +177,4 @@ var _attributes = [
       synonyms:['fearless']
     }
     ]
+  })

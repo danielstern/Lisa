@@ -1,7 +1,5 @@
-var _things = [
-    // special things
-   {
-      word:'self',
+define("lang/things", [], function() {
+return [{   word:'self',
       extends:['person'],
       pronoun:'self',
       hidden:'true',
@@ -258,3 +256,4 @@ var _things = [
       pronoun:'proper'
     },
 ]
+})

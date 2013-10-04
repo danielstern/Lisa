@@ -1,4 +1,5 @@
-var _verbs = {
+define("lang/verbs", [], function() {
+return {
   packageType:'verbs',
   
   is:{
@@ -581,3 +582,4 @@ var _verbs = {
     }
   },
 }
+})

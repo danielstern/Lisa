@@ -7,6 +7,8 @@ return function Lexicator(brain) {
 
   lx.learn = function (words) {
 
+   // console.log('lx learning..',words)
+
   	if (typeof words == 'string') words = [words];
     if (words.packageType == 'verbs') var isVerbs = true;
 

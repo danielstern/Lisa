@@ -14,11 +14,9 @@ define("Lisa",["Brain"], function Lisa(Brain) {
     }
 
     Lisa.brain = new Brain(Lisa);
-
-    return;
     Lisa.ponder = Lisa.brain.ponder;
     Lisa.learn = lisa.brain.learn;
 
     }
-    }
+}
 );

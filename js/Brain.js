@@ -1,15 +1,13 @@
-define("Brain", ["Memory","speech/Speech","logic/Logic","Extractor","Factory"], function Brain(Memory, Speech, Logic, Extractor, Factory) {
+define("Brain", ["Memory","speech/Speech","logic/Logic","Extractor","Factory"], function (Memory, Speech, Logic, Extractor, Factory) {
 
   return function Brain() {
     
-  console.log("Init Brain?",arguments)
     var brain = this;
     brain.memory = new Memory(brain);
     brain.speech = new Speech(brain);
     brain.logic = new Logic(brain);
     brain.extractor = new Extractor(brain);
     brain.factory = new Factory(brain)
-    return;
 
 
     brain.lexicon = brain.speech.lexicator;
@@ -51,6 +49,7 @@ define("Brain", ["Memory","speech/Speech","logic/Logic","Extractor","Factory"], 
 
         brain.speech.lexicator.learn(package);
     }
+  console.log("Init Brain?",arguments)
 
 
     brain.ponder = function (idea, directive) {
@@ -86,4 +85,5 @@ define("Brain", ["Memory","speech/Speech","logic/Logic","Extractor","Factory"], 
     brain.PrepositionObject = brain.factory.PrepositionObject;
     brain.Seed = brain.getSeed
   }
-})
+}
+)

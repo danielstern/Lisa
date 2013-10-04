@@ -18,7 +18,7 @@ require.config({
 	      exports: 'angular'
 	  },
 	},
-	urlArgs: "bust=" + new Date().getTime(),
+	urlArgs: "bust=" + parseInt(Math.random() * 1000),
 	priority: [
 		'angular'
 	],
@@ -36,6 +36,9 @@ require([
 	"logic/MomentObject",
 	"logic/Counterposer",
 	"logic/Logic",
+	"lang/attributes",
+	"lang/things",
+	"lang/verbs",
 	"speech/Speech",
 	"speech/Prepositor",
 	"speech/Conjugator",
