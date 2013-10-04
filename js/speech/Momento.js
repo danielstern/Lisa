@@ -179,9 +179,23 @@ function Momento(brain) {
     return response;
   }
 
+  mm.MomentObject = function(moment) {
+    if (!moment) console.error('no moment')
+    moment = moment || {};
+    var mo = this;
+
+    _.extend(this,moment);
+
+    this.getObjective = function() {
+      return this.object || 
+      " at " + this.at;
+    }
+
+  }
+
   mm.generateSentenceFragment = function(momentFragment, context) {
 
-    console.log('generate sentance framgent...',momentFragment,context)
+  //  console.log('generate sentance framgent...',momentFragment,context)
 
     var preposit = brain.speech.preposit;
     var conjugate = brain.speech.conjugate;
@@ -214,7 +228,7 @@ function Momento(brain) {
     var wordToSeed = brain.speech.prepositor.wordToSeed;
 
     var seed = moment.subject;
-    var quality = "NEED MM OBJECT";
+    var quality = moment.getObjective();
 
     seed = wordToSeed(seed);
     quality = wordToSeed(quality);
@@ -224,7 +238,7 @@ function Momento(brain) {
       console.error('No seed or quality', seed, quality);
     }
 
-    console.log('generality,', seed, quality, context);
+ //   console.log('generality,', seed, quality, context);
 
     context = context || new brain.ContextObject();;
     context.time = 'present';
@@ -244,41 +258,6 @@ function Momento(brain) {
     var remark = mm.generateSentenceFragment({subject:subjectWord, action:'is',object:objectWord},context)
     return remark;
     
-/*
-    if (typeof seed == 'string') seed = window.brain.whatIs(seed, true);
-
-    var prepositedSubjects = '';
-    if (seed instanceof Array) {
-      var things = [];
-      things = _.map(seed, function (miniSeed) {
-        return preposit(miniSeed, {
-          plural: true,
-          pronoun: 'plural'
-        });
-      })
-
-      prepositedSubjects = _.toSentence(things);
-
-    }
-
-    var context = 'singular';
-    if (!seed || seed.plural) context = 'plural';
-
-    var objectForm = 'plural';
-    if (seed.pronoun == 'proper') objectForm = 'singular';
-    if (prepositedSubjects) {
-      response = prepositedSubjects + " " + conjugate('is', 'present', 'plural') + " " + preposit(quality, {
-        pronoun: 'plural'
-      });
-    } else {
-
-      response = preposit(seed, {
-        pronoun: 'plural'
-      }) + " " + conjugate('is', 'present', context) + " " + preposit(quality, {
-        pronoun: objectForm
-      });
-
-    }*/
 
     return response;
   }

@@ -25,13 +25,16 @@ var Storyteller = function(brain) {
 
   st.tellStoryMoment = function (moment) {
 
+    if (!moment) return "No moment.";
+
     var phrase = '';
-    if (!moment) return phrase;
-    var context = new brain.ContextObject(moment.context);
+    var momentObject = new brain.speech.express.MomentObject(moment);
+    console.log('tell story moment',momentObject)
+    var context = new brain.ContextObject(momentObject.context);
     context.time = context.time || 'past';
-    if (moment.general) phrase = brain.speech.express.generality(moment, context);
-    phrase = phrase = brain.speech.express.moment(moment, context);
-    brain.memory.short.remember(moment);
+    if (momentObject.general) phrase = brain.speech.express.generality(momentObject, context);
+    phrase = phrase || brain.speech.express.moment(momentObject, context);
+    brain.memory.short.remember(momentObject);
     return phrase;
   }
 
