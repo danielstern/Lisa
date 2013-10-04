@@ -4,6 +4,7 @@ var Factory = function(brain) {
 
     moment = moment || {};
     var mo = this;
+    this.isMoment = true;
 
     _.extend(this,moment);
 

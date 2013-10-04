@@ -6,27 +6,7 @@ function Momento(brain) {
     return speech.prepositor.wordToSeed(word)
   }
 
-
-  mm.moment = function(moment, context) {
-
-    var response = '';
-    context = context || new brain.ContextObject();
-    context.objective = false;
-
-    var speech = brain.speech;
-    var preposit = speech.preposit;
-    var conjugate = speech.conjugate;
-
-    var whatIs = brain.whatIs;
-
-
-
-
-  //  console.log('tell story moment...',moment,context);
-
-  if (!moment) return "I can hardly think of anything.";
-
-    if (moment.dialogue) {
+  mm.toDialogue = function(moment) {
 
      // console.log('this is a dialogue...');
       var dialogue = moment.dialogue;
@@ -51,21 +31,31 @@ function Momento(brain) {
       })
 
       return response;
-    };
+  }
 
 
-    switch (context.rel || moment.rel) {
+  mm.moment = function(moment, context) {
 
-    case 'but':
-      response += _.sample(['but','however']);
-      break;
-    case 'so':
-      response += _.sample(['so','then','thus']);
-      break
-    case 'then':
-      response += _.sample(['then']);
-      break;
-    }
+    if (!moment.isMoment) moment = brain.mo(moment);
+    var response = '';
+    context = context || new brain.ContextObject();
+    context.objective = false;
+
+    var speech = brain.speech;
+    var preposit = speech.preposit;
+    var conjugate = speech.conjugate;
+
+    var whatIs = brain.whatIs;
+
+
+  //  console.log('tell story moment...',moment,context);
+
+  if (!moment) return "I can hardly think of anything.";
+
+  if (moment.dialogue)  return mm.toDialogue(moment); 
+
+
+    response += (context.rel || moment.rel || '') + " ";
 
     // add a soft pause of necessary
     if ((context.rel || moment.rel) && response) response += "##lp";
@@ -74,106 +64,15 @@ function Momento(brain) {
     var subjectContext = _.clone(context);
     var subjectIdea = whatIs(_.crack(moment.subject, true)) || new brain.Seed();
     subjectContext.pronoun = subjectIdea.pronoun;
+
     response += preposit(moment.subject, subjectContext) + " " + conjugate(moment.subject, moment.action, context.time,'singular');
 
 
     context.objective = true;
 
-    if (moment.object) {
-      
-      response += " " + preposit(moment.object, _.clone(context));
-    }
+    //return console.error(moment);
 
-
-    if (moment.what) {
-      response += " " + moment.what + " ";
-    }
-
-
-    if (moment.down) {
-      response += " down " + preposit(moment.down);
-    }
-
-    if (moment.over) {
-      response += " over " + preposit(moment.over, _.clone(context));
-    }
-
-
-    if (moment.with) {
-      response += " with " + preposit(moment.with, _.clone(context));
-    }
-
-    if (moment.at) {
-      response += " at " + preposit(moment.at, _.clone(context));
-    }
-
-    if (moment.out) {
-      response += " out of " + preposit(moment.out, _.clone(context));
-    }
-
-
-    if (moment.in) {
-      response += " in " + preposit(moment.in, _.clone(context));
-    }
-
-    if (moment.on) {
-      response += " on " + preposit(moment.on, _.clone(context));
-    }
-
-    if (moment.off) {
-      response += " off " + preposit(moment.off, _.clone(context));
-    }
-
-
-    if (moment.against) {
-      var pronoun = (isGeneral) ? 'plural':'singular'
-      var againstContext = _.clone(context);
-      againstContext.pronoun = pronoun;
-      againstContext.main = true;
-      againstContext.objective = true;
-      response += " against " + preposit(moment.against, againstContext);
-    }
-
-
-    if (moment.to) {
-    response += " to ";
-     if (typeof moment.to != 'string') {
-        console.log('this is an object.');
-        var remark = mm.generateSentenceFragment(moment.to, _.clone(context));
-        response += " " + remark + " ";
-      } else {
-       response += preposit(moment.to, _.clone(context));
-     }
-    }
-
-    if (moment.from) {
-      response += " from " + preposit(moment.from, _.clone(context));
-    }
-
-
-    if (moment.said) {
-      response += brain.speech.lightPause();
-      response += ' "' + moment.said  + '" ';
-      response += brain.speech.hardPause();
-    }
-
-    if (moment.howMuch) {
-      response += ' ' + preposit(moment.howMuch)  + ' ';
-    }
-
-    if (moment.during) {
-      response += " during " + preposit(moment.during);
-    }
-
-
-    if (moment.too) {
-          response += brain.speech.lightPause();
-      response += " too ";
-    }
-
-    if (moment.when) {
-      response += preposit(moment.off, _.clone(context));
-    }
+    response += moment.getObjectiveKey() + " " + moment.getObjectiveWord();
 
 
     return response;
