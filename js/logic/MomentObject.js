@@ -14,13 +14,19 @@ define("logic/MomentObject", [], function () {
       return moment.object || moment.at || moment.in ;
     }
 
-    this.getNextObjectPair = function() {
-   //   console.log('getnextobjectpair...',moment);
-      var no = {};
-      var keys = _.chain(moment)
+    this.getKeys = function () {
+
+          return _.chain(moment)
                   .keys()
                   .without('subject','action','general')
                   .value();
+      // body...
+    }
+
+    this.getNextObjectPair = function() {
+   //   console.log('getnextobjectpair...',moment);
+      var no = {};
+      var keys = this.getKeys();
 
       var nextKey = _.chain(keys)
                      .difference(usedKeys)
