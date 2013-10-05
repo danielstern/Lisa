@@ -17,6 +17,10 @@ define("Memory", ["story/stories"], function Memory(stories) {
 
     short.recentThings = [];
 
+    short.anything = function (memory) {
+      if (_.isEmpty(short.recentThings)) return false;
+    }
+
     short.remember = function (memory) {
 
       if (!memory instanceof Array) memory = [memory]

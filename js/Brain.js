@@ -25,25 +25,47 @@ define("Brain", ["Memory","speech/Speech","logic/Logic","Extractor","Factory"], 
       return true;
   }
 
+    var speed = 5;
+    var frequency = 10000/speed;
+
     var cyclesActive = 0;
     brain.start = function() {
       setInterval(function(){
         cyclesActive += 1;
-        brain.cycle();
-      },1000)
-
-      setInterval(function(){
-  //      console.log('Brain has been active for ' + cyclesActive + ' cycles.');
-      },10000)
+        lisa.output(brain.cycle());
+      },frequency)
 
 
     }
 
+    brain.getDefaultSeed = function() {
+      return brain.speech.lexicator.getRandomWord();
+    }
+
+    brain.getDefaultDirective = function() {
+      var directives = ['express-inheritance','story-excerpt','emote','tell-story']
+      return _.sample(directives);
+    }
+
     brain.cycle = function() {
       //console.log('cycle...');
-      lisa.output("I've been active for " + cyclesActive + " cycles, shug.")
+      var shortTerm = brain.memory.short;
+      var longTerm = brain.memory.long;
+
+      if (!shortTerm.anything()) {
+
+        var seed = brain.getDefaultSeed();
+        var directive = brain.getDefaultDirective();
+
+        return brain.ponder(seed,directive);
+      }
+      else {
+        console.log('I remember...')        
+      }
+      
 
 
+      if (!shortTerm.anything()) return "I have no recent memories.";
     }
  
 

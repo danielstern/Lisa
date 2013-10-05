@@ -20,7 +20,6 @@ define(['angular','Lisa','lang/things','lang/attributes','lang/verbs'] , functio
       saying.emilySaying = 'hello, shug';
 
       $scope.listen = function(input) {
-      //  console.log('listened... ',input);
         saying.emilySaying = input;
         $scope.$apply();
       }
