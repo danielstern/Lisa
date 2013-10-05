@@ -30,6 +30,8 @@ return function Momento(brain) {
     var subjectIdea = brain.whatIs(_.crack(moment.getSubject())) || new brain.Seed();
     subjectContext.pronoun = subjectIdea.pronoun;
 
+    if (moment.isContext()) return '';
+
     response += preposit(moment.getSubject(), subjectContext) + " " + conjugate(moment.getSubject(), moment.getAction(), context.time,pejorative);
 
 

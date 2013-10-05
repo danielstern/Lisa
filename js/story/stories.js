@@ -3,7 +3,7 @@ define("story/stories", [], function() {
     emotions:{pleasure:6},
     sequence:[
     {
-      subject:'the|time',action:'is', object:'3:00',
+      subject:'the|time',action:'is', object:'3:00', relevance:'context'
     },
     {
       subject:'I',action:'is', at:"the|mall",
@@ -33,7 +33,7 @@ define("story/stories", [], function() {
     emotions:{fear:3,anxiety:6},
     sequence:[
     {
-      subject:'the|time',action:'is', object:'4:30',
+      subject:'the|time',action:'is', object:'4:30', relevance:'context'
     },
     {
       subject:'I',action:'arrive', at:"Emily's Convenience",
@@ -115,10 +115,10 @@ define("story/stories", [], function() {
     subject:'the|biker', action:'have', object: 'tattoo', on:'his|arm'
   },
   {
-    subject:"biker's|tattoo", action:'is', object: '$smiling:mermaid$'
+    subject:'his|tattoo', action:'is', object: '<blue&green>'
   },
   {
-    subject:'assumed|tattoo', action:'is', object: '<blue&green>'
+    subject:"his|tattoo", action:'have', object: '$smiling:mermaid$'
   },
   ],
 },

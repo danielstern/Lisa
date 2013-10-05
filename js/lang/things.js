@@ -21,6 +21,15 @@ return [{   word:'self',
       pronoun:'force'
     },
     {
+      word:'arm',
+      plural:'arms',
+      extends:['body part']
+    },
+    {
+      word:'body part',
+      plural:'body parts',
+    },
+    {
       word:'tattoo',
       plural:'tattoos',
     },
@@ -75,7 +84,7 @@ return [{   word:'self',
       extends:['place'],
     },
     {
-      word:'tIme',
+      word:'time',
       plural:'times',
       extends:['concept'],
     },

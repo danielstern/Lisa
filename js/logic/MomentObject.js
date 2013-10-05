@@ -9,26 +9,25 @@ define("logic/MomentObject", [], function () {
       usedKeys = [];
     }
 
-  
-    this.getObjectiveWord = function () {
-      return moment.object || moment.at || moment.in ;
+
+    this.isContext = function () {
+      return moment.relevance == 'context';
     }
 
     this.getKeys = function () {
 
-          return _.chain(moment)
-                  .keys()
-                  .without('subject','action','general')
-                  .value();
-      // body...
+      return _.chain(moment)
+              .keys()
+              .without('subject','action','general','relevance')
+              .value();
     }
 
     this.getNextKey = function() {
       var keys = this.getKeys();
       var nextKey = _.chain(keys)
-               .difference(usedKeys)
-               .first()
-               .value();
+                     .difference(usedKeys)
+                     .first()
+                     .value();
 
       return nextKey;
     }
@@ -38,14 +37,12 @@ define("logic/MomentObject", [], function () {
     }
 
     this.getNextObjectPair = function() {
-   //   console.log('getnextobjectpair...',moment);
+
       var no = {};
       var nextKey = this.getNextKey();
-       no.key = nextKey;
-       usedKeys.push(nextKey);
-
-       no.object = moment[nextKey];
-      console.log('no?',no)
+      no.key = nextKey;
+      usedKeys.push(nextKey);
+      no.object = moment[nextKey];
 
       return no;
 
