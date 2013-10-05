@@ -17,7 +17,7 @@
 <body>
   <div class='container' ng-controller='LisaController'  style='padding:60px;'>
     <div class="row">
-      <div class='span5'>
+      <div class='span3'>
         <h3>Emily</h3>
            <div id='saying' ng-bind-html-unsafe='saying' style='margin-bottom:10px' ></div>
         <form id='conversation-form' ng-submit="reply('emote')">
@@ -28,8 +28,8 @@
           <button ng-click="reply('emote')" class='btn'>"How do you feel about _?"</button>
           <button ng-click="reply('express-inheritance')" class='btn'>"What is _?"</button> 
       </div>
-      <div class='span3'>
-        <img src='../misc/lisa.jpg' width='200px' height='auto'>
+      <div class='span2'>
+        <img src='../misc/lisa.jpg' width='auto' height='auto'>
       <form class='form'>
         <div class='controls'>
           <button ng-click='handleMenuClick(thing)' class='btn' ng-repeat="thing in things">
