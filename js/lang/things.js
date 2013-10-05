@@ -21,6 +21,14 @@ return [{   word:'self',
       pronoun:'force'
     },
     {
+      word:'tattoo',
+      plural:'tattoos',
+    },
+    {
+      word:'mermaid',
+      plural:'mermaids',
+    },
+    {
       word:'clothing',
       plural:'clothes',
       pronoun:'force'
