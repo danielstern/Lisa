@@ -33,7 +33,7 @@ define("Brain", ["Memory","speech/Speech","logic/Logic","Extractor","Factory"], 
       },1000)
 
       setInterval(function(){
-        console.log('Brain has been active for ' + cyclesActive + ' cycles.');
+  //      console.log('Brain has been active for ' + cyclesActive + ' cycles.');
       },10000)
 
 
