@@ -8,7 +8,7 @@ define("logic/Counterposer", [], function () {
       var logic = brain.logic;
       var response = '';
 
-      if(!seed) console.error('no seed');
+      if(!seed) return "I... uh... can't think of anything."
 
       if(seed.said !== undefined) {
         response = brain.logic.colloquilize(seed);

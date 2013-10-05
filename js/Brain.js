@@ -25,7 +25,7 @@ define("Brain", ["Memory","speech/Speech","logic/Logic","Extractor","Factory"], 
       return true;
   }
 
-    var speed = 5;
+    var speed = _.sample(_.range(5,7));
     var frequency = 10000/speed;
 
     var cyclesActive = 0;
