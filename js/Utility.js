@@ -74,11 +74,9 @@ _.mixin({
   },
 
 
-
   crack: function(string, returnQuality) {
     if (!string) return;
     var obj = _.specialToObject(string);
-   // console.log('crack',string,obj)
     return obj.target;
   },
 

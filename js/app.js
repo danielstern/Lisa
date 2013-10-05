@@ -8,13 +8,24 @@ define(['angular','Lisa','lang/things','lang/attributes','lang/verbs'] , functio
  
       emily.activate();
 
+      $scope.default = 'default';
+
       emily.learn(things);
       emily.learn(attributes);
       emily.learn(verbs);
 
-      emily.tap(function(output){
-        console.log('Got output...',output);
-      })
+      var saying = {};
+
+      $scope.saying = saying;
+      saying.emilySaying = 'hello, shug';
+
+      $scope.listen = function(input) {
+      //  console.log('listened... ',input);
+        saying.emilySaying = input;
+        $scope.$apply();
+      }
+
+      emily.tap($scope.listen)
 
 /*
       var richard = new Lisa();
