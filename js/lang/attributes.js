@@ -31,6 +31,14 @@ define("lang/attributes", [], function ()
     form: 'adjective',
   },
   {
+    word: 'green',
+    form: 'adjective',
+  },
+    {
+    word: 'blue',
+    form: 'adjective',
+  },
+  {
     word: 'white',
     form: 'adjective',
   },

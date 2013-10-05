@@ -72,13 +72,44 @@ define("speech/Lexicator", [], function () {
 
     }
 
+    lx.getJugends = function(word) {
+
+
+      var tl = lx.allVerbs;
+      //var allJugends = _.pluck(tl,'jugend');
+      var allJugends = _.chain(tl)
+                        .pluck('jugend')
+                        .compact()
+                        .value();
+  //    console.log('allJugends?',allJugends)
+
+      return allJugends;
+    }
+
+    lx.isJugend = function(word) {
+      
+    }
+
+    lx.jugendToSeed = function(jugend) {
+      var seed = new brain.factory.Seed();
+      seed.word = jugend;
+      seed.form = 'adjective';
+      return seed;
+    }
+
+
     lx.getWord = function (word) {
       if(!word) return;
+      if (_.isSpecial(word)) return console.warn('trying to get special word...',word)
       var ideas = _.filter(lx.things, function (wordIdea) {
         if(_.compare(wordIdea.word, word)) return true;
         if(_.compare(wordIdea.plural, word)) return true;
         if(_.compare(wordIdea.said, word)) return true;
       });
+
+      if (_.contains(lx.getJugends(),word)) {
+        return (lx.jugendToSeed(word))
+      }
 
       if (_.isEmpty(ideas)) console.warn("Can't access word not in lexicon",word);  
 
@@ -91,6 +122,8 @@ define("speech/Lexicator", [], function () {
       allAttributes = _.filter(lx.things, function (wordIdea) {
         if(wordIdea.form == 'adjective') return true;
       });
+
+
 
       return allAttributes;
 

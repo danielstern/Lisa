@@ -21,6 +21,7 @@ define(['angular','Lisa','lang/things','lang/attributes','lang/verbs'] , functio
 
       $scope.saying = '...';
       $scope.things = [
+        'Mermaid',
         'Money',
         'Biker',
         'Shoe',

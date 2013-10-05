@@ -6,8 +6,6 @@ define("logic/Logic", ["logic/Counterposer", "logic/Storyteller", "logic/Emotion
 
     var logic = this;
 
-    console.log('logic initializing...');
-
     logic.counterposer = new Counterposer(brain);
     logic.storyteller = new Storyteller(brain);
     logic.emotionalizer = new Emotionalizer(brain);

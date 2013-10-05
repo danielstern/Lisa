@@ -44,6 +44,21 @@ define("lang/verbs", [], function ()
       }
     },
 
+    smile:
+    {
+      past:
+      {
+        singular: 'smiled',
+        plural: 'smiled'
+      },
+      present:
+      {
+        singular: 'smiles',
+        plural: 'smile'
+      },
+      jugend:'smiling'
+    },
+
 
     read:
     {
@@ -74,21 +89,6 @@ define("lang/verbs", [], function ()
       }
     },
 
-    shine:
-    {
-      past:
-      {
-        singular: 'shined',
-        plural: 'shined'
-      },
-      present:
-      {
-        singular: 'shines',
-        plural: 'shine'
-      },
-      jugend: 'shining'
-    },
-
     work:
     {
       past:
@@ -101,7 +101,7 @@ define("lang/verbs", [], function ()
         singular: 'works',
         plural: 'work'
       },
-      jugend: 'shining'
+      jugend: 'working'
     },
 
     shine:
@@ -178,7 +178,7 @@ define("lang/verbs", [], function ()
         singular: 'sits',
         plural: 'sit'
       },
-      jugend: 'shining'
+      jugend: 'sitting'
     },
 
     fix:
@@ -193,7 +193,7 @@ define("lang/verbs", [], function ()
         singular: 'fixes',
         plural: 'fix'
       },
-      jugend: 'shining'
+      jugend: 'fixing'
     },
 
     pull:
