@@ -4,40 +4,19 @@ define(['angular','Lisa','lang/things','lang/attributes','lang/verbs'] , functio
    .controller('LisaController', ['$scope', function($scope) {
 
 
-      var lisa = new Lisa();
-   
-        lisa.learn(things);
-        lisa.learn(attributes);
-        lisa.learn(verbs);
+      var emily = new Lisa();
+ 
+      emily.learn(things);
+      emily.learn(attributes);
+      emily.learn(verbs);
+/*
+      var richard = new Lisa();
+ 
+      richard.learn(things);
+      richard.learn(attributes);
+      richard.learn(verbs);
+*/
 
 
-      $scope.handleMenuClick = function(thing) {
-
-      //  console.log('menu click...',thing);
-        $scope.sayTo = thing;
-        $scope.reply('story-excerpt');
-
-      }
-
-      $scope.saying = '...';
-      $scope.things = [
-        'Mermaid',
-        'Money',
-        'Biker',
-        'Shoe',
-        'Mall',
-        'Tattoo',
-        "Emily's Convenience",
-        "Lexy's",
-      ]
-
-      $scope.sayTo = _.sample($scope.things);
-
-      $scope.reply = function(directive) {
-
-        var reply = lisa.hears($scope.sayTo, directive);
-        $scope.saying = reply;
-   
-     }
   }])
 });

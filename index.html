@@ -17,25 +17,22 @@
 <body>
   <div class='container' ng-controller='LisaController'  style='padding:60px;'>
     <div class="row">
-      <div class='span3'>
-        <h3>Emily</h3>
-           <div id='saying' ng-bind-html-unsafe='saying' style='margin-bottom:10px' ></div>
-        <form id='conversation-form' ng-submit="reply('emote')">
-          <input  ng-model='sayTo' class='input input-block-level' type='text'>
-        </form>
-          <button ng-click="reply('tell-story')" class='btn'>"Tell me a story about _."</button>
-          <button ng-click="reply('story-excerpt')" class='btn'>"What do you know about _?"</button>
-          <button ng-click="reply('emote')" class='btn'>"How do you feel about _?"</button>
-          <button ng-click="reply('express-inheritance')" class='btn'>"What is _?"</button> 
-      </div>
       <div class='span2'>
         <img src='../misc/lisa.jpg' width='auto' height='auto'>
-      <form class='form'>
-        <div class='controls'>
-          <button ng-click='handleMenuClick(thing)' class='btn' ng-repeat="thing in things">
-             <span >{{thing}}</span>
-          </button>
-        </div>
+      </div>
+      <div class='span3'>
+        <h3>Emily</h3>
+           <div id='saying' ng-bind-html-unsafe='emilySaying' style='margin-bottom:10px' ></div>
+        </form>
+      </div>
+      <div class='span3'>
+        <h3>Richard</h3>
+           <div id='saying' ng-bind-html-unsafe='richardSaying' style='margin-bottom:10px' ></div>
+        </form>
+      </div>
+      <div class='span2'>
+        <img src='../misc/richard.jpg' width='auto' height='auto'>
+      </div>
   <ng:view>
   </ng:view>
         </ul>
