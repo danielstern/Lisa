@@ -23,21 +23,29 @@ define("logic/MomentObject", [], function () {
       // body...
     }
 
+    this.getNextKey = function() {
+      var keys = this.getKeys();
+      var nextKey = _.chain(keys)
+               .difference(usedKeys)
+               .first()
+               .value();
+
+      return nextKey;
+    }
+
+    this.hasNextKey = function() {
+      return this.getNextKey();
+    }
+
     this.getNextObjectPair = function() {
    //   console.log('getnextobjectpair...',moment);
       var no = {};
-      var keys = this.getKeys();
+      var nextKey = this.getNextKey();
+       no.key = nextKey;
+       usedKeys.push(nextKey);
 
-      var nextKey = _.chain(keys)
-                     .difference(usedKeys)
-                     .first()
-                     .value();
-
-     no.key = nextKey;
-     usedKeys.push(nextKey);
-
-     no.object = moment[nextKey];
-    // console.log('no?',no)
+       no.object = moment[nextKey];
+      console.log('no?',no)
 
       return no;
 

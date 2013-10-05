@@ -115,7 +115,7 @@ define("story/stories", [], function() {
     subject:'the|biker', action:'have', object: 'tattoo', on:'his|arm'
   },
   {
-    subject:'$tattoo:biker$', action:'is', object: '$smiling:mermaid$'
+    subject:"biker's|tattoo", action:'is', object: '$smiling:mermaid$'
   },
   {
     subject:'assumed|tattoo', action:'is', object: '<blue&green>'
