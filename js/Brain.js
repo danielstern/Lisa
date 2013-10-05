@@ -1,17 +1,52 @@
 define("Brain", ["Memory","speech/Speech","logic/Logic","Extractor","Factory"], function (Memory, Speech, Logic, Extractor, Factory) {
 
-  return function Brain() {
+  return function Brain(lisa) {
     
     var brain = this;
-    brain.memory = new Memory(brain);
-    brain.speech = new Speech(brain);
-    brain.logic = new Logic(brain);
-    brain.extractor = new Extractor(brain);
-    brain.factory = new Factory(brain)
+    var lx;
+
+    brain.init = function() {
+
+      brain.memory = new Memory(brain);
+      brain.speech = new Speech(brain);
+      brain.logic = new Logic(brain);
+      brain.extractor = new Extractor(brain);
+      brain.factory = new Factory(brain);
+      brain.lexicon = brain.speech.lexicator;
+
+      brain.mo = brain.getMomentObject;
+      brain.MomentObject = brain.getMomentObject;
+      brain.ContextObject = brain.getContextObject;
+      brain.PrepositionObject = brain.factory.PrepositionObject;
+      brain.Seed = brain.getSeed
+
+      lx = brain.lexicon;
+
+      return true;
+  }
+
+    var cyclesActive = 0;
+    brain.start = function() {
+      setInterval(function(){
+        cyclesActive += 1;
+        brain.cycle();
+      },1000)
+
+      setInterval(function(){
+        console.log('Brain has been active for ' + cyclesActive + ' cycles.');
+      },10000)
 
 
-    brain.lexicon = brain.speech.lexicator;
-    var lx = brain.lexicon;
+    }
+
+    brain.cycle = function() {
+      //console.log('cycle...');
+      lisa.output("I've been active for " + cyclesActive + " cycles, shug.")
+
+
+    }
+ 
+
 
     brain.process = function (words, directive) {
 
@@ -32,6 +67,8 @@ define("Brain", ["Memory","speech/Speech","logic/Logic","Extractor","Factory"], 
       return analysis;
 
     }
+
+
 
     brain.whatIs = function (word) {
 
@@ -78,11 +115,6 @@ define("Brain", ["Memory","speech/Speech","logic/Logic","Extractor","Factory"], 
       return new brain.factory.ContextObject(context)
     }
 
-    brain.mo = brain.getMomentObject;
-    brain.MomentObject = brain.getMomentObject;
-    brain.ContextObject = brain.getContextObject;
-    brain.PrepositionObject = brain.factory.PrepositionObject;
-    brain.Seed = brain.getSeed
   }
 }
 )

@@ -6,9 +6,16 @@ define(['angular','Lisa','lang/things','lang/attributes','lang/verbs'] , functio
 
       var emily = new Lisa();
  
+      emily.activate();
+
       emily.learn(things);
       emily.learn(attributes);
       emily.learn(verbs);
+
+      emily.tap(function(output){
+        console.log('Got output...',output);
+      })
+
 /*
       var richard = new Lisa();
  

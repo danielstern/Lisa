@@ -66,6 +66,14 @@ _.mixin({
     return _str.include(string, '<');
   },
 
+  evoke:function (functions, input) {
+  //  console.log('evoke,',functions,input)
+    _.each(functions, function(func){
+        func(input);
+    });
+  },
+
+
 
   crack: function(string, returnQuality) {
     if (!string) return;

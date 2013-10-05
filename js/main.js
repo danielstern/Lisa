@@ -27,7 +27,7 @@ require.config({
 	      exports: 'angular'
 	  },
 	},
-	urlArgs: "bust=" + parseInt(Math.random() * 1000),
+	urlArgs: "k=" + parseInt(Math.random() * 1000).toString(16),
 	priority: [
 		'angular'
 	],
@@ -37,29 +37,32 @@ require([
 	"jquery",
 	"app",
 	"angular",
+
 	"Lisa",
 	"Memory",
 	"Brain",
-	"logic/Emotionalizer",
+	"Extractor",
+	"Factory",
 	"Utility",
+
+	"logic/Emotionalizer",
 	"logic/Storyteller",
 	"logic/MomentObject",
 	"logic/Counterposer",
 	"logic/Logic",
+
 	"lang/attributes",
 	"lang/things",
 	"lang/verbs",
+
 	"story/stories",
+
 	"speech/Speech",
 	"speech/Prepositor",
 	"speech/Conjugator",
 	"speech/Lexicator",
-	"Extractor",
-	"Factory",
 	"speech/Momento",
-	/*
-	"underscore",
-	*/
+
 	], function($, app, angular) {
 
    //		console.log('its bootstrap time.');
