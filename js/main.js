@@ -56,6 +56,7 @@ require([
 	"lang/verbs",
 
 	"story/stories",
+	"story/stories_jack",
 
 	"speech/Speech",
 	"speech/Prepositor",

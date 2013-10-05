@@ -16,6 +16,12 @@ define("Lisa",["Brain"], function Lisa(Brain) {
         console.log('Activating LISA');
         console.warn('Hel-lo Smith-ers. You\'re-quite-good-at turn-ing me on.');
 
+        lisa.brain = new Brain(this);
+        
+        lisa.ponder = lisa.brain.ponder;
+        lisa.learn = lisa.brain.learn;
+        lisa.imprint = lisa.brain.imprint;
+
         lisa.brain.init();
         lisa.brain.start();
     }
@@ -30,9 +36,6 @@ define("Lisa",["Brain"], function Lisa(Brain) {
         _.evoke(_tap, phrase);
     }
 
-    lisa.brain = new Brain(this);
-    lisa.ponder = lisa.brain.ponder;
-    lisa.learn = lisa.brain.learn;
 
 
     }

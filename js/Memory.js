@@ -1,4 +1,4 @@
-define("Memory", ["story/stories"], function Memory(stories) {
+define("Memory", [""], function Memory() {
 
   return function Memory(brain) {
 
@@ -6,6 +6,10 @@ define("Memory", ["story/stories"], function Memory(stories) {
     memory.brain = brain;
     memory.short = new ShortTermMemory(memory);
     memory.long = new LongTermMemory(memory);
+
+    memory.imprint = function(memories) {
+      memory.long.addStories(memories);
+    }
 
   };
 
@@ -54,8 +58,12 @@ define("Memory", ["story/stories"], function Memory(stories) {
 
     var brain = memory.brain;
 
-    this.stories = stories;
+    this.stories = []
     var longTerm = this;
+
+    longTerm.addStories = function (stories) {
+      longTerm.stories = longTerm.stories.concat(stories);
+    }
 
     longTerm.getStories = function (seed) {
       
@@ -64,7 +72,7 @@ define("Memory", ["story/stories"], function Memory(stories) {
       if (typeof seed == 'string') seed = brain.whatIs(seed);
       if (!seed) return console.warn('No seed.')
 
-      var matchingStories = _.filter(stories, function (story) { return ex.storyMentionsSeed(story,seed);  })
+      var matchingStories = _.filter(this.stories, function (story) { return ex.storyMentionsSeed(story,seed);  })
 
       return matchingStories;
     }

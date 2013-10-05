@@ -1,4 +1,4 @@
-define(['angular','Lisa','lang/things','lang/attributes','lang/verbs'] , function (angular, Lisa, things, attributes, verbs) {
+define(['angular','Lisa','lang/things','lang/attributes','lang/verbs','story/stories','story/stories_jack'] , function (angular, Lisa, things, attributes, verbs, storyEmily, storyJack) {
 
   return angular.module('lisaApp' , [])
    .controller('LisaController', ['$scope', function($scope) {
@@ -12,6 +12,8 @@ define(['angular','Lisa','lang/things','lang/attributes','lang/verbs'] , functio
       emily.learn(things);
       emily.learn(attributes);
       emily.learn(verbs);
+
+      emily.imprint(storyEmily);
 
       var saying = {};
 
@@ -38,6 +40,8 @@ define(['angular','Lisa','lang/things','lang/attributes','lang/verbs'] , functio
         saying.richardSaying = input;
         $scope.$apply();
       }
+
+      richard.imprint(storyJack);
 
 
       richard.tap($scope.listenRichard)

@@ -20,10 +20,11 @@ define("Brain", ["Memory","speech/Speech","logic/Logic","Extractor","Factory"], 
       brain.PrepositionObject = brain.factory.PrepositionObject;
       brain.Seed = brain.getSeed
 
+
       lx = brain.lexicon;
 
       return true;
-  }
+     }
 
     var speed = _.sample(_.range(5,7));
     var frequency = 10000/speed;
@@ -36,6 +37,10 @@ define("Brain", ["Memory","speech/Speech","logic/Logic","Extractor","Factory"], 
       },frequency)
 
 
+    }
+
+    brain.imprint = function(memories) {
+      brain.memory.imprint(memories)
     }
 
     brain.getDefaultSeed = function() {
