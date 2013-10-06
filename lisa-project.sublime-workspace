@@ -4,16 +4,184 @@
 		"selected_items":
 		[
 			[
+				"mem",
+				"memories"
+			],
+			[
+				"con",
+				"concat"
+			],
+			[
+				"long",
+				"longTerm"
+			],
+			[
+				"em",
+				"emilySaying"
+			],
+			[
+				"f",
+				"fun	Function"
+			],
+			[
+				"ju",
+				"jugend"
+			],
+			[
+				"jugen",
+				"jugendToSeed"
+			],
+			[
+				"objec",
+				"objectivePair"
+			],
+			[
+				"lisa",
+				"Lisa"
+			],
+			[
+				"Pre",
+				"Prepositor"
+			],
+			[
+				"tru",
+				"trueSubjectIdea"
+			],
+			[
+				"true",
+				"trueSubject"
+			],
+			[
+				"getOv",
+				"getObjectiveKey"
+			],
+			[
+				"getObje",
+				"getObjectiveWord"
+			],
+			[
+				"context",
+				"ContextObject"
+			],
+			[
+				"subj",
+				"subjectWord"
+			],
+			[
+				"gener",
+				"generalMoment"
+			],
+			[
+				"obj",
+				"objectContext"
+			],
+			[
+				"retu",
+				"return"
+			],
+			[
+				"word",
+				"wordToSeed"
+			],
+			[
+				"pr",
+				"prepositor"
+			],
+			[
+				"target",
+				"targetWord"
+			],
+			[
+				"return",
+				"returnObj"
+			],
+			[
+				"comp",
+				"compoundToObject"
+			],
+			[
+				"ret",
+				"returnProperty"
+			],
+			[
+				"compo",
+				"compoundToTarget"
+			],
+			[
+				"prepo",
+				"preposition"
+			],
+			[
+				"subjec",
+				"subjectIdea"
+			],
+			[
+				"get",
+				"getConjugatedVerb"
+			],
+			[
+				"parent",
+				"parentWord"
+			],
+			[
+				"exc",
+				"excerpts"
+			],
+			[
+				"pre",
+				"preposition"
+			],
+			[
+				"prepos",
+				"prepositionObj"
+			],
+			[
+				"prep",
+				"prepositionObject"
+			],
+			[
+				"splt",
+				"splitAndCombine"
+			],
+			[
+				"relev",
+				"relevantMoments"
+			],
+			[
+				"ins",
+				"intersection"
+			],
+			[
+				"int",
+				"intersects"
+			],
+			[
+				"inter",
+				"intersection"
+			],
+			[
+				"rele",
+				"relevantMoments"
+			],
+			[
+				"absor",
+				"absorbVerbs"
+			],
+			[
+				"absorb",
+				"absorbVerb"
+			],
+			[
+				"appl",
+				"_applicableOccasions"
+			],
+			[
 				"stor",
 				"storyteller"
 			],
 			[
 				"getStor",
 				"getStoryExcerpt"
-			],
-			[
-				"pre",
-				"preposition"
 			],
 			[
 				"st",
@@ -40,20 +208,12 @@
 				"intersection"
 			],
 			[
-				"int",
-				"intersects"
-			],
-			[
 				"inters",
 				"intersects"
 			],
 			[
 				"seed",
 				"seedProperties"
-			],
-			[
-				"inter",
-				"intersections"
 			],
 			[
 				"ideas",
@@ -80,10 +240,6 @@
 				"momentFromSeed"
 			],
 			[
-				"con",
-				"conjugate"
-			],
-			[
 				"conju",
 				"conjugate"
 			],
@@ -102,10 +258,6 @@
 			[
 				"co",
 				"counterposer"
-			],
-			[
-				"prep",
-				"preposit"
 			],
 			[
 				"nex",
@@ -129,10 +281,6 @@
 			],
 			[
 				"retr",
-				"returnWord"
-			],
-			[
-				"ret",
 				"returnWord"
 			],
 			[
@@ -188,14 +336,6 @@
 				"againstContext"
 			],
 			[
-				"return",
-				"returnQuality"
-			],
-			[
-				"subjec",
-				"subjectContext"
-			],
-			[
 				"scope",
 				"scopeDown"
 			],
@@ -208,24 +348,12 @@
 				"recentThings"
 			],
 			[
-				"pr",
-				"pronoun"
-			],
-			[
 				"use",
 				"useAsync"
 			],
 			[
-				"get",
-				"getComments"
-			],
-			[
 				"re",
 				"response"
-			],
-			[
-				"appl",
-				"applicableComments"
 			],
 			[
 				"in",
@@ -336,18 +464,18 @@
 	"buffers":
 	[
 		{
-			"file": "lang/things.js",
+			"file": "js/Lisa.js",
 			"settings":
 			{
-				"buffer_size": 3872,
+				"buffer_size": 873,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "lang/attributes.js",
+			"file": "js/app.js",
 			"settings":
 			{
-				"buffer_size": 2818,
+				"buffer_size": 1078,
 				"line_ending": "Windows"
 			}
 		},
@@ -355,23 +483,15 @@
 			"file": "js/Brain.js",
 			"settings":
 			{
-				"buffer_size": 2879,
+				"buffer_size": 3252,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "js/logic/Logic.js",
+			"file": "js/Memory.js",
 			"settings":
 			{
-				"buffer_size": 4609,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "js/logic/Storyteller.js",
-			"settings":
-			{
-				"buffer_size": 2160,
+				"buffer_size": 2130,
 				"line_ending": "Windows"
 			}
 		}
@@ -379,11 +499,11 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 0.0,
+		"height": 392.0,
 		"selected_items":
 		[
 		],
-		"width": 0.0
+		"width": 416.0
 	},
 	"console":
 	{
@@ -400,27 +520,51 @@
 	},
 	"file_history":
 	[
-		"/C/wamp/www/lisa/js/memory/Memory.js",
 		"/C/wamp/www/lisa/index.html",
-		"/C/wamp/www/lisa/lang/verbs.js",
-		"/C/wamp/www/lisa/lang/attributes.js",
+		"/C/wamp/www/lisa/js/logic/Counterposer.js",
+		"/C/wamp/www/lisa/js/app.js",
+		"/C/wamp/www/lisa/js/Lisa.js",
+		"/C/wamp/www/lisa/js/Brain.js",
+		"/C/wamp/www/lisa/js/story/stories_jack.js",
+		"/C/wamp/www/lisa/js/Memory.js",
+		"/C/wamp/www/lisa/js/main.js",
+		"/C/wamp/www/lisa/js/Utility.js",
+		"/C/wamp/www/lisa/js/lang/things.js",
+		"/C/wamp/www/lisa/js/story/stories.js",
+		"/C/wamp/www/lisa/js/speech/Momento.js",
+		"/C/wamp/www/lisa/js/logic/MomentObject.js",
+		"/C/wamp/www/lisa/js/lang/verbs.js",
+		"/C/wamp/www/lisa/js/speech/Lexicator.js",
+		"/C/wamp/www/lisa/js/logic/Logic.js",
+		"/C/wamp/www/lisa/js/lang/attributes.js",
+		"/C/wamp/www/lisa/js/logic/Storyteller.js",
+		"/C/wamp/www/lisa/js/speech/Conjugator.js",
+		"/C/wamp/www/lisa/js/speech/Prepositor.js",
+		"/C/wamp/www/lisa/js/speech/Speech.js",
+		"/C/wamp/www/lisa/js/logic/Emotionalizer.js",
+		"/C/wamp/www/lisa/js/Factory.js",
+		"/C/wamp/www/lisa/js/Extractor.js",
+		"/C/wamp/www/lisa/js/speech/Extractor.js",
+		"/C/wamp/www/lisa/lib/underscore/lodash.underscore.min.js",
+		"/C/wamp/www/lisa/lib/require/require.js",
+		"/C/wamp/www/lisa/js/memory/Memory.js",
+		"/C/wamp/www/lisa/js/utility/Utility.js",
 		"/C/wamp/www/lisa/story/stories.js",
 		"/C/wamp/www/lisa/lang/things.js",
-		"/C/wamp/www/lisa/js/logic/Storyteller.js",
-		"/C/wamp/www/lisa/js/expresso/Prepositor.js",
-		"/C/wamp/www/lisa/js/utility/Utility.js",
-		"/C/wamp/www/lisa/js/expresso/Momento.js",
-		"/C/wamp/www/lisa/js/expresso/Conjugator.js",
-		"/C/wamp/www/lisa/README.md",
+		"/C/wamp/www/lisa/lang/attributes.js",
+		"/C/wamp/www/lisa/lang/verbs.js",
+		"/C/wamp/www/lisa/js/speech/Expressor.js",
+		"/C/wamp/www/lisa/js/speech/expressions/expressions.js",
 		"/C/wamp/www/lisa/js/expresso/Extractor.js",
-		"/C/wamp/www/lisa/js/logic/Logic.js",
+		"/C/wamp/www/lisa/js/expresso/Conjugator.js",
+		"/C/wamp/www/lisa/js/expresso/Expressor.js",
+		"/C/wamp/www/lisa/js/expresso/Prepositor.js",
+		"/C/wamp/www/lisa/js/expresso/Momento.js",
+		"/C/wamp/www/lisa/README.md",
 		"/C/wamp/www/lisa/js/expresso/Expresso.js",
 		"/C/Users/New Owner/Documents/more notes",
-		"/C/wamp/www/lisa/js/Brain.js",
 		"/C/wamp/www/lisa/js/expresso/Lexicator.js",
 		"/C/wamp/www/old/stories_rpg.js",
-		"/C/wamp/www/lisa/js/logic/Counterposer.js",
-		"/C/wamp/www/lisa/js/Lisa.js",
 		"/C/wamp/www/lisa/js/expresso/expressions/expressions.js",
 		"/C/Users/New Owner/Documents/BlueJays Way",
 		"/C/Users/New Owner/Documents/portfoliolinks",
@@ -442,9 +586,7 @@
 		"/C/wamp/www/lisa/js/stories.js",
 		"/C/wamp/www/lisa/js/expressions.js",
 		"/C/wamp/www/lisa/js/Expresso.js",
-		"/C/wamp/www/lisa/js/Memory.js",
 		"/C/wamp/www/lisa/js/ponder.js",
-		"/C/wamp/www/lisa/js/Utility.js",
 		"/C/wamp/www/lisa/js/casualExpressions.js",
 		"/C/wamp/www/lisa/js/Patterns.js",
 		"/C/wamp/www/lisa/js/Logic.js",
@@ -478,7 +620,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 90.0,
 		"where_history":
 		[
 		]
@@ -488,6 +630,55 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"brain",
+			"<div class='span2'>\n        <img src='../misc/lisa.jpg' width='auto' height='auto'>\n      </div>",
+			"shining",
+			"shin",
+			"shine",
+			"smile",
+			"blue",
+			"include",
+			"main.",
+			"special",
+			"preposit",
+			"hasp",
+			"isBun",
+			"isSpe",
+			"isComp",
+			".\n",
+			" \n",
+			"assumed",
+			"generality",
+			"general",
+			"var prepo",
+			"{}",
+			"noPron",
+			"specialToTarget",
+			"seedTo",
+			"crack",
+			"compound",
+			"to po",
+			"\"I\"",
+			"generalit",
+			"general",
+			"work",
+			"lexy",
+			"{\n",
+			"feelingNames",
+			"shoe",
+			"lots",
+			"many",
+			"incl",
+			"stringCont",
+			"good",
+			"pretty",
+			"nice",
+			"good",
+			"nice",
+			"express",
+			"short",
+			"          ",
+			"seed",
 			"safe",
 			");\n",
 			"road",
@@ -566,56 +757,7 @@
 			"console",
 			"It",
 			"objectiv",
-			"objecti",
-			"objective",
-			"she",
-			"          {\n             subject:'my|mother',action:'wring', object:'her|hands'\n          },",
-			"clos",
-			"tellSto",
-			"milk",
-			"console",
-			"beanstalk",
-			"extractst",
-			"tell",
-			"log",
-			"tellstor",
-			"conjugate",
-			"extractSto",
-			"sluice",
-			"console",
-			"tellsto",
-			"oneTo",
-			"jump",
-			"sayto",
-			"conjug",
-			"posses",
-			"my",
-			"stringnee",
-			"fathe",
-			"ting ",
-			"ting.",
-			"crack",
-			"moment",
-			"oneto",
-			"break",
-			"oneToMany",
-			"':",
-			"$",
-			"skele",
-			"die",
-			"var contex",
-			"story",
-			"console.",
-			"wand",
-			"warrior",
-			"then",
-			"sword of l",
-			"brave",
-			"scopeUp",
-			"scope",
-			"against",
-			"algoron",
-			"holy"
+			"objecti"
 		],
 		"highlight": false,
 		"in_selection": false,
@@ -639,29 +781,28 @@
 	"groups":
 	[
 		{
-			"selected": 4,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "lang/things.js",
+					"file": "js/Lisa.js",
 					"settings":
 					{
-						"buffer_size": 3872,
+						"buffer_size": 873,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								735,
-								735
+								873,
+								873
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
@@ -672,18 +813,18 @@
 				},
 				{
 					"buffer": 1,
-					"file": "lang/attributes.js",
+					"file": "js/app.js",
 					"settings":
 					{
-						"buffer_size": 2818,
+						"buffer_size": 1078,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								426,
-								426
+								434,
+								434
 							]
 						],
 						"settings":
@@ -703,15 +844,15 @@
 					"file": "js/Brain.js",
 					"settings":
 					{
-						"buffer_size": 2879,
+						"buffer_size": 3252,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2573,
-								2573
+								1080,
+								1080
 							]
 						],
 						"settings":
@@ -721,25 +862,25 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 900.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "js/logic/Logic.js",
+					"file": "js/Memory.js",
 					"settings":
 					{
-						"buffer_size": 4609,
+						"buffer_size": 2130,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1478,
-								1478
+								306,
+								306
 							]
 						],
 						"settings":
@@ -749,35 +890,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 540.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "js/logic/Storyteller.js",
-					"settings":
-					{
-						"buffer_size": 2160,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1713,
-								1713
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 179.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -787,7 +900,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 0.0
+		"height": 34.0
 	},
 	"input":
 	{

@@ -8,6 +8,7 @@ define("Memory", [""], function Memory() {
     memory.long = new LongTermMemory(memory);
 
     memory.imprint = function(memories) {
+      console.log("imprintng...",memories)
       memory.long.addStories(memories);
     }
 

@@ -58,6 +58,7 @@ define("logic/Emotionalizer", [], function ()
 
       fo.combine = function (feeling)
       {
+        if(!feeling) return console.warn('No feeling...')
         var feelingNames = _.keys(feeling);
         _.each(feelingNames, function (feelingName)
         {
